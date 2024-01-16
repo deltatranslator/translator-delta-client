@@ -1,17 +1,15 @@
-import './signUp.css'
-import { GoUpload } from "react-icons/go";
+import '../SignUp/signUp.css'
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from 'react-hook-form';
-const SignUp = () => {
+const Login = () => {
 
     const {
         register, handleSubmit, reset, formState: { errors },
     } = useForm()
     const onSubmit = (data ) => {
-        const name = data.name
-        const email = data.password;
-        const image = data.image[0]
-        console.log(name,email,image);
+        const email = data.email;
+        const password = data.password
+        console.log(email , password);
         reset()
     }
 
@@ -24,15 +22,8 @@ const SignUp = () => {
                         <p className="py-6 text-white w-11/12">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                     </div>
                     <div className="card shrink-0 w-full max-w-sm lg:max-w-lg">
-                        <h1 className="text-5xl font-bold text-yellow-600 ml-10">Sign UP</h1>
+                        <h1 className="text-5xl font-bold text-yellow-600 ml-10">Login</h1>
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text text-yellow-500 font-semibold">Name</span>
-                                </label>
-                                <input {...register("name", { required: true })} type="text" placeholder="email" className="input input-bordered border-yellow-600  " required />
-                            </div>
-                            {errors.name && <span className='text-red-700 font-bold'>Name is required</span>}
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-yellow-500 font-semibold">Email Address</span>
@@ -59,24 +50,7 @@ const SignUp = () => {
                                 {errors.password?.type === 'pattern' && <p className='text-red-600'> Password must have one uppercase , one lowercase and one number</p>
                                 }
                             </div>
-                            <div className='mt-7'>
-                                <label htmlFor='image' className='file-label  mb-2 text-sm text-white rounded-xl '>
-                                    <div className="flex justify-center items-center mx-auto">
-                                        <GoUpload className="text-2xl font-bold" />
-                                        <p>Upload Profile</p>
-                                    </div>
-
-                                </label>
-                                <input
-                                    {...register("image", { required: true })}
-                                    type='file'
-                                    id='image'
-                                    name='image'
-                                    accept='image/*'
-                                />
-                                
-                            </div>
-                            {errors.image && <span className='text-red-700 font-bold'>image is required</span>}
+                        
                             <div className="form-control mt-6">
                                 <button type="submit" className="btn bg-yellow-600 hover:bg-yellow-800 text-white font-semibold">Sign UP</button>
                             </div>
@@ -94,4 +68,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default Login;
