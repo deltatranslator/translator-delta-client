@@ -2,19 +2,78 @@ import "./signUp.css";
 import { GoUpload } from "react-icons/go";
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+
 const SignUp = () => {
+  const { createUser,  userProfileUpdate} = useAuth()
+  const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
+
+  // SweetAlert Code 
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top",
+    iconColor: "green",
+    customClass: {
+      popup: "colored-toast",
+    },
+    showConfirmButton: false,
+    timer: 1500,
+    timerProgressBar: true,
+  });
+
+  // Handle OnSubmit 
+
   const onSubmit = (data) => {
     const name = data.name;
-    const email = data.password;
+    const email = data.email;
+    const password = data.password;
     const image = data.image[0];
-    console.log(name, email, image);
-    reset();
+    console.log(name, email, password, image);
+
+    createUser(email, password)
+    .then(() => {
+      Toast.fire({
+        icon: "success",
+        title: "User Registration Successfully.",
+      });
+       reset();
+       navigate('/login')
+      // user update Profile 
+      // userProfileUpdate(name, image)
+      // .then(() => {
+      //   Toast.fire({
+      //     icon: "success",
+      //     title: "User Registration Successfully.",
+      //   });
+      // })
+      // .catch((err) => {
+      //   console.log(err.message);
+      //   Toast.fire({
+      //     icon: "error",
+      //     title: err.message,
+      //   });
+      // })
+      // console.log("Logged User ->", result.user);
+    })
+    .catch((err) => {
+      console.log(err.message);
+      Toast.fire({
+        icon: "error",
+        title: err.message,
+      });
+
+    })
+
+   
   };
 
   return (
