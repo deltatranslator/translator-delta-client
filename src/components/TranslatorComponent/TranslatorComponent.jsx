@@ -1,13 +1,13 @@
 import SourceLangComponent from "./SourceLangComponent";
-import SwipArrow from "./SwipArrow";
+import SwipeArrow from "./SwipeArrow";
 import TargetLangComponent from "./TargetLangComponent";
 
 const TranslatorComponent = () => {
     return (
         <div>
-            <div className="container mx-auto flex flex-col lg:flex-row justify-center p-4 gap-4">
+            <div className="container mx-auto flex flex-col lg:flex-row justify-center p-4 gap-4 my-12">
                 <SourceLangComponent />
-                <SwipArrow />
+                <SwipeArrow />
                 <TargetLangComponent />
             </div>
         </div>

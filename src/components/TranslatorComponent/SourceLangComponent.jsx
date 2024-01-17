@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp } from "react-icons/md";
+import { IoMicOutline } from "react-icons/io5";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import useRecentLang from "../../hooks/useRecentLang";
 
@@ -207,7 +208,12 @@ const SourceLangComponent = () => {
                     </div>
                 </div>
             )}
-            <textarea className="w-full h-64 text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 resize-none" name="" id=""></textarea>
+            <div className="w-full relative">
+                <textarea className="w-full h-64 text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 resize-none" name="" id=""></textarea>
+                <div className="absolute flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full left-3 bottom-4">
+                    <IoMicOutline size={24} color="#646161" />
+                </div>
+            </div>
         </div>
     );
 };

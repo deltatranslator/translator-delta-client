@@ -174,7 +174,7 @@ const TargetLangComponent = () => {
                 </div>
             </div>
             {dropdownOpen && (
-                <div ref={dropdownRef} className='z-10 absolute right-0 lg:-left-[500px] xl:-left-[700px] bg-white border border-gray-300 shadow-md rounded-md p-3'>
+                <div ref={dropdownRef} className='z-10 absolute right-0 lg:-left-[500px] xl:-left-[750px] bg-white border border-gray-300 shadow-md rounded-md p-3'>
                     {/* Search field */}
                     <div className="h-12 border-b-2 mb-4">
                         <input value={query} onChange={e => setQuery(e.target.value)} type="text" name="search" className="w-full h-full p-2 focus:outline-none placeholder:text-lg" placeholder="Search" />
