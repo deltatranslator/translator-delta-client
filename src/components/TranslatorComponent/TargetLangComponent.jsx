@@ -7,7 +7,7 @@ import {
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 
 const TargetLangComponent = () => {
-  const [recentLang, setRecentLang] = useRecentLang();
+  const [recentLang, setRecentLang] = useRecentLang("recentTargetLang");
   const langs = [
     "English",
     "Spanish",
@@ -115,7 +115,7 @@ const TargetLangComponent = () => {
   const dropdownRef = useRef(null);
   const [query, setQuery] = useState("");
 
-  const hangleDropdown = () => {
+  const handleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
@@ -135,14 +135,14 @@ const TargetLangComponent = () => {
 
   const handleRecentLang = (lang) => {
     const recentLangArray = [];
-    const recentLang = JSON.parse(localStorage.getItem("recentLang"));
+    const recentLang = JSON.parse(localStorage.getItem("recentTargetLang"));
 
     if (!recentLang) {
       if (recentLang.length > 2) {
         recentLang.pop();
       }
       recentLangArray.unshift(lang);
-      localStorage.setItem("recentLang", JSON.stringify(recentLangArray));
+      localStorage.setItem("recentTargetLang", JSON.stringify(recentLangArray));
       setRecentLang(recentLangArray);
     } else {
       const doesExist = recentLang.find((storageLang) => storageLang === lang);
@@ -154,7 +154,10 @@ const TargetLangComponent = () => {
         }
         recentLangArray.push(...recentLang);
         recentLangArray.unshift(lang);
-        localStorage.setItem("recentLang", JSON.stringify(recentLangArray));
+        localStorage.setItem(
+          "recentTargetLang",
+          JSON.stringify(recentLangArray)
+        );
         setRecentLang(recentLangArray);
       }
     }
@@ -165,7 +168,7 @@ const TargetLangComponent = () => {
   });
   return (
     <div className="w-full lg:w-1/2 relative">
-      <div className="flex items-center px-2 ml-6 font-medium text-gray-700">
+      <div className="flex items-center px-2 ml-2 lg:ml-6 font-medium text-gray-700">
         {recentLang.slice(0, 3).map((lang, idx) => (
           <div
             key={idx}
@@ -180,7 +183,7 @@ const TargetLangComponent = () => {
           </div>
         ))}
         <div
-          onClick={hangleDropdown}
+          onClick={handleDropdown}
           className="flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full"
         >
           {!dropdownOpen ? <SlArrowDown size={16} /> : <SlArrowUp size={16} />}
@@ -209,7 +212,7 @@ const TargetLangComponent = () => {
                   <div
                     key={idx}
                     onClick={() => {
-                      setActiveIndex(idx);
+                      setActiveIndex(0);
                       setDropdownOpen(false);
                       handleRecentLang(lang);
                     }}
@@ -224,7 +227,7 @@ const TargetLangComponent = () => {
                   <div
                     key={idx}
                     onClick={() => {
-                      setActiveIndex(idx);
+                      setActiveIndex(0);
                       setDropdownOpen(false);
                     }}
                     className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${
