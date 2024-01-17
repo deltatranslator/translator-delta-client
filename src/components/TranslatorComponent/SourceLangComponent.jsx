@@ -146,7 +146,6 @@ const SourceLangComponent = () => {
             const doesExist = recentLang.find(storageLang => storageLang === lang);
 
             if (!doesExist) {
-                console.log(recentLang.length);
                 if (recentLang.length > 2) {
                     recentLang.pop();
                 }
@@ -160,7 +159,12 @@ const SourceLangComponent = () => {
 
     const filteredLang = langs.filter(item => {
         return item.toLowerCase().includes(query.toLowerCase())
-    })
+    });
+
+    const handleTextInput = (e) => {
+        const inputText = e.target.value;
+        console.log(inputText);
+    }
 
     return (
         <div className="w-full lg:w-1/2">
@@ -209,7 +213,7 @@ const SourceLangComponent = () => {
                 </div>
             )}
             <div className="w-full relative">
-                <textarea className="w-full h-64 text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 resize-none" name="" id=""></textarea>
+                <textarea onChange={handleTextInput} className="w-full h-64 text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 resize-none" name="" id=""></textarea>
                 <div className="absolute flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full left-3 bottom-4">
                     <IoMicOutline size={24} color="#646161" />
                 </div>
