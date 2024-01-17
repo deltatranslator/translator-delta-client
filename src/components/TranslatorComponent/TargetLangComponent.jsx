@@ -4,7 +4,7 @@ import { MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp } from "react-icon
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 
 const TargetLangComponent = () => {
-    const [recentLang, setRecentLang] = useRecentLang();
+    const [recentLang, setRecentLang] = useRecentLang('recentTargetLang');
     const langs = [
         "English",
         "Spanish",
@@ -112,7 +112,7 @@ const TargetLangComponent = () => {
     const dropdownRef = useRef(null);
     const [query, setQuery] = useState("");
 
-    const hangleDropdown = () => {
+    const handleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     }
 
@@ -132,14 +132,14 @@ const TargetLangComponent = () => {
 
     const handleRecentLang = (lang) => {
         const recentLangArray = [];
-        const recentLang = JSON.parse(localStorage.getItem('recentLang'));
+        const recentLang = JSON.parse(localStorage.getItem('recentTargetLang'));
 
         if (!recentLang) {
             if (recentLang.length > 2) {
                 recentLang.pop();
             }
             recentLangArray.unshift(lang);
-            localStorage.setItem('recentLang', JSON.stringify(recentLangArray));
+            localStorage.setItem('recentTargetLang', JSON.stringify(recentLangArray));
             setRecentLang(recentLangArray);
         } else {
             const doesExist = recentLang.find(storageLang => storageLang === lang);
@@ -151,7 +151,7 @@ const TargetLangComponent = () => {
                 }
                 recentLangArray.push(...recentLang);
                 recentLangArray.unshift(lang);
-                localStorage.setItem('recentLang', JSON.stringify(recentLangArray));
+                localStorage.setItem('recentTargetLang', JSON.stringify(recentLangArray));
                 setRecentLang(recentLangArray);
             }
         }
@@ -162,11 +162,11 @@ const TargetLangComponent = () => {
     })
     return (
         <div className="w-full lg:w-1/2 relative">
-            <div className="flex items-center px-2 ml-6 font-medium text-gray-700">
+            <div className="flex items-center px-2 ml-2 lg:ml-6 font-medium text-gray-700">
                 {recentLang.slice(0, 3).map((lang, idx) => <div key={idx} onClick={() => setActiveIndex(idx)}
                     className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${activeIndex === idx ? 'border-b-2 border-blue-400' : 'border-b-2 border-transparent'
                         }`}>{lang}</div>)}
-                <div onClick={hangleDropdown} className="flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full">
+                <div onClick={handleDropdown} className="flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full">
                     {!dropdownOpen
                         ? <SlArrowDown size={16} />
                         : <SlArrowUp size={16} />
@@ -186,7 +186,7 @@ const TargetLangComponent = () => {
                                 <div
                                     key={idx}
                                     onClick={() => {
-                                        setActiveIndex(idx); setDropdownOpen(false);
+                                        setActiveIndex(0); setDropdownOpen(false);
                                         handleRecentLang(lang);
                                     }}
                                     className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${activeIndex === idx ? 'text-blue-500' : 'text-gray-800'}`}
@@ -197,7 +197,7 @@ const TargetLangComponent = () => {
                             : filteredLang.map((lang, idx) => (
                                 <div
                                     key={idx}
-                                    onClick={() => { setActiveIndex(idx); setDropdownOpen(false); }}
+                                    onClick={() => { setActiveIndex(0); setDropdownOpen(false); }}
                                     className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${activeIndex === idx ? 'text-blue-500' : 'text-gray-800'}`}
                                 >
                                     {lang}
