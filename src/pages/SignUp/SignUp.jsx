@@ -24,10 +24,10 @@ const SignUp = () => {
   return (
     <div className="sign-back hero min-h-screen ">
       <div className="hero-content flex flex-col md:flex-row-reverse w-full lg:gap-10">
-        <div className="text-center md:w-full lg:text-left max-w-lg">
+        <div className="text-center md:w-full lg:text-left max-w-96 lg:max-w-lg px-3 py-2">
           <Lottie animationData={loginAnime}></Lottie>
         </div>
-        <div className="card flex-shrink-0 w-96">
+        <div className="card flex-shrink-0 w-96 lg:w-[450px]">
           <div className='text-left ml-10 text-[#ed7966] text-2xl md:text-4xl font-bold'>
 
             Sign Up
@@ -93,7 +93,7 @@ const SignUp = () => {
 
           <p className='text-center'><small className='text-[#ed7966]'>Don't Have an account? <Link to="/login"><span className='font-bold'>Login</span></Link></small></p>
           {/* social login  */}
-          <button className="btn border border-[#ed7966] text-[#ed7966] my-4 btn-outline w-56 ml-10">
+          <button className="btn border border-[#ed7966] text-[#ed7966] my-4 btn-outline w-56 ml-10 hover:bg-[#ed7966]">
             <FcGoogle className="text-3xl"></FcGoogle>
             Google
           </button>
