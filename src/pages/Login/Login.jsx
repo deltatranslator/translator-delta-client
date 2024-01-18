@@ -1,18 +1,55 @@
 import "../SignUp/signUp.css";
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+  const { userLogin} = useAuth()
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
+
+  // SweetAlert Code
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top",
+    iconColor: "green",
+    customClass: {
+      popup: "colored-toast",
+    },
+    showConfirmButton: false,
+    timer: 1500,
+    timerProgressBar: true,
+  });
+
+// handle OnSubmit
   const onSubmit = (data) => {
     const email = data.email;
     const password = data.password;
     console.log(email, password);
+
+  userLogin(email, password)
+  .then(() => {
+    Toast.fire({
+      icon: "success",
+      title: "User Login Successfully.",
+    });
     reset();
+    navigate("/")
+
+  })
+  .catch((err) => {
+    console.log(err.message);
+    Toast.fire({
+      icon: "error",
+      title: err.message,
+    });
+  })
   };
 
   return (
