@@ -109,7 +109,7 @@ const Navbar = () => {
             </div>
             <div className="inline-flex rounded-full shadow">
               <Link
-                to="/signup"
+                to="/signUp"
                 className="inline-flex items-center px-4 py-2 text-base text-white bg-[#ed7966] border border-transparent rounded-full cursor-pointer font-base hover:bg-white hover:text-black"
               >
                 Register
