@@ -1,16 +1,11 @@
-.signUp {
-    /* height: 100vh; */
-    background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(../../assets/login.jpg);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
+
 input[type="file"]{
     display: none;
 }
 .file-label{
     display: inline-block;
     color: white;
-    background-color: #ca8a04;
+    background-color: #ed7966;
     text-align: center;
     padding: 10px 30px;
     
