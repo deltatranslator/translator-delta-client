@@ -30,7 +30,7 @@ const SignUp = () => {
         <div className="card flex-shrink-0 w-96">
           <div className='text-left ml-10 text-[#ed7966] text-2xl md:text-4xl font-bold'>
 
-            Log In
+            Sign Up
           </div>
           {/* form */}
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
