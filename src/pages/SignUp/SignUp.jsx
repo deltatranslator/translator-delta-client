@@ -6,19 +6,78 @@ import { useForm } from "react-hook-form";
 import Lottie from "lottie-react";
 import loginAnime from '../../assets/Animation - 1705578701251.json'
 import { Link } from "react-router-dom";
+// import Swal from "sweetalert2";
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+
 const SignUp = () => {
+  const { createUser } = useAuth()
+  const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
+
+  // SweetAlert Code 
+  // const Toast = Swal.mixin({
+  //   toast: true,
+  //   position: "top",
+  //   iconColor: "green",
+  //   customClass: {
+  //     popup: "colored-toast",
+  //   },
+  //   showConfirmButton: false,
+  //   timer: 1500,
+  //   timerProgressBar: true,
+  // });
+
+  // Handle OnSubmit 
+
   const onSubmit = (data) => {
     const name = data.name;
-    const email = data.password;
+    const email = data.email;
+    const password = data.password;
     const image = data.image[0];
-    console.log(name, email, image);
-    reset();
+    console.log(name, email, password, image);
+
+    createUser(email, password)
+      .then(() => {
+        toast.success({
+          icon: "success",
+          title: "User Registration Successfully.",
+        });
+        reset();
+        navigate('/')
+        // user update Profile 
+        // userProfileUpdate(name, image)
+        // .then(() => {
+        //   Toast.fire({
+        //     icon: "success",
+        //     title: "User Registration Successfully.",
+        //   });
+        // })
+        // .catch((err) => {
+        //   console.log(err.message);
+        //   Toast.fire({
+        //     icon: "error",
+        //     title: err.message,
+        //   });
+        // })
+        // console.log("Logged User ->", result.user);
+      })
+      .catch((err) => {
+        console.log(err.message);
+        toast.error({
+          icon: "error",
+          title: err.message,
+        });
+
+      })
+
   };
 
   return (
