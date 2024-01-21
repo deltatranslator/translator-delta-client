@@ -118,38 +118,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
-      {/* ------------------------------------------------------------------------------ */}
-      {/* <div className="bg-[#303179] flex justify-center items-center py-2">
-        <span className="text-sm text-white text-center mx-auto">
-          Most trending smart language translator
-        </span>
-      </div>
-      <div className="px-4 mx-auto max-w-7xl sm:px-6">
-        <div className="relative pt-6 pb-16 sm:pb-24">
-          <nav
-            className="relative flex items-center justify-between sm:h-10 md:justify-center"
-            aria-label="Global"
-          >
-            <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
-              <span>Delta Language Logo</span>
-            </div>
-            <div className="hidden md:flex md:space-x-10 list-none">
-              {links}
-            </div>
-            <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
-              <div className="inline-flex rounded-full shadow">
-                <Link
-                  to="/signup"
-                  className="inline-flex items-center px-4 py-2 text-base text-white bg-[#ed7966] border border-transparent rounded-full cursor-pointer font-base hover:bg-white hover:text-black"
-                >
-                  Register
-                </Link>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </div> */}
     </div>
   );
 };
