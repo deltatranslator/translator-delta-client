@@ -71,7 +71,7 @@ const SignUp = () => {
         </div>
         <div className="card flex-shrink-0 w-96 lg:w-[450px]">
           <div className="text-left ml-10 text-[#ed7966] text-2xl md:text-4xl font-bold">
-            Sign Up
+            Create Your Account
           </div>
           {/* form */}
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -84,7 +84,7 @@ const SignUp = () => {
               <input
                 {...register("name", { required: true })}
                 type="text"
-                placeholder="email"
+                placeholder="Name"
                 className="input input-bordered border-[#ed7966]  "
                 required
               />
@@ -178,7 +178,7 @@ const SignUp = () => {
                 type="submit"
                 className="btn bg-[#ed7966] hover:bg-yellow-800 text-white font-semibold"
               >
-                Sign UP
+                Sign Up
               </button>
             </div>
           </form>
