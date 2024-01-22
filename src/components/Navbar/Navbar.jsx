@@ -57,7 +57,7 @@ const Navbar = () => {
           Most trending smart language translator
         </span>
       </div>
-      <div className="px-1 py-5 md:px-10 md:py-5 lg:px-36 lg:py-5 bg-white dark:bg-slate-200">
+      <div className="px-1 py-5 md:px-10 md:py-5 lg:px-36 lg:py-5 bg-white dark:bg-slate-300">
         <div className="navbar">
           <div className="navbar-start">
             <div className="dropdown">

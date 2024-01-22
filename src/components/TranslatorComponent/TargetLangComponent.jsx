@@ -205,7 +205,7 @@ const TargetLangComponent = () => {
               placeholder="Search"
             />
           </div>
-          <div className="grid md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 lg:grid-rows-5">
+          <div className="grid md:grid-cols-4 dark:bg-slate-800 lg:grid-cols-6 xl:grid-cols-8 lg:grid-rows-5">
             {/* Dropdown options */}
             {!query
               ? langs.map((lang, idx) => (
@@ -216,7 +216,7 @@ const TargetLangComponent = () => {
                       setDropdownOpen(false);
                       handleRecentLang(lang);
                     }}
-                    className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${
+                    className={`px-2 py-2 cursor-pointer dark:text-slate-50 dark:hover:bg-slate-600 hover:bg-blue-100 ${
                       activeIndex === idx ? "text-blue-500" : "text-gray-800"
                     }`}
                   >
@@ -241,7 +241,7 @@ const TargetLangComponent = () => {
         </div>
       )}
       <div
-        className="w-full text-2xl font-medium text-gray-600 h-64 border-[1px] bg-gray-50 shadow-sm rounded-lg p-4"
+        className="w-full text-2xl dark:bg-slate-400 dark:text-slate-100 dark:border-none font-medium text-gray-600 h-64 border-[1px] bg-gray-50 shadow-sm rounded-lg p-4"
         name=""
         id=""
       >
