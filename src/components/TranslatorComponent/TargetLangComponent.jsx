@@ -168,7 +168,7 @@ const TargetLangComponent = () => {
   });
   return (
     <div className="w-full lg:w-1/2 relative">
-      <div className="flex items-center px-2 ml-2 lg:ml-6 font-medium text-gray-700">
+      <div className="flex items-center dark:text-white px-2 ml-2 lg:ml-6 font-medium text-gray-700">
         {recentLang.slice(0, 3).map((lang, idx) => (
           <div
             key={idx}

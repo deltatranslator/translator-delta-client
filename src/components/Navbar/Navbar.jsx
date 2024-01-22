@@ -12,7 +12,6 @@ const Navbar = () => {
       document.documentElement.classList.remove("dark");
     }
   }, [theme]);
-
   const handleSwitch = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
@@ -53,12 +52,12 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="bg-[#303179] dark:bg-black dark:text-black flex justify-center items-center py-2">
+      <div className="bg-[#303179] dark:bg-slate-600 dark:text-black flex justify-center items-center py-2">
         <span className="text-sm text-white text-center mx-auto">
           Most trending smart language translator
         </span>
       </div>
-      <div className="px-1 py-5 md:px-10 md:py-5 lg:px-36 lg:py-5 bg-white">
+      <div className="px-1 py-5 md:px-10 md:py-5 lg:px-36 lg:py-5 bg-white dark:bg-slate-200">
         <div className="navbar">
           <div className="navbar-start">
             <div className="dropdown">
@@ -89,7 +88,7 @@ const Navbar = () => {
               </ul>
             </div>
 
-            <span>Delta Language Logo</span>
+            <span className=" dark:text-slate-500">Delta Language Logo</span>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className=" menu-horizontal px-1 hover:text-white">{links}</ul>
@@ -98,6 +97,7 @@ const Navbar = () => {
             <div className="mr-3 md:mr-8 mt-1">
               <label className="swap swap-rotate">
                 {/* this hidden checkbox controls the state */}
+                {/* Add onClick for theme switch */}
                 <input type="checkbox" onClick={handleSwitch} />
 
                 {/* sun icon */}
