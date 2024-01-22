@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer footer-center p-10 bg-gray-500  text-white rounded-t">
+      <footer className="footer footer-center p-10 bg-[#303179]  text-white rounded-t">
         <nav>
           <div className="grid grid-flow-col gap-4">
             <NavLink to="https:/facebook.com">
@@ -40,7 +40,7 @@ const Footer = () => {
           <p >Copyright © 2024 - All right reserved by Delta Coders</p>
         </aside> */}
       </footer>
-      <aside className="text-center bg-gray-600 text-white py-4">
+      <aside className="text-center bg-[#ed7966] text-white py-1">
         <p>Copyright © 2024 - All right reserved by Delta Coders</p>
       </aside>
     </div>
