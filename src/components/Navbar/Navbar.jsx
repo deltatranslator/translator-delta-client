@@ -1,7 +1,22 @@
+import { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
+
+  const handleSwitch = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   const links = (
     <>
       <li className="text-base text-[#303179] hover:text-[#ed7966] mr-8">
@@ -38,7 +53,7 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="bg-[#303179] flex justify-center items-center py-2">
+      <div className="bg-[#303179] dark:bg-black dark:text-black flex justify-center items-center py-2">
         <span className="text-sm text-white text-center mx-auto">
           Most trending smart language translator
         </span>
@@ -83,7 +98,7 @@ const Navbar = () => {
             <div className="mr-3 md:mr-8 mt-1">
               <label className="swap swap-rotate">
                 {/* this hidden checkbox controls the state */}
-                <input type="checkbox" />
+                <input type="checkbox" onClick={handleSwitch} />
 
                 {/* sun icon */}
                 <svg
