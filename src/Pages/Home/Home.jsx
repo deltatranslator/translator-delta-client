@@ -5,7 +5,7 @@ import TranslatorComponent from "../../components/TranslatorComponent/Translator
 
 const Home = () => {
   return (
-    <div>
+    <div className=" dark:bg-black dark:text-white">
       <Navbar />
       <TranslatorComponent />
       <SavedHistory />
