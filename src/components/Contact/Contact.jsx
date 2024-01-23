@@ -40,8 +40,11 @@ const Contact = () => {
     >
       <div className="flex px-5 h-full items-center justify-start bg-white dark:bg-transparent">
         <div className="mx-auto w-full max-w-lg">
-          <h1 className="text-4xl font-medium">Contact us</h1>
-          <p className="mt-3">Message us here:</p>
+          <h1 className="text-4xl font-medium text-center my-8">Contact us</h1>
+          <p className="my-5 text-center">
+            Feel free to reach out to us! Whether you have a question, feedback,
+            or a collaboration proposal, we'd love to hear from you
+          </p>
 
           <form
             ref={form}
