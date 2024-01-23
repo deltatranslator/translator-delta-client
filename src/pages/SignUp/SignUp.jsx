@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+// import axios from "axios";
+import { imageUpload } from "../../api/utils";
 
 const SignUp = () => {
   const { createUser } = useAuth();
@@ -22,19 +24,42 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const name = data.name;
     const email = data.email;
     const password = data.password;
-    const image = data.image[0];
+    const image = { image: data.image[0] }
     console.log(name, email, password, image);
+    // const formData = new FormData()
+    // formData.append('image', imageFile)
+
+    try {
+      // upload image 
+      const imageData = await imageUpload(image)
+      console.log(imageData);
+      // User Registration 
+      const result = await createUser(email, password)
+      //  save username and & photo 
+
+      // await updateUserProfile(name, imageData?.data?.display_url)
+
+      console.log(result);
+      // save user in database 
+      // const dbResponse = await saveUser(result?.user)
+      // console.log(dbResponse);
+
+
+      toast.success('SignUp successfully')
+
+
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message)
+    }
 
     createUser(email, password)
       .then(() => {
-        toast.success({
-          icon: "success",
-          title: "User Registration Successfully.",
-        });
+        toast.success("Successfully signed up");
         reset();
         navigate("/");
         // user update Profile
@@ -56,10 +81,10 @@ const SignUp = () => {
       })
       .catch((err) => {
         console.log(err.message);
-        toast.error({
-          icon: "error",
-          title: err.message,
-        });
+        toast.error(err.message);
+        console.error(err.response.data);
+        console.error(err.response.status);
+        console.error(err.response.headers)
       });
   };
 

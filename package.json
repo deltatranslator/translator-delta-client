@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
+    "@tanstack/react-query": "^5.17.19",
+    "axios": "^1.6.5",
     "firebase": "^10.7.1",
     "localforage": "^1.10.0",
     "lottie-react": "^2.4.0",

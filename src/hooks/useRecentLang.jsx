@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const useRecentLang = (localLang) => {
   const [recentLang, setRecentLang] = useState([]);
   const defaultLang = ["English", "Spanish", "German"];
-  console.log(localLang);
+  // console.log(localLang);
   useEffect(() => {
     const recentLangArray = JSON.parse(localStorage.getItem(localLang));
     if (recentLangArray) {
