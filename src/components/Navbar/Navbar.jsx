@@ -3,6 +3,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
+<<<<<<< HEAD
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "dark"
   );
@@ -19,11 +20,24 @@ const Navbar = () => {
     } else {
       setTheme("dark");
     }
+=======
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
+  const handleSwitch = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+>>>>>>> c72f286daea54e478460173841308ac3eb240573
   };
 
   const links = (
     <>
-      <li className="text-base text-[#303179] hover:text-[#ed7966] mr-8">
+      <li className="text-base dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
         <NavLink
           to="/"
           className={({ isActive, isPending }) =>
@@ -33,7 +47,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li className="text-base text-[#303179] hover:text-[#ed7966] mr-8">
+      <li className="text-base dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
         <NavLink
           to="/reviews"
           className={({ isActive, isPending }) =>
@@ -43,7 +57,7 @@ const Navbar = () => {
           Reviews
         </NavLink>
       </li>
-      <li className="text-base text-[#303179] hover:text-[#ed7966] mr-8">
+      <li className="text-base dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
         <NavLink
           to="/contact"
           className={({ isActive, isPending }) =>
@@ -57,12 +71,21 @@ const Navbar = () => {
   );
   return (
     <div>
+<<<<<<< HEAD
       <div className="bg-[#303179] dark:bg-black flex justify-center items-center py-2">
         <span className="text-sm text-white dark:text-white text-center mx-auto">
           Most trending smart language translator
         </span>
       </div>
       <div className="px-1 py-5 md:px-10 md:py-5 lg:px-36 lg:py-5 dark:bg-slate-200 dark:text-slate-800 bg-white shadow-sm">
+=======
+      <div className="bg-[#303179] dark:bg-slate-900 dark:text-black flex justify-center items-center py-2">
+        <span className="text-sm text-white text-center mx-auto">
+          Most trending smart language translator
+        </span>
+      </div>
+      <div className="px-1 py-5 md:px-10 md:py-5 lg:px-36 lg:py-5 bg-white dark:bg-slate-800">
+>>>>>>> c72f286daea54e478460173841308ac3eb240573
         <div className="navbar">
           <div className="navbar-start">
             <div className="dropdown">
@@ -93,7 +116,7 @@ const Navbar = () => {
               </ul>
             </div>
 
-            <span>Delta Language Logo</span>
+            <span className=" dark:text-slate-50">Delta Language Logo</span>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className=" menu-horizontal px-1 hover:text-white">{links}</ul>
@@ -102,6 +125,7 @@ const Navbar = () => {
             <div className="mr-3 md:mr-8 mt-1">
               <label className="swap swap-rotate">
                 {/* this hidden checkbox controls the state */}
+<<<<<<< HEAD
                 <input
                   type="checkbox"
                   onChange={handleSwitch}
@@ -109,6 +133,10 @@ const Navbar = () => {
                   value="synthwave"
                   checked={theme === "dark" ? false : true}
                 />
+=======
+                {/* Add onClick for theme switch */}
+                <input type="checkbox" onClick={handleSwitch} />
+>>>>>>> c72f286daea54e478460173841308ac3eb240573
 
                 {/* sun icon */}
                 <svg

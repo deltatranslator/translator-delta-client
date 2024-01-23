@@ -1,4 +1,5 @@
 import FAQSection from "../../components/FAQSection/FAQSection";
+import Contact from "../../components/Contact/Contact";
 import Footer from "../../components/Home/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import SavedHistory from "../../components/SavedHistory/SavedHistory";
@@ -6,11 +7,12 @@ import TranslatorComponent from "../../components/TranslatorComponent/Translator
 
 const Home = () => {
   return (
-    <div className=" dark:bg-black dark:text-white">
+    <div className=" dark:bg-slate-900 dark:text-white">
       <Navbar />
       <TranslatorComponent />
       <SavedHistory />
-      <FAQSection></FAQSection>
+      <FAQSection/>
+      <Contact />
       <Footer />
     </div>
   );
