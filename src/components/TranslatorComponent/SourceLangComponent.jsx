@@ -111,6 +111,7 @@ const SourceLangComponent = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
+    console.log(dropdownRef);
     const [query, setQuery] = useState("");
 
     const handleDropdown = () => {

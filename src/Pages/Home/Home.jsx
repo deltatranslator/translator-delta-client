@@ -1,3 +1,4 @@
+import FAQSection from "../../components/FAQSection/FAQSection";
 import Footer from "../../components/Home/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import SavedHistory from "../../components/SavedHistory/SavedHistory";
@@ -9,6 +10,7 @@ const Home = () => {
       <Navbar />
       <TranslatorComponent />
       <SavedHistory />
+      <FAQSection></FAQSection>
       <Footer />
     </div>
   );
