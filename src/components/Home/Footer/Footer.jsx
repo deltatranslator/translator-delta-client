@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <div>
       {/* <footer className="footer footer-center p-10 bg-gray-500 dark:bg-slate-900  text-white rounded-t"> */}
-      <footer className="footer footer-center p-10 bg-[#303179]  text-white rounded-t dark:bg-slate-900">
+      <footer className="footer footer-center p-10 bg-[#303179]  text-white rounded-t dark:bg-slate-800">
         <nav>
           <div className="grid grid-flow-col gap-4">
             <NavLink to="https:/facebook.com">
@@ -41,7 +41,7 @@ const Footer = () => {
           <p >Copyright © 2024 - All right reserved by Delta Coders</p>
         </aside> */}
       </footer>
-      <aside className="text-center bg-gray-600 text-white py-4 dark:bg-slate-800">
+      <aside className="text-center bg-gray-600 text-white py-4 dark:bg-slate-900">
         <p>Copyright © 2024 - All right reserved by Delta Coders</p>
       </aside>
     </div>
