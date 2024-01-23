@@ -18,7 +18,7 @@ const Navbar = () => {
 
   const links = (
     <>
-      <li className="text-base text-[#303179] hover:text-[#ed7966] mr-8">
+      <li className="text-base dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
         <NavLink
           to="/"
           className={({ isActive, isPending }) =>
@@ -28,7 +28,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li className="text-base text-[#303179] hover:text-[#ed7966] mr-8">
+      <li className="text-base dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
         <NavLink
           to="/reviews"
           className={({ isActive, isPending }) =>
@@ -38,7 +38,7 @@ const Navbar = () => {
           Reviews
         </NavLink>
       </li>
-      <li className="text-base text-[#303179] hover:text-[#ed7966] mr-8">
+      <li className="text-base dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
         <NavLink
           to="/contact"
           className={({ isActive, isPending }) =>
@@ -52,12 +52,12 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="bg-[#303179] dark:bg-slate-600 dark:text-black flex justify-center items-center py-2">
+      <div className="bg-[#303179] dark:bg-slate-900 dark:text-black flex justify-center items-center py-2">
         <span className="text-sm text-white text-center mx-auto">
           Most trending smart language translator
         </span>
       </div>
-      <div className="px-1 py-5 md:px-10 md:py-5 lg:px-36 lg:py-5 bg-white dark:bg-slate-300">
+      <div className="px-1 py-5 md:px-10 md:py-5 lg:px-36 lg:py-5 bg-white dark:bg-slate-800">
         <div className="navbar">
           <div className="navbar-start">
             <div className="dropdown">
@@ -88,7 +88,7 @@ const Navbar = () => {
               </ul>
             </div>
 
-            <span className=" dark:text-slate-500">Delta Language Logo</span>
+            <span className=" dark:text-slate-50">Delta Language Logo</span>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className=" menu-horizontal px-1 hover:text-white">{links}</ul>
