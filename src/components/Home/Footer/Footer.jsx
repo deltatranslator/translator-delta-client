@@ -8,7 +8,8 @@ import { NavLink } from "react-router-dom";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer footer-center p-10 bg-gray-500 dark:bg-slate-900  text-white rounded-t">
+      {/* <footer className="footer footer-center p-10 bg-gray-500 dark:bg-slate-900  text-white rounded-t"> */}
+      <footer className="footer footer-center p-10 bg-[#303179]  text-white rounded-t dark:bg-slate-900">
         <nav>
           <div className="grid grid-flow-col gap-4">
             <NavLink to="https:/facebook.com">
