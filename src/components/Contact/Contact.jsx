@@ -38,7 +38,7 @@ const Contact = () => {
       id="contact"
       className="w-full md:w-[800px] lg:w-[1280px] px-0 md:px-10 lg:px-20 py-10 mx-auto"
     >
-      <div className="flex px-5 h-full py-20 items-center justify-start bg-white">
+      <div className="flex px-5 h-full items-center justify-start bg-white dark:bg-transparent">
         <div className="mx-auto w-full max-w-lg">
           <h1 className="text-4xl font-medium">Contact us</h1>
           <p className="mt-3">Message us here:</p>
@@ -91,7 +91,7 @@ const Contact = () => {
             </div>
             <button
               type="submit"
-              className="mt-5 rounded-md bg-black px-10 py-2 text-white"
+              className="mt-5 rounded-md bg-[#ed7966] px-10 py-3 text-white hover:bg-[#303179]"
             >
               Send Message
             </button>
