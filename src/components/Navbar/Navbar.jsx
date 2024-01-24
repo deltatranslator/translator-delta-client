@@ -53,7 +53,11 @@ const Navbar = () => {
   return (
     <div>
       <div className="bg-[#303179] dark:bg-slate-900 dark:text-black flex justify-center items-center py-2">
-        <span className="text-sm text-white text-center mx-auto">
+        <span
+          className="text-sm text-white text-center mx-auto"
+          data-aos="zoom-in"
+          data-aos-duration="3000"
+        >
           Most trending smart language translator
         </span>
       </div>
