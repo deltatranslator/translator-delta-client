@@ -240,7 +240,7 @@ const TargetLangComponent = () => {
           </div>
         </div>
       )}
-      <div
+      <div data-aos="fade-left" data-aos-delay="50" data-aos-duration="1000"
         className="w-full text-2xl dark:bg-slate-400 dark:text-slate-100 dark:border-none font-medium text-gray-600 h-64 border-[1px] bg-gray-50 shadow-sm rounded-lg p-4"
         name=""
         id=""

@@ -248,7 +248,7 @@ const SourceLangComponent = () => {
           </div>
         </div>
       )}
-      <div className="w-full relative">
+      <div data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000">
         <textarea
           onChange={handleTextInput}
           className="w-full dark:bg-slate-200 dark:text-slate-700 dark:border-none h-64 text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 resize-none"

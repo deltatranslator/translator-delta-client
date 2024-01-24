@@ -7,7 +7,7 @@ import { FaYoutube } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 const Footer = () => {
   return (
-    <div>
+    <div data-aos="fade-up" data-aos-duration="3000">
       {/* <footer className="footer footer-center p-10 bg-gray-500 dark:bg-slate-900  text-white rounded-t"> */}
       <footer className="footer footer-center p-10 bg-[#303179]  text-white rounded-t dark:bg-slate-800">
         <nav>
