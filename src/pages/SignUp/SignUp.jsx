@@ -10,11 +10,13 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-// import axios from "axios";
-import { imageUpload } from "../../api/utils";
+import axios from "axios";
+// import { imageUpload } from "../../api/utils";
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
 const SignUp = () => {
-  const { createUser } = useAuth();
+  const { createUser, userProfileUpdate } = useAuth();
   const navigate = useNavigate();
 
   const {
@@ -32,62 +34,59 @@ const SignUp = () => {
     console.log(name, email, password, image);
     // const formData = new FormData()
     // formData.append('image', imageFile)
+    const imageFile = { image: data.image[0] }
 
     try {
       // upload image 
-      const imageData = await imageUpload(image)
-      console.log(imageData);
+      const res = await axios.post(image_hosting_api, imageFile, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+
+      console.log(res.data)
+
+      const photo_url = res.data.data.display_url
+      await createUser(email, password)
+
+
+      await userProfileUpdate(name, photo_url)
+      toast.success("Successfully signed up");
+      reset();
+      navigate("/");
+      // if (res.data.success) {
+      //   //now send the menu item data to the server with image url
+
+      //   const menuRes = await axios.post('/menu',)
+      //   console.log(menuRes.data)
+      //   if (menuRes.data.insertedId) {
+      //     //show success popup
+
+      //   }
+      //   console.log('with image data', res.data)
+
+      // }
       // User Registration 
-      const result = await createUser(email, password)
       //  save username and & photo 
 
-      // await updateUserProfile(name, imageData?.data?.display_url)
 
-      console.log(result);
+
+
+      // await updateUserProfile(name, imageData?.data?.display_url)
       // save user in database 
       // const dbResponse = await saveUser(result?.user)
       // console.log(dbResponse);
 
 
-      toast.success('SignUp successfully')
+
+
 
 
     } catch (err) {
-      console.log(err);
-      toast.error(err.message)
+      console.log(err.message);
+      toast.error(err.message);
     }
-
-    createUser(email, password)
-      .then(() => {
-        toast.success("Successfully signed up");
-        reset();
-        navigate("/");
-        // user update Profile
-        // userProfileUpdate(name, image)
-        // .then(() => {
-        //   Toast.fire({
-        //     icon: "success",
-        //     title: "User Registration Successfully.",
-        //   });
-        // })
-        // .catch((err) => {
-        //   console.log(err.message);
-        //   Toast.fire({
-        //     icon: "error",
-        //     title: err.message,
-        //   });
-        // })
-        // console.log("Logged User ->", result.user);
-      })
-      .catch((err) => {
-        console.log(err.message);
-        toast.error(err.message);
-        console.error(err.response.data);
-        console.error(err.response.status);
-        console.error(err.response.headers)
-      });
-  };
-
+  }
   return (
     <div className="sign-back hero min-h-screen ">
       <div className="hero-content flex flex-col md:flex-row-reverse w-full lg:gap-10">
@@ -109,7 +108,7 @@ const SignUp = () => {
               <input
                 {...register("name", { required: true })}
                 type="text"
-                placeholder="Name"
+                placeholder= "  Name"
                 className="input input-bordered border-[#ed7966]  "
                 required
               />
@@ -126,7 +125,7 @@ const SignUp = () => {
               <input
                 {...register("email", { required: true })}
                 type="email"
-                placeholder="email"
+                placeholder="  Email"
                 className="input input-bordered border-[#ed7966]  "
                 required
               />
@@ -152,7 +151,7 @@ const SignUp = () => {
                 })}
                 type="password"
                 name="password"
-                placeholder="password"
+                placeholder="  Password"
                 className="input input-bordered border-[#ed7966] "
               />
               {errors.name && (
