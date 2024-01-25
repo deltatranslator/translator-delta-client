@@ -3,24 +3,6 @@ import { FaUserCircle } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
-<<<<<<< HEAD
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "dark"
-  );
-
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-    const localTheme = localStorage.getItem("theme");
-    document.querySelector("html").setAttribute("data-theme", localTheme);
-  }, [theme]);
-
-  const handleSwitch = (e) => {
-    if (e.target.checked) {
-      setTheme("light");
-    } else {
-      setTheme("dark");
-    }
-=======
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
@@ -32,7 +14,6 @@ const Navbar = () => {
   }, [theme]);
   const handleSwitch = () => {
     setTheme(theme === "dark" ? "light" : "dark");
->>>>>>> c72f286daea54e478460173841308ac3eb240573
   };
 
   const links = (
@@ -71,14 +52,6 @@ const Navbar = () => {
   );
   return (
     <div>
-<<<<<<< HEAD
-      <div className="bg-[#303179] dark:bg-black flex justify-center items-center py-2">
-        <span className="text-sm text-white dark:text-white text-center mx-auto">
-          Most trending smart language translator
-        </span>
-      </div>
-      <div className="px-1 py-5 md:px-10 md:py-5 lg:px-36 lg:py-5 dark:bg-slate-200 dark:text-slate-800 bg-white shadow-sm">
-=======
       <div className="bg-[#303179] dark:bg-slate-900 dark:text-black flex justify-center items-center py-2">
         <span
           className="text-sm text-white text-center mx-auto"
@@ -89,7 +62,6 @@ const Navbar = () => {
         </span>
       </div>
       <div className="px-1 py-5 md:px-10 md:py-5 lg:px-36 lg:py-5 bg-white dark:bg-slate-800">
->>>>>>> c72f286daea54e478460173841308ac3eb240573
         <div className="navbar">
           <div className="navbar-start">
             <div className="dropdown">
@@ -129,18 +101,8 @@ const Navbar = () => {
             <div className="mr-3 md:mr-8 mt-1">
               <label className="swap swap-rotate">
                 {/* this hidden checkbox controls the state */}
-<<<<<<< HEAD
-                <input
-                  type="checkbox"
-                  onChange={handleSwitch}
-                  className="theme-controller"
-                  value="synthwave"
-                  checked={theme === "dark" ? false : true}
-                />
-=======
                 {/* Add onClick for theme switch */}
                 <input type="checkbox" onClick={handleSwitch} />
->>>>>>> c72f286daea54e478460173841308ac3eb240573
 
                 {/* sun icon */}
                 <svg

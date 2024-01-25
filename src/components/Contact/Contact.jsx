@@ -1,35 +1,54 @@
 // import emailjs from "@emailjs/browser";
 import { useRef } from "react";
 // import Swal from "sweetalert2";
+// import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+// import { addDes } from "../../Api/Api";
 const Contact = () => {
   const form = useRef();
+  // const navigate = useNavigate();
 
-  //   const sendEmail = (e) => {
-  //     e.preventDefault();
+  const sendEmail = (e, data) => {
+    e.preventDefault();
+    console.log(data);
+    // emailjs
+    //   .sendForm(
+    //     "service_0xydd34",
+    //     "template_6z86ap6",
+    //     form.current,
+    //     "-HF9Akk-CcVhep_e3"
+    //   )
+    //   .then(
+    //     (result) => {
+    //       console.log(result.text);
+    //       Swal.fire({
+    //         position: "top-center",
+    //         icon: "success",
+    //         title: `Your Email has been send successfully`,
+    //         showConfirmButton: false,
+    //         timer: 2000,
+    //       });
+    //     },
+    //     (error) => {
+    //       console.log(error.text);
+    //     }
+    //   );
+  };
+  // ____________________________________________________________________
 
-  //     emailjs
-  //       .sendForm(
-  //         "service_0xydd34",
-  //         "template_6z86ap6",
-  //         form.current,
-  //         "-HF9Akk-CcVhep_e3"
-  //       )
-  //       .then(
-  //         (result) => {
-  //           console.log(result.text);
-  //           Swal.fire({
-  //             position: "top-center",
-  //             icon: "success",
-  //             title: `Your Email has been send successfully`,
-  //             showConfirmButton: false,
-  //             timer: 2000,
-  //           });
-  //         },
-  //         (error) => {
-  //           console.log(error.text);
-  //         }
-  //       );
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const form = e.target;
+  //   const description = form.description.value;
+
+  //   const desData = {
+  //     description,
   //   };
+
+  //   const data = await addDes(desData);
+  //   console.log(data);
+  //   toast.success("Your Room Has Been Added");
+  // };
 
   return (
     <div
@@ -48,8 +67,8 @@ const Contact = () => {
 
           <form
             ref={form}
-            // onSubmit={sendEmail}
-            action="https://api.web3forms.com/submit"
+            onSubmit={sendEmail}
+            // action="https://api.web3forms.com/submit"
             className="mt-10"
           >
             <input
@@ -99,6 +118,33 @@ const Contact = () => {
               Send Message
             </button>
           </form>
+
+          {/* ---------------------------------------------------------------------- */}
+
+          {/* <form onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+              <div className="space-y-6">
+                <div className="space-y-1 text-sm">
+                  <label htmlFor="description" className="block text-gray-600">
+                    Description
+                  </label>
+
+                  <textarea
+                    id="description"
+                    className="block rounded-md focus:blue-300 w-full h-32 px-4 py-3 text-gray-800  border border-blue-300 focus:outline-blue-500 "
+                    name="description"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-blue-500"
+            >
+              Add
+            </button>
+          </form> */}
         </div>
       </div>
     </div>
