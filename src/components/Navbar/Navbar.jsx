@@ -39,14 +39,14 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li className="text-base dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
-        <NavLink
-          to="/contact"
+        <a
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-[#ed7966]" : ""
           }
+          href="#contact"
         >
           Contact
-        </NavLink>
+        </a>
       </li>
     </>
   );
