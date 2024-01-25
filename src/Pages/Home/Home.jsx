@@ -1,14 +1,12 @@
 import Footer from "../../components/Home/Footer/Footer";
+import HomeBodyComponent from "../../components/HomeBodyComponent/HomeBodyComponent";
 import Navbar from "../../components/Navbar/Navbar";
-import SavedHistory from "../../components/SavedHistory/SavedHistory";
-import TranslatorComponent from "../../components/TranslatorComponent/TranslatorComponent";
 
 const Home = () => {
   return (
     <div>
       <Navbar />
-      <TranslatorComponent />
-      <SavedHistory />
+      <HomeBodyComponent />
       <Footer />
     </div>
   );
