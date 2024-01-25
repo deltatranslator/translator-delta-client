@@ -6,6 +6,7 @@ import {
 import { IoMicOutline } from "react-icons/io5";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import useRecentLang from "../../hooks/useRecentLang";
+import { FaRegStopCircle } from "react-icons/fa";
 import "regenerator-runtime/runtime";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -286,14 +287,26 @@ const SourceLangComponent = () => {
           <div className="absolute flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full bottom-3 left-5">
             <IoMicOutline
               onClick={startListening}
-              className=""
-              size={24}
-              color="#646161"
+              className={
+                listening
+                  ? "animate-ping bg-[#ed7966] opacity-90 rounded-full transition-1s"
+                  : ""
+              }
+              size={26}
             />
             {/* <button onClick={stopListening}>stop listening</button> */}
           </div>
-          <div className="absolute left-[5rem] bottom-[1rem]">
-            <button onClick={stopListening}>stop listening</button>
+          <div
+            className={
+              !listening
+                ? "hidden"
+                : "absolute left-[5rem] bottom-[1rem] hover:bg-gray-200 cursor-pointer rounded-full"
+            }
+          >
+            <FaRegStopCircle
+              onClick={stopListening}
+              className="text-[26px] text-red-600"
+            />
           </div>
         </div>
       </div>
