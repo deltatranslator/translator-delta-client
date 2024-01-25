@@ -6,6 +6,7 @@ import {
 import { IoMicOutline } from "react-icons/io5";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import useRecentLang from "../../hooks/useRecentLang";
+import "regenerator-runtime/runtime";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
@@ -120,6 +121,15 @@ const SourceLangComponent = () => {
   console.log(dropdownRef);
   const [query, setQuery] = useState("");
 
+  /********Speech To Text Function**********/
+
+  const {
+    transcript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition,
+  } = useSpeechRecognition();
+
   const handleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
@@ -174,15 +184,17 @@ const SourceLangComponent = () => {
   const handleTextInput = (e) => {
     const inputText = e.target.value;
     console.log(inputText);
+    // speech to text
   };
 
-  /********Speech To Text Function**********/
-  const {
-    transcript,
-    listening,
-    resetTranscript,
-    browserSupportsSpeechRecognition,
-  } = useSpeechRecognition();
+  const startListening = () =>
+    SpeechRecognition.startListening({ continuous: true, language: "en-US" });
+
+  const stopListening = () => SpeechRecognition.stopListening();
+
+  if (!browserSupportsSpeechRecognition) {
+    return <span>Browser doesn't support speech recognition.</span>;
+  }
 
   return (
     <div className="w-full lg:w-1/2 dark:text-white">
@@ -261,14 +273,28 @@ const SourceLangComponent = () => {
         </div>
       )}
       <div data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000">
-        <textarea
+        <div
           onChange={handleTextInput}
+          suppressContentEditableWarning={true}
           className="w-full dark:bg-slate-200 dark:text-slate-700 dark:border-none h-64 text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 resize-none"
           name=""
           id=""
-        ></textarea>
-        <div className="absolute  flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full left-3 bottom-4">
-          <IoMicOutline size={24} color="#646161" />
+        >
+          {transcript}
+        </div>
+        <div className="relative flex justify-center items-center gap-10">
+          <div className="absolute flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full bottom-3 left-5">
+            <IoMicOutline
+              onClick={startListening}
+              className=""
+              size={24}
+              color="#646161"
+            />
+            {/* <button onClick={stopListening}>stop listening</button> */}
+          </div>
+          <div className="absolute left-[5rem] bottom-[1rem]">
+            <button onClick={stopListening}>stop listening</button>
+          </div>
         </div>
       </div>
     </div>
