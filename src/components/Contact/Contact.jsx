@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 // import emailjs from "@emailjs/browser";
 import { useRef } from "react";
+import { useTypewriter } from "react-simple-typewriter";
 // import Swal from "sweetalert2";
 // import toast from "react-hot-toast";
 // import { useNavigate } from "react-router-dom";
@@ -51,6 +52,13 @@ const Contact = () => {
   //   toast.success("Your Room Has Been Added");
   // };
 
+  const [text] = useTypewriter({
+    words: [
+      "Feel free to reach out to us! Whether you have a question feedback, or a collaboration proposal, we love to hear from you!",
+    ],
+    loop: 3,
+  });
+
   return (
     <section id="contact">
       <div
@@ -63,10 +71,7 @@ const Contact = () => {
             <h1 className="text-4xl font-medium text-center my-8">
               Contact us
             </h1>
-            <p className="my-5 text-center">
-              Feel free to reach out to us! Whether you have a question,
-              feedback, or a collaboration proposal, we'd love to hear from you
-            </p>
+            <p className="my-5 text-center">{text}</p>
 
             <form
               ref={form}

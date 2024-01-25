@@ -51,34 +51,23 @@ const Navbar = () => {
       </li>
     </>
   );
+  
   return (
-    <div className=" shadow-sm shadow-slate-300">
-      <div className="bg-[#303179] -mt-20 dark:bg-slate-900 dark:text-black flex justify-center items-center py-2">
+    <div className=" shadow-sm shadow-slate-300 dark:shadow-slate-950">
+      <div className="bg-[#303179] dark:bg-slate-900 dark:text-black flex justify-center items-center py-2">
         <div
-          className="text-sm text-white text-center mx-auto"
+          className=" text-white text-center mx-auto font-medium"
           data-aos="zoom-in"
           data-aos-duration="3000"
         >
-          <h1
-            style={{
-              paddingTop: "5rem",
-              margin: "auto 0",
-              fontWeight: "normal",
-            }}
-          >
-            {" "}
-            <span style={{ fontWeight: "bold" }}>
-              {/* Style will be inherited from the parent element */}
-              <Typewriter
-                words={["Most trending smart language translator"]}
-                loop={0}
-                cursor
-                typeSpeed={70}
-                deleteSpeed={50}
-                delaySpeed={1000}
-              />
-            </span>
-          </h1>
+          <Typewriter
+            words={["Most trending smart language translator"]}
+            loop={0}
+            cursor
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
         </div>
       </div>
       <div className="px-1 py-5 md:px-10 md:py-5 lg:px-36 lg:py-5 bg-white dark:bg-slate-800">
