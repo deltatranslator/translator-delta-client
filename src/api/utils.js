@@ -1,5 +1,6 @@
 import axios from "axios"
 
+// hosting image in imgbb 
 export const imageUpload = async image => {
     const formData = new FormData()
     formData.append('image', image)
