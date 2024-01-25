@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 // import emailjs from "@emailjs/browser";
 import { useRef } from "react";
 // import Swal from "sweetalert2";
@@ -71,13 +72,8 @@ const Contact = () => {
               ref={form}
               onSubmit={sendEmail}
               // action="https://api.web3forms.com/submit"
-              className="mt-10"
+              className="mt-10 py-5"
             >
-              <input
-                type="hidden"
-                name="access_key"
-                value="YOUR_ACCESS_KEY_HERE"
-              />
               <div className="grid gap-6 sm:grid-cols-2">
                 <div className="relative z-0">
                   <input
@@ -104,7 +100,7 @@ const Contact = () => {
                 <div className="relative z-0 col-span-2">
                   <textarea
                     name="message"
-                    rows="5"
+                    rows="3"
                     className="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
                     placeholder=" "
                   ></textarea>
