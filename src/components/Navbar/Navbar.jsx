@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { Typewriter } from "react-simple-typewriter";
+
 
 const Navbar = () => {
   const { user, userLogOut } = useAuth()
-  const [theme, setTheme] = useState("light");
 
+  //react dar mode implement
+  const [theme, setTheme] = useState("light");
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
@@ -41,27 +44,36 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li className="text-base dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
-        <NavLink
-          to="/contact"
+        <a
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-[#ed7966]" : ""
           }
+          href="#contact"
         >
           Contact
-        </NavLink>
+        </a>
       </li>
     </>
   );
+
+
   return (
-    <div>
+    <div className=" shadow-sm shadow-slate-300 dark:shadow-slate-950">
       <div className="bg-[#303179] dark:bg-slate-900 dark:text-black flex justify-center items-center py-2">
-        <span
-          className="text-sm text-white text-center mx-auto"
+        <div
+          className=" text-white text-center mx-auto font-medium"
           data-aos="zoom-in"
           data-aos-duration="3000"
         >
-          Most trending smart language translator
-        </span>
+          <Typewriter
+            words={["Most trending smart language translator"]}
+            loop={0}
+            cursor
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
+        </div>
       </div>
       <div className="px-1 py-5 md:px-10 md:py-5 lg:px-36 lg:py-5 bg-white dark:bg-slate-800">
         <div className="navbar">

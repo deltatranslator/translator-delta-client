@@ -1,0 +1,1 @@
+export const TRANSLATE_TEXT = 'TRANSLATE_TEXT'
