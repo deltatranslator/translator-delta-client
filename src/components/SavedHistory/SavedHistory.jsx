@@ -1,11 +1,37 @@
 import { RiHistoryFill } from "react-icons/ri";
 import { IoStar } from "react-icons/io5";
 import { HiMiniUserGroup } from "react-icons/hi2";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import useAuth from "../../hooks/useAuth";
+
+import { useDispatch } from "react-redux";
+import { setTranslationHistory, setHistoryDisplay } from "../../redux/slices/translationHistory/translationHistorySlice";
+import { targetLang } from "../../redux/slices/translation/translationSlice";
 
 const SavedHistory = () => {
+    const { user } = useAuth();
+    const dispatch = useDispatch();
+    const [history, setHistory] = useState();
+
+    useEffect(() => {
+        axios.get(`http://localhost:5001/translation-history/${user?.email}`)
+            .then(res => {
+                const history = res.data.translationHistory;
+                setHistory(history);
+            })
+    }, [user?.email, targetLang]);
+
+    const handleTranslationHistory = () => {
+        if (history) {
+            dispatch(setTranslationHistory(history));
+        }
+        dispatch(setHistoryDisplay());
+    }
+
     return (
         <div className="container mx-auto flex justify-center items-center gap-8 md:gap-20 my-20">
-            <div className="flex flex-col items-center gap-2">
+            <div onClick={handleTranslationHistory} className="flex flex-col items-center gap-2">
                 <div className="w-16 h-16 md:w-20 md:h-20 flex justify-center items-center border-2 rounded-full cursor-pointer">
                     <RiHistoryFill size={32} className="text-gray-500 font-bold dark:text-slate-50" />
                 </div>

@@ -5,115 +5,28 @@ import {
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
+import countries from "../../data/countries";
+
+import { useSelector, useDispatch } from 'react-redux';
+import { targetLang } from "../../redux/slices/translation/translationSlice";
+import useTraceLangCodeName from "../../hooks/useTraceLangCodeName";
 
 const TargetLangComponent = () => {
   const [recentLang, setRecentLang] = useRecentLang("recentTargetLang");
-  const langs = [
-    "English",
-    "Spanish",
-    "French",
-    "German",
-    "Chinese (Simplified)",
-    "Chinese (Traditional)",
-    "Japanese",
-    "Korean",
-    "Arabic",
-    "Russian",
-    "Portuguese",
-    "Italian",
-    "Dutch",
-    "Turkish",
-    "Swedish",
-    "Danish",
-    "Norwegian",
-    "Finnish",
-    "Polish",
-    "Czech",
-    "Hungarian",
-    "Romanian",
-    "Greek",
-    "Bulgarian",
-    "Serbian",
-    "Croatian",
-    "Slovenian",
-    "Slovak",
-    "Lithuanian",
-    "Latvian",
-    "Estonian",
-    "Maltese",
-    "Irish",
-    "Welsh",
-    "Scottish Gaelic",
-    "Basque",
-    "Catalan",
-    "Galician",
-    "Portuguese (Brazil)",
-    "Spanish (Latin America)",
-    "Italian (Switzerland)",
-    "Romansh",
-    "Albanian",
-    "Macedonian",
-    "Montenegrin",
-    "Bosnian",
-    "Kosovo Albanian",
-    "Azeri",
-    "Uzbek",
-    "Kazakh",
-    "Kyrgyz",
-    "Tajik",
-    "Turkmen",
-    "Uighur",
-    "Mongolian",
-    "Tibetan",
-    "Nepali",
-    "Bhutanese",
-    "Rohingya",
-    "Burmese",
-    "Karen",
-    "Shan",
-    "Lao",
-    "Khmer",
-    "Thai",
-    "Vietnamese",
-    "Hmong",
-    "Malay",
-    "Indonesian",
-    "Tagalog",
-    "Cebuano",
-    "Ilocano",
-    "Waray",
-    "Hiligaynon",
-    "Kapampangan",
-    "Bikol",
-    "Pangasinan",
-    "Maranao",
-    "Maguindanao",
-    "Tausug",
-    "Chavacano",
-    "Ibanag",
-    "Yakan",
-    "Surigaonon",
-    "Butuanon",
-    "Maay",
-    "Zamboangueño",
-    "Sama",
-    "Tausug",
-    "Meranao",
-    "Iranun",
-    "Bajau",
-    "Cuyonon",
-    "Agutaynen",
-    "Ibaloi",
-    "Kankanaey",
-    "Ifugao",
-    "Ilonggo",
-    "Kapampangan",
-    "Waray",
-  ];
+  const [langs, setLangs] = useState(countries);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [selectedLanguage, setSelectedLanguage] = useState('');
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [query, setQuery] = useState("");
+
+  const dispatch = useDispatch();
+  const traceName = useTraceLangCodeName();
+  console.log(recentLang);
+
+  const translation = useSelector((state) => {
+    return state.translation.translatedText;
+  })
 
   const handleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -164,20 +77,33 @@ const TargetLangComponent = () => {
   };
 
   const filteredLang = langs.filter((item) => {
-    return item.toLowerCase().includes(query.toLowerCase());
+    return item.code.toLowerCase().includes(query.toLowerCase());
   });
+
+  const handleTargetSelection = () => {
+    const sourceLangCode = traceName(selectedLanguage || recentLang[activeIndex]);
+    console.log('BIG Mystery:', selectedLanguage, recentLang[activeIndex]);
+    dispatch(targetLang(sourceLangCode));
+  }
+
+  useEffect(() => {
+    handleTargetSelection();
+  }, [selectedLanguage, recentLang, activeIndex])
+
   return (
     <div className="w-full lg:w-1/2 relative">
       <div className="flex items-center dark:text-white px-2 ml-2 lg:ml-6 font-medium text-gray-700">
         {recentLang.slice(0, 3).map((lang, idx) => (
           <div
             key={idx}
-            onClick={() => setActiveIndex(idx)}
-            className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${
-              activeIndex === idx
-                ? "border-b-2 border-blue-400"
-                : "border-b-2 border-transparent"
-            }`}
+            onClick={() => {
+              setActiveIndex(idx);
+              setSelectedLanguage(lang)
+            }}
+            className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${activeIndex === idx
+              ? "border-b-2 border-blue-400"
+              : "border-b-2 border-transparent"
+              }`}
           >
             {lang}
           </div>
@@ -209,34 +135,35 @@ const TargetLangComponent = () => {
             {/* Dropdown options */}
             {!query
               ? langs.map((lang, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => {
-                      setActiveIndex(0);
-                      setDropdownOpen(false);
-                      handleRecentLang(lang);
-                    }}
-                    className={`px-2 py-2 cursor-pointer dark:text-slate-50 dark:hover:bg-slate-600 hover:bg-blue-100 ${
-                      activeIndex === idx ? "text-blue-500" : "text-gray-800"
+                <div
+                  key={idx}
+                  onClick={() => {
+                    setActiveIndex(0);
+                    setDropdownOpen(false);
+                    handleRecentLang(lang.name);
+                    setSelectedLanguage(lang.name)
+                  }}
+                  className={`px-2 py-2 cursor-pointer dark:text-slate-50 dark:hover:bg-slate-600 hover:bg-blue-100 ${activeIndex === idx ? "text-blue-500" : "text-gray-800"
                     }`}
-                  >
-                    {lang}
-                  </div>
-                ))
+                >
+                  {lang.name}
+                </div>
+              ))
               : filteredLang.map((lang, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => {
-                      setActiveIndex(0);
-                      setDropdownOpen(false);
-                    }}
-                    className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${
-                      activeIndex === idx ? "text-blue-500" : "text-gray-800"
+                <div
+                  key={idx}
+                  onClick={() => {
+                    setActiveIndex(0);
+                    setDropdownOpen(false);
+                    handleRecentLang(lang.name);
+                    setSelectedLanguage(lang.name)
+                  }}
+                  className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${activeIndex === idx ? "text-blue-500" : "text-gray-800"
                     }`}
-                  >
-                    {lang}
-                  </div>
-                ))}
+                >
+                  {lang.name}
+                </div>
+              ))}
           </div>
         </div>
       )}
@@ -245,7 +172,7 @@ const TargetLangComponent = () => {
         name=""
         id=""
       >
-        Translation
+        {translation}
       </div>
     </div>
   );
