@@ -13,7 +13,7 @@ import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import axiosSecure from "../../api";
 // import { imageUpload } from "../../api/utils";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const SignUp = () => {
   const { createUser, userProfileUpdate } = useAuth();
@@ -30,64 +30,53 @@ const SignUp = () => {
     const name = data.name;
     const email = data.email;
     const password = data.password;
-    const image = { image: data.image[0] }
+    const image = { image: data.image[0] };
     console.log(name, email, password, image);
     // const formData = new FormData()
     // formData.append('image', imageFile)
-    const imageFile = { image: data.image[0] }
+    const imageFile = { image: data.image[0] };
 
     try {
-      // upload image 
+      // upload image
       const res = await axios.post(image_hosting_api, imageFile, {
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+          "Content-Type": "multipart/form-data",
+        },
       });
 
-      console.log(res.data)
+      console.log(res.data);
 
-      const photo_url = res.data.data.display_url
-      createUser(email, password)
-        .then(result => {
-          const loggedUser = result.user;
-          console.log(loggedUser);
-          userProfileUpdate(name, photo_url)
-            .then(() => {
-              const userInfo = {
-                name: name,
-                email: email,
-                photo: photo_url
-              }
-              axiosSecure.post('/users', userInfo)
-                .then(res => {
-                  if (res.data.insertedID) {
-                    console.log('user info saved in database');
-
-
-                  }
-                })
-              toast.success("Successfully signed up");
-              reset();
-              navigate("/");
-            })
-        })
-
-
-
-
+      const photo_url = res.data.data.display_url;
+      createUser(email, password).then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        userProfileUpdate(name, photo_url).then(() => {
+          const userInfo = {
+            name: name,
+            email: email,
+            photo: photo_url,
+          };
+          axiosSecure.post("/users", userInfo).then((res) => {
+            if (res.data.insertedID) {
+              console.log("user info saved in database");
+            }
+          });
+          toast.success("Successfully signed up");
+          reset();
+          navigate("/");
+        });
+      });
 
       // if (res.data.success) {
       //   //now send the menu item data to the server with image url
-      // User Registration 
-      //  save username and & photo 
-      // save user in database 
-
-
+      // User Registration
+      //  save username and & photo
+      // save user in database
     } catch (err) {
       console.log(err.message);
       toast.error(err.message);
     }
-  }
+  };
   return (
     <div className="hero sign-back min-h-screen  ">
       <div className="">
@@ -197,7 +186,9 @@ const SignUp = () => {
                 />
               </div>
               {errors.image && (
-                <span className="text-red-700 font-bold">image is required</span>
+                <span className="text-red-700 font-bold">
+                  image is required
+                </span>
               )}
               <div className="form-control mt-6">
                 <button
@@ -219,13 +210,16 @@ const SignUp = () => {
             </p>
             {/* social login  */}
             <SocialLogin />
-
           </div>
-
         </div>
         <div>
           <div className="flex justify-center ">
-            <Link className=" w-36 text-center btn border border-[#ed7966] text-[#ed7966] my-4 btn-outline max-w-sm ml-10 hover:bg-[#303179]" to="/">Home</Link>
+            <Link
+              className=" w-36 text-center btn border border-[#ed7966] text-[#ed7966] my-4 btn-outline max-w-sm ml-10 hover:bg-[#303179]"
+              to="/"
+            >
+              Home
+            </Link>
           </div>
         </div>
       </div>
