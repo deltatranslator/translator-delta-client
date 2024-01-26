@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 import { Typewriter } from "react-simple-typewriter";
 
+
 const Navbar = () => {
+  const { user, userLogOut } = useAuth()
+
   //react dar mode implement
   const [theme, setTheme] = useState("light");
   useEffect(() => {
@@ -51,7 +55,8 @@ const Navbar = () => {
       </li>
     </>
   );
-  
+
+
   return (
     <div className=" shadow-sm shadow-slate-300 dark:shadow-slate-950">
       <div className="bg-[#303179] dark:bg-slate-900 dark:text-black flex justify-center items-center py-2">
@@ -133,15 +138,23 @@ const Navbar = () => {
               </label>
             </div>
             <div className="mr-3 md:mr-8">
-              <FaUserCircle className="text-[#ed7966] text-lg md:text-3xl"></FaUserCircle>
+              {
+                user ? <img className="w-8 h-8 rounded-full" src={user?.photoURL} alt="user photo" /> : <FaUserCircle className="text-[#ed7966] text-lg md:text-3xl"></FaUserCircle>
+              }
+
             </div>
             <div className="inline-flex rounded-full shadow">
-              <Link
-                to="/signUp"
-                className="inline-flex items-center px-4 py-2 text-base text-white bg-[#ed7966] border border-transparent rounded-full cursor-pointer font-base hover:bg-white hover:text-black"
-              >
-                Register
-              </Link>
+              {
+                user ? <button className="inline-flex items-center px-4 py-2 text-base text-white bg-[#ed7966] border border-transparent rounded-full cursor-pointer font-base hover:bg-white hover:text-black" onClick={userLogOut}>Logout</button> :
+
+                  <Link
+                    to="/signUp"
+                    className="inline-flex items-center px-4 py-2 text-base text-white bg-[#ed7966] border border-transparent rounded-full cursor-pointer font-base hover:bg-white hover:text-black"
+                  >
+                    Register
+                  </Link>
+              }
+
             </div>
           </div>
         </div>
