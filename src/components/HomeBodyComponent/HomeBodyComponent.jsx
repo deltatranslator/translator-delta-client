@@ -10,12 +10,12 @@ const HomeBodyComponent = () => {
     })
 
     return (
-        <div className="w-full flex">
+        <div className="w-full flex flex-col md:flex-row ">
             <div className="flex-grow">
                 <TranslatorComponent />
                 <SavedHistory />
             </div>
-            <div className={`w-1/5 m-2 ${!display ? 'hidden' : ''}`}>
+            <div className={`md:w-1/5 m-2 ${!display ? 'hidden' : ''}`}>
                 <History />
             </div>
         </div>
