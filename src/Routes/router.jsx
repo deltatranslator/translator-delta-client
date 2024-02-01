@@ -3,6 +3,7 @@ import MainLayout from "../Layout/Mainlayout/MainLayout";
 import Home from "../Pages/Home/Home";
 import SignUp from "../Pages/SignUp/SignUp";
 import Login from "../pages/Login/Login";
+import PdfScan from "../components/PdfScan/PdfScan";
 
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login></Login>,
       },
+      {
+        path: "/pdfScan",
+        element: <PdfScan />
+      }
     ],
   },
 ]);

@@ -23,7 +23,7 @@ const Navbar = () => {
 
   const links = (
     <>
-      <li className="text-base dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
+      <li className="text-base font-bold dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
         <NavLink
           to="/"
           className={({ isActive, isPending }) =>
@@ -33,7 +33,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li className="text-base dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
+      <li className="text-base font-bold dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
         <NavLink
           to="/reviews"
           className={({ isActive, isPending }) =>
@@ -43,7 +43,7 @@ const Navbar = () => {
           Reviews
         </NavLink>
       </li>
-      <li className="text-base dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
+      <li className="text-base font-bold dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
         <a
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-[#ed7966]" : ""

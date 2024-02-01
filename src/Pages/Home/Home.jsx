@@ -4,6 +4,9 @@ import Footer from "../../components/Home/Footer/Footer";
 import HomeBodyComponent from "../../components/HomeBodyComponent/HomeBodyComponent";
 import Navbar from "../../components/Navbar/Navbar";
 import { useRef } from "react";
+import TranslateSectionNav from "../../components/TranslateSectionNav/TranslateSectionNav";
+
+
 
 const Home = () => {
 
@@ -12,6 +15,7 @@ const Home = () => {
   return (
     <div className=" dark:bg-slate-900 dark:text-white">
       <Navbar />
+      <TranslateSectionNav />
       <HomeBodyComponent />
       <div ref={ref}>
         <FAQSection reference={ref} />
