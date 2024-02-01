@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { IoMicOutline } from "react-icons/io5";
@@ -6,7 +7,7 @@ import useRecentLang from "../../hooks/useRecentLang";
 import useDebounce from "../../hooks/useDebounce";
 import countries from "../../data/countries";
 
-import { FaRegStopCircle } from "react-icons/fa";
+import { FaRegStopCircle, FaVolumeUp } from "react-icons/fa";
 import "regenerator-runtime/runtime";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -21,6 +22,7 @@ import {
 import useTraceLangCodeName from "../../hooks/useTraceLangCodeName";
 import useAuth from "../../hooks/useAuth";
 import axiosSecure from "../../api";
+import { useSpeechSynthesis } from "react-speech-kit";
 
 const SourceLangComponent = () => {
   const { user } = useAuth();
@@ -33,6 +35,8 @@ const SourceLangComponent = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [query, setQuery] = useState("");
+  // Text to speak function
+  const { speak } = useSpeechSynthesis();
 
   /********Speech To Text Function Start**********/
 
@@ -54,7 +58,7 @@ const SourceLangComponent = () => {
   });
   const traceName = useTraceLangCodeName();
 
-  console.log("recent:", targetLangCode);
+  // console.log("recent:", targetLangCode);
 
   useEffect(() => {
     // axios.get(`https://libretranslate.com/languages`)
@@ -114,11 +118,11 @@ const SourceLangComponent = () => {
     return item.name.toLowerCase().includes(query.toLowerCase());
   });
 
-  const handleTextInput = (e) => {
-    const inputText = e.target.value;
-    console.log(inputText);
-    // speech to text
-  };
+  // const handleTextInput = (e) => {
+  //   const inputText = e.target.value;
+  //   console.log(inputText);
+  //   // speech to text
+  // };
 
   const startListening = () =>
     SpeechRecognition.startListening({ continuous: true, language: "en-US" });
@@ -128,7 +132,7 @@ const SourceLangComponent = () => {
   const handleTranslate = async () => {
     // const inputText = e.target.value;
     // setInputText(inputText);
-    console.log(inputText);
+    // console.log(inputText);
     const sourceLangCode = traceName(
       selectedLanguage || recentLang[activeIndex]
     );
@@ -148,7 +152,7 @@ const SourceLangComponent = () => {
         )
         .then((res) => {
           translatedResult = res.data.responseData.translatedText || "";
-          console.log(translatedResult);
+          // console.log(translatedResult);
           dispatch(translatedText(translatedResult));
         });
     }
@@ -159,7 +163,7 @@ const SourceLangComponent = () => {
       userEmail: user?.email,
       translationHistory: [translation],
     };
-    console.log(translateHistoryData.translationHistory);
+    // console.log(translateHistoryData.translationHistory);
     if (translation.sourceText !== "" && translation.translatedText !== "") {
       axiosSecure
         .put(`/translation-history/${user.email}`, translateHistoryData)
@@ -173,7 +177,7 @@ const SourceLangComponent = () => {
 
   useEffect(() => {
     handleTranslate();
-    console.log("BIG Mystery 2:");
+    // console.log("BIG Mystery 2:");
   }, [inputText, selectedLanguage, recentLang, activeIndex, targetLangCode]);
 
   useEffect(() => {
@@ -273,7 +277,10 @@ const SourceLangComponent = () => {
       </div>
     </div> */}
       <div data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000">
+        {/* First translate box */}
         <div
+          // value={value}
+          // onChange={(event) => setValue(event.target.value)}
           onInput={(e) => debounce(e.currentTarget.textContent)}
           contentEditable={true}
           className="w-full dark:bg-slate-200 dark:text-slate-700 dark:border-none h-64 text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 resize-none"
@@ -310,6 +317,11 @@ const SourceLangComponent = () => {
               className="text-[26px] text-red-600"
             />
           </div>
+        </div>
+        <div className=" flex justify-end -mt-[46px] px-8">
+          <button onClick={() => speak({ text: inputText })}>
+            <FaVolumeUp size={26} />
+          </button>
         </div>
       </div>
     </div>

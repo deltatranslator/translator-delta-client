@@ -22,7 +22,7 @@ const TargetLangComponent = () => {
 
   const dispatch = useDispatch();
   const traceName = useTraceLangCodeName();
-  console.log(recentLang);
+  // console.log(recentLang);
 
   const translation = useSelector((state) => {
     return state.translation.translatedText;
