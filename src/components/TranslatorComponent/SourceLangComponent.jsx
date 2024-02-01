@@ -121,7 +121,7 @@ const SourceLangComponent = () => {
   };
 
   const startListening = () =>
-    SpeechRecognition.startListening({ continuous: true, language: "en-US" });
+    SpeechRecognition.startListening({ continuous: true, language: `en-US` });
 
   const stopListening = () => SpeechRecognition.stopListening();
 
