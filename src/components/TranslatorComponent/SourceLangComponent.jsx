@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { IoMicOutline } from "react-icons/io5";
@@ -21,6 +22,7 @@ import {
 import useTraceLangCodeName from "../../hooks/useTraceLangCodeName";
 import useAuth from "../../hooks/useAuth";
 import axiosSecure from "../../api";
+import TextToSpeak from "../TextToSpeak/TextToSpeak";
 
 const SourceLangComponent = () => {
   const { user } = useAuth();
@@ -54,7 +56,7 @@ const SourceLangComponent = () => {
   });
   const traceName = useTraceLangCodeName();
 
-  console.log("recent:", targetLangCode);
+  // console.log("recent:", targetLangCode);
 
   useEffect(() => {
     // axios.get(`https://libretranslate.com/languages`)
@@ -114,11 +116,11 @@ const SourceLangComponent = () => {
     return item.name.toLowerCase().includes(query.toLowerCase());
   });
 
-  const handleTextInput = (e) => {
-    const inputText = e.target.value;
-    console.log(inputText);
-    // speech to text
-  };
+  // const handleTextInput = (e) => {
+  //   const inputText = e.target.value;
+  //   console.log(inputText);
+  //   // speech to text
+  // };
 
   const startListening = () =>
     SpeechRecognition.startListening({ continuous: true, language: "en-US" });
@@ -128,7 +130,7 @@ const SourceLangComponent = () => {
   const handleTranslate = async () => {
     // const inputText = e.target.value;
     // setInputText(inputText);
-    console.log(inputText);
+    // console.log(inputText);
     const sourceLangCode = traceName(
       selectedLanguage || recentLang[activeIndex]
     );
@@ -148,7 +150,7 @@ const SourceLangComponent = () => {
         )
         .then((res) => {
           translatedResult = res.data.responseData.translatedText || "";
-          console.log(translatedResult);
+          // console.log(translatedResult);
           dispatch(translatedText(translatedResult));
         });
     }
@@ -159,7 +161,7 @@ const SourceLangComponent = () => {
       userEmail: user?.email,
       translationHistory: [translation],
     };
-    console.log(translateHistoryData.translationHistory);
+    // console.log(translateHistoryData.translationHistory);
     if (translation.sourceText !== "" && translation.translatedText !== "") {
       axiosSecure
         .put(`/translation-history/${user.email}`, translateHistoryData)
@@ -173,7 +175,7 @@ const SourceLangComponent = () => {
 
   useEffect(() => {
     handleTranslate();
-    console.log("BIG Mystery 2:");
+    // console.log("BIG Mystery 2:");
   }, [inputText, selectedLanguage, recentLang, activeIndex, targetLangCode]);
 
   useEffect(() => {
@@ -273,6 +275,7 @@ const SourceLangComponent = () => {
       </div>
     </div> */}
       <div data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000">
+        {/* First translate box */}
         <div
           onInput={(e) => debounce(e.currentTarget.textContent)}
           contentEditable={true}
@@ -309,6 +312,11 @@ const SourceLangComponent = () => {
               }}
               className="text-[26px] text-red-600"
             />
+          </div>
+        </div>
+        <div className=" flex justify-end -mt-[46px] px-10">
+          <div>
+            <TextToSpeak inputText={inputText} />
           </div>
         </div>
       </div>
