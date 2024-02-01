@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaVolumeUp } from "react-icons/fa";
+import { FaVolumeUp, FaRegStopCircle } from "react-icons/fa";
 import { useSpeechSynthesis } from "react-speech-kit";
 
 const TextToSpeak = ({ inputText }) => {
@@ -18,10 +18,7 @@ const TextToSpeak = ({ inputText }) => {
   return (
     <div>
       <button onClick={handleButtonClick}>
-        <FaVolumeUp
-          size={20}
-          style={{ color: isSpeaking ? "green" : "gray" }}
-        />
+        {isSpeaking ? <FaRegStopCircle size={20} /> : <FaVolumeUp size={20} />}
       </button>
     </div>
   );
