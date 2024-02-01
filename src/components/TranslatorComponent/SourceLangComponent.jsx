@@ -7,7 +7,7 @@ import useRecentLang from "../../hooks/useRecentLang";
 import useDebounce from "../../hooks/useDebounce";
 import countries from "../../data/countries";
 
-import { FaRegStopCircle, FaVolumeUp } from "react-icons/fa";
+import { FaRegStopCircle } from "react-icons/fa";
 import "regenerator-runtime/runtime";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -22,7 +22,7 @@ import {
 import useTraceLangCodeName from "../../hooks/useTraceLangCodeName";
 import useAuth from "../../hooks/useAuth";
 import axiosSecure from "../../api";
-import { useSpeechSynthesis } from "react-speech-kit";
+import TextToSpeak from "../TextToSpeak/TextToSpeak";
 
 const SourceLangComponent = () => {
   const { user } = useAuth();
@@ -35,8 +35,6 @@ const SourceLangComponent = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [query, setQuery] = useState("");
-  // Text to speak function
-  const { speak } = useSpeechSynthesis();
 
   /********Speech To Text Function Start**********/
 
@@ -279,8 +277,6 @@ const SourceLangComponent = () => {
       <div data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000">
         {/* First translate box */}
         <div
-          // value={value}
-          // onChange={(event) => setValue(event.target.value)}
           onInput={(e) => debounce(e.currentTarget.textContent)}
           contentEditable={true}
           className="w-full dark:bg-slate-200 dark:text-slate-700 dark:border-none h-64 text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 resize-none"
@@ -318,10 +314,10 @@ const SourceLangComponent = () => {
             />
           </div>
         </div>
-        <div className=" flex justify-end -mt-[46px] px-8">
-          <button onClick={() => speak({ text: inputText })}>
-            <FaVolumeUp size={26} />
-          </button>
+        <div className=" flex justify-end -mt-[46px] px-10">
+          <div>
+            <TextToSpeak inputText={inputText} />
+          </div>
         </div>
       </div>
     </div>
