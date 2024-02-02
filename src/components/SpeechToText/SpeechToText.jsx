@@ -33,7 +33,7 @@ const SpeechToText = ({
           className={
             !listening
               ? "hidden"
-              : "absolute left-[5rem] bottom-[1.2rem] hover:bg-gray-200 cursor-pointer rounded-full"
+              : "absolute left-[3.9rem] bottom-[1.2rem] hover:bg-gray-200 cursor-pointer rounded-full"
           }
         >
           <FaRegStopCircle
