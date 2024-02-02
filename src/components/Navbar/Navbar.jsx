@@ -4,9 +4,8 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { Typewriter } from "react-simple-typewriter";
 
-
 const Navbar = () => {
-  const { user, userLogOut } = useAuth()
+  const { user, userLogOut } = useAuth();
 
   //react dar mode implement
   const [theme, setTheme] = useState("light");
@@ -23,7 +22,7 @@ const Navbar = () => {
 
   const links = (
     <>
-      <li className="text-base dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
+      <li className="text-base font-bold dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
         <NavLink
           to="/"
           className={({ isActive, isPending }) =>
@@ -33,7 +32,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li className="text-base dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
+      <li className="text-base font-bold dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
         <NavLink
           to="/reviews"
           className={({ isActive, isPending }) =>
@@ -43,7 +42,7 @@ const Navbar = () => {
           Reviews
         </NavLink>
       </li>
-      <li className="text-base dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
+      <li className="text-base font-bold dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
         <a
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-[#ed7966]" : ""
@@ -55,7 +54,6 @@ const Navbar = () => {
       </li>
     </>
   );
-
 
   return (
     <div className=" shadow-sm shadow-slate-300 dark:shadow-slate-950">
@@ -106,7 +104,13 @@ const Navbar = () => {
               </ul>
             </div>
 
-            <span className=" dark:text-slate-50">Delta Language Logo</span>
+            <Link to="/">
+              <img
+                className="w-[250px] h-[70px]"
+                src="https://i.ibb.co/fkP6YGC/log-removebg-preview.png"
+                alt=""
+              />
+            </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className=" menu-horizontal px-1 hover:text-white">{links}</ul>
@@ -138,23 +142,32 @@ const Navbar = () => {
               </label>
             </div>
             <div className="mr-3 md:mr-8">
-              {
-                user ? <img className="w-8 h-8 rounded-full" src={user?.photoURL} alt="user photo" /> : <FaUserCircle className="text-[#ed7966] text-lg md:text-3xl"></FaUserCircle>
-              }
-
+              {user ? (
+                <img
+                  className="w-8 h-8 rounded-full"
+                  src={user?.photoURL}
+                  alt="user photo"
+                />
+              ) : (
+                <FaUserCircle className="text-[#ed7966] text-lg md:text-3xl"></FaUserCircle>
+              )}
             </div>
             <div className="inline-flex rounded-full shadow">
-              {
-                user ? <button className="inline-flex items-center px-4 py-2 text-base text-white bg-[#ed7966] border border-transparent rounded-full cursor-pointer font-base hover:bg-white hover:text-black" onClick={userLogOut}>Logout</button> :
-
-                  <Link
-                    to="/signUp"
-                    className="inline-flex items-center px-4 py-2 text-base text-white bg-[#ed7966] border border-transparent rounded-full cursor-pointer font-base hover:bg-white hover:text-black"
-                  >
-                    Register
-                  </Link>
-              }
-
+              {user ? (
+                <button
+                  className="inline-flex items-center px-4 py-2 text-base text-white bg-[#ed7966] border border-transparent rounded-full cursor-pointer font-base hover:bg-white hover:text-black"
+                  onClick={userLogOut}
+                >
+                  Logout
+                </button>
+              ) : (
+                <Link
+                  to="/signUp"
+                  className="inline-flex items-center px-4 py-2 text-base text-white bg-[#ed7966] border border-transparent rounded-full cursor-pointer font-base hover:bg-white hover:text-black"
+                >
+                  Register
+                </Link>
+              )}
             </div>
           </div>
         </div>

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { IoMicOutline } from "react-icons/io5";
@@ -21,6 +22,7 @@ import {
 import useTraceLangCodeName from "../../hooks/useTraceLangCodeName";
 import useAuth from "../../hooks/useAuth";
 import axiosSecure from "../../api";
+import TextToSpeak from "../TextToSpeak/TextToSpeak";
 
 import { reloadHistory } from "../../redux/slices/translationHistory/translationHistorySlice";
 
@@ -59,7 +61,7 @@ const SourceLangComponent = () => {
   });
   const traceName = useTraceLangCodeName();
 
-  console.log("recent:", targetLangCode);
+  // console.log("recent:", targetLangCode);
 
   useEffect(() => {
     // axios.get(`https://libretranslate.com/languages`)
@@ -119,11 +121,11 @@ const SourceLangComponent = () => {
     return item.name.toLowerCase().includes(query.toLowerCase());
   });
 
-  const handleTextInput = (e) => {
-    const inputText = e.target.value;
-    console.log(inputText);
-    // speech to text
-  };
+  // const handleTextInput = (e) => {
+  //   const inputText = e.target.value;
+  //   console.log(inputText);
+  //   // speech to text
+  // };
 
   const startListening = () => {
     const sourceLangCode = traceName(
@@ -168,7 +170,7 @@ const SourceLangComponent = () => {
       userEmail: user?.email,
       translationHistory: [translation],
     };
-    console.log(translateHistoryData.translationHistory);
+    // console.log(translateHistoryData.translationHistory);
     if (translation.sourceText !== "" && translation.translatedText !== "") {
       axiosSecure
         .put(`/translation-history/${user.email}`, translateHistoryData)
@@ -305,6 +307,7 @@ const SourceLangComponent = () => {
       </div>
     </div> */}
       <div data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000">
+        {/* First translate box */}
         <div
           ref={inputDivRef}
           onInput={(e) => debounce(e.currentTarget.textContent)}
@@ -342,6 +345,11 @@ const SourceLangComponent = () => {
               }}
               className="text-[26px] text-red-600"
             />
+          </div>
+        </div>
+        <div className=" flex justify-end -mt-[46px] px-10">
+          <div>
+            <TextToSpeak inputText={inputText} />
           </div>
         </div>
       </div>
