@@ -37,9 +37,11 @@ const SourceLangComponent = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [query, setQuery] = useState("");
-  const [userPromt, setUserPromt] = useState('');
   const [sourceLangCode, setSourceLangCode] = useState('');
+  const [userPromt, setUserPromt] = useState('');
   const inputDivRef = useRef();
+
+  const [tempFlag, setTempFlag] = useState(false);
 
   /********Speech To Text Function Start**********/
 
@@ -137,6 +139,7 @@ const SourceLangComponent = () => {
   const stopListening = () => SpeechRecognition.stopListening();
 
   const handleTranslate = async () => {
+    console.log('tempFlag: ', tempFlag);
     // const inputText = e.target.value;
     // setInputText(inputText);
     const sourceLangCodeTemp = traceName(
@@ -153,7 +156,7 @@ const SourceLangComponent = () => {
 
     let translatedResult;
 
-    if (inputText) {
+    if (inputText && !tempFlag) {
       axios
         .post(
           `https://api.mymemory.translated.net/get?q=${inputText}&langpair=${sourceLangCode}|${targetLangCode}`
@@ -162,6 +165,10 @@ const SourceLangComponent = () => {
           translatedResult = res.data.responseData.translatedText || "";
           dispatch(setTranslatedText(translatedResult));
         });
+    } else {
+      setTempFlag(false);
+      setInputText('')
+      dispatch(setTranslatedText(''));
     }
     if (translatedResult) {
       dispatch(setTranslatedText(translatedResult));
@@ -209,10 +216,16 @@ const SourceLangComponent = () => {
       .then((res) => {
         const promt = res.data.responseData.translatedText || "";
         setUserPromt(promt);
-        console.log(promt);
+        // console.log(promt);
       });
     setInputText('');
     clearDivText();
+    const sourceLangData = {
+      sourceLang: sourceLangCode,
+      sourceText: inputText,
+      translatedDate: Date.now(),
+    };
+    dispatch(sourceLangInfo(sourceLangData));
     dispatch(setTranslatedText(''));
   }, [selectedLanguage]);
 
@@ -230,6 +243,7 @@ const SourceLangComponent = () => {
             onClick={() => {
               setActiveIndex(idx);
               setSelectedLanguage(lang);
+              setTempFlag(true);
             }}
             className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${activeIndex === idx
               ? "border-b-2 border-blue-400"
@@ -273,6 +287,7 @@ const SourceLangComponent = () => {
                     setDropdownOpen(false);
                     handleRecentLang(lang.name);
                     setSelectedLanguage(lang.name);
+                    setTempFlag(true);
                   }}
                   className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${activeIndex === idx
                     ? "border-b-2 border-blue-400"
@@ -289,6 +304,7 @@ const SourceLangComponent = () => {
                     setActiveIndex(0);
                     setDropdownOpen(false);
                     setSelectedLanguage(lang.name);
+                    setTempFlag(true);
                     handleRecentLang(lang.name);
                   }}
                   className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${activeIndex === idx ? "text-blue-500" : "text-gray-800"
