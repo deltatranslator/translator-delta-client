@@ -43,7 +43,6 @@ const SourceLangComponent = () => {
     resetTranscript,
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
-
   /********Speech To Text Function End**********/
 
   const dispatch = useDispatch();
@@ -121,11 +120,6 @@ const SourceLangComponent = () => {
     // speech to text
   };
 
-  const startListening = () =>
-    SpeechRecognition.startListening({ continuous: true, language: `en-US` });
-
-  const stopListening = () => SpeechRecognition.stopListening();
-
   const handleTranslate = async () => {
     // const inputText = e.target.value;
     // setInputText(inputText);
@@ -181,10 +175,17 @@ const SourceLangComponent = () => {
     debounce(transcript);
   }, [transcript]);
 
+  /********Speech To Text Function Start**********/
+
+  const startListening = () =>
+    SpeechRecognition.startListening({ continuous: true, language: `en-US` });
+
+  const stopListening = () => SpeechRecognition.stopListening();
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
 
+  /********Speech To Text Function End**********/
   return (
     <div className="w-full lg:w-1/2 dark:text-white">
       <div className="flex items-center dark:text-white px-2 ml-2 font-medium text-gray-700">
@@ -285,6 +286,7 @@ const SourceLangComponent = () => {
           stopListening={stopListening}
           resetTranscript={resetTranscript}
         ></SpeechToText>
+        {/* --------------------Button: speech stop reset-------------------------- */}
       </div>
     </div>
   );
