@@ -8,13 +8,23 @@ import { Toaster } from "react-hot-toast";
 import { Provider } from 'react-redux';
 import store from './redux/store/store.js';
 
+// tanStack query 
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Toaster />
     <AuthProvider>
+      <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <RouterProvider router={router} />
       </Provider>
+      </QueryClientProvider>
     </AuthProvider>
   </React.StrictMode>
 );

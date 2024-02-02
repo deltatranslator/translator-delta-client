@@ -6,6 +6,7 @@ import { TiDelete } from "react-icons/ti";
 import axiosSecure from "../../api";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
 
 
 
@@ -14,7 +15,7 @@ const History = () => {
   const history = useSelector((state) => {
     return state.translationHistory.translationHistory;
   });
-  console.log(history);
+  // console.log(history);
 
 // alert toast 
   const Toast = Swal.mixin({
@@ -28,6 +29,19 @@ const History = () => {
     timer: 1500,
     timerProgressBar: true,
   });
+
+   // favorite History load
+
+   const {data: favoriteHistory, refetch} = useQuery({
+    queryKey: ['favoriteHistory'],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/favoriteHistory?userEmail=${user?.email}`)
+      return res.data
+    }
+  })
+
+  console.log(favoriteHistory?.FavHistory);
+
 
   
   const handleAddFavoriteHistory = (entry, status) => {
@@ -69,7 +83,8 @@ const History = () => {
   //  })
   // }
   return (
-    <div className="border rounded-xl w-full h-full shadow-md flex flex-col">
+   <div>
+     <div className="border rounded-xl w-full h-full shadow-md flex flex-col">
       {history.map((entry, idx) => {
         return (
           <div
@@ -101,6 +116,39 @@ const History = () => {
         );
       })}
     </div>
+    <div className="border rounded-xl w-full h-full shadow-md flex flex-col">
+      {favoriteHistory?.FavHistory.map((entry, idx) => {
+        return (
+          <div
+            key={idx}
+            className="text-gray-500 text-sm font-bold bg-orange-50 border-b-2 p-4 m-2 rounded-lg hover:bg-gray-100 cursor-pointer flex justify-between gap-1"
+          >
+            <div>
+              <p>{entry.sourceText}</p>
+              <p>{entry.translatedText}</p>
+            </div>
+
+           <div className="flex">
+           <div className="">
+            
+              <label className="swap swap-rotate" >
+                
+                <input type="checkbox" />
+               
+                <IoMdStar className="swap-on fill-current size-6" onClick={() => handleAddFavoriteHistory(entry, "add")}></IoMdStar>
+                
+                <IoMdStarOutline onClick={() => handleAddFavoriteHistory(entry, "del")} className="swap-off fill-current size-6"></IoMdStarOutline>
+              </label>
+            </div>
+            <div>
+                <TiDelete className="size-6"></TiDelete>
+            </div>
+           </div>
+          </div>
+        );
+      })}
+    </div>
+   </div>
   );
 };
 

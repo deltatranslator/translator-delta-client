@@ -11,10 +11,17 @@ import {
 import { targetLang } from "../../redux/slices/translation/translationSlice";
 import axiosSecure from "../../api";
 
+
 const SavedHistory = () => {
   const { user } = useAuth();
   const dispatch = useDispatch();
   const [history, setHistory] = useState();
+
+  // const [showFav, setShowFav] = useState(false)
+
+  // const handleShowHistory = () => {
+  //   setShowFav(!showFav)
+  // }
 
   useEffect(() => {
     axiosSecure.get(`/translation-history/${user?.email}`).then((res) => {
@@ -23,6 +30,7 @@ const SavedHistory = () => {
     });
   }, [user?.email, targetLang]);
 
+ 
   const handleTranslationHistory = () => {
     if (history) {
       dispatch(setTranslationHistory(history));
@@ -47,7 +55,7 @@ const SavedHistory = () => {
         </p>
       </div>
       {/* show all save history */}
-      <div className="flex flex-col items-center gap-2">
+      <div  className="flex flex-col items-center gap-2">
         <div className="w-16 h-16 md:w-20 md:h-20 flex justify-center items-center border-2 rounded-full cursor-pointer">
           <IoStar
             size={32}
