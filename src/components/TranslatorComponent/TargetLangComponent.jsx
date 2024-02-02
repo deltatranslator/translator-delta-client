@@ -1,9 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import useRecentLang from "../../hooks/useRecentLang";
-import {
-  MdOutlineKeyboardArrowDown,
-  MdOutlineKeyboardArrowUp,
-} from "react-icons/md";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import countries from "../../data/countries";
 
@@ -22,7 +18,6 @@ const TargetLangComponent = () => {
 
   const dispatch = useDispatch();
   const traceName = useTraceLangCodeName();
-  console.log(recentLang);
 
   const translation = useSelector((state) => {
     return state.translation.translatedText;

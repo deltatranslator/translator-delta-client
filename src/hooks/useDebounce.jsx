@@ -1,5 +1,5 @@
 
-const useDebounce = (cb, delay = 1000) => {
+const useDebounce = (cb, delay = 2000) => {
     let timeout;
 
     return (...args) => {
