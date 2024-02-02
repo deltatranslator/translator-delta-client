@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import { IoMicOutline } from "react-icons/io5";
+// import { IoMicOutline } from "react-icons/io5";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import useRecentLang from "../../hooks/useRecentLang";
 import useDebounce from "../../hooks/useDebounce";
 import countries from "../../data/countries";
-import { GrPowerReset } from "react-icons/gr";
-import { FaRegStopCircle } from "react-icons/fa";
+// import { GrPowerReset } from "react-icons/gr";
+// import { FaRegStopCircle } from "react-icons/fa";
 import "regenerator-runtime/runtime";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -21,6 +21,7 @@ import {
 import useTraceLangCodeName from "../../hooks/useTraceLangCodeName";
 import useAuth from "../../hooks/useAuth";
 import axiosSecure from "../../api";
+import SpeechToText from "../SpeechToText/SpeechToText";
 
 const SourceLangComponent = () => {
   const { user } = useAuth();
@@ -277,38 +278,13 @@ const SourceLangComponent = () => {
         >
           {transcript}
         </div>
-        <div className="relative flex justify-center items-center gap-10">
-          <div className="absolute flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full bottom-3 left-5">
-            <IoMicOutline
-              onClick={() => {
-                startListening();
-              }}
-              className={
-                listening
-                  ? "animate-ping bg-[#ed7966] opacity-90 rounded-full transition-1s"
-                  : ""
-              }
-              size={26}
-            />
-          </div>
-          <div
-            className={
-              !listening
-                ? "hidden"
-                : "absolute left-[5rem] bottom-[1.2rem] hover:bg-gray-200 cursor-pointer rounded-full"
-            }
-          >
-            <FaRegStopCircle
-              onClick={() => {
-                stopListening();
-              }}
-              className="text-[26px] text-red-600"
-            />
-          </div>
-          <div className="absolute right-[3rem] bottom-[1.2rem] hover:bg-gray-200 cursor-pointer rounded-full">
-            <GrPowerReset className="text-[23px]" onClick={resetTranscript} />
-          </div>
-        </div>
+        {/* --------------------Button: speech stop reset-------------------------- */}
+        <SpeechToText
+          listening={listening}
+          startListening={startListening}
+          stopListening={stopListening}
+          resetTranscript={resetTranscript}
+        ></SpeechToText>
       </div>
     </div>
   );
