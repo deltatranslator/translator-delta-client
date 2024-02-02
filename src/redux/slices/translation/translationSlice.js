@@ -20,12 +20,12 @@ export const translationSlice = createSlice({
             state.sourceText = action.payload.sourceText;
             state.translatedDate = action.payload.translatedDate;
         },
-        translatedText: (state, action) => {
+        setTranslatedText: (state, action) => {
             state.translatedText = action.payload;
         }
     }
 })
 
-export const { targetLang, sourceLangInfo, translatedText } = translationSlice.actions;
+export const { targetLang, sourceLangInfo, setTranslatedText } = translationSlice.actions;
 
 export default translationSlice.reducer;
