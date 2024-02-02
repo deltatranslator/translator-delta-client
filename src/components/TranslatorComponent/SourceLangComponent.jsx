@@ -37,9 +37,9 @@ const SourceLangComponent = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [query, setQuery] = useState("");
-  const [sourceLangCode, setSourceLangCode] = useState('');
-  const [userPromt, setUserPromt] = useState('');
-  const inputDivRef = useRef();
+  const [sourceLangCode, setSourceLangCode] = useState("");
+  const [userPromt, setUserPromt] = useState("");
+  // const inputDivRef = useRef();
 
   const [tempFlag, setTempFlag] = useState(false);
 
@@ -122,13 +122,6 @@ const SourceLangComponent = () => {
     return item.name.toLowerCase().includes(query.toLowerCase());
   });
 
-<<<<<<< HEAD
-  const handleTextInput = (e) => {
-    const inputText = e.target.value;
-    console.log(">>>>>>input text", inputText);
-    // speech to text
-  };
-=======
   // const handleTextInput = (e) => {
   //   const inputText = e.target.value;
   //   console.log(inputText);
@@ -139,21 +132,18 @@ const SourceLangComponent = () => {
     const sourceLangCode = traceName(
       selectedLanguage || recentLang[activeIndex]
     );
-    SpeechRecognition.startListening({ continuous: true, language: sourceLangCode });
-  }
+    SpeechRecognition.startListening({
+      continuous: true,
+      language: sourceLangCode,
+    });
+  };
 
   const stopListening = () => SpeechRecognition.stopListening();
->>>>>>> 82f15775a762003ff269609363958a233dc1fd83
 
   const handleTranslate = async () => {
     // const inputText = e.target.value;
     // setInputText(inputText);
-<<<<<<< HEAD
-    console.log(inputText);
-    const sourceLangCode = traceName(
-=======
     const sourceLangCodeTemp = traceName(
->>>>>>> 82f15775a762003ff269609363958a233dc1fd83
       selectedLanguage || recentLang[activeIndex]
     );
     setSourceLangCode(sourceLangCodeTemp);
@@ -174,17 +164,12 @@ const SourceLangComponent = () => {
         )
         .then((res) => {
           translatedResult = res.data.responseData.translatedText || "";
-<<<<<<< HEAD
-          console.log(translatedResult);
-          dispatch(translatedText(translatedResult));
-=======
           dispatch(setTranslatedText(translatedResult));
->>>>>>> 82f15775a762003ff269609363958a233dc1fd83
         });
     } else {
       setTempFlag(false);
-      setInputText('')
-      dispatch(setTranslatedText(''));
+      setInputText("");
+      dispatch(setTranslatedText(""));
     }
     if (translatedResult) {
       dispatch(setTranslatedText(translatedResult));
@@ -207,29 +192,17 @@ const SourceLangComponent = () => {
 
   useEffect(() => {
     handleTranslate();
-<<<<<<< HEAD
-    console.log("BIG Mystery 2:");
-=======
->>>>>>> 82f15775a762003ff269609363958a233dc1fd83
   }, [inputText, selectedLanguage, recentLang, activeIndex, targetLangCode]);
 
   useEffect(() => {
     debounce(transcript);
   }, [transcript]);
 
-<<<<<<< HEAD
-  /********Speech To Text Function Start**********/
-
-  const startListening = () =>
-    SpeechRecognition.startListening({ continuous: true, language: `en-US` });
-
-  const stopListening = () => SpeechRecognition.stopListening();
-=======
   // handle source language change
-  const clearDivText = () => {
-    // Set the innerHTML of the div to an empty string
-    inputDivRef.current.innerHTML = '';
-  };
+  // const clearDivText = () => {
+  //   // Set the innerHTML of the div to an empty string
+  //   inputDivRef.current.innerHTML = "";
+  // };
 
   useEffect(() => {
     const sourceLangCodeTemp = traceName(
@@ -246,27 +219,21 @@ const SourceLangComponent = () => {
         setUserPromt(promt);
         // console.log(promt);
       });
-    setInputText('');
-    clearDivText();
+    // setInputText("");
+    // clearDivText();
     const sourceLangData = {
       sourceLang: sourceLangCode,
       sourceText: inputText,
       translatedDate: Date.now(),
     };
     dispatch(sourceLangInfo(sourceLangData));
-    dispatch(setTranslatedText(''));
+    dispatch(setTranslatedText(""));
   }, [selectedLanguage]);
 
->>>>>>> 82f15775a762003ff269609363958a233dc1fd83
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
 
-<<<<<<< HEAD
-  /********Speech To Text Function End**********/
-=======
-
->>>>>>> 82f15775a762003ff269609363958a233dc1fd83
   return (
     <div className="w-full lg:w-1/2 dark:text-white">
       <div className="flex items-center dark:text-white px-2 ml-2 font-medium text-gray-700">
@@ -278,10 +245,11 @@ const SourceLangComponent = () => {
               setSelectedLanguage(lang);
               setTempFlag(true);
             }}
-            className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${activeIndex === idx
-              ? "border-b-2 border-blue-400"
-              : "border-b-2 border-transparent"
-              }`}
+            className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${
+              activeIndex === idx
+                ? "border-b-2 border-blue-400"
+                : "border-b-2 border-transparent"
+            }`}
           >
             {lang}
           </div>
@@ -313,50 +281,48 @@ const SourceLangComponent = () => {
             {/* Dropdown options */}
             {!query
               ? langs.map((lang, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => {
-                    setActiveIndex(0);
-                    setDropdownOpen(false);
-                    handleRecentLang(lang.name);
-                    setSelectedLanguage(lang.name);
-                    setTempFlag(true);
-                  }}
-                  className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${activeIndex === idx
-                    ? "border-b-2 border-blue-400"
-                    : "border-b-2 border-transparent"
+                  <div
+                    key={idx}
+                    onClick={() => {
+                      setActiveIndex(0);
+                      setDropdownOpen(false);
+                      handleRecentLang(lang.name);
+                      setSelectedLanguage(lang.name);
+                      setTempFlag(true);
+                    }}
+                    className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${
+                      activeIndex === idx
+                        ? "border-b-2 border-blue-400"
+                        : "border-b-2 border-transparent"
                     }`}
-                >
-                  {lang.name}
-                </div>
-              ))
+                  >
+                    {lang.name}
+                  </div>
+                ))
               : filteredLang.map((lang, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => {
-                    setActiveIndex(0);
-                    setDropdownOpen(false);
-                    setSelectedLanguage(lang.name);
-                    setTempFlag(true);
-                    handleRecentLang(lang.name);
-                  }}
-                  className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${activeIndex === idx ? "text-blue-500" : "text-gray-800"
+                  <div
+                    key={idx}
+                    onClick={() => {
+                      setActiveIndex(0);
+                      setDropdownOpen(false);
+                      setSelectedLanguage(lang.name);
+                      setTempFlag(true);
+                      handleRecentLang(lang.name);
+                    }}
+                    className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${
+                      activeIndex === idx ? "text-blue-500" : "text-gray-800"
                     }`}
-                >
-                  {lang.name}
-                </div>
-              ))}
+                  >
+                    {lang.name}
+                  </div>
+                ))}
           </div>
         </div>
       )}
 
       <div data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000">
         <div
-<<<<<<< HEAD
           ref={divRef}
-=======
-          ref={inputDivRef}
->>>>>>> 82f15775a762003ff269609363958a233dc1fd83
           onInput={(e) => debounce(e.currentTarget.textContent)}
           contentEditable={true}
           className={`w-full dark:bg-slate-200 dark:text-slate-700 dark:border-none h-64 text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 resize-none`}

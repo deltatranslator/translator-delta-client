@@ -35,7 +35,7 @@ const FAQSection = ({ reference }) => {
     // >
     // px-1 py-5 md:px-10 md:py-5 lg:px-36 lg:py-5 bg-white dark:bg-slate-800
     <div className="flex flex-col px-1 py-5 md:px-10 md:py-5 lg:px-36 lg:py-12 lg:flex-row gap-10 bg-white dark:bg-slate-800">
-      <div className="flex-1 shadow-2xl p-5">
+      <div className="flex-1 shadow-2xl p-5 md:p-10 py-10 md:py-16 rounded-xl">
         <h1 className="text-center text-2xl lg:text-3xl mb-5">
           What you can do with Delta Translator.
         </h1>
@@ -71,7 +71,7 @@ const FAQSection = ({ reference }) => {
       </div>
       {/* <div className="divider divider-accent lg:divider-horizontal"></div> */}
 
-      <div className="space-y-2 flex-1 shadow-2xl p-5">
+      <div className="space-y-2 flex-1 shadow-2xl p-5  md:p-10 py-10 md:py-16 rounded-xl">
         <h1 className="text-center text-3xl mb-5">FAQs</h1>
 
         <div className="border rounded-lg border-black flex justify-between p-2 items-center">
