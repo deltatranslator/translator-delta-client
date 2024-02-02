@@ -292,7 +292,7 @@ const SourceLangComponent = () => {
         ></SpeechToText>
         {/* --------------------Button: speech stop reset-------------------------- */}
 
-        <div className="relative inline-block left-[7rem] bottom-[2.5rem] hover:bg-gray-200 cursor-pointer rounded-full">
+        <div className="relative left-[7rem] bottom-[3rem] flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full">
           <TextToSpeak className="text-[26px]" inputText={inputText} />
         </div>
       </div>
