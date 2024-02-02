@@ -57,7 +57,6 @@ const TargetLangComponent = () => {
       const doesExist = recentLang.find((storageLang) => storageLang === lang);
 
       if (!doesExist) {
-        console.log(recentLang.length);
         if (recentLang.length > 2) {
           recentLang.pop();
         }
@@ -80,7 +79,6 @@ const TargetLangComponent = () => {
     const sourceLangCode = traceName(
       selectedLanguage || recentLang[activeIndex]
     );
-    console.log("BIG Mystery:", selectedLanguage, recentLang[activeIndex]);
     dispatch(targetLang(sourceLangCode));
   };
 
@@ -99,8 +97,8 @@ const TargetLangComponent = () => {
               setSelectedLanguage(lang);
             }}
             className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${activeIndex === idx
-                ? "border-b-2 border-blue-400"
-                : "border-b-2 border-transparent"
+              ? "border-b-2 border-blue-400"
+              : "border-b-2 border-transparent"
               }`}
           >
             {lang}

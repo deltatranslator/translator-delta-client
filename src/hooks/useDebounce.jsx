@@ -5,7 +5,6 @@ const useDebounce = (cb, delay = 2000) => {
     return (...args) => {
         clearTimeout(timeout);
         timeout = setTimeout(() => {
-            console.log(cb);
             cb(...args);
         }, delay)
     }

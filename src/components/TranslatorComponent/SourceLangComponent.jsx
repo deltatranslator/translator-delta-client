@@ -139,7 +139,6 @@ const SourceLangComponent = () => {
   const stopListening = () => SpeechRecognition.stopListening();
 
   const handleTranslate = async () => {
-    console.log('tempFlag: ', tempFlag);
     // const inputText = e.target.value;
     // setInputText(inputText);
     const sourceLangCodeTemp = traceName(
