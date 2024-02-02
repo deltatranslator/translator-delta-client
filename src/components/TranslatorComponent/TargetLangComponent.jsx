@@ -7,26 +7,27 @@ import {
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import countries from "../../data/countries";
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import { targetLang } from "../../redux/slices/translation/translationSlice";
 import useTraceLangCodeName from "../../hooks/useTraceLangCodeName";
+import TextToSpeak from "../TextToSpeak/TextToSpeak";
 
 const TargetLangComponent = () => {
   const [recentLang, setRecentLang] = useRecentLang("recentTargetLang");
   const [langs, setLangs] = useState(countries);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [selectedLanguage, setSelectedLanguage] = useState('');
+  const [selectedLanguage, setSelectedLanguage] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [query, setQuery] = useState("");
 
   const dispatch = useDispatch();
   const traceName = useTraceLangCodeName();
-  console.log(recentLang);
+  // console.log(recentLang);
 
   const translation = useSelector((state) => {
     return state.translation.translatedText;
-  })
+  });
 
   const handleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -81,14 +82,16 @@ const TargetLangComponent = () => {
   });
 
   const handleTargetSelection = () => {
-    const sourceLangCode = traceName(selectedLanguage || recentLang[activeIndex]);
-    console.log('BIG Mystery:', selectedLanguage, recentLang[activeIndex]);
+    const sourceLangCode = traceName(
+      selectedLanguage || recentLang[activeIndex]
+    );
+    console.log("BIG Mystery:", selectedLanguage, recentLang[activeIndex]);
     dispatch(targetLang(sourceLangCode));
-  }
+  };
 
   useEffect(() => {
     handleTargetSelection();
-  }, [selectedLanguage, recentLang, activeIndex])
+  }, [selectedLanguage, recentLang, activeIndex]);
 
   return (
     <div className="w-full lg:w-1/2 relative">
@@ -98,12 +101,13 @@ const TargetLangComponent = () => {
             key={idx}
             onClick={() => {
               setActiveIndex(idx);
-              setSelectedLanguage(lang)
+              setSelectedLanguage(lang);
             }}
-            className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${activeIndex === idx
-              ? "border-b-2 border-blue-400"
-              : "border-b-2 border-transparent"
-              }`}
+            className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${
+              activeIndex === idx
+                ? "border-b-2 border-blue-400"
+                : "border-b-2 border-transparent"
+            }`}
           >
             {lang}
           </div>
@@ -135,44 +139,54 @@ const TargetLangComponent = () => {
             {/* Dropdown options */}
             {!query
               ? langs.map((lang, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => {
-                    setActiveIndex(0);
-                    setDropdownOpen(false);
-                    handleRecentLang(lang.name);
-                    setSelectedLanguage(lang.name)
-                  }}
-                  className={`px-2 py-2 cursor-pointer dark:text-slate-50 dark:hover:bg-slate-600 hover:bg-blue-100 ${activeIndex === idx ? "text-blue-500" : "text-gray-800"
+                  <div
+                    key={idx}
+                    onClick={() => {
+                      setActiveIndex(0);
+                      setDropdownOpen(false);
+                      handleRecentLang(lang.name);
+                      setSelectedLanguage(lang.name);
+                    }}
+                    className={`px-2 py-2 cursor-pointer dark:text-slate-50 dark:hover:bg-slate-600 hover:bg-blue-100 ${
+                      activeIndex === idx ? "text-blue-500" : "text-gray-800"
                     }`}
-                >
-                  {lang.name}
-                </div>
-              ))
+                  >
+                    {lang.name}
+                  </div>
+                ))
               : filteredLang.map((lang, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => {
-                    setActiveIndex(0);
-                    setDropdownOpen(false);
-                    handleRecentLang(lang.name);
-                    setSelectedLanguage(lang.name)
-                  }}
-                  className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${activeIndex === idx ? "text-blue-500" : "text-gray-800"
+                  <div
+                    key={idx}
+                    onClick={() => {
+                      setActiveIndex(0);
+                      setDropdownOpen(false);
+                      handleRecentLang(lang.name);
+                      setSelectedLanguage(lang.name);
+                    }}
+                    className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${
+                      activeIndex === idx ? "text-blue-500" : "text-gray-800"
                     }`}
-                >
-                  {lang.name}
-                </div>
-              ))}
+                  >
+                    {lang.name}
+                  </div>
+                ))}
           </div>
         </div>
       )}
-      <div data-aos="fade-left" data-aos-delay="50" data-aos-duration="1000"
+      <div
+        data-aos="fade-left"
+        data-aos-delay="50"
+        data-aos-duration="1000"
         className="w-full text-2xl dark:bg-slate-400 dark:text-slate-100 dark:border-none font-medium text-gray-600 h-64 border-[1px] bg-gray-50 shadow-sm rounded-lg p-4"
         name=""
         id=""
       >
         {translation}
+      </div>
+      <div className=" flex justify-end -mt-[46px] px-10">
+        <div>
+          <TextToSpeak inputText={translation} />
+        </div>
       </div>
     </div>
   );

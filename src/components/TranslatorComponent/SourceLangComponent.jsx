@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import { IoMicOutline } from "react-icons/io5";
+// import { IoMicOutline } from "react-icons/io5";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import useRecentLang from "../../hooks/useRecentLang";
 import useDebounce from "../../hooks/useDebounce";
 import countries from "../../data/countries";
-
-import { FaRegStopCircle } from "react-icons/fa";
+// import { GrPowerReset } from "react-icons/gr";
+// import { FaRegStopCircle } from "react-icons/fa";
 import "regenerator-runtime/runtime";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -21,6 +21,8 @@ import {
 import useTraceLangCodeName from "../../hooks/useTraceLangCodeName";
 import useAuth from "../../hooks/useAuth";
 import axiosSecure from "../../api";
+import SpeechToText from "../SpeechToText/SpeechToText";
+import TextToSpeak from "../TextToSpeak/TextToSpeak";
 
 const SourceLangComponent = () => {
   const { user } = useAuth();
@@ -35,14 +37,13 @@ const SourceLangComponent = () => {
   const [query, setQuery] = useState("");
 
   /********Speech To Text Function Start**********/
-
+  const divRef = useRef(null);
   const {
     transcript,
     listening,
     resetTranscript,
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
-
   /********Speech To Text Function End**********/
 
   const dispatch = useDispatch();
@@ -116,14 +117,9 @@ const SourceLangComponent = () => {
 
   const handleTextInput = (e) => {
     const inputText = e.target.value;
-    console.log(inputText);
+    console.log(">>>>>>input text", inputText);
     // speech to text
   };
-
-  const startListening = () =>
-    SpeechRecognition.startListening({ continuous: true, language: "en-US" });
-
-  const stopListening = () => SpeechRecognition.stopListening();
 
   const handleTranslate = async () => {
     // const inputText = e.target.value;
@@ -180,10 +176,17 @@ const SourceLangComponent = () => {
     debounce(transcript);
   }, [transcript]);
 
+  /********Speech To Text Function Start**********/
+
+  const startListening = () =>
+    SpeechRecognition.startListening({ continuous: true, language: `en-US` });
+
+  const stopListening = () => SpeechRecognition.stopListening();
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
 
+  /********Speech To Text Function End**********/
   return (
     <div className="w-full lg:w-1/2 dark:text-white">
       <div className="flex items-center dark:text-white px-2 ml-2 font-medium text-gray-700">
@@ -266,14 +269,10 @@ const SourceLangComponent = () => {
           </div>
         </div>
       )}
-      {/* <div className="w-full relative">
-      <textarea onChange={e => debounce(e.target.value)} className="w-full h-64 text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 resize-none" name="" id=""></textarea>
-      <div className="absolute flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full left-3 bottom-4">
-        <IoMicOutline size={24} color="#646161" />
-      </div>
-    </div> */}
+
       <div data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000">
         <div
+          ref={divRef}
           onInput={(e) => debounce(e.currentTarget.textContent)}
           contentEditable={true}
           className="w-full dark:bg-slate-200 dark:text-slate-700 dark:border-none h-64 text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 resize-none"
@@ -282,34 +281,19 @@ const SourceLangComponent = () => {
         >
           {transcript}
         </div>
-        <div className="relative flex justify-center items-center gap-10">
-          <div className="absolute flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full bottom-3 left-5">
-            <IoMicOutline
-              onClick={() => {
-                startListening();
-              }}
-              className={
-                listening
-                  ? "animate-ping bg-[#ed7966] opacity-90 rounded-full transition-1s"
-                  : ""
-              }
-              size={26}
-            />
-          </div>
-          <div
-            className={
-              !listening
-                ? "hidden"
-                : "absolute left-[5rem] bottom-[1rem] hover:bg-gray-200 cursor-pointer rounded-full"
-            }
-          >
-            <FaRegStopCircle
-              onClick={() => {
-                stopListening();
-              }}
-              className="text-[26px] text-red-600"
-            />
-          </div>
+
+        {/* --------------------Button: speech stop reset-------------------------- */}
+        <SpeechToText
+          listening={listening}
+          startListening={startListening}
+          stopListening={stopListening}
+          resetTranscript={resetTranscript}
+          divRef={divRef}
+        ></SpeechToText>
+        {/* --------------------Button: speech stop reset-------------------------- */}
+
+        <div className="relative inline-block left-[7rem] bottom-[2.5rem] hover:bg-gray-200 cursor-pointer rounded-full">
+          <TextToSpeak className="text-[26px]" inputText={inputText} />
         </div>
       </div>
     </div>
