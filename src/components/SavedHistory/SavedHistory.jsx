@@ -46,6 +46,7 @@ const SavedHistory = () => {
           History
         </p>
       </div>
+      {/* show all save history */}
       <div className="flex flex-col items-center gap-2">
         <div className="w-16 h-16 md:w-20 md:h-20 flex justify-center items-center border-2 rounded-full cursor-pointer">
           <IoStar

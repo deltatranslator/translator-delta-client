@@ -6,7 +6,7 @@ import { TiDelete } from "react-icons/ti";
 import axiosSecure from "../../api";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import { useState } from "react";
+
 
 
 const History = () => {
@@ -83,9 +83,7 @@ const History = () => {
 
            <div className="flex">
            <div className="">
-            {/* {
-              btn ? <IoMdStar className="size-6"></IoMdStar> : <IoMdStarOutline className="size-6"></IoMdStarOutline>
-            } */}
+            
               <label className="swap swap-rotate" >
                 
                 <input type="checkbox" />
