@@ -22,6 +22,7 @@ import useTraceLangCodeName from "../../hooks/useTraceLangCodeName";
 import useAuth from "../../hooks/useAuth";
 import axiosSecure from "../../api";
 import SpeechToText from "../SpeechToText/SpeechToText";
+import TextToSpeak from "../TextToSpeak/TextToSpeak";
 
 const SourceLangComponent = () => {
   const { user } = useAuth();
@@ -36,7 +37,7 @@ const SourceLangComponent = () => {
   const [query, setQuery] = useState("");
 
   /********Speech To Text Function Start**********/
-
+  const divRef = useRef(null);
   const {
     transcript,
     listening,
@@ -116,7 +117,7 @@ const SourceLangComponent = () => {
 
   const handleTextInput = (e) => {
     const inputText = e.target.value;
-    console.log(inputText);
+    console.log(">>>>>>input text", inputText);
     // speech to text
   };
 
@@ -271,6 +272,7 @@ const SourceLangComponent = () => {
 
       <div data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000">
         <div
+          ref={divRef}
           onInput={(e) => debounce(e.currentTarget.textContent)}
           contentEditable={true}
           className="w-full dark:bg-slate-200 dark:text-slate-700 dark:border-none h-64 text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 resize-none"
@@ -279,14 +281,20 @@ const SourceLangComponent = () => {
         >
           {transcript}
         </div>
+
         {/* --------------------Button: speech stop reset-------------------------- */}
         <SpeechToText
           listening={listening}
           startListening={startListening}
           stopListening={stopListening}
           resetTranscript={resetTranscript}
+          divRef={divRef}
         ></SpeechToText>
         {/* --------------------Button: speech stop reset-------------------------- */}
+
+        <div className="relative inline-block left-[10rem] bottom-[2.5rem] hover:bg-gray-200 cursor-pointer rounded-full">
+          <TextToSpeak className="text-[26px]" inputText={inputText} />
+        </div>
       </div>
     </div>
   );

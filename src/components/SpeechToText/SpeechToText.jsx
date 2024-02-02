@@ -7,7 +7,12 @@ const SpeechToText = ({
   startListening,
   stopListening,
   resetTranscript,
+  divRef,
 }) => {
+  const handleReset = () => {
+    divRef.current.textContent = "";
+    resetTranscript();
+  };
   return (
     <div>
       <div className="relative flex justify-center items-center gap-10">
@@ -39,7 +44,7 @@ const SpeechToText = ({
           />
         </div>
         <div className="absolute right-[3rem] bottom-[1.2rem] hover:bg-gray-200 cursor-pointer rounded-full">
-          <GrPowerReset className="text-[23px]" onClick={resetTranscript} />
+          <GrPowerReset className="text-[23px]" onClick={handleReset} />
         </div>
       </div>
     </div>
