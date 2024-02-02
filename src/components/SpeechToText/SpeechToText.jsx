@@ -33,7 +33,7 @@ const SpeechToText = ({
           className={
             !listening
               ? "hidden"
-              : "absolute left-[3.9rem] bottom-[1.2rem] hover:bg-gray-200 cursor-pointer rounded-full"
+              : "absolute left-[3.9rem] bottom-[10px] flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full"
           }
         >
           <FaRegStopCircle
@@ -43,7 +43,7 @@ const SpeechToText = ({
             className="text-[26px] text-red-600"
           />
         </div>
-        <div className="absolute right-[3rem] bottom-[1.2rem] hover:bg-gray-200 cursor-pointer rounded-full">
+        <div className="absolute right-[3rem] bottom-[10px] flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full">
           <GrPowerReset className="text-[23px]" onClick={handleReset} />
         </div>
       </div>

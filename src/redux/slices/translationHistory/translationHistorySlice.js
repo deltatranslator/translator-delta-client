@@ -1,6 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createSelector } from '@reduxjs/toolkit';
 
 const initialState = {
+    reload: false,
     show: false,
     translationHistory: []
 }
@@ -13,11 +14,21 @@ export const translationHistorySlice = createSlice({
             state.translationHistory = [...action.payload] || [];
         },
         setHistoryDisplay: (state, action) => {
-            state.show = !state.show
+            state.show = !state.show;
+        },
+        reloadHistory: (state, action) => {
+            state.reload = !state.reload;
         }
     }
 })
 
-export const { setTranslationHistory, setHistoryDisplay } = translationHistorySlice.actions;
+const selectTranslationHistory = (state) => state.translationHistory;
+
+export const selectReloadState = createSelector(
+    [selectTranslationHistory],
+    (translationHistory) => translationHistory.reload
+);
+
+export const { setTranslationHistory, setHistoryDisplay, reloadHistory } = translationHistorySlice.actions;
 
 export default translationHistorySlice.reducer;

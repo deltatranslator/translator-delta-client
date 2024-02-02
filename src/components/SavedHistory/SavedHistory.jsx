@@ -1,33 +1,16 @@
 import { RiHistoryFill } from "react-icons/ri";
 import { IoStar } from "react-icons/io5";
 import { HiMiniUserGroup } from "react-icons/hi2";
-import { useEffect, useState } from "react";
-import useAuth from "../../hooks/useAuth";
 import { useDispatch } from "react-redux";
 import {
-  setTranslationHistory,
   setHistoryDisplay,
 } from "../../redux/slices/translationHistory/translationHistorySlice";
-import { targetLang } from "../../redux/slices/translation/translationSlice";
-import axiosSecure from "../../api";
 
 const SavedHistory = () => {
-  const { user } = useAuth();
   const dispatch = useDispatch();
-  const [history, setHistory] = useState();
-
-  useEffect(() => {
-    axiosSecure.get(`/translation-history/${user?.email}`).then((res) => {
-      const history = res.data.translationHistory;
-      setHistory(history);
-    });
-  }, [user?.email, targetLang]);
 
   const handleTranslationHistory = () => {
-    if (history) {
-      dispatch(setTranslationHistory(history));
-    }
-    dispatch(setHistoryDisplay());
+    dispatch(setHistoryDisplay(prev => !prev));
   };
 
   return (
