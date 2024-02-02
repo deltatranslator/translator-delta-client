@@ -15,14 +15,16 @@ import SpeechRecognition, {
 
 import { useDispatch, useSelector } from "react-redux";
 import {
+  setTranslatedText,
   sourceLangInfo,
   targetLang,
-  translatedText,
 } from "../../redux/slices/translation/translationSlice";
 import useTraceLangCodeName from "../../hooks/useTraceLangCodeName";
 import useAuth from "../../hooks/useAuth";
 import axiosSecure from "../../api";
 import TextToSpeak from "../TextToSpeak/TextToSpeak";
+
+import { reloadHistory } from "../../redux/slices/translationHistory/translationHistorySlice";
 
 const SourceLangComponent = () => {
   const { user } = useAuth();
@@ -35,6 +37,11 @@ const SourceLangComponent = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [query, setQuery] = useState("");
+  const [sourceLangCode, setSourceLangCode] = useState('');
+  const [userPromt, setUserPromt] = useState('');
+  const inputDivRef = useRef();
+
+  const [tempFlag, setTempFlag] = useState(false);
 
   /********Speech To Text Function Start**********/
 
@@ -122,18 +129,23 @@ const SourceLangComponent = () => {
   //   // speech to text
   // };
 
-  const startListening = () =>
-    SpeechRecognition.startListening({ continuous: true, language: "en-US" });
+  const startListening = () => {
+    const sourceLangCode = traceName(
+      selectedLanguage || recentLang[activeIndex]
+    );
+    SpeechRecognition.startListening({ continuous: true, language: sourceLangCode });
+  }
 
   const stopListening = () => SpeechRecognition.stopListening();
 
   const handleTranslate = async () => {
     // const inputText = e.target.value;
     // setInputText(inputText);
-    // console.log(inputText);
-    const sourceLangCode = traceName(
+    const sourceLangCodeTemp = traceName(
       selectedLanguage || recentLang[activeIndex]
     );
+    setSourceLangCode(sourceLangCodeTemp);
+
     const sourceLangData = {
       sourceLang: sourceLangCode,
       sourceText: inputText,
@@ -143,19 +155,22 @@ const SourceLangComponent = () => {
 
     let translatedResult;
 
-    if (inputText) {
+    if (inputText && !tempFlag) {
       axios
         .post(
           `https://api.mymemory.translated.net/get?q=${inputText}&langpair=${sourceLangCode}|${targetLangCode}`
         )
         .then((res) => {
           translatedResult = res.data.responseData.translatedText || "";
-          // console.log(translatedResult);
-          dispatch(translatedText(translatedResult));
+          dispatch(setTranslatedText(translatedResult));
         });
+    } else {
+      setTempFlag(false);
+      setInputText('')
+      dispatch(setTranslatedText(''));
     }
-    if (translatedText) {
-      dispatch(translatedText(translatedResult));
+    if (translatedResult) {
+      dispatch(setTranslatedText(translatedResult));
     }
     const translateHistoryData = {
       userEmail: user?.email,
@@ -166,7 +181,7 @@ const SourceLangComponent = () => {
       axiosSecure
         .put(`/translation-history/${user.email}`, translateHistoryData)
         .then((res) => {
-          console.log(res.data);
+          dispatch(reloadHistory());
         });
     }
   };
@@ -175,16 +190,48 @@ const SourceLangComponent = () => {
 
   useEffect(() => {
     handleTranslate();
-    // console.log("BIG Mystery 2:");
   }, [inputText, selectedLanguage, recentLang, activeIndex, targetLangCode]);
 
   useEffect(() => {
     debounce(transcript);
   }, [transcript]);
 
+  // handle source language change
+  const clearDivText = () => {
+    // Set the innerHTML of the div to an empty string
+    inputDivRef.current.innerHTML = '';
+  };
+
+  useEffect(() => {
+    const sourceLangCodeTemp = traceName(
+      selectedLanguage || recentLang[activeIndex]
+    );
+    setSourceLangCode(sourceLangCodeTemp);
+
+    axios
+      .post(
+        `https://api.mymemory.translated.net/get?q='Write your text here.'&langpair=en|${sourceLangCode}`
+      )
+      .then((res) => {
+        const promt = res.data.responseData.translatedText || "";
+        setUserPromt(promt);
+        // console.log(promt);
+      });
+    setInputText('');
+    clearDivText();
+    const sourceLangData = {
+      sourceLang: sourceLangCode,
+      sourceText: inputText,
+      translatedDate: Date.now(),
+    };
+    dispatch(sourceLangInfo(sourceLangData));
+    dispatch(setTranslatedText(''));
+  }, [selectedLanguage]);
+
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
+
 
   return (
     <div className="w-full lg:w-1/2 dark:text-white">
@@ -195,12 +242,12 @@ const SourceLangComponent = () => {
             onClick={() => {
               setActiveIndex(idx);
               setSelectedLanguage(lang);
+              setTempFlag(true);
             }}
-            className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${
-              activeIndex === idx
-                ? "border-b-2 border-blue-400"
-                : "border-b-2 border-transparent"
-            }`}
+            className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${activeIndex === idx
+              ? "border-b-2 border-blue-400"
+              : "border-b-2 border-transparent"
+              }`}
           >
             {lang}
           </div>
@@ -232,39 +279,39 @@ const SourceLangComponent = () => {
             {/* Dropdown options */}
             {!query
               ? langs.map((lang, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => {
-                      setActiveIndex(0);
-                      setDropdownOpen(false);
-                      handleRecentLang(lang.name);
-                      setSelectedLanguage(lang.name);
-                    }}
-                    className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${
-                      activeIndex === idx
-                        ? "border-b-2 border-blue-400"
-                        : "border-b-2 border-transparent"
+                <div
+                  key={idx}
+                  onClick={() => {
+                    setActiveIndex(0);
+                    setDropdownOpen(false);
+                    handleRecentLang(lang.name);
+                    setSelectedLanguage(lang.name);
+                    setTempFlag(true);
+                  }}
+                  className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${activeIndex === idx
+                    ? "border-b-2 border-blue-400"
+                    : "border-b-2 border-transparent"
                     }`}
-                  >
-                    {lang.name}
-                  </div>
-                ))
+                >
+                  {lang.name}
+                </div>
+              ))
               : filteredLang.map((lang, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => {
-                      setActiveIndex(0);
-                      setDropdownOpen(false);
-                      setSelectedLanguage(lang.name);
-                      handleRecentLang(lang.name);
-                    }}
-                    className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${
-                      activeIndex === idx ? "text-blue-500" : "text-gray-800"
+                <div
+                  key={idx}
+                  onClick={() => {
+                    setActiveIndex(0);
+                    setDropdownOpen(false);
+                    setSelectedLanguage(lang.name);
+                    setTempFlag(true);
+                    handleRecentLang(lang.name);
+                  }}
+                  className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${activeIndex === idx ? "text-blue-500" : "text-gray-800"
                     }`}
-                  >
-                    {lang.name}
-                  </div>
-                ))}
+                >
+                  {lang.name}
+                </div>
+              ))}
           </div>
         </div>
       )}
@@ -277,9 +324,10 @@ const SourceLangComponent = () => {
       <div data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000">
         {/* First translate box */}
         <div
+          ref={inputDivRef}
           onInput={(e) => debounce(e.currentTarget.textContent)}
           contentEditable={true}
-          className="w-full dark:bg-slate-200 dark:text-slate-700 dark:border-none h-64 text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 resize-none"
+          className={`w-full dark:bg-slate-200 dark:text-slate-700 dark:border-none h-64 text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 resize-none`}
           name=""
           id=""
         >
