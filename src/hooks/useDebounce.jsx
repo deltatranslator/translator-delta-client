@@ -1,13 +1,12 @@
+const useDebounce = (cb, delay = 1000) => {
+  let timeout;
 
-const useDebounce = (cb, delay = 2000) => {
-    let timeout;
-
-    return (...args) => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            cb(...args);
-        }, delay)
-    }
+  return (...args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      cb(...args);
+    }, delay);
+  };
 };
 
 export default useDebounce;
