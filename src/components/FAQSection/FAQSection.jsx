@@ -33,7 +33,8 @@ const FAQSection = ({ reference }) => {
     //   whileTap={{ scale: 0.9 }}
     //   className="container mx-auto rounded-md  mb-20 space-y-5 p-5"
     // >
-    <div className="flex flex-col w-full lg:flex-row gap-10">
+    // px-1 py-5 md:px-10 md:py-5 lg:px-36 lg:py-5 bg-white dark:bg-slate-800
+    <div className="flex flex-col px-1 py-5 md:px-10 md:py-5 lg:px-36 lg:py-12 lg:flex-row gap-10 bg-white dark:bg-slate-800">
       <div className="flex-1 shadow-2xl p-5">
         <h1 className="text-center text-2xl lg:text-3xl mb-5">
           What you can do with Delta Translator.
