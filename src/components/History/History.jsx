@@ -80,7 +80,7 @@ const History = () => {
             key={idx}
             className="text-gray-500 text-sm font-bold bg-orange-50 border-b-2 p-4 m-2 rounded-lg hover:bg-gray-100 cursor-pointer flex justify-between gap-1"
           >
-            <div>
+            <div className=''>
               <p>{entry.sourceText}</p>
               <p>{entry.translatedText}</p>
             </div>
