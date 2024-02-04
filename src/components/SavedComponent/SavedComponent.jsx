@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectReloadState, setTranslationHistory } from '../../redux/slices/translationHistory/translationHistorySlice';
 import { useEffect, useState } from 'react';
@@ -7,11 +6,10 @@ import useAuth from '../../hooks/useAuth';
 import { IoMdStarOutline, IoMdStar } from "react-icons/io";
 import { TiDelete } from "react-icons/ti";
 import Swal from "sweetalert2";
-import { useQuery } from '@tanstack/react-query';
 
 
 
-const History = () => {
+const SavedComponent = () => {
   const { user } = useAuth()
   const [history, setHistory] = useState();
   const reloadState = useSelector(selectReloadState);
@@ -72,7 +70,7 @@ const History = () => {
   return (
     <div className="border rounded-xl w-full h-full shadow-md flex flex-col">
       <div className="text-gray-500 text-sm font-bold bg-blue-100 border-b-2 p-4 m-2 rounded-lg hover:bg-gray-100 cursor-pointer flex justify-between gap-1">
-        History
+        Saved
       </div>
       {history?.map((entry, idx) => {
         return (
@@ -107,8 +105,4 @@ const History = () => {
   );
 };
 
-History.propTypes = {
-  history: PropTypes.array,
-};
-
-export default History;
+export default SavedComponent;

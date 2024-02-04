@@ -2,7 +2,7 @@ import { createSlice, createSelector } from "@reduxjs/toolkit";
 
 const initialState = {
   reload: false,
-  show: true,
+  show: false,
   translationHistory: [],
 };
 
@@ -14,7 +14,7 @@ export const translationHistorySlice = createSlice({
       state.translationHistory = [...action.payload] || [];
     },
     setHistoryDisplay: (state, action) => {
-      state.show = !state.show;
+      state.show = action.payload;
     },
     reloadHistory: (state, action) => {
       state.reload = !state.reload;

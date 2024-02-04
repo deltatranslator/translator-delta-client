@@ -6,17 +6,21 @@ import {
   setHistoryDisplay,
 } from "../../redux/slices/translationHistory/translationHistorySlice";
 
-const SavedHistory = ({setSaveOpen}) => {
+const SavedHistory = ({ setSaveOpen, display, saveOpen }) => {
   const dispatch = useDispatch();
 
   const handleSaveCLick = () => {
-    setSaveOpen(true)
-    dispatch(setHistoryDisplay())
+    if (display !== saveOpen) {
+      dispatch(setHistoryDisplay(false));
+    }
+    setSaveOpen(prev => !prev);
   }
-  
+
   const handleTranslationHistory = () => {
-    setSaveOpen(false)
-    dispatch(setHistoryDisplay());
+    if (display !== saveOpen) {
+      setSaveOpen(false);
+    }
+    dispatch(setHistoryDisplay(!display));
   };
 
   return (
