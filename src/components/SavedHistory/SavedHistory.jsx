@@ -13,6 +13,7 @@ const SavedHistory = ({setSaveOpen}) => {
     setSaveOpen(true)
     dispatch(setHistoryDisplay())
   }
+  
   const handleTranslationHistory = () => {
     setSaveOpen(false)
     dispatch(setHistoryDisplay());
