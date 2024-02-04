@@ -7,6 +7,7 @@ import useAuth from '../../hooks/useAuth';
 import { IoMdStarOutline, IoMdStar } from "react-icons/io";
 import { TiDelete } from "react-icons/ti";
 import Swal from "sweetalert2";
+import { useQuery } from '@tanstack/react-query';
 
 
 
@@ -50,7 +51,7 @@ const History = () => {
     // console.log(favHistory);
     axiosSecure.put(`/favoriteHistory/${status}`, favHistory)
     .then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
         if(res.data.insertedId > 0 || res.data.modifiedCount > 0){
             Toast.fire({
                 icon: "success",
@@ -70,7 +71,7 @@ const History = () => {
 
     return (
       <div className="border rounded-xl w-full h-full shadow-md flex flex-col">
-      {history.map((entry, idx) => {
+      {history?.map((entry, idx) => {
         return (
           <div
             key={idx}
@@ -83,9 +84,6 @@ const History = () => {
 
            <div className="flex">
            <div className="">
-            {/* {
-              btn ? <IoMdStar className="size-6"></IoMdStar> : <IoMdStarOutline className="size-6"></IoMdStarOutline>
-            } */}
               <label className="swap swap-rotate" >
                 
                 <input type="checkbox" />
