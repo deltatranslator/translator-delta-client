@@ -174,7 +174,7 @@ const TargetLangComponent = () => {
         </div>
       )}
       <div
-        className={`w-full text-2xl dark:bg-slate-400 dark:text-slate-100 dark:border-none font-medium text-gray-600 border-[1px] bg-gray-50 shadow-sm rounded-lg p-4 h-72
+        className={`w-full text-2xl dark:bg-slate-400 dark:text-slate-100 dark:border-none font-medium text-gray-600 border-[1px] bg-gray-50 shadow-sm rounded-lg p-4 h-[480px]
         }`}
         name=""
         id=""

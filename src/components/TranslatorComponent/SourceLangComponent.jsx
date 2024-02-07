@@ -329,7 +329,7 @@ const SourceLangComponent = () => {
             }
           }}
           contentEditable={true}
-          className={`w-full dark:bg-slate-200 dark:text-slate-700 dark:border-none text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 h-72 resize-none`}
+          className={`w-full dark:bg-slate-200 dark:text-slate-700 dark:border-none text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 h-[480px] resize-none`}
           name=""
           id=""
         >
