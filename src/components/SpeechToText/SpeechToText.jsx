@@ -21,6 +21,7 @@ const SpeechToText = ({
     divRef.current.textContent = "";
     resetTranscript();
   };
+
   return (
     <div>
       <div className="relative flex justify-center items-center gap-10">
@@ -51,10 +52,23 @@ const SpeechToText = ({
             className="text-[26px] text-red-600"
           />
         </div>
+        {/* Character Count */}
+        <div className="absolute right-[3rem] bottom-[3rem] flex justify-center items-center py-5 ">
+          <span
+            className={
+              inputText.length > 499 ? "text-red-500" : "text-gray-500"
+            }
+          >
+            {inputText.length}/ 500
+          </span>
+        </div>
         {/* copy button */}
         <div className="absolute right-[8rem] bottom-[.7rem] flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full">
           <CopyToClipboard text={inputText}>
-            <FaCopy className="text-[23px]" onClick={handleCopyBtn} />
+            <FaCopy
+              className="text-[23px] hover:text-[#ed7966]"
+              onClick={handleCopyBtn}
+            />
           </CopyToClipboard>
         </div>
         <div className="absolute right-[3rem] bottom-[10px] flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full">

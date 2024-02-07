@@ -178,7 +178,7 @@ const TargetLangComponent = () => {
         data-aos="fade-left"
         data-aos-delay="50"
         data-aos-duration="1000"
-        className="w-full text-2xl dark:bg-slate-400 dark:text-slate-100 dark:border-none font-medium text-gray-600 h-64 border-[1px] bg-gray-50 shadow-sm rounded-lg p-4"
+        className="w-full text-2xl dark:bg-slate-400 dark:text-slate-100 dark:border-none font-medium text-gray-600 h-fit border-[1px] bg-gray-50 shadow-sm rounded-lg p-4 pb-[350px]"
         name=""
         id=""
       >
@@ -187,7 +187,10 @@ const TargetLangComponent = () => {
       <div className=" flex justify-end -mt-[46px] px-10">
         <button className="mr-10 -mt-2 flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full">
           <CopyToClipboard text={translation}>
-            <FaCopy className="text-[23px]" onClick={handleCopyBtn} />
+            <FaCopy
+              className="text-[23px] hover:text-[#ed7966]"
+              onClick={handleCopyBtn}
+            />
           </CopyToClipboard>
         </button>
         <div>
