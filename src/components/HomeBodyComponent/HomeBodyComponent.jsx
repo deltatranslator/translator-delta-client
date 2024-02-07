@@ -4,6 +4,7 @@ import SavedHistory from "../SavedHistory/SavedHistory";
 import TranslatorComponent from "../TranslatorComponent/TranslatorComponent";
 import { useState } from "react";
 import SavedComponent from "../SavedComponent/SavedComponent";
+import TranslateSectionNav from "../TranslateSectionNav/TranslateSectionNav";
 
 
 const HomeBodyComponent = () => {
@@ -17,6 +18,7 @@ const HomeBodyComponent = () => {
     return (
         <div className="w-full flex flex-col md:flex-row ">
             <div className="flex-grow">
+                <TranslateSectionNav />
                 <TranslatorComponent />
                 <SavedHistory setSaveOpen={setSaveOpen} display={display} saveOpen={saveOpen} />
             </div>

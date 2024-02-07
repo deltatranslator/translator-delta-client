@@ -70,7 +70,7 @@ const History = () => {
 
 
   return (
-    <div className="border rounded-xl w-full h-full shadow-md flex flex-col">
+    <div className="border rounded-xl w-full h-[700px] shadow-md flex flex-col overflow-scroll">
       <div className="text-gray-500 text-sm font-bold bg-blue-100 border-b-2 p-4 m-2 rounded-lg hover:bg-gray-100 cursor-pointer flex justify-between gap-1">
         History
       </div>
