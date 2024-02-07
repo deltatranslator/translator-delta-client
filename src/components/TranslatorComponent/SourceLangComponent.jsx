@@ -1,12 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-// import { IoMicOutline } from "react-icons/io5";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import useRecentLang from "../../hooks/useRecentLang";
 import useDebounce from "../../hooks/useDebounce";
 import countries from "../../data/countries";
-// import { GrPowerReset } from "react-icons/gr";
-// import { FaRegStopCircle } from "react-icons/fa";
 import "regenerator-runtime/runtime";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -40,7 +37,6 @@ const SourceLangComponent = () => {
   const [sourceLangCode, setSourceLangCode] = useState("");
   const [userPromt, setUserPromt] = useState("");
   // const inputDivRef = useRef();
-
   const [tempFlag, setTempFlag] = useState(false);
 
   /********Speech To Text Function Start**********/
@@ -339,9 +335,9 @@ const SourceLangComponent = () => {
           stopListening={stopListening}
           resetTranscript={resetTranscript}
           divRef={divRef}
+          inputText={inputText}
         ></SpeechToText>
         {/* --------------------Button: speech stop reset-------------------------- */}
-
         <div className="relative left-[7rem] bottom-[3rem] flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full">
           <TextToSpeak className="text-[26px]" inputText={inputText} />
         </div>
