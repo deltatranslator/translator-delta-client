@@ -2,7 +2,6 @@ import { FaCopy, FaRegStopCircle } from "react-icons/fa";
 import { GrPowerReset } from "react-icons/gr";
 import { IoMicOutline } from "react-icons/io5";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { useState } from "react";
 import toast from "react-hot-toast";
 const SpeechToText = ({
   listening,
@@ -19,6 +18,7 @@ const SpeechToText = ({
   };
   const handleReset = () => {
     divRef.current.textContent = "";
+
     resetTranscript();
   };
 

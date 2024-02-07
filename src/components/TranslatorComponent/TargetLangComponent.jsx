@@ -19,7 +19,6 @@ const TargetLangComponent = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [query, setQuery] = useState("");
-
   const dispatch = useDispatch();
   const traceName = useTraceLangCodeName();
 
@@ -175,10 +174,8 @@ const TargetLangComponent = () => {
         </div>
       )}
       <div
-        data-aos="fade-left"
-        data-aos-delay="50"
-        data-aos-duration="1000"
-        className="w-full text-2xl dark:bg-slate-400 dark:text-slate-100 dark:border-none font-medium text-gray-600 h-fit border-[1px] bg-gray-50 shadow-sm rounded-lg p-4 pb-[350px]"
+        className={`w-full text-2xl dark:bg-slate-400 dark:text-slate-100 dark:border-none font-medium text-gray-600 border-[1px] bg-gray-50 shadow-sm rounded-lg p-4 h-72
+        }`}
         name=""
         id=""
       >
