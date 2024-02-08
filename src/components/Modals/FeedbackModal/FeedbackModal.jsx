@@ -1,11 +1,45 @@
+import { useState } from 'react';
 import { createPortal } from "react-dom";
 
 import { FaRegFaceAngry, FaRegFaceFrown, FaRegFaceMeh, FaRegFaceSmileBeam, FaRegFaceLaughBeam } from "react-icons/fa6";
 import { RxCross1 } from "react-icons/rx";
+import useAuth from '../../../hooks/useAuth';
+import axiosSecure from '../../../api';
 
 const FeedbackModal = ({ open, close }) => {
+    const { user } = useAuth();
+    const [selectedOption, setSelectedOption] = useState(null);
+    const [feedbackMessage, setFeedbackMessage] = useState('');
+    const [inquiryPermission, setInquiryPermission] = useState(false);
 
-    const iconStyles = 'text-3xl text-slate-700 w-12 h-12 flex justify-center items-center rounded-full hover:bg-yellow-300 hover:bg-opacity-50 cursor-pointer transition ease-in-out duration-300';
+    const iconStyles = 'text-3xl text-slate-700 w-12 h-12 flex justify-center items-center rounded-full hover:bg-yellow-300 cursor-pointer transition ease-in-out';
+
+    const handleIconClick = (option) => {
+        setSelectedOption(option);
+    };
+
+    const handleSendFeedback = () => {
+
+        const feedback = {
+            userEmail: user?.email,
+            satisfaction: selectedOption,
+            feedbackMessage: [feedbackMessage],
+            inquiryPermission: inquiryPermission,
+            feedbackDate: Date.now()
+        }
+        console.log(feedback);
+
+        axiosSecure.put(`/user-feedback/${user?.email}`, feedback)
+            .then(res => {
+                console.log(res);
+            })
+        setSelectedOption(null);
+        setInquiryPermission(false);
+        setFeedbackMessage('');
+
+        // Close the modal
+        close();
+    };
 
     if (!open) return null;
 
@@ -23,19 +57,31 @@ const FeedbackModal = ({ open, close }) => {
                         <h3 className="text-2xl font-bold tracking-widest mb-4 -mt-3">Give Feedback</h3>
                         <p className="font-medium">What do you think of our website?</p>
                         <ul className="flex gap-4 ml-2">
-                            <li className={iconStyles}><FaRegFaceAngry /></li>
-                            <li className={iconStyles}><FaRegFaceFrown /></li>
-                            <li className={iconStyles}><FaRegFaceMeh /></li>
-                            <li className={iconStyles}><FaRegFaceSmileBeam /></li>
-                            <li className={iconStyles}><FaRegFaceLaughBeam /></li>
+                            <li className={`${iconStyles} ${selectedOption === '1' ? 'bg-yellow-300' : ''}`} onClick={() => handleIconClick('1')}><FaRegFaceAngry /></li>
+                            <li className={`${iconStyles} ${selectedOption === '2' ? 'bg-yellow-300' : ''}`} onClick={() => handleIconClick('2')}><FaRegFaceFrown /></li>
+                            <li className={`${iconStyles} ${selectedOption === '3' ? 'bg-yellow-300' : ''}`} onClick={() => handleIconClick('3')}><FaRegFaceMeh /></li>
+                            <li className={`${iconStyles} ${selectedOption === '4' ? 'bg-yellow-300' : ''}`} onClick={() => handleIconClick('4')}><FaRegFaceSmileBeam /></li>
+                            <li className={`${iconStyles} ${selectedOption === '5' ? 'bg-yellow-300' : ''}`} onClick={() => handleIconClick('5')}><FaRegFaceLaughBeam /></li>
                         </ul>
                     </div>
                     <div className="flex flex-col items-start justify-center p-2 gap-2">
                         <p className="font-medium">Would you like to share your thoughts?</p>
-                        <textarea className="w-full dark:bg-slate-200 dark:text-slate-700 dark:border-none text-lg font-normal text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 resize-none" name="" id="" cols="45" rows="6"></textarea>
+                        <textarea
+                            className="w-full dark:bg-slate-200 dark:text-slate-700 dark:border-none text-lg font-normal text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 resize-none"
+                            name=""
+                            id=""
+                            cols="45"
+                            rows="6"
+                            value={feedbackMessage}
+                            onChange={(e) => setFeedbackMessage(e.target.value)}
+                        ></textarea>
+                    </div>
+                    <div className="flex items-center justify-start p-2">
+                        <input type="checkbox" id="inquiry" checked={inquiryPermission} onChange={() => setInquiryPermission(!inquiryPermission)} className="mr-2" />
+                        <label htmlFor="inquiry" className="font-medium text-gray-800">May we email you for more information or updates?</label>
                     </div>
                     <div className="footer pl-8 pr-4 flex justify-around -mb-2 mt-4">
-                        <button onClick={close} className="btn btn-ghost w-1/2 flex justify-center items-center hover:bg-orange-300">Send</button>
+                        <button onClick={handleSendFeedback} className="btn btn-ghost w-1/2 flex justify-center items-center hover:bg-orange-300">Send</button>
                         <button onClick={close} className="btn btn-ghost w-1/2 flex justify-center items-center">Cancel</button>
                     </div>
                 </div>
@@ -45,4 +91,4 @@ const FeedbackModal = ({ open, close }) => {
     )
 }
 
-export default FeedbackModal
+export default FeedbackModal;

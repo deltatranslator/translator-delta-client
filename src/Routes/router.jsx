@@ -8,6 +8,7 @@ import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import AdminAllUsers from "../Pages/DashboardPages/AdminPages/AdminAllUsers/AdminAllUsers";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import AdminUserFeedback from "../Pages/DashboardPages/AdminPages/AdminUserFeedback/AdminUserFeedback";
 
 
 const router = createBrowserRouter([
@@ -37,10 +38,15 @@ const router = createBrowserRouter([
   {
     path: '/dashboard',
     element: <Dashboard></Dashboard>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/dashboard',
         element: <AdminAllUsers />
+      },
+      {
+        path: '/dashboard/user-feedback',
+        element: <AdminUserFeedback />
       }
     ]
   }
