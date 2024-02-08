@@ -1,12 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-// import { IoMicOutline } from "react-icons/io5";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import useRecentLang from "../../hooks/useRecentLang";
 import useDebounce from "../../hooks/useDebounce";
 import countries from "../../data/countries";
-// import { GrPowerReset } from "react-icons/gr";
-// import { FaRegStopCircle } from "react-icons/fa";
 import "regenerator-runtime/runtime";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -40,7 +37,6 @@ const SourceLangComponent = () => {
   const [sourceLangCode, setSourceLangCode] = useState("");
   const [userPromt, setUserPromt] = useState("");
   // const inputDivRef = useRef();
-
   const [tempFlag, setTempFlag] = useState(false);
 
   /********Speech To Text Function Start**********/
@@ -323,9 +319,17 @@ const SourceLangComponent = () => {
       <div data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000">
         <div
           ref={divRef}
-          onInput={(e) => debounce(e.currentTarget.textContent)}
+          onInput={(e) => {
+            debounce(e.currentTarget.textContent);
+            setInputText(e.currentTarget.textContent);
+          }}
+          onKeyDown={(e) => {
+            if (inputText.length >= 500 && e.key !== "Backspace") {
+              e.preventDefault();
+            }
+          }}
           contentEditable={true}
-          className={`w-full dark:bg-slate-200 dark:text-slate-700 dark:border-none h-64 text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 resize-none`}
+          className={`w-full dark:bg-slate-200 dark:text-slate-700 dark:border-none text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 h-[480px] resize-none`}
           name=""
           id=""
         >
@@ -339,9 +343,9 @@ const SourceLangComponent = () => {
           stopListening={stopListening}
           resetTranscript={resetTranscript}
           divRef={divRef}
+          inputText={inputText}
         ></SpeechToText>
         {/* --------------------Button: speech stop reset-------------------------- */}
-
         <div className="relative left-[7rem] bottom-[3rem] flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full">
           <TextToSpeak className="text-[26px]" inputText={inputText} />
         </div>

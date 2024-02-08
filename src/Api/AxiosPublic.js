@@ -1,7 +1,7 @@
 // import axios from "axios";
 
 // const AxiosPublic = axios.create({
-//   baseURL: "http://localhost:5001",
+//   baseURL: "https://translator-delta-server.vercel.app",
 //   // withCredentials: true,
 // });
 // export default AxiosPublic;
