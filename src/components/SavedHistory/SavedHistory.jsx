@@ -5,8 +5,9 @@ import { useDispatch } from "react-redux";
 import {
   setHistoryDisplay,
 } from "../../redux/slices/translationHistory/translationHistorySlice";
+import { set } from "react-hook-form";
 
-const SavedHistory = ({ setSaveOpen, display, saveOpen }) => {
+const SavedHistory = ({ setSaveOpen, display, saveOpen, setOpenHistory, openHistory }) => {
   const dispatch = useDispatch();
 
   const handleSaveCLick = () => {
@@ -17,6 +18,7 @@ const SavedHistory = ({ setSaveOpen, display, saveOpen }) => {
   }
 
   const handleTranslationHistory = () => {
+    setOpenHistory(false)
     if (display !== saveOpen) {
       setSaveOpen(false);
     }
