@@ -54,7 +54,7 @@ const SavedComponent = () => {
         });
       });
   };
-  
+
 
   return (
     <div className="border rounded-xl w-full h-full shadow-md flex flex-col">

@@ -22,7 +22,7 @@ const Navbar = () => {
 
   const links = (
     <>
-      <li className="text-base font-bold dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
+      <li className="text-base font-medium dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
         <NavLink
           to="/"
           className={({ isActive, isPending }) =>
@@ -32,7 +32,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li className="text-base font-bold dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
+      <li className="text-base font-medium dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
         <NavLink
           to="/reviews"
           className={({ isActive, isPending }) =>
@@ -42,7 +42,7 @@ const Navbar = () => {
           Reviews
         </NavLink>
       </li>
-      <li className="text-base font-bold dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
+      <li className="text-base font-medium dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
         <a
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-[#ed7966]" : ""
@@ -51,6 +51,16 @@ const Navbar = () => {
         >
           Contact
         </a>
+      </li>
+      <li className="text-base font-medium dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
+        <NavLink
+          to="/dashboard"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-[#ed7966]" : ""
+          }
+        >
+          Dashboard
+        </NavLink>
       </li>
     </>
   );
@@ -106,7 +116,7 @@ const Navbar = () => {
 
             <Link to="/">
               <img
-                className="w-[250px] h-[70px]"
+                className="w-[150px]"
                 src="https://i.ibb.co/fkP6YGC/log-removebg-preview.png"
                 alt=""
               />
