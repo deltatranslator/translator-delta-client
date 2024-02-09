@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <div className=" dark:bg-slate-900 dark:text-white">
       <Navbar />
-      <TranslateSectionNav />
+      {/* <TranslateSectionNav /> */}
       <HomeBodyComponent />
       <div ref={ref}>
         <FAQSection reference={ref} />
