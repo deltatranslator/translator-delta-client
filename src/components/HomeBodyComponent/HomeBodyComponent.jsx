@@ -4,6 +4,8 @@ import SavedHistory from "../SavedHistory/SavedHistory";
 import TranslatorComponent from "../TranslatorComponent/TranslatorComponent";
 import { useState } from "react";
 import SavedComponent from "../SavedComponent/SavedComponent";
+import TranslateSectionNav from "../TranslateSectionNav/TranslateSectionNav";
+import FeedbackButton from "../Modals/FeedbackModal/FeedbackButton";
 
 
 const HomeBodyComponent = () => {
@@ -17,8 +19,12 @@ const HomeBodyComponent = () => {
     // console.log('hitting save click', display, saveOpen);
 
     return (
-        <div className="w-full flex flex-col md:flex-row ">
-            <div className="flex-grow">
+        <div className="w-full flex flex-col md:flex-row">
+            <div className="w-full container mx-auto">
+                <div className="flex items-center justify-between mt-12">
+                    <TranslateSectionNav />
+                    <FeedbackButton />
+                </div>
                 <TranslatorComponent />
                 <SavedHistory setSaveOpen={setSaveOpen} display={display} saveOpen={saveOpen} setOpenHistory={setOpenHistory} openHistory={openHistory} />
             </div>
