@@ -49,11 +49,11 @@ const AdminAllUsersCard = ({ user, idx, refresh, setRefresh }) => {
             <td>
                 <div className="font-semibold">{'user'}</div>
             </td>
-            {/* <td>
-                <button onClick={e => handleMakeAdmin(e, _id)} disabled={role === 'admin' && true} className="btn btn-ghost btn-sm border-2 border-orange-200">
+            <td>
+                <button className="btn btn-ghost btn-sm border-2 border-orange-200">
                     <MdOutlineUpdate />Make Admin
                 </button>
-            </td> */}
+            </td>
         </tr>
     );
 };

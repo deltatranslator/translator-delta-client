@@ -61,6 +61,7 @@ const AdminAllUsers = () => {
                                     <th>User&apos;s Name</th>
                                     <th>User&apos;s Email</th>
                                     <th>Role</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             {/* rows */}

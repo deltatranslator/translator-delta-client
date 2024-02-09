@@ -58,7 +58,7 @@ const AdminUserFeedback = () => {
                             {/* rows */}
                             <tbody>
                                 {
-                                    currentUsers?.map((feedback, idx) => <UserFeedbackCard key={feedback._id} idx={idx + 1} userFeedback={userFeedback}></UserFeedbackCard>)
+                                    currentUsers?.map((feedback, idx) => <UserFeedbackCard key={feedback._id} idx={idx + 1} feedback={feedback}></UserFeedbackCard>)
                                 }
                             </tbody>
                         </table>

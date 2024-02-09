@@ -241,11 +241,10 @@ const SourceLangComponent = () => {
               setSelectedLanguage(lang);
               setTempFlag(true);
             }}
-            className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${
-              activeIndex === idx
+            className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${activeIndex === idx
                 ? "border-b-2 border-blue-400"
                 : "border-b-2 border-transparent"
-            }`}
+              }`}
           >
             {lang}
           </div>
@@ -277,41 +276,39 @@ const SourceLangComponent = () => {
             {/* Dropdown options */}
             {!query
               ? langs.map((lang, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => {
-                      setActiveIndex(0);
-                      setDropdownOpen(false);
-                      handleRecentLang(lang.name);
-                      setSelectedLanguage(lang.name);
-                      setTempFlag(true);
-                    }}
-                    className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${
-                      activeIndex === idx
-                        ? "border-b-2 border-blue-400"
-                        : "border-b-2 border-transparent"
+                <div
+                  key={idx}
+                  onClick={() => {
+                    setActiveIndex(0);
+                    setDropdownOpen(false);
+                    handleRecentLang(lang.name);
+                    setSelectedLanguage(lang.name);
+                    setTempFlag(true);
+                  }}
+                  className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${activeIndex === idx
+                      ? "border-b-2 border-blue-400"
+                      : "border-b-2 border-transparent"
                     }`}
-                  >
-                    {lang.name}
-                  </div>
-                ))
+                >
+                  {lang.name}
+                </div>
+              ))
               : filteredLang.map((lang, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => {
-                      setActiveIndex(0);
-                      setDropdownOpen(false);
-                      setSelectedLanguage(lang.name);
-                      setTempFlag(true);
-                      handleRecentLang(lang.name);
-                    }}
-                    className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${
-                      activeIndex === idx ? "text-blue-500" : "text-gray-800"
+                <div
+                  key={idx}
+                  onClick={() => {
+                    setActiveIndex(0);
+                    setDropdownOpen(false);
+                    setSelectedLanguage(lang.name);
+                    setTempFlag(true);
+                    handleRecentLang(lang.name);
+                  }}
+                  className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${activeIndex === idx ? "text-blue-500" : "text-gray-800"
                     }`}
-                  >
-                    {lang.name}
-                  </div>
-                ))}
+                >
+                  {lang.name}
+                </div>
+              ))}
           </div>
         </div>
       )}
@@ -321,12 +318,12 @@ const SourceLangComponent = () => {
           ref={divRef}
           onInput={(e) => {
             debounce(e.currentTarget.textContent);
-            //   setInputText(e.currentTarget.textContent);
-            // }}
-            // onKeyDown={(e) => {
-            //   if (inputText.length >= 500 && e.key !== "Backspace") {
-            //     e.preventDefault();
-            //   }
+            setInputText(e.currentTarget.textContent);
+          }}
+          onKeyDown={(e) => {
+            if (inputText.length >= 500 && e.key !== "Backspace") {
+              e.preventDefault();
+            }
           }}
           contentEditable={true}
           className={`w-full dark:bg-slate-200 dark:text-slate-700 dark:border-none text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 h-[480px] resize-none`}
