@@ -12,7 +12,7 @@ import { TiDelete } from "react-icons/ti";
 import Swal from "sweetalert2";
 
 
-const History = ({setOpenHistory, openHistory}) => {
+const History = ({ setOpenHistory, openHistory }) => {
   const { user } = useAuth();
   const [history, setHistory] = useState();
   const reloadState = useSelector(selectReloadState);
@@ -70,23 +70,23 @@ const History = ({setOpenHistory, openHistory}) => {
 
   const handleDeleteHistory = () => {
     axiosSecure.delete(`/translation-history/${user?.email}`)
-    .then((res) => {
-      console.log(res.data);
-    })
-    .catch(err => {
-      console.log(err.message);
-    })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err.message);
+      })
   }
 
   const handleOpenHistory = () => {
-   setOpenHistory(true)
-   
+    setOpenHistory(true)
+
   }
   return (
-    <div className="border rounded-xl w-full h-full shadow-md flex flex-col">
-     <div className="flex items-end justify-end">
-     <p onClick={handleOpenHistory} className="text-end cursor-pointer pb-2 hover:text-red-600 px-4 text-2xl">✕</p>
-     </div>
+    <div className="border rounded-xl w-full h-[700px] shadow-md flex flex-col overflow-scroll">
+      <div className="flex items-end justify-end">
+        <p onClick={handleOpenHistory} className="text-end cursor-pointer pb-2 hover:text-red-600 px-4 text-2xl">✕</p>
+      </div>
       <div className="text-white text-sm font-bold bg-[#303179] border-b-2 p-4 rounded-md cursor-pointer flex items-center justify-between gap-1">
         <p>All History</p>
         <button onClick={handleDeleteHistory} className="btn btn-ghost font-bold btn-sm hover:text-red-600">Clear All</button>

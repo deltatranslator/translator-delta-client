@@ -54,10 +54,10 @@ const SavedComponent = () => {
         });
       });
   };
-  
+
 
   return (
-    <div className="border rounded-xl w-full h-full shadow-md flex flex-col">
+    <div className="border rounded-xl w-full h-[700px] shadow-md flex flex-col overflow-scroll">
       <div className="text-white text-sm font-bold bg-[#303179] border-b-2 p-4 m-2 rounded-lg  cursor-pointer flex justify-between gap-1">
         All Saved History
       </div>
