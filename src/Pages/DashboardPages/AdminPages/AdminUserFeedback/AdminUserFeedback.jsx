@@ -18,11 +18,11 @@ const AdminUserFeedback = () => {
             })
     }, [])
 
-    console.log('meow', userFeedback);
 
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
     const currentUsers = userFeedback?.slice(indexOfFirstUser, indexOfLastUser);
+    console.log('meow', currentUsers);
 
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
@@ -58,7 +58,7 @@ const AdminUserFeedback = () => {
                             {/* rows */}
                             <tbody>
                                 {
-                                    currentUsers?.map((feedback, idx) => <UserFeedbackCard key={feedback._id} idx={idx + 1} userFeedback={userFeedback}></UserFeedbackCard>)
+                                    currentUsers?.map((feedback, idx) => <UserFeedbackCard key={feedback._id} idx={idx + 1} feedback={feedback}></UserFeedbackCard>)
                                 }
                             </tbody>
                         </table>
