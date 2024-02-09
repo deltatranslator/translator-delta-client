@@ -13,7 +13,6 @@ const AdminUserFeedback = () => {
         axiosSecure.get('/user-feedback')
             .then(res => {
                 const feedback = res.data;
-                console.log(feedback);
                 setUserFeedback(feedback);
             })
     }, [])
@@ -22,7 +21,6 @@ const AdminUserFeedback = () => {
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
     const currentUsers = userFeedback?.slice(indexOfFirstUser, indexOfLastUser);
-    console.log('meow', currentUsers);
 
     const paginate = pageNumber => setCurrentPage(pageNumber);
 

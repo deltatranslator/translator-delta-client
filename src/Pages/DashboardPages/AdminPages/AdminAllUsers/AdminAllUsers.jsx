@@ -20,9 +20,7 @@ const AdminAllUsers = () => {
                 const deltaUsers = res.data;
                 dispatch(setUsers(deltaUsers));
             })
-    }, [dispatch])
-
-    console.log('meow', users);
+    }, [dispatch]);
 
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
@@ -61,6 +59,7 @@ const AdminAllUsers = () => {
                                     <th>User&apos;s Name</th>
                                     <th>User&apos;s Email</th>
                                     <th>Role</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             {/* rows */}
