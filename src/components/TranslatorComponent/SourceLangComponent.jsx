@@ -321,7 +321,7 @@ const SourceLangComponent = () => {
           ref={divRef}
           onInput={(e) => {
             debounce(e.currentTarget.textContent);
-            setInputText(e.currentTarget.textContent);
+            // setInputText(e.currentTarget.textContent);
           }}
           // onKeyDown={(e) => {
           //   if (inputText.length >= 500 && e.key !== "Backspace") {
