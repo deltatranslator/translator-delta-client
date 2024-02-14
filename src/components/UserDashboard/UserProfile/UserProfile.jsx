@@ -1,6 +1,11 @@
 import Lottie from "lottie-react";
 import userAnimation from "../../../assets/userProfile.json";
+import useUser from "../../../hooks/useUser";
+
 const UserProfile = () => {
+  const [isUser] = useUser();
+  //   console.log(isUser);
+
   return (
     <>
       <section className=" text-center mt-5 space-y-2">
@@ -9,10 +14,10 @@ const UserProfile = () => {
           Info about you and your preferences across Delta services
         </p>
       </section>
-      <section className="md:flex flex-grow-0 items-center justify-evenly px-5">
+      <section className="md:flex flex-grow-0 items-center px-5">
         <div className="space-y-2 flex-1">
           <h2 className="text-2xl font-medium text-slate-50">
-            Your profile info in Google services
+            Your profile info in Delta services
           </h2>
           <p className=" text-slate-200">
             Personal info and options to manage it. You can make some of this
@@ -23,6 +28,9 @@ const UserProfile = () => {
         <div className="overflow-hidden">
           <Lottie className="md:w-96 w-full" animationData={userAnimation} />
         </div>
+      </section>
+      <section>
+        
       </section>
     </>
   );

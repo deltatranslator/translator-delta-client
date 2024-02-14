@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaRegUserCircle } from "react-icons/fa";
+import { FaHome, FaRegUserCircle } from "react-icons/fa";
 import { HiMenuAlt3 } from "react-icons/hi";
 const UserMenus = () => {
   const [open, setOpen] = useState(true);
@@ -10,6 +10,11 @@ const UserMenus = () => {
       name: "Profile",
       link: "/dashboard/userProfile",
       icon: FaRegUserCircle,
+    },
+    {
+      name: "Home",
+      link: "/",
+      icon: FaHome,
     },
   ];
 
