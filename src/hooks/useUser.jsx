@@ -14,7 +14,7 @@ const useUser = () => {
       return res.data;
     },
   });
-  return [isUser];
+  return {isUser};
 };
 
 export default useUser;

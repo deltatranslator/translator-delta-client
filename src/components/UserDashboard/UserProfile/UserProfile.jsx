@@ -5,9 +5,10 @@ import { FaChevronRight } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
 
 const UserProfile = () => {
-  const [isUser] = useUser();
+  const { isUser } = useUser();
+  //   console.log(isUser);
   const { user } = useAuth();
-  console.log(user);
+  //   console.log(user);
 
   return (
     <>
@@ -19,7 +20,7 @@ const UserProfile = () => {
             Info about you and your preferences across Delta services
           </p>
         </section>
-        <section className="md:flex flex-grow-0 items-center ml-10">
+        <section className="md:flex flex-grow-0 items-center ml-10 w-10/12">
           <div className="space-y-2 flex-1">
             <h2 className="text-2xl font-medium text-slate-50">
               Your profile info in Delta services
@@ -34,11 +35,12 @@ const UserProfile = () => {
             <Lottie className="w-full md:w-80" animationData={userAnimation} />
           </div>
         </section>
-        <section className=" rounded-md border p-5 ml-10">
+        {/* Basic info */}
+        <section className="rounded-md border p-5 ml-10 w-10/12">
           <div className=" md:flex flex-grow-0 items-center justify-between">
             <div className=" space-y-12">
               <div>
-                <h3 className=" text-2xl text-slate-50 font-medium">
+                <h3 className=" text-3xl text-slate-50 font-medium">
                   Basic info
                 </h3>
                 <p className=" text-slate-50 text-sm">
@@ -72,7 +74,7 @@ const UserProfile = () => {
                     ? isUser.name
                     : user && user.displayName
                     ? user.displayName
-                    : "Name Not Available"}
+                    : "Not Available"}
                 </p>
               </div>
               <div>
@@ -81,19 +83,105 @@ const UserProfile = () => {
             </div>
             <hr className="mt-5 mb-5" />
             <div className=" flex items-center justify-between text-slate-50">
-              <div className=" flex items-center text-sm gap-[213px]">
-                <p>Email</p>
+              <div className=" flex items-center text-sm gap-[193px]">
+                <p>Birthday</p>
+                <p>January 26, 2000</p>
+              </div>
+              <div>
+                <FaChevronRight className=" text-2xl" />
+              </div>
+            </div>
+            <hr className="mt-5 mb-5" />
+            <div className=" flex items-center justify-between text-slate-50">
+              <div className=" flex items-center text-sm gap-[200px]">
+                <p>Gender</p>
                 <p>
-                  {isUser && isUser.email
-                    ? isUser.email
-                    : user && user.email
-                    ? user.email
-                    : "Email Not Available"}
+                  {isUser && isUser.gender
+                    ? isUser.gender
+                    : user && user.gender
+                    ? user.gender
+                    : "Not Available"}
                 </p>
               </div>
               <div>
                 <FaChevronRight className=" text-2xl" />
               </div>
+            </div>
+          </div>
+        </section>
+        {/* Contact Info */}
+        <section className="rounded-md border p-5 ml-10 mt-10 w-10/12">
+          <div>
+            <h2 className=" text-3xl font-medium text-slate-50">
+              Contact Info
+            </h2>
+          </div>
+          <div className=" flex items-center justify-between text-slate-50">
+            <div className=" flex items-center text-sm gap-[213px] mt-10">
+              <p>Email</p>
+              <p>
+                {isUser && isUser.email
+                  ? isUser.email
+                  : user && user.email
+                  ? user.email
+                  : "Email Not Available"}
+              </p>
+            </div>
+            <div>
+              <FaChevronRight className=" text-2xl" />
+            </div>
+          </div>
+          <hr className="mt-5 mb-5" />
+          <div className="flex items-center justify-between text-slate-50">
+            <div className="flex items-center text-sm gap-[208px]">
+              <p>Phone</p>
+              <p>01770064053</p>
+            </div>
+            <div>
+              <FaChevronRight className=" text-2xl" />
+            </div>
+          </div>
+        </section>
+        {/* Addresses Info */}
+        <section className="rounded-md border p-5 ml-10 mt-10 w-10/12">
+          <div>
+            <h2 className=" text-3xl font-medium text-slate-50">Addresses</h2>
+            <p className=" text-sm text-slate-200 mt-2">
+              Your home and work addresses are used to personalize your
+              experiences across Delta products, and for more relevant ads.
+            </p>
+            <p className=" text-sm text-slate-50 font-bold mt-5">
+              You can also add addresses to your Google Profile. You can choose
+              if others see your profile addresses.
+            </p>
+          </div>
+          <div className=" flex items-center justify-between text-slate-50">
+            <div className=" flex items-center text-sm gap-[208px] mt-10">
+              <p>Home</p>
+              <p>(23.759356800000003, 90.3591746)</p>
+            </div>
+            <div>
+              <FaChevronRight className=" text-2xl" />
+            </div>
+          </div>
+          <hr className="mt-5 mb-5" />
+          <div className="flex items-center justify-between text-slate-50">
+            <div className="flex items-center text-sm gap-[208px]">
+              <p>Work</p>
+              <p>Student</p>
+            </div>
+            <div>
+              <FaChevronRight className=" text-2xl" />
+            </div>
+          </div>
+          <hr className="mt-5 mb-5" />
+          <div className="flex items-center justify-between text-slate-50">
+            <div className="flex items-center text-sm gap-[155px]">
+              <p>Other Address</p>
+              <p>None</p>
+            </div>
+            <div>
+              <FaChevronRight className=" text-2xl" />
             </div>
           </div>
         </section>
