@@ -42,8 +42,7 @@ const Occupation = () => {
     event.preventDefault();
     try {
       const isOccupation = { occupation };
-      await axiosSecure.post("/profile", isOccupation)
-      .then((res) => {
+      await axiosSecure.post("/profile", isOccupation).then((res) => {
         if (res.data.acknowledged == true) {
           toast.success("Data Saved");
         } else {
@@ -104,13 +103,10 @@ const Occupation = () => {
             Your occupation
           </h2>
         </div>
-        <form
-          onSubmit={handleOccupationSubmit}
-          className="flex items-center mt-5"
-        >
+        <form onSubmit={handleOccupationSubmit} className="items-center mt-5">
           <Radio.Group
             size="large"
-            className="gap-5 md:flex flex-grow-0 items-center"
+            className="grid md:grid-cols-4 grid-cols-2 gap-5 text-center"
           >
             {occupations.map((item) => (
               <Radio.Button
@@ -125,7 +121,7 @@ const Occupation = () => {
           <ReactiveButton
             style={{
               borderRadius: "5px",
-              marginLeft: "20px",
+              marginTop: "15px",
             }}
             size={"normal"}
             buttonState={state}
