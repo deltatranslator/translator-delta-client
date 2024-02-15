@@ -20,7 +20,7 @@ const AdminAllUsers = () => {
     });
   }, [dispatch]);
 
-  console.log("meow", users);
+  // console.log("meow", users);
 
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
