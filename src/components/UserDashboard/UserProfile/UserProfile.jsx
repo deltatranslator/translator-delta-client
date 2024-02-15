@@ -3,12 +3,13 @@ import userAnimation from "../../../assets/userProfile.json";
 import useUser from "../../../hooks/useUser";
 import { FaChevronRight } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
+import { MdVerified } from "react-icons/md";
+import { GiCrossMark } from "react-icons/gi";
+import Occupation from "./Occupation";
 
 const UserProfile = () => {
   const { isUser } = useUser();
-  //   console.log(isUser);
   const { user } = useAuth();
-  //   console.log(user);
 
   return (
     <>
@@ -119,13 +120,32 @@ const UserProfile = () => {
           <div className=" flex items-center justify-between text-slate-50">
             <div className=" flex items-center text-sm gap-[213px] mt-10">
               <p>Email</p>
-              <p>
-                {isUser && isUser.email
-                  ? isUser.email
-                  : user && user.email
-                  ? user.email
-                  : "Email Not Available"}
-              </p>
+              <div className="flex gap-2 items-center">
+                <p>
+                  {isUser && isUser.email
+                    ? isUser.email
+                    : user && user.email
+                    ? user.email
+                    : "Email Not Available"}
+                </p>
+                <p>
+                  {user?.emailVerified == true ? (
+                    <div
+                      className="tooltip tooltip-success"
+                      data-tip="Verified"
+                    >
+                      <MdVerified className=" text-green-500 text-2xl" />
+                    </div>
+                  ) : (
+                    <div
+                      data-tip="Non Verified"
+                      className="tooltip tooltip-error"
+                    >
+                      <GiCrossMark className=" text-red-600 text-2xl" />
+                    </div>
+                  )}
+                </p>
+              </div>
             </div>
             <div>
               <FaChevronRight className=" text-2xl" />
@@ -183,6 +203,12 @@ const UserProfile = () => {
             <div>
               <FaChevronRight className=" text-2xl" />
             </div>
+          </div>
+        </section>
+        {/* Your occupation */}
+        <section className="rounded-md border p-5 ml-10 mt-10 w-10/12">
+          <div>
+            <Occupation />
           </div>
         </section>
       </section>
