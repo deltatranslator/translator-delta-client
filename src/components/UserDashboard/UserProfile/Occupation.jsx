@@ -3,8 +3,9 @@ import { Radio } from "antd";
 import ReactiveButton from "reactive-button";
 const Occupation = () => {
   const [occupation, setOccupation] = useState("");
-  const [interest, setInterest] = useState("");
   const [state, setState] = useState("idle");
+  const [interestState, setInterestState] = useState("idle");
+  const [selectedInterests, setSelectedInterests] = useState([]);
 
   // Array of occupations with value and text
   const occupations = [
@@ -29,25 +30,36 @@ const Occupation = () => {
     { id: 12, value: "writing_skills", text: "Writing Skills" },
   ];
 
-  // Handler function for radio button change
+  // Handler function for occupation radio button change
   const handleOccupationChange = (event) => {
     setOccupation(event.target.value);
   };
 
+  // Handler function for Interest radio button change
   const handleInterestChange = (event) => {
-    setInterest(event.target.value);
+    const { value, checked } = event.target;
+    if (checked && selectedInterests.length < 3) {
+      setSelectedInterests([...selectedInterests, value]);
+    } else {
+      setSelectedInterests(
+        selectedInterests.filter((interest) => interest !== value)
+      );
+    }
   };
 
+  // Handler function for occupation radio button
   const handleOccupationSubmit = (event) => {
     event.preventDefault();
     console.log("Selected occupation:", occupation);
   };
 
+  // Handler function for interest radio button
   const handleInterestSubmit = (event) => {
     event.preventDefault();
-    console.log("Selected interest:", interest);
+    console.log("Selected interest:", selectedInterests);
   };
 
+  // Handler function for occupation button
   const onClickOccupationHandler = () => {
     setState("loading");
     setTimeout(() => {
@@ -55,10 +67,11 @@ const Occupation = () => {
     }, 2000);
   };
 
+  // Handler function for interest button
   const onClickInterestHandler = () => {
-    setState("loading");
+    setInterestState("loading");
     setTimeout(() => {
-      setState("success");
+      setInterestState("success");
     }, 2000);
   };
 
@@ -108,35 +121,34 @@ const Occupation = () => {
         </form>
       </section>
       {/* Areas of interest */}
-      <section className=" mt-10 pb-3">
+      <section className="mt-10 pb-3">
         <div>
-          <h2 className=" text-3xl font-medium text-slate-50">
+          <h2 className="text-3xl font-medium text-slate-50">
             Areas of interest
           </h2>
         </div>
-        <form onSubmit={handleInterestSubmit} className=" mt-5">
-          <Radio.Group
-            size="large"
-            className="grid md:grid-cols-4 grid-cols-3 gap-5 text-center"
-          >
+        <form onSubmit={handleInterestSubmit} className="mt-5">
+          <div className="grid md:grid-cols-4 grid-cols-3 gap-5 text-start text-slate-50">
             {areasOfInterest.map((item) => (
-              <Radio.Button
-                key={item?.id}
-                onChange={handleInterestChange}
-                value={item?.value}
-                className=""
-              >
-                {item?.text}
-              </Radio.Button>
+              <label key={item.id} className="mb-2">
+                <input
+                  type="checkbox"
+                  value={item.value}
+                  checked={selectedInterests.includes(item.value)}
+                  onChange={handleInterestChange}
+                  className="mr-2"
+                />
+                {item.text}
+              </label>
             ))}
-          </Radio.Group>
+          </div>
           <ReactiveButton
             style={{
               borderRadius: "5px",
               marginTop: "15px",
             }}
             size={"normal"}
-            buttonState={state}
+            buttonState={interestState}
             idleText="Save"
             type="submit"
             loadingText="Loading"
