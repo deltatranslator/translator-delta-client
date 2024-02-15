@@ -9,6 +9,7 @@ import Occupation from "./Occupation";
 
 const UserProfile = () => {
   const { isUser } = useUser();
+  // console.log(isUser);
   const { user } = useAuth();
 
   return (

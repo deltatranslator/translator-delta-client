@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Radio } from "antd";
 import ReactiveButton from "reactive-button";
+import axiosSecure from "../../../api";
+import toast from "react-hot-toast";
 const Occupation = () => {
   const [occupation, setOccupation] = useState("");
   const [state, setState] = useState("idle");
@@ -35,28 +37,22 @@ const Occupation = () => {
     setOccupation(event.target.value);
   };
 
-  // Handler function for Interest radio button change
-  const handleInterestChange = (event) => {
-    const { value, checked } = event.target;
-    if (checked && selectedInterests.length < 3) {
-      setSelectedInterests([...selectedInterests, value]);
-    } else {
-      setSelectedInterests(
-        selectedInterests.filter((interest) => interest !== value)
-      );
-    }
-  };
-
   // Handler function for occupation radio button
-  const handleOccupationSubmit = (event) => {
+  const handleOccupationSubmit = async (event) => {
     event.preventDefault();
-    console.log("Selected occupation:", occupation);
-  };
-
-  // Handler function for interest radio button
-  const handleInterestSubmit = (event) => {
-    event.preventDefault();
-    console.log("Selected interest:", selectedInterests);
+    try {
+      const isOccupation = { occupation };
+      await axiosSecure.post("/profile", isOccupation)
+      .then((res) => {
+        if (res.data.acknowledged == true) {
+          toast.success("Data Saved");
+        } else {
+          toast.error("Failed!");
+        }
+      });
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   // Handler function for occupation button
@@ -65,6 +61,30 @@ const Occupation = () => {
     setTimeout(() => {
       setState("success");
     }, 2000);
+  };
+
+  // Handler function for Interest radio button change
+  const handleInterestChange = (event) => {
+    setSelectedInterests(event.target.value);
+  };
+
+  // Handler function for interest radio button
+  const handleInterestSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      // console.log("Selected interest:", selectedInterests);
+      const isInterest = { selectedInterests };
+      await axiosSecure.post("/profile", isInterest).then((res) => {
+        if (res.data.acknowledged == true) {
+          toast.success("Data Saved");
+        } else {
+          toast.error("Failed!");
+        }
+      });
+    } catch (error) {
+      console.error("Error:", error);
+      throw error; //
+    }
   };
 
   // Handler function for interest button
@@ -121,27 +141,28 @@ const Occupation = () => {
         </form>
       </section>
       {/* Areas of interest */}
-      <section className="mt-10 pb-3">
+      <section className=" mt-10 pb-3">
         <div>
-          <h2 className="text-3xl font-medium text-slate-50">
+          <h2 className=" text-3xl font-medium text-slate-50">
             Areas of interest
           </h2>
         </div>
-        <form onSubmit={handleInterestSubmit} className="mt-5">
-          <div className="grid md:grid-cols-4 grid-cols-3 gap-5 text-start text-slate-50">
+        <form onSubmit={handleInterestSubmit} className=" mt-5">
+          <Radio.Group
+            size="large"
+            className="grid md:grid-cols-4 grid-cols-3 gap-5 text-center"
+          >
             {areasOfInterest.map((item) => (
-              <label key={item.id} className="mb-2">
-                <input
-                  type="checkbox"
-                  value={item.value}
-                  checked={selectedInterests.includes(item.value)}
-                  onChange={handleInterestChange}
-                  className="mr-2"
-                />
-                {item.text}
-              </label>
+              <Radio.Button
+                key={item?.id}
+                onChange={handleInterestChange}
+                value={item?.value}
+                className=""
+              >
+                {item?.text}
+              </Radio.Button>
             ))}
-          </div>
+          </Radio.Group>
           <ReactiveButton
             style={{
               borderRadius: "5px",
