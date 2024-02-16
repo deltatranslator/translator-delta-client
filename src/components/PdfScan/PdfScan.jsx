@@ -5,10 +5,13 @@ import PdfScanArea from "./PdfScanArea";
 
 const PdfScan = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen ">
       <Navbar />
       <TranslateSectionNav />
-      <PdfScanArea />
+      <div className="max-w-[1500px] mx-auto my-10 md:my-14 xl:my-16">
+        <PdfScanArea />
+      </div>
+
       <Footer />
     </div>
   );
