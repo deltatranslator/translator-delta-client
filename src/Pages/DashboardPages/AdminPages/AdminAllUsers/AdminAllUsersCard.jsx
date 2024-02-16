@@ -2,14 +2,13 @@ import { MdOutlineUpdate } from "react-icons/md";
 import Swal from "sweetalert2";
 import { useEffect } from "react";
 
-
 const AdminAllUsersCard = ({ user, idx, refresh, setRefresh }) => {
     const { _id, name, email, photo } = user || {};
 
     const handleMakeAdmin = (e, id) => {
         const updateInfo = {
-            role: "admin"
-        }
+            role: "admin",
+        };
 
         // axiosSecure.patch(`/users/change-role/${id}`, updateInfo)
         //     .then(res => {
@@ -24,7 +23,7 @@ const AdminAllUsersCard = ({ user, idx, refresh, setRefresh }) => {
         //             });
         //         }
         //     })
-    }
+    };
 
     return (
         <tr>
@@ -47,11 +46,12 @@ const AdminAllUsersCard = ({ user, idx, refresh, setRefresh }) => {
                 <span className="font-semibold">{email}</span>
             </td>
             <td>
-                <div className="font-semibold">{'user'}</div>
+                <div className="font-semibold">{"user"}</div>
             </td>
             <td>
                 <button className="btn btn-ghost btn-sm border-2 border-orange-200">
-                    <MdOutlineUpdate />Make Admin
+                    <MdOutlineUpdate />
+                    Make Admin
                 </button>
             </td>
         </tr>

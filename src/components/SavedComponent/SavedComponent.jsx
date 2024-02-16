@@ -3,6 +3,7 @@ import axiosSecure from "../../api";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { TiDelete } from "react-icons/ti";
+import TextToSpeak from "../TextToSpeak/TextToSpeak";
 
 const SavedComponent = () => {
   const { user } = useAuth();
@@ -55,7 +56,6 @@ const SavedComponent = () => {
       });
   };
 
-
   return (
     <div className="border rounded-xl w-full h-[700px] shadow-md flex flex-col overflow-scroll">
       <div className="text-white text-sm font-bold bg-[#303179] border-b-2 p-4 m-2 rounded-lg  cursor-pointer flex justify-between gap-1">
@@ -68,8 +68,14 @@ const SavedComponent = () => {
             className="text-gray-500 text-sm font-bold bg-orange-50 border-b-2 p-4 m-2 rounded-lg hover:bg-gray-100 cursor-pointer flex justify-between gap-1"
           >
             <div>
-              <p>{entry.sourceText}</p>
-              <p>{entry.translatedText}</p>
+              <div className="flex items-center gap-2">
+                <p>{entry.sourceText}</p>
+                <TextToSpeak inputText={entry.sourceText} />
+              </div>
+              <div className="flex items-center gap-2">
+                <p>{entry.translatedText}</p>
+                <TextToSpeak inputText={entry.translatedText} />
+              </div>
             </div>
             <div>
               <TiDelete
