@@ -25,6 +25,7 @@ import axiosSecure from "../../api";
 
 import { reloadHistory } from "../../redux/slices/translationHistory/translationHistorySlice";
 
+
 const SourcePdfComponent = () => {
     const { user } = useAuth();
     const [recentLang, setRecentLang] = useRecentLang("recentSourceLang");
@@ -238,13 +239,64 @@ const SourcePdfComponent = () => {
     // pdf file upload 
     const [file, setFile] = useState("")
 
-    const handleSubmitPdf = (e) => {
-        e.preventDefault()
-        const pdf = e.target.pdf.files[0];
-        console.log(pdf);
+    // const handleSubmitPdf = async (e) => {
+    //     e.preventDefault()
+    //     const pdf = e.target.pdf.files[0];
+    //     console.log(pdf);
+    //     // await axiosSecure.post('/pdfFile', pdf)
+    //     //     .then(res => {
+    //     //         console.log(res.data);
+    //     //     })
+    //     //     .catch(err=>{
+    //     //         console.log(err);
+    //     //     })
+
+    // }
+    // <PdfTextRead file={file} />
+
+    // const [selectedFile, setSelectedFile] = useState({});
+    // const [message, setMessage] = useState('');
+
+
+    // const handleSubmit = async (e) => {
+    //     try {
+    //         e.preventDefault()
+    //         const pdf = e.target.pdf.files[0];
+    //         console.log(pdf);
+    //         setFile(pdf.name)
+    //         // setSelectedFile(pdf)
+    //         // const formData = new FormData();
+    //         // formData.append('pdf', selectedFile);
+    //         console.log(typeof(pdf));
+
+    //         await axiosSecure.post('/upload', pdf);
+
+    //         setMessage('File uploaded and translated successfully.');
+    //     } catch (error) {
+    //         setMessage('Error uploading and translating file.');
+    //         console.error('Error:', error);
+    //     }
+    // };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const inpPdf = e.target?.pdf?.files[0];
+        console.log(inpPdf);
+        // const formData = new FormData();
+        // formData.append("pdfFile", inpPdf);
+        try {
+            axiosSecure.post("/extract-text", inpPdf)
+                .then(response => {
+                    console.log(response.data);
+                })
+
+        } catch (error) {
+            console.log(error);
+        }
+        // Translated text
 
     }
-    console.log(file);
+
 
 
     return (
@@ -343,7 +395,7 @@ const SourcePdfComponent = () => {
                     <div className="w-full h-full flex justify-center items-center">
                         <div className="mt-7 ">
                             <h2 className="my-5 text-neutral-400">Upload your pdf file</h2>
-                            <form onSubmit={handleSubmitPdf} className="flex justify-center flex-col" action="
+                            <form onSubmit={handleSubmit} className="flex justify-center flex-col" action="
                             ">
                                 <label
                                     htmlFor="image"
@@ -367,10 +419,12 @@ const SourcePdfComponent = () => {
                                     name="pdf"
                                     accept="application/pdf"
                                     onChange={(e) => setFile(e?.target?.files[0]?.name)}
+
                                 />
 
                                 <button type="submit" className="my-2 text-sm bg-[#ed7966] hover:bg-[#303179] text-white rounded-lg px-2 py-1"> Submit</button>
                             </form>
+                            {/* {message} */}
                         </div>
 
                     </div>
