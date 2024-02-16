@@ -99,7 +99,7 @@ const Occupation = () => {
       {/* Your occupation */}
       <section>
         <div>
-          <h2 className=" text-3xl font-medium text-slate-50">
+          <h2 className=" text-3xl font-medium text-slate-900 dark:text-slate-50">
             Your occupation
           </h2>
         </div>
@@ -139,7 +139,7 @@ const Occupation = () => {
       {/* Areas of interest */}
       <section className=" mt-10 pb-3">
         <div>
-          <h2 className=" text-3xl font-medium text-slate-50">
+          <h2 className=" text-3xl font-medium text-slate-900 dark:text-slate-50">
             Areas of interest
           </h2>
         </div>

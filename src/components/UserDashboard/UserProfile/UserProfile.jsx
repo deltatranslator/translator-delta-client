@@ -18,8 +18,10 @@ const UserProfile = () => {
       <section className="md:py-20 py-10">
         {/* Personal Info */}
         <section className=" text-center space-y-2">
-          <h3 className=" text-4xl font-medium text-slate-50">Personal info</h3>
-          <p className=" font-medium text-slate-300">
+          <h3 className=" text-4xl font-medium text-slate-900 dark:text-slate-50">
+            Personal info
+          </h3>
+          <p className=" font-medium text-slate-600 dark:text-slate-50">
             Info about you and your preferences across Delta services
           </p>
         </section>
@@ -28,10 +30,10 @@ const UserProfile = () => {
             <Lottie className="w-full md:w-80" animationData={userAnimation} />
           </div>
           <div className="space-y-2 flex-1">
-            <h2 className="text-2xl font-medium text-slate-50">
+            <h2 className="text-2xl font-medium text-slate-900 dark:text-slate-50">
               Your profile info in Delta services
             </h2>
-            <p className=" text-slate-200 md:w-10/12 w-full">
+            <p className=" text-slate-700 dark:text-slate-50 md:w-10/12 w-full">
               Personal info and options to manage it. You can make some of this
               info, like your contact details, visible to others so they can
               reach you easily. You can also see a summary of your profiles.
@@ -53,15 +55,15 @@ const UserProfile = () => {
             </div>
             <div className=" space-y-12 w-full">
               <div>
-                <h3 className=" text-3xl text-slate-50 font-medium">
+                <h3 className=" text-3xl text-slate-900 dark:text-slate-50 font-medium">
                   Basic info
                 </h3>
-                <p className=" text-slate-50 text-sm">
+                <p className=" text-slate-700 dark:text-slate-50 text-sm">
                   Some info may be visible to other people using Google
                   services.
                 </p>
               </div>
-              <div className="text-sm flex items-center md:gap-40 text-slate-50">
+              <div className="text-sm flex items-center md:gap-40 text-slate-900 dark:text-slate-50">
                 <p>Profile Picture</p>
                 <p>A profile picture helps personaliZe your account</p>
               </div>
@@ -69,7 +71,7 @@ const UserProfile = () => {
           </div>
           <div>
             <hr className="mt-5 mb-5" />
-            <div className=" flex items-center justify-between text-slate-50">
+            <div className=" flex items-center justify-between text-slate-900 dark:text-slate-50">
               <div className=" flex items-center text-sm md:gap-[213px] gap-[50px]">
                 <p>Name</p>
                 <p>
@@ -85,7 +87,7 @@ const UserProfile = () => {
               </div>
             </div>
             <hr className="mt-5 mb-5" />
-            <div className=" flex items-center justify-between text-slate-50">
+            <div className=" flex items-center justify-between text-slate-900 dark:text-slate-50">
               <div className=" flex items-center text-sm gap-[33px] md:gap-[193px]">
                 <p>Birthday</p>
                 <p>January 26, 2000</p>
@@ -95,7 +97,7 @@ const UserProfile = () => {
               </div>
             </div>
             <hr className="mt-5 mb-5" />
-            <div className=" flex items-center justify-between text-slate-50">
+            <div className=" flex items-center justify-between text-slate-900 dark:text-slate-50">
               <div className=" flex items-center text-sm gap-[40px] md:gap-[200px]">
                 <p>Gender</p>
                 <p>
@@ -115,11 +117,11 @@ const UserProfile = () => {
         {/* Contact Info */}
         <section className="rounded-md border md:p-5 p-1 md:ml-10 mt-10 md:w-10/12 w-full">
           <div>
-            <h2 className=" text-3xl font-medium text-slate-50">
+            <h2 className=" text-3xl font-medium text-slate-900 dark:text-slate-50">
               Contact Info
             </h2>
           </div>
-          <div className=" flex items-center justify-between text-slate-50">
+          <div className=" flex items-center justify-between text-slate-900 dark:text-slate-50">
             <div className=" flex items-center text-sm gap-[20px] md:gap-[213px] mt-10">
               <p>Email</p>
               <div className="flex md:gap-2 items-center">
@@ -154,7 +156,7 @@ const UserProfile = () => {
             </div>
           </div>
           <hr className="mt-5 mb-5" />
-          <div className="flex items-center justify-between text-slate-50">
+          <div className="flex items-center justify-between text-slate-900 dark:text-slate-50">
             <div className="flex items-center text-sm md:gap-[208px] gap-[50px]">
               <p>Phone</p>
               <p>01770064053</p>
@@ -167,17 +169,17 @@ const UserProfile = () => {
         {/* Addresses Info */}
         <section className="rounded-md border md:p-5 p-1 md:ml-10 mt-10 md:w-10/12 w-full">
           <div>
-            <h2 className=" text-3xl font-medium text-slate-50">Addresses</h2>
-            <p className=" text-sm text-slate-200 mt-2">
+            <h2 className=" text-3xl font-medium text-slate-900 dark:text-slate-50">Addresses</h2>
+            <p className=" text-sm text-slate-700 dark:text-slate-50 mt-2">
               Your home and work addresses are used to personalize your
               experiences across Delta products, and for more relevant ads.
             </p>
-            <p className=" text-sm text-slate-50 font-bold mt-5">
+            <p className=" text-sm text-slate-700 dark:text-slate-50 font-bold mt-5">
               You can also add addresses to your Google Profile. You can choose
               if others see your profile addresses.
             </p>
           </div>
-          <div className=" flex items-center justify-between text-slate-50">
+          <div className=" flex items-center justify-between text-slate-900 dark:text-slate-50">
             <div className=" flex items-center text-sm gap-[50px] md:gap-[208px] mt-10">
               <p>Home</p>
               <p>(23.759356800000003, 90.3591746)</p>
@@ -187,7 +189,7 @@ const UserProfile = () => {
             </div>
           </div>
           <hr className="mt-5 mb-5" />
-          <div className="flex items-center justify-between text-slate-50">
+          <div className="flex items-center justify-between text-slate-900 dark:text-slate-50">
             <div className="flex items-center text-sm gap-[50px] md:gap-[208px]">
               <p>Work</p>
               <p>Student</p>
@@ -197,7 +199,7 @@ const UserProfile = () => {
             </div>
           </div>
           <hr className="mt-5 mb-5" />
-          <div className="flex items-center justify-between text-slate-50">
+          <div className="flex items-center justify-between text-slate-900 dark:text-slate-50">
             <div className="flex items-center text-sm gap-[50px] md:gap-[155px]">
               <p>Other Address</p>
               <p>None</p>
