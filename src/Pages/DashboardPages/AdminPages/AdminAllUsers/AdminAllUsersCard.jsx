@@ -1,9 +1,12 @@
 import { MdOutlineUpdate } from "react-icons/md";
+import { IoSettingsSharp } from "react-icons/io5";
 import Swal from "sweetalert2";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import AdminUserActionModal from "../../../../components/Modals/AdminUserActionModal/AdminUserActionModal";
 
 const AdminAllUsersCard = ({ user, idx, refresh, setRefresh }) => {
-    const { _id, name, email, photo } = user || {};
+    const { _id, role, name, email, photo } = user || {};
+    const [isOpen, setIsOpen] = useState();
 
     const handleMakeAdmin = (e, id) => {
         const updateInfo = {
@@ -46,13 +49,13 @@ const AdminAllUsersCard = ({ user, idx, refresh, setRefresh }) => {
                 <span className="font-semibold">{email}</span>
             </td>
             <td>
-                <div className="font-semibold">{"user"}</div>
+                <div className="font-semibold">{role || 'user'}</div>
             </td>
             <td>
-                <button className="btn btn-ghost btn-sm border-2 border-orange-200">
-                    <MdOutlineUpdate />
-                    Make Admin
+                <button onClick={() => setIsOpen(true)} className="text-gray-700">
+                    <IoSettingsSharp size={18} />
                 </button>
+                <AdminUserActionModal user={user} open={isOpen} close={() => setIsOpen(false)}></AdminUserActionModal>
             </td>
         </tr>
     );

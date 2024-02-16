@@ -38,6 +38,7 @@ const SignUp = () => {
 
     try {
       // upload image
+      console.log(imageFile);
       const res = await axios.post(image_hosting_api, imageFile, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -77,6 +78,7 @@ const SignUp = () => {
       toast.error(err.message);
     }
   };
+
   return (
     <div className="hero sign-back min-h-screen  ">
       <div className="">
