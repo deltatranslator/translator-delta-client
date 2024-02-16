@@ -27,11 +27,10 @@ const FeedbackModal = ({ open, close }) => {
             inquiryPermission: inquiryPermission,
             feedbackDate: Date.now()
         }
-        console.log(feedback);
 
         axiosSecure.put(`/user-feedback/${user?.email}`, feedback)
             .then(res => {
-                console.log(res);
+                // console.log(res);
             })
         setSelectedOption(null);
         setInquiryPermission(false);
