@@ -11,7 +11,6 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AdminUserFeedback from "../Pages/DashboardPages/AdminPages/AdminUserFeedback/AdminUserFeedback";
 import UserProfile from "../components/UserDashboard/UserProfile/UserProfile";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,39 +31,43 @@ const router = createBrowserRouter([
       },
       {
         path: "/pdfScan",
-        element: <PdfScan />
-      }
+        element: <PdfScan />,
+      },
     ],
   },
   {
-    path: '/admin-dashboard',
-    element: <PrivateRoute>
-      <Dashboard></Dashboard>
-    </PrivateRoute>,
+    path: "/admin-dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/admin-dashboard',
-        element: <AdminAllUsers />
+        path: "/admin-dashboard",
+        element: <AdminAllUsers />,
       },
       {
-        path: '/admin-dashboard/user-feedback',
-        element: <AdminUserFeedback />
-      }
-    ]
+        path: "/admin-dashboard/user-feedback",
+        element: <AdminUserFeedback />,
+      },
+    ],
   },
   {
-    path: '/user-dashboard',
-    element: <PrivateRoute>
-      <Dashboard></Dashboard>
-    </PrivateRoute>,
+    path: "/user-dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/user-dashboard',
-        element: <UserProfile />
-      }
-    ]
-  }
+        path: "/user-dashboard",
+        element: <UserProfile />,
+      },
+    ],
+  },
 ]);
 export default router;

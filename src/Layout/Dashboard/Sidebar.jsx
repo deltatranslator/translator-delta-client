@@ -12,7 +12,7 @@ const Sidebar = () => {
   const isAdmin = true;
 
   const { isUser } = useUser();
-
+  console.log(isUser.role);
   const adminMenus = [
     { name: "All Users", link: "/admin-dashboard", icon: AiOutlineUser },
     { name: "Statistics", link: "statistics", icon: AiOutlineBarChart },
