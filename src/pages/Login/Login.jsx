@@ -51,8 +51,8 @@ const Login = () => {
   };
 
   return (
-    <div className="hero sign-back min-h-screen  ">
-      <div className="">
+    <div className="hero sign-back min-h-screen  dark:bg-black">
+      <div className="dark:border-2 rounded-3xl dark:border-[#ed7966] p-[100px]">
         <div className="hero-content flex flex-col md:flex-row-reverse w-full lg:gap-10">
           <div className="text-center md:w-full lg:text-left max-w-96 lg:max-w-lg px-3 py-2">
             <Lottie animationData={loginAnime}></Lottie>
@@ -140,10 +140,10 @@ const Login = () => {
             </form>
 
             <p className="text-center">
-              <small className="text-[#303179]">
+              <small className="text-[#303179] dark:text-white">
                 Don't Have an account?{" "}
                 <Link to="/signUp">
-                  <span className="font-bold"> Sign Up</span>
+                  <span className="font-bold dark:text-[#ed7966]"> Sign Up</span>
                 </Link>
               </small>
             </p>
