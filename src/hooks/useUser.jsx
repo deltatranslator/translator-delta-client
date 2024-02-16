@@ -4,7 +4,7 @@ import axiosSecure from "../api";
 
 const useUser = () => {
   const { user, loading } = useAuth();
-//   console.log(user);
+  //   console.log(user);
 
   const { data: isUser } = useQuery({
     queryKey: ["isUser"],
@@ -14,7 +14,7 @@ const useUser = () => {
       return res.data;
     },
   });
-  return {isUser};
+  return { isUser };
 };
 
 export default useUser;

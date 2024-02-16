@@ -37,20 +37,31 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '/dashboard',
-    element: <Dashboard></Dashboard>,
+    path: '/admin-dashboard',
+    element: <PrivateRoute>
+      <Dashboard></Dashboard>
+    </PrivateRoute>,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/dashboard',
+        path: '/admin-dashboard',
         element: <AdminAllUsers />
       },
       {
-        path: '/dashboard/user-feedback',
+        path: '/admin-dashboard/user-feedback',
         element: <AdminUserFeedback />
-      },
+      }
+    ]
+  },
+  {
+    path: '/user-dashboard',
+    element: <PrivateRoute>
+      <Dashboard></Dashboard>
+    </PrivateRoute>,
+    errorElement: <ErrorPage />,
+    children: [
       {
-        path: '/dashboard/userProfile',
+        path: '/user-dashboard',
         element: <UserProfile />
       }
     ]
