@@ -5,7 +5,7 @@ import TargetLangComponent from "./TargetLangComponent";
 const TranslatorComponent = () => {
   return (
     <div>
-      <div className="container dark:text-white mx-auto flex flex-col lg:flex-row justify-center p-4 gap-4 my-12">
+      <div className="dark:text-white mx-auto flex flex-col lg:flex-row justify-center p-4 gap-4 mt-6 mb-12">
         <SourceLangComponent />
         <SwipeArrow />
         <TargetLangComponent />

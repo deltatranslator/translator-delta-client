@@ -4,6 +4,8 @@ import SavedHistory from "../SavedHistory/SavedHistory";
 import TranslatorComponent from "../TranslatorComponent/TranslatorComponent";
 import { useState } from "react";
 import SavedComponent from "../SavedComponent/SavedComponent";
+import TranslateSectionNav from "../TranslateSectionNav/TranslateSectionNav";
+import FeedbackButton from "../Modals/FeedbackModal/FeedbackButton";
 
 
 const HomeBodyComponent = () => {
@@ -11,20 +13,27 @@ const HomeBodyComponent = () => {
         return state.translationHistory.show;
     })
     const [saveOpen, setSaveOpen] = useState(false)
+    const [openHistory, setOpenHistory] = useState(false)
+    // console.log(openHistory);
 
-    console.log('hitting save click', display, saveOpen);
+    // console.log('hitting save click', display, saveOpen);
 
     return (
-        <div className="w-full flex flex-col md:flex-row ">
-            <div className="flex-grow">
+        <div className="w-full flex flex-col md:flex-row">
+            <div className="w-full container mx-auto">
+                <div className="flex items-center justify-between mt-12">
+                    <TranslateSectionNav />
+                    <FeedbackButton />
+                </div>
                 <TranslatorComponent />
-                <SavedHistory setSaveOpen={setSaveOpen} display={display} saveOpen={saveOpen} />
+                <SavedHistory setSaveOpen={setSaveOpen} display={display} saveOpen={saveOpen} setOpenHistory={setOpenHistory} openHistory={openHistory} />
             </div>
-            <div className={`md:w-1/5 m-2 ${(!display && !saveOpen) || (!display && saveOpen) ? 'hidden' : ''}`}>
-                <History />
+
+            <div className={`md:w-1/5 m-2 ${(!display && !saveOpen) || (!display && saveOpen) || openHistory ? 'hidden' : ''}`}>
+                <History setOpenHistory={setOpenHistory} openHistory={openHistory} />
             </div>
             <div className={`md:w-1/5 m-2 ${(!display && !saveOpen) || (!saveOpen && display) ? 'hidden' : ''}`}>
-                <SavedComponent />
+                <SavedComponent setOpenHistory={setOpenHistory} />
             </div>
         </div>
     );

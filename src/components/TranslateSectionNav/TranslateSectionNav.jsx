@@ -3,15 +3,15 @@ import { TfiWorld } from "react-icons/tfi";
 import { BsFiletypePdf } from "react-icons/bs";
 const TranslateSectionNav = () => {
   return (
-    <div className="flex gap-4 max-w-[1510px] mx-auto mt-10 px-5 py-5 md:px-10 md:py-5 lg:px-36 lg:py-5 bg-white dark:bg-slate-800">
+    <div className="flex gap-4 px-5 py-5 md:px-10 md:py-5 lg:px-36 lg:py-5 bg-white dark:bg-slate-800">
       <NavLink
         to="/"
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"
             : isActive
-            ? "border  rounded-lg border-[#ed7966]"
-            : ""
+              ? "border  rounded-lg border-[#ed7966]"
+              : ""
         }
       >
         <div className="w-32 md:w-48  flex px-3 py-2 items-center gap-2">
@@ -28,8 +28,8 @@ const TranslateSectionNav = () => {
           isPending
             ? "pending"
             : isActive
-            ? "border  rounded-lg border-[#ed7966]"
-            : ""
+              ? "border  rounded-lg border-[#ed7966]"
+              : ""
         }
       >
         <div className="w-32 md:w-48 flex px-3 py-2 items-center gap-2">
