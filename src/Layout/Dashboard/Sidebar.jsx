@@ -20,7 +20,7 @@ const Sidebar = () => {
             <div className={`bg-gray-50 dark:bg-[#ba721b] dark:text-white min-h-screen ${open ? 'w-72' : 'w-16'} duration-700 text-black px-4`}>
                 <div className={`py-6 flex ${open ? 'justify-between' : 'justify-center'}`}>
                     <Link className='h-[40px] flex items-start' to='/'>
-                        <img className={`${!open && 'hidden'} w-[40px] md:w-[40px]`} src='/public/Delta-removebg-preview.png' alt="" />
+                        <img className={`${!open && 'hidden'} w-[40px] md:w-[40px]`} src='./public/Delta-removebg-preview.png' alt="" />
                         <div className={`font-medium ${!open && 'hidden'}`}>Delta Translator</div>
                     </Link>
                     <HiMenuAlt3 size={26} onClick={() => setOpen(!open)} className='cursor-pointer'></HiMenuAlt3>

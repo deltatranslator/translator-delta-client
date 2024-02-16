@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 
 const Dashboard = () => {
     return (
-        <div className="w-full flex min-h-screen">
+        <div className="w-full flex min-h-screen bg-[#eef1f8]">
             <div>
                 <Sidebar></Sidebar>
             </div>

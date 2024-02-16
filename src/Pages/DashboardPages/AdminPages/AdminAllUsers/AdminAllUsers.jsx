@@ -44,13 +44,18 @@ const AdminAllUsers = () => {
 
     return (
         <>
-            <div className="container mx-auto mb-28 mt-28 px-8">
-                <div className="text-4xl font-bold tracking-widest ml-8 mb-10">Users</div>
-                <div className="p-8 bg-orange-50 rounded-lg">
+            <div className="container mx-auto mb-28 mt-20 px-8">
+                <div className="ml-8 mb-10">
+                    <h1 className="text-5xl font-bold tracking-widest mb-4">Users</h1>
+                    <p className="text-lg font-medium tracking-wider text-gray-500">
+                        {users.length} users found
+                    </p>
+                </div>
+                <div className="p-8 bg-white rounded-3xl">
                     <div className="overflow-x-auto">
                         <table className="table">
                             {/* head */}
-                            <thead>
+                            <thead className="bg-[#f9f9f9]">
                                 <tr>
                                     <th>
                                         <label>

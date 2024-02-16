@@ -26,7 +26,7 @@ const History = ({ setOpenHistory, openHistory }) => {
     if (history) {
       dispatch(setTranslationHistory(history));
     }
-  }, [user?.email, reloadState, dispatch, history]);
+  }, [user?.email, reloadState, dispatch]);
 
   // alert toast
   const Toast = Swal.mixin({
