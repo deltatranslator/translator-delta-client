@@ -9,6 +9,7 @@ import Dashboard from "../Layout/Dashboard/Dashboard";
 import AdminAllUsers from "../Pages/DashboardPages/AdminPages/AdminAllUsers/AdminAllUsers";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AdminUserFeedback from "../Pages/DashboardPages/AdminPages/AdminUserFeedback/AdminUserFeedback";
+import UserProfile from "../components/UserDashboard/UserProfile/UserProfile";
 
 
 const router = createBrowserRouter([
@@ -36,17 +37,32 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '/dashboard',
-    element: <Dashboard></Dashboard>,
+    path: '/admin-dashboard',
+    element: <PrivateRoute>
+      <Dashboard></Dashboard>
+    </PrivateRoute>,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/dashboard',
+        path: '/admin-dashboard',
         element: <AdminAllUsers />
       },
       {
-        path: '/dashboard/user-feedback',
+        path: '/admin-dashboard/user-feedback',
         element: <AdminUserFeedback />
+      }
+    ]
+  },
+  {
+    path: '/user-dashboard',
+    element: <PrivateRoute>
+      <Dashboard></Dashboard>
+    </PrivateRoute>,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: '/user-dashboard',
+        element: <UserProfile />
       }
     ]
   }

@@ -1,7 +1,6 @@
 
 
 const UserFeedbackCard = ({ feedback, idx }) => {
-    console.log('right now:', feedback);
     return (
         <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-200 my-4">
             <div className="collapse-title text-xl font-medium">

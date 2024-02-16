@@ -25,7 +25,7 @@ const History = ({ setOpenHistory, openHistory }) => {
     if (history) {
       dispatch(setTranslationHistory(history));
     }
-  }, [user?.email, reloadState, dispatch, history]);
+  }, [user?.email, reloadState, dispatch]);
 
   // alert toast
   const Toast = Swal.mixin({
@@ -107,8 +107,8 @@ const History = ({ setOpenHistory, openHistory }) => {
             className="text-gray-500 text-sm font-bold bg-orange-50 border-b-2 p-4 m-2 rounded-lg hover:bg-gray-100 cursor-pointer flex justify-between gap-1"
           >
             <div className="">
-              <p>{entry.sourceText}</p>
               <p>{entry.translatedText}</p>
+              <p>{entry.sourceText}</p>
             </div>
 
             <div className="flex">
