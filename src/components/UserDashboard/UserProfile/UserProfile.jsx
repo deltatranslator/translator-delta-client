@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const UserProfile = () => {
   const { isUser } = useUser();
-  // console.log(isUser);
+  // console.log(isUser?.role);
   const { user } = useAuth();
 
   return (
