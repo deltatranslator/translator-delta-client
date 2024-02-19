@@ -3,7 +3,6 @@ import emailjs from "@emailjs/browser";
 import { useRef } from "react";
 import { useTypewriter } from "react-simple-typewriter";
 import Swal from "sweetalert2";
-// import Swal from "sweetalert2";
 // import toast from "react-hot-toast";
 // import { useNavigate } from "react-router-dom";
 // import { addDes } from "../../Api/Api";
@@ -31,6 +30,7 @@ const Contact = () => {
             showConfirmButton: false,
             timer: 2000,
           });
+          e.target.reset();
         },
         (error) => {
           console.log(error.text);
