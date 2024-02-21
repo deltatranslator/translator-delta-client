@@ -7,6 +7,7 @@ import ReactiveButton from "reactive-button";
 import { useState } from "react";
 import axiosSecure from "../../../api";
 import useProfile from "../../../hooks/useProfile";
+import toast from "react-hot-toast";
 
 const ContactInfo = () => {
   const [state, setState] = useState("idle");
@@ -14,7 +15,7 @@ const ContactInfo = () => {
   const { isUser } = useUser();
   const { user } = useAuth();
   const { isProfile } = useProfile();
-  console.log("isProfile:", isProfile);
+  // console.log("isProfile:", isProfile);
 
   const onClickHandler = () => {
     setState("loading");
@@ -30,11 +31,11 @@ const ContactInfo = () => {
     const userNumber = { number, email };
     await axiosSecure
       .post("/profile", userNumber)
-      .then((res) => {
-        console.log(res.data);
+      .then(() => {
+        toast.success("Phone Number Added!");
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err.message);
       });
   };
 
@@ -85,7 +86,7 @@ const ContactInfo = () => {
         >
           <div className="flex items-center text-sm md:gap-[208px] gap-[50px]">
             <p>Phone</p>
-            <p>01770064053</p>
+            <p>{isProfile ? <p>{isProfile?.number}</p> : <p>None</p>}</p>
           </div>
           <div>
             <FaChevronRight className=" text-2xl" />
@@ -105,16 +106,16 @@ const ContactInfo = () => {
               </h2>
               <div className=" py-5 px-3">
                 <form onSubmit={handelSave}>
-                  <div className="relative">
+                  <div className="relative w-full">
                     <input
                       type="number"
                       name="number"
                       id="number"
-                      className="appearance-none border-b-2 border-slate-50 focus:border-blue-500 bg-transparent text-gray-700 py-2 px-4 focus:outline-none focus:ring-0"
+                      className="appearance-none w-full border-b-2 border-b-slate-500 border-slate-50 focus:border-blue-500 bg-transparent text-gray-700 py-2 px-4 focus:outline-none focus:ring-0"
                       placeholder="Enter a number"
                     />
                   </div>
-                  <div className=" flex items-center justify-end">
+                  <div className=" flex items-center justify-end mt-2">
                     <ReactiveButton
                       buttonState={state}
                       idleText="Submit"

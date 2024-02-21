@@ -2,10 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
 import axiosSecure from "../api";
 
-
 const useProfile = () => {
   const { user, loading } = useAuth();
-//   console.log(user);
+  //   console.log(user);
 
   const { data: isProfile } = useQuery({
     queryKey: ["isProfile"],
@@ -15,7 +14,7 @@ const useProfile = () => {
       return res.data;
     },
   });
-  return {isProfile};
+  return { isProfile };
 };
 
 export default useProfile;

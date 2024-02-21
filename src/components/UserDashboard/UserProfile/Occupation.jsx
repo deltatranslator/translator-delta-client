@@ -3,11 +3,14 @@ import { Radio } from "antd";
 import ReactiveButton from "reactive-button";
 import axiosSecure from "../../../api";
 import toast from "react-hot-toast";
+import useProfile from "../../../hooks/useProfile";
 const Occupation = () => {
   const [occupation, setOccupation] = useState("");
   const [state, setState] = useState("idle");
   const [interestState, setInterestState] = useState("idle");
   const [selectedInterests, setSelectedInterests] = useState([]);
+
+  const {isProfile} = useProfile()
 
   // Array of occupations with value and text
   const occupations = [
