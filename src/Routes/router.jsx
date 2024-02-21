@@ -57,7 +57,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin-dashboard/inbox",
-        element: <AdminInbox />,
+        element: (
+          <PrivateRoute>
+            <AdminInbox />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/admin-dashboard/inboxDetails/:id",
