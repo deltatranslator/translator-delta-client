@@ -15,7 +15,7 @@ const ContactInfo = () => {
   const { isUser } = useUser();
   const { user } = useAuth();
   const { isProfile } = useProfile();
-  // console.log("isProfile:", isProfile);
+  console.log("isProfile:", isProfile);
 
   const onClickHandler = () => {
     setState("loading");

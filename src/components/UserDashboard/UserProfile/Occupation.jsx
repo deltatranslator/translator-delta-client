@@ -3,14 +3,14 @@ import { Radio } from "antd";
 import ReactiveButton from "reactive-button";
 import axiosSecure from "../../../api";
 import toast from "react-hot-toast";
-import useProfile from "../../../hooks/useProfile";
+import useAuth from "../../../hooks/useAuth";
 const Occupation = () => {
   const [occupation, setOccupation] = useState("");
   const [state, setState] = useState("idle");
   const [interestState, setInterestState] = useState("idle");
   const [selectedInterests, setSelectedInterests] = useState([]);
 
-  const {isProfile} = useProfile()
+  const { user } = useAuth();
 
   // Array of occupations with value and text
   const occupations = [
@@ -44,8 +44,10 @@ const Occupation = () => {
   const handleOccupationSubmit = async (event) => {
     event.preventDefault();
     try {
-      const isOccupation = { occupation };
+      const email = user.email;
+      const isOccupation = { occupation, email };
       await axiosSecure.post("/profile", isOccupation).then((res) => {
+        console.log(res);
         if (res.data.acknowledged == true) {
           toast.success("Data Saved");
         } else {
@@ -74,9 +76,10 @@ const Occupation = () => {
   const handleInterestSubmit = async (event) => {
     event.preventDefault();
     try {
-      // console.log("Selected interest:", selectedInterests);
-      const isInterest = { selectedInterests };
+      const email = user.email;
+      const isInterest = { selectedInterests, email };
       await axiosSecure.post("/profile", isInterest).then((res) => {
+        console.log(res?.data);
         if (res.data.acknowledged == true) {
           toast.success("Data Saved");
         } else {
@@ -85,7 +88,7 @@ const Occupation = () => {
       });
     } catch (error) {
       console.error("Error:", error);
-      throw error; //
+      toast.error(error.message);
     }
   };
 
