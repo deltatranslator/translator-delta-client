@@ -29,10 +29,10 @@ const UserProfile = () => {
             <Lottie className="w-full md:w-80" animationData={userAnimation} />
           </div>
           <div className="space-y-2 flex-1">
-            <h2 className="text-2xl font-medium text-slate-900 dark:text-slate-50">
+            <h2 className="text-2xl text-center md:text-start font-medium text-slate-900 dark:text-slate-50">
               Your profile info in Delta services
             </h2>
-            <p className=" text-slate-700 dark:text-slate-50 md:w-10/12 w-full">
+            <p className="text-center md:text-start px-1 text-slate-700 dark:text-slate-50 md:w-10/12 w-full">
               Personal info and options to manage it. You can make some of this
               info, like your contact details, visible to others so they can
               reach you easily. You can also see a summary of your profiles.
@@ -40,7 +40,7 @@ const UserProfile = () => {
           </div>
         </section>
         {/* Basic info */}
-        <section className="rounded-md border shadow-md md:p-5 p-1 md:ml-10 md:w-10/12 w-full mt-8 md:mt-0">
+        <section className="rounded-md border shadow-md md:p-5 p-2 md:ml-10 md:w-10/12 w-full mt-8 md:mt-0">
           <div className="items-center justify-between">
             <div className=" flex justify-end">
               <div className="avatar">
@@ -116,12 +116,12 @@ const UserProfile = () => {
         {/* Contact Info */}
         <ContactInfo />
         {/* Addresses Info */}
-        <section className="rounded-md border md:p-5 p-1 md:ml-10 mt-10 md:w-10/12 w-full shadow-md">
+        <section className="rounded-md border md:p-5 p-2 md:ml-10 mt-10 md:w-10/12 w-full shadow-md">
           <div>
-            <h2 className=" text-3xl font-medium text-slate-900 dark:text-slate-50">
+            <h2 className="text-center md:text-start text-3xl font-medium text-slate-900 dark:text-slate-50">
               Addresses
             </h2>
-            <p className=" text-sm text-slate-700 dark:text-slate-50 mt-2">
+            <p className="text-center md:text-start text-sm text-slate-700 dark:text-slate-50 mt-2">
               Your home and work addresses are used to personalize your
               experiences across Delta products, and for more relevant ads.
             </p>

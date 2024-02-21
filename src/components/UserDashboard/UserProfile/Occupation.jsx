@@ -105,11 +105,11 @@ const Occupation = () => {
       {/* Your occupation */}
       <section>
         <div>
-          <h2 className=" text-3xl font-medium text-slate-900 dark:text-slate-50">
+          <h2 className="text-center md:text-start text-3xl font-medium text-slate-900 dark:text-slate-50">
             Your occupation
           </h2>
         </div>
-        <form onSubmit={handleOccupationSubmit} className="items-center mt-5">
+        <form onSubmit={handleOccupationSubmit} className="items-center mt-5 p-2">
           <Radio.Group
             size="large"
             className="grid md:grid-cols-4 grid-cols-2 gap-5 text-center"
@@ -145,14 +145,14 @@ const Occupation = () => {
       {/* Areas of interest */}
       <section className=" mt-10 pb-3">
         <div>
-          <h2 className=" text-3xl font-medium text-slate-900 dark:text-slate-50">
+          <h2 className="text-3xl text-center md:text-start font-medium text-slate-900 dark:text-slate-50">
             Areas of interest
           </h2>
         </div>
-        <form onSubmit={handleInterestSubmit} className=" mt-5">
+        <form onSubmit={handleInterestSubmit} className="mt-5 p-2">
           <Radio.Group
             size="large"
-            className="grid md:grid-cols-4 grid-cols-3 gap-5 text-center"
+            className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5 text-center"
           >
             {areasOfInterest.map((item) => (
               <Radio.Button
