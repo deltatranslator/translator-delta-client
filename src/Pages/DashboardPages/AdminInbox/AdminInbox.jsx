@@ -1,15 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
+import axiosSecure from "../../../Api";
+import { useContext } from "react";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import UserDataRow from "./userDataRow";
 
 const AdminInbox = () => {
+  const { loading } = useContext(AuthContext);
   const {
     data: users = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey,
+    queryKey: ["users"],
     enabled: !loading,
-    queryFn: async,
+    queryFn: async () => await axiosSecure.get("/inbox"),
   });
+
+  console.log("---------------", users, isLoading);
   return (
     <div className="px-5 md:px-10 lg:px-16 py-5 md:py-10 lg:py-16">
       <h1 className="text-4xl text-center pb-5 md:pb-10">Admin Inbox</h1>
@@ -35,30 +42,9 @@ const AdminInbox = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                    <td className="whitespace-nowrap px-6 py-4 font-medium">
-                      1
-                    </td>
-                    <td className="whitespace-nowrap px-6 py-4">Mark</td>
-                    <td className="whitespace-nowrap px-6 py-4">Otto</td>
-                    <td className="whitespace-nowrap px-6 py-4">@mdo</td>
-                  </tr>
-                  <tr className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                    <td className="whitespace-nowrap px-6 py-4 font-medium">
-                      2
-                    </td>
-                    <td className="whitespace-nowrap px-6 py-4">Jacob</td>
-                    <td className="whitespace-nowrap px-6 py-4">Thornton</td>
-                    <td className="whitespace-nowrap px-6 py-4">@fat</td>
-                  </tr>
-                  <tr className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                    <td className="whitespace-nowrap px-6 py-4 font-medium">
-                      3
-                    </td>
-                    <td className="whitespace-nowrap px-6 py-4">Larry</td>
-                    <td className="whitespace-nowrap px-6 py-4">Wild</td>
-                    <td className="whitespace-nowrap px-6 py-4">@twitter</td>
-                  </tr>
+                  {users.map((user) => (
+                    <UserDataRow key={user._id} user={user} refetch={refetch} />
+                  ))}
                 </tbody>
               </table>
             </div>
