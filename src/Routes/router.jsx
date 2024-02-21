@@ -10,6 +10,7 @@ import AdminAllUsers from "../Pages/DashboardPages/AdminPages/AdminAllUsers/Admi
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AdminUserFeedback from "../Pages/DashboardPages/AdminPages/AdminUserFeedback/AdminUserFeedback";
 import UserProfile from "../components/UserDashboard/UserProfile/UserProfile";
+import AdminInbox from "../Pages/DashboardPages/AdminInbox/AdminInbox";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "/admin-dashboard/user-feedback",
         element: <AdminUserFeedback />,
+      },
+      {
+        path: "/admin-dashboard/inbox",
+        element: <AdminInbox />,
       },
     ],
   },

@@ -1,5 +1,6 @@
 import { HiMenuAlt3 } from "react-icons/hi";
 import { AiOutlineUser, AiOutlineBarChart } from "react-icons/ai";
+import { FaEnvelope } from "react-icons/fa";
 import { RiFeedbackLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
@@ -16,6 +17,7 @@ const Sidebar = () => {
   const adminMenus = [
     { name: "All Users", link: "/admin-dashboard", icon: AiOutlineUser },
     { name: "Statistics", link: "statistics", icon: AiOutlineBarChart },
+    { name: "Inbox", link: "inbox", icon: FaEnvelope },
     { name: "Feedback", link: "user-feedback", icon: RiFeedbackLine },
   ];
 
