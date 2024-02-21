@@ -11,6 +11,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AdminUserFeedback from "../Pages/DashboardPages/AdminPages/AdminUserFeedback/AdminUserFeedback";
 import UserProfile from "../components/UserDashboard/UserProfile/UserProfile";
 import AdminInbox from "../Pages/DashboardPages/AdminInbox/AdminInbox";
+import InboxDetailsPage from "../Pages/DashboardPages/AdminInbox/InboxDetailsPage";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,16 @@ const router = createBrowserRouter([
       {
         path: "/admin-dashboard/inbox",
         element: <AdminInbox />,
+      },
+      {
+        path: "/admin-dashboard/inboxDetails/:id",
+        element: (
+          <PrivateRoute>
+            <InboxDetailsPage></InboxDetailsPage>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5001/inboxDetails/${params.id}`),
       },
     ],
   },

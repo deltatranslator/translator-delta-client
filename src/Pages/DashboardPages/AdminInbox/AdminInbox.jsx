@@ -3,6 +3,7 @@ import axiosSecure from "../../../Api";
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import UserDataRow from "./userDataRow";
+import Loader from "../../../components/Loader/Loader";
 
 const AdminInbox = () => {
   const { loading } = useContext(AuthContext);
@@ -15,7 +16,7 @@ const AdminInbox = () => {
     enabled: !loading,
     queryFn: async () => await axiosSecure.get("/inbox"),
   });
-
+  if (isLoading) return <Loader />;
   console.log("---------------", users, isLoading);
   return (
     <div className="px-5 md:px-10 lg:px-16 py-5 md:py-10 lg:py-16">
