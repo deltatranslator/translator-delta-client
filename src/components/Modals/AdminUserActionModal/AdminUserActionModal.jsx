@@ -15,7 +15,7 @@ import axios from 'axios';
 const AdminUserActionModal = ({ user, open, close }) => {
     // const [image, setImage] = useState(null);
     const [userSettings, setUserSettings] = useState({
-        role: 'user',
+        role: user?.role,
         banState: false
     })
 
@@ -51,10 +51,15 @@ const AdminUserActionModal = ({ user, open, close }) => {
         }
         console.log(userInfo);
 
-        // axiosSecure.put(`/user-feedback/${user?.email}`, feedback)
-        //     .then(res => {
-        //         console.log(res);
-        //     })
+        axiosSecure.patch(`/admin-user-update/${user?.email}`, userInfo)
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    toast.success("User Access Updated");
+                }
+            })
+            .catch(err => {
+                toast.error(err.message);
+            })
 
         // Close the modal
         close();
@@ -98,7 +103,9 @@ const AdminUserActionModal = ({ user, open, close }) => {
                                 <h1 className='font-bold text-xl text-red-600'>Ban</h1>
                                 <div className="footer pr-4 flex justify-start">
                                     {/* <button className="btn btn-ghost w-1/2 flex justify-center items-center bg-orange-400 text-white text-[17px] font-medium hover:bg-orange-500 tracking-wider">temporary</button> */}
-                                    <button onClick={() => setUserSettings({ ...userSettings, banState: true })} className="btn btn-ghost w-1/2 flex justify-center items-center bg-red-500 text-white font-medium hover:bg-red-600 text-[17px] tracking-wider">Permanent</button>
+                                    <button onClick={() => {
+                                        setUserSettings({ ...userSettings, banState: true })
+                                    }} className={`btn btn-ghost w-1/2 flex justify-center items-center ${!user.banState ? 'bg-red-500 text-white hover:bg-red-600' : 'bg-gray-300 hover:bg-gray-400 text-black'}  font-medium text-[17px] tracking-wider`}>{user.banState ? 'Unban' : 'Ban'}</button>
                                 </div>
                             </div>
                         </div>
