@@ -51,7 +51,7 @@ const AdminAllUsers = () => {
                 </div>
                 <div className="p-8 bg-white rounded-3xl">
                     <div className="overflow-x-auto">
-                        <div className="flex flex-col">
+                        <div className="flex flex-col px-8">
                             {/* head */}
                             <div className="bg-[#f9f9f9] px-8 py-3 rounded-lg">
                                 <div className="flex w-full justify-between font-bold text-sm">

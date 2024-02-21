@@ -12,7 +12,11 @@ const Sidebar = () => {
   const isAdmin = true;
 
   const { isUser } = useUser();
-  console.log(isUser.role);
+
+  if (!isUser) {
+    return <span className="loading loading-dots loading-lg block max-w-sm mx-auto py-48"></span>;
+  }
+
   const adminMenus = [
     { name: "All Users", link: "/admin-dashboard", icon: AiOutlineUser },
     { name: "Statistics", link: "statistics", icon: AiOutlineBarChart },
