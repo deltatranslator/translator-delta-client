@@ -30,28 +30,30 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {
+
+
+
+  const onSubmit = async (data, event) => {
     const name = data.name;
     const email = data.email;
     const password = data.password;
-    const image = { image: data.image[0] };
+    console.log(data);
 
-    console.log(image);
-    // const formData = new FormData()
-    // formData.append('image', imageFile)
-    const imageFile = { image: data.image[0] };
+    const imageFile = event?.target?.image?.files[0];
 
+
+    const formData = new FormData()
+    formData.append('image', imageFile)
     try {
       // upload image
-      const res = await axios.post(image_hosting_api, imageFile, {
+      const res = await axios.post(image_hosting_api, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
 
-      // console.log(res.data);
 
-      const photo_url = res.data.data.display_url;
+      const photo_url = res?.data.data.display_url;
       createUser(email, password).then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
@@ -72,18 +74,13 @@ const SignUp = () => {
         });
       });
 
-      // if (res.data.success) {
-      //   //now send the menu item data to the server with image url
-      // User Registration
-      //  save username and & photo
-      // save user in database
     } catch (err) {
       console.log(err.message);
       toast.error(err.message);
     }
   };
 
-  console.log(imgTitle);
+  // console.log(imgTitle);
   return (
     <div className="hero sign-back min-h-screen  dark:bg-black ">
       <div className="dark:border-2 rounded-3xl dark:border-[#ed7966] py-[50px] px-[100px]">
@@ -196,7 +193,7 @@ const SignUp = () => {
 
                 </label>
                 <input
-                  {...register("image", { required: true })}
+                  // {...register("image", { required: true })}
                   type="file"
                   id="image"
                   name="image"
@@ -248,3 +245,5 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
+
