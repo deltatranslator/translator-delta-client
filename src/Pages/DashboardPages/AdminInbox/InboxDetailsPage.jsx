@@ -2,8 +2,7 @@ import { useLoaderData } from "react-router-dom";
 
 const InboxDetailsPage = () => {
   const loadDetails = useLoaderData();
-  const { name, email, message } = loadDetails;
-  console.log("from load details-----------", loadDetails);
+  const { name, email, message, date } = loadDetails;
   return (
     <div className="w-[800px] mx-auto py-40">
       <a
@@ -17,7 +16,7 @@ const InboxDetailsPage = () => {
           {email}
         </h5>
         <h5 className=" text-base tracking-tight text-gray-500 dark:text-white mb-8">
-          Date: 12-12-2024
+          Date: {date}
         </h5>
         <h5 className=" text-base font-bold tracking-tight text-gray-500 dark:text-white mb-8">
           Subject:

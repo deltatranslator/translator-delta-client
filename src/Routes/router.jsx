@@ -12,6 +12,7 @@ import AdminUserFeedback from "../Pages/DashboardPages/AdminPages/AdminUserFeedb
 import UserProfile from "../components/UserDashboard/UserProfile/UserProfile";
 import AdminInbox from "../Pages/DashboardPages/AdminInbox/AdminInbox";
 import InboxDetailsPage from "../Pages/DashboardPages/AdminInbox/InboxDetailsPage";
+import { getInbox } from "../Api/inbox";
 
 const router = createBrowserRouter([
   {
@@ -65,8 +66,7 @@ const router = createBrowserRouter([
             <InboxDetailsPage></InboxDetailsPage>
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(`http://localhost:5001/inboxDetails/${params.id}`),
+        loader: ({ params }) => getInbox(params.id),
       },
     ],
   },

@@ -7,6 +7,7 @@ import Loader from "../../../components/Loader/Loader";
 
 const AdminInbox = () => {
   const { loading } = useContext(AuthContext);
+  let serialNo = 1;
   const {
     data: users = [],
     isLoading,
@@ -19,7 +20,7 @@ const AdminInbox = () => {
   if (isLoading) return <Loader />;
   console.log("---------------", users, isLoading);
   return (
-    <div className="px-5 md:px-10 lg:px-16 py-5 md:py-10 lg:py-16">
+    <div className="px-5 md:px-10 lg:px-20 py-5 md:py-10 lg:py-16">
       <h1 className="text-4xl text-center pb-5 md:pb-10">Admin Inbox</h1>
       <div className="flex flex-col">
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -44,7 +45,12 @@ const AdminInbox = () => {
                 </thead>
                 <tbody>
                   {users?.data.map((user) => (
-                    <UserDataRow key={user._id} user={user} refetch={refetch} />
+                    <UserDataRow
+                      key={user._id}
+                      user={user}
+                      refetch={refetch}
+                      serialNo={serialNo++}
+                    />
                   ))}
                 </tbody>
               </table>
