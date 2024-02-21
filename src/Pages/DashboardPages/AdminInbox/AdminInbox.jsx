@@ -33,16 +33,16 @@ const AdminInbox = () => {
                     <th scope="col" className="px-6 py-4">
                       Name
                     </th>
-                    <th scope="col" className="px-6 py-4">
+                    <th scope="col" className=" pl-6 pr-4 py-4">
                       Message
                     </th>
-                    <th scope="col" className="px-6 py-4">
+                    <th scope="col" className="pr-6 py-4">
                       Date
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {users.map((user) => (
+                  {users?.data.map((user) => (
                     <UserDataRow key={user._id} user={user} refetch={refetch} />
                   ))}
                 </tbody>
