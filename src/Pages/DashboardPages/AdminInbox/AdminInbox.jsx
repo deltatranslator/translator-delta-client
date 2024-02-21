@@ -1,4 +1,15 @@
+import { useQuery } from "@tanstack/react-query";
+
 const AdminInbox = () => {
+  const {
+    data: users = [],
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey,
+    enabled: !loading,
+    queryFn: async,
+  });
   return (
     <div className="px-5 md:px-10 lg:px-16 py-5 md:py-10 lg:py-16">
       <h1 className="text-4xl text-center pb-5 md:pb-10">Admin Inbox</h1>
