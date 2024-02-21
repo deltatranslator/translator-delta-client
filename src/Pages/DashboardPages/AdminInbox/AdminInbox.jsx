@@ -39,6 +39,9 @@ const AdminInbox = () => {
                       Message
                     </th>
                     <th scope="col" className="pr-6 py-4">
+                      Delete
+                    </th>
+                    <th scope="col" className="pr-6 py-4">
                       Date
                     </th>
                   </tr>
