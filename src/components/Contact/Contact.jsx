@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
-// import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
 import { useRef } from "react";
 import { useTypewriter } from "react-simple-typewriter";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 // import toast from "react-hot-toast";
 // import { useNavigate } from "react-router-dom";
 // import { addDes } from "../../Api/Api";
@@ -13,28 +13,29 @@ const Contact = () => {
   const sendEmail = (e, data) => {
     e.preventDefault();
     console.log(data);
-    // emailjs
-    //   .sendForm(
-    //     "service_0xydd34",
-    //     "template_6z86ap6",
-    //     form.current,
-    //     "-HF9Akk-CcVhep_e3"
-    //   )
-    //   .then(
-    //     (result) => {
-    //       console.log(result.text);
-    //       Swal.fire({
-    //         position: "top-center",
-    //         icon: "success",
-    //         title: `Your Email has been send successfully`,
-    //         showConfirmButton: false,
-    //         timer: 2000,
-    //       });
-    //     },
-    //     (error) => {
-    //       console.log(error.text);
-    //     }
-    //   );
+    emailjs
+      .sendForm(
+        "service_0xydd34",
+        "template_6z86ap6",
+        form.current,
+        "-HF9Akk-CcVhep_e3"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: `Your Email has been send successfully`,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          e.target.reset();
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
   // ____________________________________________________________________
 

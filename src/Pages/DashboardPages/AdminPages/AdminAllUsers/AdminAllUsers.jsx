@@ -51,31 +51,31 @@ const AdminAllUsers = () => {
                 </div>
                 <div className="p-8 bg-white rounded-3xl">
                     <div className="overflow-x-auto">
-                        <table className="table">
+                        <div className="flex flex-col">
                             {/* head */}
-                            <thead className="bg-[#f9f9f9]">
-                                <tr>
-                                    <th>
+                            <div className="bg-[#f9f9f9] px-8 py-3 rounded-lg">
+                                <div className="flex w-full justify-between font-bold text-sm">
+                                    <p className="flex-1">
                                         <label>No.</label>
-                                    </th>
-                                    <th>User&apos;s Profile</th>
-                                    <th>User&apos;s Name</th>
-                                    <th>User&apos;s Email</th>
-                                    <th>Role</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
+                                    </p>
+                                    <p className="flex-1">User&apos;s Profile</p>
+                                    <p className="flex-1">User&apos;s Name</p>
+                                    <p className="flex-1">User&apos;s Email</p>
+                                    <p className="flex-1">Role</p>
+                                    <p className="flex-1">Action</p>
+                                </div>
+                            </div>
                             {/* rows */}
-                            <tbody>
+                            <div className="px-8 py-3 rounded-lg flex flex-col gap-4 mt-4">
                                 {currentUsers?.map((user, idx) => (
                                     <AdminAllUsersCard
                                         key={user._id}
-                                        idx={idx + 1}
+                                        idx={idx + (((currentPage - 1) * 10) + 1)}
                                         user={user}
                                     ></AdminAllUsersCard>
                                 ))}
-                            </tbody>
-                        </table>
+                            </div>
+                        </div>
                         {/* Pagination */}
                         <ul className="pagination flex">
                             <li

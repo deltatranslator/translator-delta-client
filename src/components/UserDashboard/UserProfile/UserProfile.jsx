@@ -15,9 +15,9 @@ const UserProfile = () => {
 
   return (
     <>
-      <section className="md:py-20 py-10">
+      <section className="md:py-20 py-10 bg-white dark:bg-slate-800">
         {/* Personal Info */}
-        <section className=" text-center space-y-2">
+        <section className=" text-center space-y-2 ">
           <h3 className=" text-4xl font-medium text-slate-900 dark:text-slate-50">
             Personal info
           </h3>
@@ -169,7 +169,9 @@ const UserProfile = () => {
         {/* Addresses Info */}
         <section className="rounded-md border md:p-5 p-1 md:ml-10 mt-10 md:w-10/12 w-full">
           <div>
-            <h2 className=" text-3xl font-medium text-slate-900 dark:text-slate-50">Addresses</h2>
+            <h2 className=" text-3xl font-medium text-slate-900 dark:text-slate-50">
+              Addresses
+            </h2>
             <p className=" text-sm text-slate-700 dark:text-slate-50 mt-2">
               Your home and work addresses are used to personalize your
               experiences across Delta products, and for more relevant ads.
