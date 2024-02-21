@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 import { useRef } from "react";
 import { useTypewriter } from "react-simple-typewriter";
 import Swal from "sweetalert2";
+import axiosSecure from "../../Api";
 // import toast from "react-hot-toast";
 // import { useNavigate } from "react-router-dom";
 // import { addDes } from "../../Api/Api";
@@ -10,32 +11,40 @@ const Contact = () => {
   const form = useRef();
   // const navigate = useNavigate();
 
-  const sendEmail = (e, data) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
-    console.log(data);
-    emailjs
-      .sendForm(
-        "service_0xydd34",
-        "template_6z86ap6",
-        form.current,
-        "-HF9Akk-CcVhep_e3"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          Swal.fire({
-            position: "top-center",
-            icon: "success",
-            title: `Your Email has been send successfully`,
-            showConfirmButton: false,
-            timer: 2000,
-          });
-          e.target.reset();
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+    const name = e.target.from_name.value;
+    const email = e.target.email.value;
+    const message = e.target.message.value;
+    const inboxInfo = {
+      name,
+      email,
+      message,
+    };
+    await axiosSecure.post("/inbox", inboxInfo);
+    // emailjs
+    //   .sendForm(
+    //     "service_0xydd34",
+    //     "template_6z86ap6",
+    //     form.current,
+    //     "-HF9Akk-CcVhep_e3"
+    //   )
+    //   .then(
+    //     (result) => {
+    //       console.log(result.text);
+    //       Swal.fire({
+    //         position: "top-center",
+    //         icon: "success",
+    //         title: `Your Email has been send successfully`,
+    //         showConfirmButton: false,
+    //         timer: 2000,
+    //       });
+    //       e.target.reset();
+    //     },
+    //     (error) => {
+    //       console.log(error.text);
+    //     }
+    //   );
   };
   // ____________________________________________________________________
 
