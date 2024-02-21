@@ -8,7 +8,7 @@ import useUser from "../../hooks/useUser";
 const Navbar = () => {
   const { user, userLogOut } = useAuth();
   const { isUser } = useUser();
-
+  console.log("_________________", isUser?.role);
   //react dar mode implement
   const [theme, setTheme] = useState("light");
   useEffect(() => {
@@ -56,7 +56,7 @@ const Navbar = () => {
       </li>
       <li className="text-base font-medium dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
         <NavLink
-          to={isUser?.role === 'admin' ? '/admin-dashboard' : '/user-dashboard'}
+          to={isUser?.role === "admin" ? "/admin-dashboard" : "/user-dashboard"}
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-[#ed7966]" : ""
           }
