@@ -9,16 +9,16 @@ const AdminInbox = () => {
   const { loading } = useContext(AuthContext);
   let serialNo = 1;
   const {
-    data: users = [],
+    data: inboxUsers = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["users"],
+    queryKey: ["inboxUsers"],
     enabled: !loading,
     queryFn: async () => await axiosSecure.get("/inbox"),
   });
   if (isLoading) return <Loader />;
-  console.log("---------------", users, isLoading);
+  console.log("---------------", inboxUsers, isLoading);
   return (
     <div className="px-5 md:px-10 lg:px-20 py-5 md:py-10 lg:py-16">
       <h1 className="text-4xl text-center pb-5 md:pb-10">Admin Inbox</h1>
@@ -47,10 +47,10 @@ const AdminInbox = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {users?.data.map((user) => (
+                  {inboxUsers?.data.map((inboxUser) => (
                     <UserDataRow
-                      key={user._id}
-                      user={user}
+                      key={inboxUser._id}
+                      inboxUser={inboxUser}
                       refetch={refetch}
                       serialNo={serialNo++}
                     />
