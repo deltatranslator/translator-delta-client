@@ -3,11 +3,14 @@ import { Radio } from "antd";
 import ReactiveButton from "reactive-button";
 import axiosSecure from "../../../api";
 import toast from "react-hot-toast";
+import useAuth from "../../../hooks/useAuth";
 const Occupation = () => {
   const [occupation, setOccupation] = useState("");
   const [state, setState] = useState("idle");
   const [interestState, setInterestState] = useState("idle");
   const [selectedInterests, setSelectedInterests] = useState([]);
+
+  const { user } = useAuth();
 
   // Array of occupations with value and text
   const occupations = [
@@ -41,8 +44,10 @@ const Occupation = () => {
   const handleOccupationSubmit = async (event) => {
     event.preventDefault();
     try {
-      const isOccupation = { occupation };
+      const email = user.email;
+      const isOccupation = { occupation, email };
       await axiosSecure.post("/profile", isOccupation).then((res) => {
+        console.log(res);
         if (res.data.acknowledged == true) {
           toast.success("Data Saved");
         } else {
@@ -71,9 +76,10 @@ const Occupation = () => {
   const handleInterestSubmit = async (event) => {
     event.preventDefault();
     try {
-      // console.log("Selected interest:", selectedInterests);
-      const isInterest = { selectedInterests };
+      const email = user.email;
+      const isInterest = { selectedInterests, email };
       await axiosSecure.post("/profile", isInterest).then((res) => {
+        console.log(res?.data);
         if (res.data.acknowledged == true) {
           toast.success("Data Saved");
         } else {
@@ -82,7 +88,7 @@ const Occupation = () => {
       });
     } catch (error) {
       console.error("Error:", error);
-      throw error; //
+      toast.error(error.message);
     }
   };
 
@@ -99,11 +105,11 @@ const Occupation = () => {
       {/* Your occupation */}
       <section>
         <div>
-          <h2 className=" text-3xl font-medium text-slate-900 dark:text-slate-50">
+          <h2 className="text-center md:text-start text-3xl font-medium text-slate-900 dark:text-slate-50">
             Your occupation
           </h2>
         </div>
-        <form onSubmit={handleOccupationSubmit} className="items-center mt-5">
+        <form onSubmit={handleOccupationSubmit} className="items-center mt-5 p-2">
           <Radio.Group
             size="large"
             className="grid md:grid-cols-4 grid-cols-2 gap-5 text-center"
@@ -139,14 +145,14 @@ const Occupation = () => {
       {/* Areas of interest */}
       <section className=" mt-10 pb-3">
         <div>
-          <h2 className=" text-3xl font-medium text-slate-900 dark:text-slate-50">
+          <h2 className="text-3xl text-center md:text-start font-medium text-slate-900 dark:text-slate-50">
             Areas of interest
           </h2>
         </div>
-        <form onSubmit={handleInterestSubmit} className=" mt-5">
+        <form onSubmit={handleInterestSubmit} className="mt-5 p-2">
           <Radio.Group
             size="large"
-            className="grid md:grid-cols-4 grid-cols-3 gap-5 text-center"
+            className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5 text-center"
           >
             {areasOfInterest.map((item) => (
               <Radio.Button

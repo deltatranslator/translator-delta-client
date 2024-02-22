@@ -10,18 +10,17 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
-import axiosSecure from "../../api";
+
 import { useState } from "react";
+import axiosSecure from "../../Api";
 // import { imageUpload } from "../../api/utils";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-
 const SignUp = () => {
   const { createUser, userProfileUpdate } = useAuth();
   const navigate = useNavigate();
-  const [imgTitle, setImgTitle] = useState("")
-
+  const [imgTitle, setImgTitle] = useState("");
 
   const {
     register,
@@ -181,20 +180,16 @@ const SignUp = () => {
                   className="file-label  mb-2 text-sm text-white rounded-xl "
                 >
                   <div>
-                    {
-                      imgTitle ? <p>
-                        {
-                          imgTitle.slice(0, 20)
-                        }</p> :
-                        <div className="flex justify-center items-center mx-auto">
-                          <GoUpload className="text-2xl font-bold" />
+                    {imgTitle ? (
+                      <p>{imgTitle.slice(0, 20)}</p>
+                    ) : (
+                      <div className="flex justify-center items-center mx-auto">
+                        <GoUpload className="text-2xl font-bold" />
 
-                          <p>Upload Profile</p>
-                        </div>
-                    }
+                        <p>Upload Profile</p>
+                      </div>
+                    )}
                   </div>
-
-
                 </label>
                 <input
                   {...register("image", { required: true })}
@@ -203,7 +198,6 @@ const SignUp = () => {
                   name="image"
                   accept="image/*"
                   onChange={(e) => setImgTitle(e.target.files[0].name)}
-
                 />
               </div>
               {errors.image && (
