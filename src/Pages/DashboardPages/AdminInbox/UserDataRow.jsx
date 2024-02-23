@@ -40,7 +40,10 @@ const UserDataRow = ({ inboxUser, refetch, serialNo }) => {
         <td className="whitespace-nowrap px-6 py-6">{inboxUser.name}</td>
         <Link to={`/admin-dashboard/inboxDetails/${inboxUser._id}`}>
           <td className="whitespace-nowrap px-6 py-8">
-            {inboxUser.message.split(" ").slice(0, 10).join(" ")}
+            {/* {inboxUser.message.split(" ").slice(0, 10).join(" ")} */}
+            {inboxUser.message.length > 70
+              ? `${inboxUser.message.substring(0, 67)}...`
+              : inboxUser.message}
           </td>
         </Link>
         <td className="whitespace-nowrap px-6 py-6">
