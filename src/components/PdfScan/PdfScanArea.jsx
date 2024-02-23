@@ -1,6 +1,6 @@
 import SwipeArrow from "../TranslatorComponent/SwipeArrow";
-import PdfExtractor from "./FileUpload";
 import SourcePdfComponent from "./SourcePdfComponents";
+import FileUpload from "./FileUpload"
 import TargetPdfComponent from "./TargetPdfComponents";
 
 
@@ -10,9 +10,9 @@ const PdfScanArea = () => {
     <div>
       <div className="container dark:text-white mx-auto flex flex-col lg:flex-row justify-center p-4 gap-4 my-12">
         <SourcePdfComponent />
-        <PdfExtractor/>
-        {/* <SwipeArrow />
-        <TargetPdfComponent /> */}
+        {/* <FileUpload/> */}
+        <SwipeArrow />
+        <TargetPdfComponent />
       </div>
     </div>
   );
