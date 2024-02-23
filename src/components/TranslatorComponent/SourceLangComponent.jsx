@@ -280,11 +280,10 @@ const SourceLangComponent = ({swapState}) => {
               setSelectedLanguage(lang);
               setTempFlag(true);
             }}
-            className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${
-              activeIndex === idx
+            className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${activeIndex === idx
                 ? "border-b-2 border-blue-400"
                 : "border-b-2 border-transparent"
-            }`}
+              }`}
           >
             {lang}
           </div>
@@ -316,41 +315,39 @@ const SourceLangComponent = ({swapState}) => {
             {/* Dropdown options */}
             {!query
               ? langs.map((lang, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => {
-                      setActiveIndex(0);
-                      setDropdownOpen(false);
-                      handleRecentLang(lang.name);
-                      setSelectedLanguage(lang.name);
-                      setTempFlag(true);
-                    }}
-                    className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${
-                      activeIndex === idx
-                        ? "border-b-2 border-blue-400"
-                        : "border-b-2 border-transparent"
+                <div
+                  key={idx}
+                  onClick={() => {
+                    setActiveIndex(0);
+                    setDropdownOpen(false);
+                    handleRecentLang(lang.name);
+                    setSelectedLanguage(lang.name);
+                    setTempFlag(true);
+                  }}
+                  className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${activeIndex === idx
+                      ? "border-b-2 border-blue-400"
+                      : "border-b-2 border-transparent"
                     }`}
-                  >
-                    {lang.name}
-                  </div>
-                ))
+                >
+                  {lang.name}
+                </div>
+              ))
               : filteredLang.map((lang, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => {
-                      setActiveIndex(0);
-                      setDropdownOpen(false);
-                      setSelectedLanguage(lang.name);
-                      setTempFlag(true);
-                      handleRecentLang(lang.name);
-                    }}
-                    className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${
-                      activeIndex === idx ? "text-blue-500" : "text-gray-800"
+                <div
+                  key={idx}
+                  onClick={() => {
+                    setActiveIndex(0);
+                    setDropdownOpen(false);
+                    setSelectedLanguage(lang.name);
+                    setTempFlag(true);
+                    handleRecentLang(lang.name);
+                  }}
+                  className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${activeIndex === idx ? "text-blue-500" : "text-gray-800"
                     }`}
-                  >
-                    {lang.name}
-                  </div>
-                ))}
+                >
+                  {lang.name}
+                </div>
+              ))}
           </div>
         </div>
       )}
@@ -361,7 +358,7 @@ const SourceLangComponent = ({swapState}) => {
 
 
           onInput={(e)=>{ debounce(e.currentTarget.textContent)
-            // setInputText(e.currentTarget.textContent)
+            // // setInputText(e.currentTarget.textContent)
           }}
         
 

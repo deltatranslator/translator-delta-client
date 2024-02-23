@@ -10,7 +10,9 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
-import axiosSecure from "../../api";
+
+import { useState } from "react";
+import axiosSecure from "../../Api";
 // import { imageUpload } from "../../api/utils";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -18,6 +20,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const SignUp = () => {
   const { createUser, userProfileUpdate } = useAuth();
   const navigate = useNavigate();
+  const [imgTitle, setImgTitle] = useState("");
 
   const {
     register,
@@ -31,20 +34,22 @@ const SignUp = () => {
     const email = data.email;
     const password = data.password;
     const image = { image: data.image[0] };
-    console.log(name, email, password, image);
+
+    console.log(image);
     // const formData = new FormData()
     // formData.append('image', imageFile)
     const imageFile = { image: data.image[0] };
 
     try {
       // upload image
+      console.log(imageFile);
       const res = await axios.post(image_hosting_api, imageFile, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
 
-      console.log(res.data);
+      // console.log(res.data);
 
       const photo_url = res.data.data.display_url;
       createUser(email, password).then((result) => {
@@ -77,9 +82,11 @@ const SignUp = () => {
       toast.error(err.message);
     }
   };
+
+  console.log(imgTitle);
   return (
-    <div className="hero sign-back min-h-screen  ">
-      <div className="">
+    <div className="hero sign-back min-h-screen  dark:bg-black ">
+      <div className="dark:border-2 rounded-3xl dark:border-[#ed7966] py-[50px] px-[100px]">
         <div className="hero-content flex flex-col md:flex-row-reverse w-full lg:gap-10">
           <div className="text-center md:w-full lg:text-left max-w-96 lg:max-w-lg px-3 py-2">
             <Lottie animationData={loginAnime}></Lottie>
@@ -172,9 +179,16 @@ const SignUp = () => {
                   htmlFor="image"
                   className="file-label  mb-2 text-sm text-white rounded-xl "
                 >
-                  <div className="flex justify-center items-center mx-auto">
-                    <GoUpload className="text-2xl font-bold" />
-                    <p>Upload Profile</p>
+                  <div>
+                    {imgTitle ? (
+                      <p>{imgTitle.slice(0, 20)}</p>
+                    ) : (
+                      <div className="flex justify-center items-center mx-auto">
+                        <GoUpload className="text-2xl font-bold" />
+
+                        <p>Upload Profile</p>
+                      </div>
+                    )}
                   </div>
                 </label>
                 <input
@@ -183,6 +197,7 @@ const SignUp = () => {
                   id="image"
                   name="image"
                   accept="image/*"
+                  onChange={(e) => setImgTitle(e.target.files[0].name)}
                 />
               </div>
               {errors.image && (
@@ -201,10 +216,10 @@ const SignUp = () => {
             </form>
 
             <p className="text-center">
-              <small className="text-[#303179]">
+              <small className="text-[#303179]  dark:text-white">
                 Already have an account?{" "}
                 <Link to="/login">
-                  <span className="font-bold">Login</span>
+                  <span className="font-bold dark:text-[#ed7966]">Login</span>
                 </Link>
               </small>
             </p>
