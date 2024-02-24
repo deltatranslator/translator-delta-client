@@ -1,13 +1,12 @@
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { FaUserCircle } from "react-icons/fa";
-
 const InboxDetailsPage = () => {
   const loadDetails = useLoaderData();
   const { name, email, message, date, subject } = loadDetails;
   const { user } = useAuth();
   return (
-    <div className="w-[800px] mx-auto py-40">
+    <div className="w-[800px] mx-auto py-40 ">
       <a
         href="#"
         className="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
