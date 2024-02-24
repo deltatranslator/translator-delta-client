@@ -10,13 +10,14 @@ import useAuth from "../../hooks/useAuth";
 import { IoMdStarOutline, IoMdStar } from "react-icons/io";
 import { TiDelete } from "react-icons/ti";
 import Swal from "sweetalert2";
+import useTraceLangName from "../../hooks/useTraceLangName";
 
 const History = ({ setOpenHistory, openHistory }) => {
   const { user } = useAuth();
   const [history, setHistory] = useState();
   const reloadState = useSelector(selectReloadState);
   const dispatch = useDispatch();
-
+  const traceCode = useTraceLangName()
   useEffect(() => {
     axiosSecure.get(`/translation-history/${user?.email}`).then((res) => {
       const history = res.data.translationHistory;
@@ -104,11 +105,14 @@ const History = ({ setOpenHistory, openHistory }) => {
         return (
           <div
             key={idx}
-            className="text-gray-500 text-sm font-bold bg-orange-50 border-b-2 p-4 m-2 rounded-lg hover:bg-gray-100 cursor-pointer flex justify-between gap-1"
+            className="text-sm font-bold bg-orange-50 border-b-2 p-4 m-2 rounded-lg hover:bg-gray-100 cursor-pointer flex justify-between gap-1"
           >
-            <div className="">
+            <div className="space-y-2">
+              <p>{traceCode(entry.sourceLang)}-{traceCode(entry.targetLang)}</p>
+              <div>
               <p>{entry.translatedText}</p>
               <p>{entry.sourceText}</p>
+              </div>
             </div>
 
             <div className="flex">
