@@ -74,9 +74,10 @@ const SavedComponent = () => {
               </p>
              <div>
             <div className="flex items-center justify-between gap-2">
-            <p>{entry.sourceText}</p>
+            <p className="font-semibold">{entry.sourceText}</p>
               <TextToSpeak inputText={entry.sourceText} />
             </div>
+
              <div className="flex items-center justify-between gap-2">
              <p>{entry.translatedText}</p>
                 <TextToSpeak inputText={entry.translatedText} />

@@ -41,13 +41,21 @@ const History = ({ setOpenHistory, openHistory }) => {
     timerProgressBar: true,
   });
 
+  const deleteHistory = (entry, status) => {
+    console.log(status);
+    const deleteHistory = {
+      userEmail : user?.email
+    }
+
+    axiosSecure.patch(`/translation-history?userEmail=${user?.email}`, deleteHistory)
+  }
+
   const handleAddFavoriteHistory = (entry, status) => {
     // console.log(entry);
     const favHistory = {
       userEmail: user?.email,
       FavHistory: [entry],
     };
-
     // console.log(favHistory);
     axiosSecure
       .put(`/favoriteHistory/${status}`, favHistory)
@@ -110,8 +118,8 @@ const History = ({ setOpenHistory, openHistory }) => {
             <div className="space-y-2">
               <p className="font-bold">{traceCode(entry.sourceLang)}-{traceCode(entry.targetLang)}</p>
               <div>
+              <p className="font-semibold">{entry.sourceText}</p>
               <p>{entry.translatedText}</p>
-              <p>{entry.sourceText}</p>
               </div>
             </div>
 
