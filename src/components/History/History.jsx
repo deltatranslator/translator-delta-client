@@ -105,10 +105,10 @@ const History = ({ setOpenHistory, openHistory }) => {
         return (
           <div
             key={idx}
-            className="text-sm font-bold bg-orange-50 border-b-2 p-4 m-2 rounded-lg hover:bg-gray-100 cursor-pointer flex justify-between gap-1"
+            className="text-sm bg-orange-50 border-b-2 p-4 m-2 rounded-lg hover:bg-gray-100 cursor-pointer flex justify-between gap-1"
           >
             <div className="space-y-2">
-              <p>{traceCode(entry.sourceLang)}-{traceCode(entry.targetLang)}</p>
+              <p className="font-bold">{traceCode(entry.sourceLang)}-{traceCode(entry.targetLang)}</p>
               <div>
               <p>{entry.translatedText}</p>
               <p>{entry.sourceText}</p>
