@@ -1,6 +1,6 @@
 import SwipeArrow from "../TranslatorComponent/SwipeArrow";
 import SourcePdfComponent from "./SourcePdfComponents";
-import FileUpload from "./FileUpload"
+// import FileUpload from "./FileUpload"
 import TargetPdfComponent from "./TargetPdfComponents";
 
 

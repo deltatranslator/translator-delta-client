@@ -4,7 +4,7 @@ import Footer from "../../components/Home/Footer/Footer";
 import HomeBodyComponent from "../../components/HomeBodyComponent/HomeBodyComponent";
 import Navbar from "../../components/Navbar/Navbar";
 import { useRef } from "react";
-import TranslateSectionNav from "../../components/TranslateSectionNav/TranslateSectionNav";
+//import TranslateSectionNav from "../../components/TranslateSectionNav/TranslateSectionNav";
 
 
 
