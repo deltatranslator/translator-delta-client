@@ -14,13 +14,13 @@ const AdminAllUsersCard = ({ user, idx, refresh, setRefresh }) => {
         };
 
         // axiosSecure.patch(`/users/change-role/${id}`, updateInfo)
-        //     .then(res => {
+        //     .diven(res => {
         //         if (res.data.modifiedCount > 0) {
         //             setRefresh(!refresh);
         //             Swal.fire({
         //                 position: 'top-end',
         //                 icon: 'success',
-        //                 title: 'This user is now an admin.',
+        //                 title: 'divis user is now an admin.',
         //                 showConfirmButton: false,
         //                 timer: 1500
         //             });
@@ -29,35 +29,35 @@ const AdminAllUsersCard = ({ user, idx, refresh, setRefresh }) => {
     };
 
     return (
-        <tr>
-            <th>
+        <div className="flex w-full justify-between font-bold text-sm border-[1px] border-[#303179] border-opacity-20 pl-4 py-2 rounded-lg cursor-pointer hover:scale-x-105 hover:scale-y-110 hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all duration-300 hover:shadow-2xl">
+            <div className="flex-1 flex items-center">
                 <label>
                     <h2>{idx}</h2>
                 </label>
-            </th>
-            <td>
-                <div className="w-14 h-14 rounded-full overflow-hidden">
+            </div>
+            <div className="flex-1 flex items-center">
+                <div className="w-12 h-12 rounded-full overflow-hidden">
                     <img src={photo} className="w-full h-full object-cover" alt="" />
                 </div>
-            </td>
-            <td>
+            </div>
+            <div className="flex-1 flex items-center">
                 <div>
                     <div className="font-semibold">{name}</div>
                 </div>
-            </td>
-            <td>
+            </div>
+            <div className="flex-1 flex items-center">
                 <span className="font-semibold">{email}</span>
-            </td>
-            <td>
+            </div>
+            <div className="flex-1 flex items-center">
                 <div className="font-semibold">{role || 'user'}</div>
-            </td>
-            <td>
-                <button onClick={() => setIsOpen(true)} className="text-gray-700">
+            </div>
+            <div className="flex-1 flex items-center">
+                <button onClick={() => setIsOpen(true)} className="">
                     <IoSettingsSharp size={18} />
                 </button>
                 <AdminUserActionModal user={user} open={isOpen} close={() => setIsOpen(false)}></AdminUserActionModal>
-            </td>
-        </tr>
+            </div>
+        </div>
     );
 };
 
