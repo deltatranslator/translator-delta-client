@@ -1,10 +1,28 @@
+import { useElementScroll } from "framer-motion";
 import LanguageChart from "./LanguageChart"
 import MonthlyUsersChart from "./MonthlyUsersChart"
 import TopLanguages from "./TopLanguages"
 import StatCard from "./statCard"
 
+import { FaUsers } from "react-icons/fa";
+import { FaUserClock } from "react-icons/fa";
+import { IoMdMail } from "react-icons/io";
+import { MdFeedback } from "react-icons/md";
+import { useEffect, useState } from "react";
+import axiosSecure from "../../../../api";
+
 
 const AdminUserStats = () => {
+
+    const [stats, setStats] = useState({});
+
+    useEffect(() => {
+        axiosSecure.get('/dashboard-stat')
+            .then(res => {
+                setStats(res.data);
+            })
+    }, []);
+
     return (
         <div>
             <div className="container mx-auto mt-20">
@@ -14,10 +32,10 @@ const AdminUserStats = () => {
             {/* wrapper */}
             <div className="flex flex-col">
                 <div className="flex justify-center gap-10 px-16 container mx-auto bg-gradient-to-r from-blue-400 via-blue-300 to-transparent mr-32 my-10 py-12 rounded-lg">
-                    <StatCard />
-                    <StatCard />
-                    <StatCard />
-                    <StatCard />
+                    <StatCard icon={FaUsers} title="Total Users" stats={stats.userCount} />
+                    <StatCard icon={FaUserClock} title="Recent Users" stats={stats.recentUsers} />
+                    <StatCard icon={IoMdMail} title="Emails" stats={stats.emailCount} />
+                    <StatCard icon={MdFeedback} title="Feedback" stats={stats.feedbackCount} />
                 </div>
                 <div className="container mx-auto bg-gradient-to-r from-blue-400 via-blue-300 to-transparent mr-32 mb-10 py-8 px-8 rounded-lg">
                     <div className="mb-8">

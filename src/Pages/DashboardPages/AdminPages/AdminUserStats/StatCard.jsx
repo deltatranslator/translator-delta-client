@@ -1,4 +1,4 @@
-import { IoMdMail } from "react-icons/io";
+import React from "react";
 import { Tilt } from 'react-tilt'
 
 const defaultOptions = {
@@ -13,7 +13,7 @@ const defaultOptions = {
     easing: "cubic-bezier(.03,.98,.52,.99)",    // Easing on enter/exit.
 }
 
-const StatCard = () => {
+const StatCard = ({ icon, title, stats }) => {
     // primary color: #ed7966
     // secondary color: #303179
     return (
@@ -21,11 +21,12 @@ const StatCard = () => {
             <div className="w-full bg-blue-100 px-8 py-6 m-4 shadow-lg rounded-md hover:bg-[#303179] hover:text-white transition-all duration-300 hover:bg-opacity-70 backdrop-filter hover:backdrop-blur-sm">
                 <div className="flex gap-20 justify-start items-center">
                     <div>
-                        <h3 className="font-bold text-3xl mb-2">12,361</h3>
-                        <p className="ml-1 tracking-wider">Emails Sent</p>
+                        <h3 className="font-bold text-3xl mb-2">{stats || 0}</h3>
+                        <p className="ml-1 tracking-wider">{title}</p>
                     </div>
                     <div className="flex justify-center items-center w-16 h-16 rounded-full bg-blue-300">
-                        <IoMdMail size={28} className="mx-1 shadow-lg" />
+                        {/* <icon size={28} className="mx-1 shadow-lg" /> */}
+                        {React.createElement(icon, { size: "28" })}
                     </div>
                 </div>
             </div>
