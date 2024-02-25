@@ -18,7 +18,7 @@ const TextToSpeak = ({ inputText }) => {
   return (
     <div>
       <button onClick={handleButtonClick}>
-        {isSpeaking ? <FaRegStopCircle size={20} /> : <FaVolumeUp size={20} />}
+        {isSpeaking ? <FaRegStopCircle size={16} /> : <FaVolumeUp size={16} />}
       </button>
     </div>
   );

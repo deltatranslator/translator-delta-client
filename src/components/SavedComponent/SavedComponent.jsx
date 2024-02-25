@@ -4,13 +4,14 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { TiDelete } from "react-icons/ti";
 import TextToSpeak from "../TextToSpeak/TextToSpeak";
+import useTraceLangName from "../../hooks/useTraceLangName";
 
 const SavedComponent = () => {
   const { user } = useAuth();
   const [FavHistory, setFavHistory] = useState([]);
   // const reloadState = useSelector(selectReloadState);
   // const dispatch = useDispatch();
-
+  const traceCode = useTraceLangName();
   useEffect(() => {
     axiosSecure.get(`/favoriteHistory?userEmail=${user?.email}`).then((res) => {
       setFavHistory(res.data.FavHistory);
@@ -65,17 +66,23 @@ const SavedComponent = () => {
         return (
           <div
             key={idx}
-            className="text-gray-500 text-sm font-bold bg-orange-50 border-b-2 p-4 m-2 rounded-lg hover:bg-gray-100 cursor-pointer flex justify-between gap-1"
+            className="text-sm bg-orange-50 border-b-2 p-4 m-2 rounded-lg hover:bg-gray-100 cursor-pointer flex justify-between gap-1"
           >
-            <div>
-              <div className="flex items-center gap-2">
-                <p>{entry.sourceText}</p>
-                <TextToSpeak inputText={entry.sourceText} />
-              </div>
-              <div className="flex items-center gap-2">
-                <p>{entry.translatedText}</p>
+            <div className="space-y-2">
+              <p className="font-bold">
+                {traceCode(entry.sourceLang)} - {traceCode(entry.targetLang)}
+              </p>
+             <div>
+            <div className="flex items-center justify-between gap-2">
+            <p className="font-semibold">{entry.sourceText}</p>
+              <TextToSpeak inputText={entry.sourceText} />
+            </div>
+
+             <div className="flex items-center justify-between gap-2">
+             <p>{entry.translatedText}</p>
                 <TextToSpeak inputText={entry.translatedText} />
-              </div>
+             </div>
+             </div>
             </div>
             <div>
               <TiDelete
