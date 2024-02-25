@@ -29,7 +29,7 @@ const AdminAllUsersCard = ({ user, idx, refresh, setRefresh }) => {
     };
 
     return (
-        <div className="flex w-full justify-between font-bold text-sm border-2 border-[#303179] border-opacity-30 pl-4 py-2 rounded-lg cursor-pointer hover:scale-x-105 hover:scale-y-110 hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all duration-300">
+        <div className="flex w-full justify-between font-bold text-sm border-[1px] border-[#303179] border-opacity-20 pl-4 py-2 rounded-lg cursor-pointer hover:scale-x-105 hover:scale-y-110 hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all duration-300 hover:shadow-2xl">
             <div className="flex-1 flex items-center">
                 <label>
                     <h2>{idx}</h2>

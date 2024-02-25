@@ -9,48 +9,57 @@ import axiosSecure from '../../../api';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY2;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+// const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY2;
+// const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AdminUserActionModal = ({ user, open, close }) => {
-    const [image, setImage] = useState(null);
-
-    const iconStyles = 'text-3xl text-slate-700 w-12 h-12 flex justify-center items-center rounded-full hover:bg-yellow-300 cursor-pointer transition ease-in-out';
+    // const [image, setImage] = useState(null);
+    const [userSettings, setUserSettings] = useState({
+        role: user?.role,
+        banState: false
+    })
 
 
     // Function to handle file input change
-    const handleImageChange = async (event) => {
-        const selectedFile = event.target.files[0];
-        try {
-            const formData = new FormData();
-            formData.append('image', selectedFile);
+    // const handleImageChange = async (event) => {
+    //     const selectedFile = event.target.files[0];
+    //     try {
+    //         const formData = new FormData();
+    //         formData.append('image', selectedFile);
 
-            const response = await axios.post(image_hosting_api, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
+    //         const response = await axios.post(image_hosting_api, formData, {
+    //             headers: {
+    //                 'Content-Type': 'multipart/form-data',
+    //             },
+    //         });
 
-            const imageUrl = response.data.data.url;
-            setImage(imageUrl);
-        } catch (error) {
-            toast.error('Failed to upload image');
-        }
-    };
+    //         const imageUrl = response.data.data.url;
+    //         setImage(imageUrl);
+    //     } catch (error) {
+    //         toast.error('Failed to upload image');
+    //     }
+    // };
 
     const handleUpdateUserInfo = async () => {
 
 
 
-        const feedback = {
-            userEmail: user?.email
+        const userInfo = {
+            userEmail: user?.email,
+            role: userSettings.role,
+            banState: userSettings.banState
         }
-        console.log(feedback);
+        console.log(userInfo);
 
-        // axiosSecure.put(`/user-feedback/${user?.email}`, feedback)
-        //     .then(res => {
-        //         console.log(res);
-        //     })
+        axiosSecure.patch(`/admin-user-update/${user?.email}`, userInfo)
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    toast.success("User Access Updated");
+                }
+            })
+            .catch(err => {
+                toast.error(err.message);
+            })
 
         // Close the modal
         close();
@@ -83,18 +92,20 @@ const AdminUserActionModal = ({ user, open, close }) => {
                             </div>
                             <div className='flex items-center px-8 py-2 mr-12 bg-gray-50 gap-4'>
                                 <h1 className='font-medium'>Change Roles</h1>
-                                <select className='p-2 rounded-md focus:outline-none cursor-pointer' name="role" id="">
+                                <select onChange={(e) => setUserSettings({ ...userSettings, role: e.target.value })} className='p-2 rounded-md focus:outline-none cursor-pointer' name="role" id="">
                                     <option value="default">Select</option>
                                     <option value="admin">Admin</option>
                                     <option value="contributor">Contributor</option>
                                     <option value="user">User</option>
                                 </select>
                             </div>
-                            <div className='my-6'>
+                            <div className='my-6 flex items-center gap-8'>
                                 <h1 className='font-bold text-xl text-red-600'>Ban</h1>
-                                <div className="footer pr-4 flex justify-start -mb-2 mt-4">
+                                <div className="footer pr-4 flex justify-start">
                                     {/* <button className="btn btn-ghost w-1/2 flex justify-center items-center bg-orange-400 text-white text-[17px] font-medium hover:bg-orange-500 tracking-wider">temporary</button> */}
-                                    <button onClick={close} className="btn btn-ghost w-1/2 flex justify-center items-center bg-red-500 text-white font-medium hover:bg-red-600 text-[17px] tracking-wider">Permanent</button>
+                                    <button onClick={() => {
+                                        setUserSettings({ ...userSettings, banState: true })
+                                    }} className={`btn btn-ghost w-1/2 flex justify-center items-center ${!user.banState ? 'bg-red-500 text-white hover:bg-red-600' : 'bg-gray-300 hover:bg-gray-400 text-black'}  font-medium text-[17px] tracking-wider`}>{user.banState ? 'Unban' : 'Ban'}</button>
                                 </div>
                             </div>
                         </div>
@@ -110,7 +121,7 @@ const AdminUserActionModal = ({ user, open, close }) => {
                     </div>
                     <div className="w-full pl-8 pr-4 flex justify-around -mb-2 mt-12 gap-8">
                         <div className='w-1/2 flex justify-end items-center pr-4'>
-                            <button onSubmit={handleUpdateUserInfo} className="btn btn-ghost flex justify-center items-center hover:bg-orange-300 w-32">Save</button>
+                            <button onClick={handleUpdateUserInfo} className="btn btn-ghost flex justify-center items-center hover:bg-orange-300 w-32">Save</button>
                         </div>
                         <div className='w-1/2 flex justify-start items-center'>
                             <button onClick={close} className="btn btn-ghost flex justify-center items-center w-32">Cancel</button>
