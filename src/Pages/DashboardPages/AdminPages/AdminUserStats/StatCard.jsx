@@ -19,7 +19,7 @@ const StatCard = () => {
     return (
         <Tilt className="flex-1" options={defaultOptions} style={{ height: 165, width: 250 }}>
             <div className="w-full bg-blue-100 px-8 py-6 m-4 shadow-lg rounded-md hover:bg-[#303179] hover:text-white transition-all duration-300 hover:bg-opacity-70 backdrop-filter hover:backdrop-blur-sm">
-                <div className=" flex gap-20 justify-start items-center">
+                <div className="flex gap-20 justify-start items-center">
                     <div>
                         <h3 className="font-bold text-3xl mb-2">12,361</h3>
                         <p className="ml-1 tracking-wider">Emails Sent</p>

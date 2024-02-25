@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import axiosSecure from "../../../../api";
 
 const lang = [
     {
@@ -28,13 +30,30 @@ const lang = [
 ];
 
 const TopLanguages = () => {
+    const [topLang, setTopLang] = useState([]);
+
+    useEffect(() => {
+        axiosSecure.get(`/top-five-lang`)
+            .then((res) => {
+                setTopLang(res.data);
+            });
+    }, []);
+
     return (
         <div>
             <div className="font-bold mb-4">TopLanguages</div>
             <div className="flex flex-col ml-4 font-medium text-gray-600 tracking-wider">
-                <p>1. English - bengali</p>
-                <p>2. English - spanish</p>
-                <p>3. german - bengali</p>
+                {
+                    topLang.map((lang, idx) => {
+                        const sourceLang = lang.langPair.slice(0, 2);
+                        const targetLang = lang.langPair.slice(3, 5);
+
+                        return (
+                            <p key={idx}>{sourceLang + " - " + targetLang}</p>
+                        )
+                    }
+                    )
+                }
             </div>
         </div>
     )
