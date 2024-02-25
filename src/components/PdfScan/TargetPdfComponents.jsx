@@ -24,6 +24,8 @@ const TargetPdfComponent = () => {
     return state.translation.translatedText;
   });
 
+  console.log(translation);
+
   const handleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
@@ -167,9 +169,7 @@ const TargetPdfComponent = () => {
         className="w-full  dark:bg-slate-400 dark:text-slate-100 dark:border-none font-medium text-gray-600 h-64 border-[1px] bg-gray-50 rounded-lg p-4 flex justify-center items-center"
 
       >
-        <div className="text-xl md:text-2xl text-neutral-400">
-          Download your translated pdf
-        </div>
+        {translation}
       </div>
       <div className=" flex justify-end -mt-[46px] px-10">
 
