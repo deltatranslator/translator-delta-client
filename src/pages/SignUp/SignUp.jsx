@@ -12,7 +12,8 @@ import axios from "axios";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 import { useState } from "react";
-import axiosSecure from "../../api";
+import axiosSecure from "../../Api";
+
 // import { imageUpload } from "../../api/utils";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;

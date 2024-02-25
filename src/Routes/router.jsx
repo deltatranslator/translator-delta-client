@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layout/Mainlayout/MainLayout";
 import Home from "../Pages/Home/Home";
-
 import PdfScan from "../components/PdfScan/PdfScan";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard/Dashboard";
