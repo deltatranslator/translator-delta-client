@@ -13,6 +13,7 @@ import UserProfile from "../components/UserDashboard/UserProfile/UserProfile";
 import AdminInbox from "../Pages/DashboardPages/AdminInbox/AdminInbox";
 import InboxDetailsPage from "../Pages/DashboardPages/AdminInbox/InboxDetailsPage";
 import { getInbox } from "../Api/inbox";
+import AdminUserStats from "../Pages/DashboardPages/AdminPages/AdminUserStats/AdminUserStats";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/admin-dashboard",
+        element: <AdminUserStats />,
+      },
+      {
+        path: "/admin-dashboard/admin-users",
         element: <AdminAllUsers />,
       },
       {
