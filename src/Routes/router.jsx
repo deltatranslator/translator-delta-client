@@ -50,6 +50,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/admin-dashboard",
+        element: <AdminUserStats />,
+      },
+      {
+        path: "/admin-dashboard/admin-users",
         element: <AdminAllUsers />,
       },
       {
@@ -72,10 +76,6 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) => getInbox(params.id),
-      },
-      {
-        path: "/admin-dashboard/statistics",
-        element: <AdminUserStats />,
       },
     ],
   },

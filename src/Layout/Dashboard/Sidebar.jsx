@@ -19,8 +19,8 @@ const Sidebar = () => {
   }
 
   const adminMenus = [
-    { name: "All Users", link: "/admin-dashboard", icon: AiOutlineUser },
-    { name: "Statistics", link: "statistics", icon: AiOutlineBarChart },
+    { name: "Statistics", link: "/admin-dashboard", icon: AiOutlineBarChart },
+    { name: "All Users", link: "admin-users", icon: AiOutlineUser },
     { name: "Inbox", link: "inbox", icon: FaEnvelope },
     { name: "Feedback", link: "user-feedback", icon: RiFeedbackLine },
   ];
