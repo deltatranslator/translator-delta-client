@@ -49,7 +49,7 @@ const SourceLangComponent = () => {
   } = useSpeechRecognition();
   /********Speech To Text Function End**********/
 
-  console.log("here is the input text context",inputText);
+  // console.log("here is the input text context",inputText);
 
   const dispatch = useDispatch();
   const targetLangCode = useSelector((state) => {

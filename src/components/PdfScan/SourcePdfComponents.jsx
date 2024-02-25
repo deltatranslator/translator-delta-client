@@ -41,6 +41,7 @@ const SourcePdfComponent = () => {
     const [sourceLangCode, setSourceLangCode] = useState("");
     const [userPromt, setUserPromt] = useState("");
     // const inputDivRef = useRef();
+    console.log("this is input text ------>", inputText);
 
     const [tempFlag, setTempFlag] = useState(false);
 
@@ -123,23 +124,7 @@ const SourcePdfComponent = () => {
         return item.name.toLowerCase().includes(query.toLowerCase());
     });
 
-    // const handleTextInput = (e) => {
-    //   const inputText = e.target.value;
-    //   console.log(inputText);
-    //   // speech to text
-    // };
 
-    // const startListening = () => {
-    //     const sourceLangCode = traceName(
-    //         selectedLanguage || recentLang[activeIndex]
-    //    );
-    // SpeechRecognition.startListening({
-    //     continuous: true,
-    //     language: sourceLangCode,
-    // });
-    // };
-
-    // const stopListening = () => SpeechRecognition.stopListening();
 
     const handleTranslate = async () => {
         // const inputText = 
@@ -238,7 +223,7 @@ const SourcePdfComponent = () => {
     //   }
 
     // pdf file upload 
-    const [file, setFile] = useState("")
+    // const [file, setFile] = useState("")
 
     // pdf text extract section 
 
@@ -250,7 +235,7 @@ const SourcePdfComponent = () => {
     // Get references to various elements
 
     let pdfInput = document.querySelector(".selectPdf"); // Reference to the PDF file input field
-    let afterUpload = document.querySelector(".afterUpload"); // Reference to the result section
+  //  let afterUpload = document.querySelector(".afterUpload"); // Reference to the result section
     let select = document.querySelector(".selectPage"); // Reference to the page selection dropdown
 
     let pdfText = document.querySelector(".pdfText"); // Reference to the text area for displaying extracted text
@@ -283,7 +268,7 @@ const SourcePdfComponent = () => {
 
     const extractText = async (url, pass) => {
         try {
-            console.log(url);
+            // console.log(url);
             let pdf;
             if (pass) {
                 pdf = await pdfjs.getDocument({ url: url, password: pass }).promise; // Get the PDF document with password
