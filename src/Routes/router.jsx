@@ -1,8 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layout/Mainlayout/MainLayout";
 import Home from "../Pages/Home/Home";
-import SignUp from "../Pages/SignUp/SignUp";
-import Login from "../pages/Login/Login";
+
 import PdfScan from "../components/PdfScan/PdfScan";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard/Dashboard";
@@ -14,6 +13,8 @@ import AdminInbox from "../Pages/DashboardPages/AdminInbox/AdminInbox";
 import InboxDetailsPage from "../Pages/DashboardPages/AdminInbox/InboxDetailsPage";
 import { getInbox } from "../Api/inbox";
 import AdminUserStats from "../Pages/DashboardPages/AdminPages/AdminUserStats/AdminUserStats";
+import SignUp from "../Pages/SignUp/SignUp";
+import Login from "../Pages/Login/Login";
 
 const router = createBrowserRouter([
   {
