@@ -49,6 +49,8 @@ const SourceLangComponent = () => {
   } = useSpeechRecognition();
   /********Speech To Text Function End**********/
 
+  // console.log("here is the input text context",inputText);
+
   const dispatch = useDispatch();
   const targetLangCode = useSelector((state) => {
     return state.translation.targetLang;
@@ -185,6 +187,7 @@ const SourceLangComponent = () => {
   };
 
   const debounce = useDebounce(setInputText);
+  console.log(debounce);
 
   useEffect(() => {
     handleTranslate();
@@ -251,8 +254,8 @@ const SourceLangComponent = () => {
         ))}
         <div
           onClick={handleDropdown}
-          className="flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full"
-        >
+          className="flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full" >
+       
           {!dropdownOpen ? <SlArrowDown size={16} /> : <SlArrowUp size={16} />}
         </div>
       </div>
