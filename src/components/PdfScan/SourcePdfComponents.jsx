@@ -295,7 +295,7 @@ const SourcePdfComponent = () => {
             console.log(err.message);
         }
     }
-
+        // set text on content 
     const afterProcess = () => {
         pdfText.value = allText[select.value - 1]; // Display the extracted text for the selected 
         console.log(pdfText?.value);
