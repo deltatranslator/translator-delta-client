@@ -10,13 +10,14 @@ import useAuth from "../../hooks/useAuth";
 import { IoMdStarOutline, IoMdStar } from "react-icons/io";
 import { TiDelete } from "react-icons/ti";
 import Swal from "sweetalert2";
+import useTraceLangName from "../../hooks/useTraceLangName";
 
 const History = ({ setOpenHistory, openHistory }) => {
   const { user } = useAuth();
   const [history, setHistory] = useState();
   const reloadState = useSelector(selectReloadState);
   const dispatch = useDispatch();
-
+  const traceCode = useTraceLangName()
   useEffect(() => {
     axiosSecure.get(`/translation-history/${user?.email}`).then((res) => {
       const history = res.data.translationHistory;
@@ -40,13 +41,21 @@ const History = ({ setOpenHistory, openHistory }) => {
     timerProgressBar: true,
   });
 
+  const deleteHistory = (entry, status) => {
+    console.log(status);
+    const deleteHistory = {
+      userEmail : user?.email
+    }
+
+    axiosSecure.patch(`/translation-history?userEmail=${user?.email}`, deleteHistory)
+  }
+
   const handleAddFavoriteHistory = (entry, status) => {
     // console.log(entry);
     const favHistory = {
       userEmail: user?.email,
       FavHistory: [entry],
     };
-
     // console.log(favHistory);
     axiosSecure
       .put(`/favoriteHistory/${status}`, favHistory)
@@ -104,11 +113,14 @@ const History = ({ setOpenHistory, openHistory }) => {
         return (
           <div
             key={idx}
-            className="text-gray-500 text-sm font-bold bg-orange-50 border-b-2 p-4 m-2 rounded-lg hover:bg-gray-100 cursor-pointer flex justify-between gap-1"
+            className="text-sm bg-orange-50 border-b-2 p-4 m-2 rounded-lg hover:bg-gray-100 cursor-pointer flex justify-between gap-1"
           >
-            <div className="">
+            <div className="space-y-2">
+              <p className="font-bold">{traceCode(entry.sourceLang)}-{traceCode(entry.targetLang)}</p>
+              <div>
+              <p className="font-semibold">{entry.sourceText}</p>
               <p>{entry.translatedText}</p>
-              <p>{entry.sourceText}</p>
+              </div>
             </div>
 
             <div className="flex">

@@ -10,6 +10,9 @@ import AdminAllUsers from "../Pages/DashboardPages/AdminPages/AdminAllUsers/Admi
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AdminUserFeedback from "../Pages/DashboardPages/AdminPages/AdminUserFeedback/AdminUserFeedback";
 import UserProfile from "../components/UserDashboard/UserProfile/UserProfile";
+import AdminInbox from "../Pages/DashboardPages/AdminInbox/AdminInbox";
+import InboxDetailsPage from "../Pages/DashboardPages/AdminInbox/InboxDetailsPage";
+import { getInbox } from "../Api/inbox";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +54,23 @@ const router = createBrowserRouter([
       {
         path: "/admin-dashboard/user-feedback",
         element: <AdminUserFeedback />,
+      },
+      {
+        path: "/admin-dashboard/inbox",
+        element: (
+          <PrivateRoute>
+            <AdminInbox />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/admin-dashboard/inboxDetails/:id",
+        element: (
+          <PrivateRoute>
+            <InboxDetailsPage></InboxDetailsPage>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) => getInbox(params.id),
       },
     ],
   },
