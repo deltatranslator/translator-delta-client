@@ -235,7 +235,7 @@ const SourcePdfComponent = () => {
     // Get references to various elements
 
     let pdfInput = document.querySelector(".selectPdf"); // Reference to the PDF file input field
-  //  let afterUpload = document.querySelector(".afterUpload"); // Reference to the result section
+    //  let afterUpload = document.querySelector(".afterUpload"); // Reference to the result section
     let select = document.querySelector(".selectPage"); // Reference to the page selection dropdown
 
     let pdfText = document.querySelector(".pdfText"); // Reference to the text area for displaying extracted text
@@ -434,7 +434,7 @@ const SourcePdfComponent = () => {
                             ">
                                 <label
                                     htmlFor="image"
-                                    className="  mb-2 text-sm text-[#ed7966] rounded-xl "
+                                    className=" mb-[1px] text-sm text-[#ed7966] rounded-xl "
                                 >
                                     <div className="flex justify-center items-center mx-auto outline px-3 py-2 rounded-xl">
 
@@ -457,16 +457,18 @@ const SourcePdfComponent = () => {
 
                                 />
 
-                                <input type="password" name="password" id="" />
+                                {/* input pdf password  */}
+
+                            <input className="outline outline-[2px] outline-[#ed7966] rounded-lg my-3 px-2" placeholder="  password if require" type="password" name="password" id="" />
 
 
-                                <button type="submit" className="my-2 text-sm bg-[#ed7966] hover:bg-[#303179] text-white rounded-lg px-2 py-1"> Submit</button>
+                                <button type="submit" className="mb-2  text-sm bg-[#ed7966] hover:bg-[#303179] text-white rounded-lg px-2 py-2"> Translate</button>
 
                             </form>
                             <div className="afterUpload hidden">
                                 <span>Select Page</span>
                                 <select className="selectPage" onChange={afterProcess}></select>
-                                <a href="" className="download" download>Download Pdf Text</a>
+                                {/* <a href="" className="download" download>Download Pdf Text</a> */}
                                 <textarea className="pdfText w-96 h-52"></textarea>
                             </div>
 
