@@ -8,7 +8,9 @@ const SocialLogin = () => {
   const navigate = useNavigate();
   const handleGoogleSignIn = () => {
     googleLogin().then((result) => {
-      console.log(result.user);
+      console.log(result.user.email);
+      axiosSecure.patch(`/monthly-user-count/${result.user?.email}`)
+        .then(res => res.data)
       const userInfo = {
         email: result.user?.email,
         name: result.user?.displayName,
