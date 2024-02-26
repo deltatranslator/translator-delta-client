@@ -4,14 +4,14 @@ import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import countries from "../../data/countries";
 
 import { useSelector, useDispatch } from "react-redux";
-import { targetLang } from "../../redux/slices/translation/translationSlice";
+import {setTranslatedText, sourceLangInfo,targetLang } from "../../redux/slices/translation/translationSlice";
 import useTraceLangCodeName from "../../hooks/useTraceLangCodeName";
 import TextToSpeak from "../TextToSpeak/TextToSpeak";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { FaCopy } from "react-icons/fa";
 import toast from "react-hot-toast";
 
-const TargetLangComponent = () => {
+const TargetLangComponent = ({swapState}) => {
   const [recentLang, setRecentLang] = useRecentLang("recentTargetLang");
   const [langs, setLangs] = useState(countries);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -26,6 +26,11 @@ const TargetLangComponent = () => {
     //console.log(state);
     return state.translation.translatedText;
   });
+
+  const sourceText = useSelector((state) => {
+    return state.translation.sourceText
+  });
+  console.log(swapState,sourceText,translation)
 
   const handleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -177,7 +182,9 @@ const TargetLangComponent = () => {
         name=""
         id=""
       >
-        {translation}
+        {
+          swapState ? sourceText :  translation
+        }
       </div>
       <div className=" flex justify-end -mt-[46px] px-10">
         <button className="mr-10 -mt-2 flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full">
