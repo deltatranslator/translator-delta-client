@@ -3,7 +3,7 @@ import { GiCrossMark } from "react-icons/gi";
 import { FaChevronRight } from "react-icons/fa";
 import useUser from "../../../hooks/useUser";
 import useAuth from "../../../hooks/useAuth";
-import ReactiveButton from "reactive-button";
+import {ReactiveButton} from "reactive-button";
 import { useState } from "react";
 import axiosSecure from "../../../api";
 import useProfile from "../../../hooks/useProfile";
@@ -116,6 +116,7 @@ const ContactInfo = () => {
                     />
                   </div>
                   <div className=" flex items-center justify-end mt-2">
+                  
                     <ReactiveButton
                       buttonState={state}
                       idleText="Submit"
