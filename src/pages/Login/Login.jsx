@@ -99,7 +99,6 @@ const Login = () => {
                     maxLength: 20,
                     pattern: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/,
                   })}
-                  type="password"
                   name="password"
                   placeholder="  Password"
                   className="input input-bordered border-[#ed7966] "

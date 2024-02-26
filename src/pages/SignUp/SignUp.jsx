@@ -73,7 +73,6 @@ const SignUp = () => {
       toast.error(err.message);
     }
   };
-
   // console.log(imgTitle);
   return (
     <div className="hero sign-back min-h-screen  dark:bg-black ">
@@ -138,7 +137,6 @@ const SignUp = () => {
                     maxLength: 20,
                     pattern: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/,
                   })}
-                  type="password"
                   name="password"
                   placeholder="  Password"
                   className="input input-bordered border-[#ed7966] "
