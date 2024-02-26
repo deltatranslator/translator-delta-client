@@ -12,7 +12,8 @@ import axios from "axios";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 import { useState } from "react";
-import axiosSecure from "../../api";
+import axiosSecure from "../../Api";
+
 // import { imageUpload } from "../../api/utils";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -72,7 +73,6 @@ const SignUp = () => {
       toast.error(err.message);
     }
   };
-
   // console.log(imgTitle);
   return (
     <div className="hero sign-back min-h-screen  dark:bg-black ">
@@ -137,7 +137,6 @@ const SignUp = () => {
                     maxLength: 20,
                     pattern: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/,
                   })}
-                  type="password"
                   name="password"
                   placeholder="  Password"
                   className="input input-bordered border-[#ed7966] "
