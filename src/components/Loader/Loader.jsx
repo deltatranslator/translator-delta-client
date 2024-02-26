@@ -1,4 +1,4 @@
-import { FadeLoader } from "react-spinners";
+import  FadeLoader  from "react-spinners";
 
 const Loader = ({ smallHeight }) => {
   return (
