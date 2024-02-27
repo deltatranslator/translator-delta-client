@@ -9,7 +9,10 @@ import Lottie from "lottie-react";
 import toast from "react-hot-toast";
 import loginAnime from "../../assets/Animation - 1705578701251.json";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
+<<<<<<< HEAD
 // import axiosSecure from "../../api";
+=======
+>>>>>>> 4d4a27510e2f9d6804482489b87ffffa77e5c8b9
 import axios from "axios";
 const Login = () => {
   const { userLogin } = useAuth();
@@ -44,8 +47,7 @@ const Login = () => {
       .then(() => {
         toast.success("User Login Successfully");
 
-        axios.patch(`/monthly-user-count/${email}`)
-          .then(res => res.data)
+        axios.patch(`/monthly-user-count/${email}`).then((res) => res.data);
         reset();
         navigate("/");
       })
@@ -101,7 +103,6 @@ const Login = () => {
                     maxLength: 20,
                     pattern: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/,
                   })}
-                  type="password"
                   name="password"
                   placeholder="  Password"
                   className="input input-bordered border-[#ed7966] "

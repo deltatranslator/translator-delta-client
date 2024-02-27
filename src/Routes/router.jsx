@@ -12,8 +12,11 @@ import InboxDetailsPage from "../Pages/DashboardPages/AdminInbox/InboxDetailsPag
 import AdminUserStats from "../Pages/DashboardPages/AdminPages/AdminUserStats/AdminUserStats";
 import SignUp from "../Pages/SignUp/SignUp";
 import Login from "../Pages/Login/Login";
+<<<<<<< HEAD
 import { getInbox } from "../Api/inbox";
 import MainLayout from "../Layout/Mainlayout/MainLayout";
+=======
+>>>>>>> 4d4a27510e2f9d6804482489b87ffffa77e5c8b9
 
 const router = createBrowserRouter([
   {

@@ -5,9 +5,9 @@ import useUser from "../../../hooks/useUser";
 import useAuth from "../../../hooks/useAuth";
 import ReactiveButton from "reactive-button";
 import { useState } from "react";
-import axiosSecure from "../../../api";
 import useProfile from "../../../hooks/useProfile";
 import toast from "react-hot-toast";
+import axiosSecure from "../../../Api";
 
 const ContactInfo = () => {
   const [state, setState] = useState("idle");
