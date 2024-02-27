@@ -9,7 +9,7 @@ import Lottie from "lottie-react";
 import toast from "react-hot-toast";
 import loginAnime from "../../assets/Animation - 1705578701251.json";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
-import axiosSecure from "../../api";
+// import axiosSecure from "../../api";
 import axios from "axios";
 const Login = () => {
   const { userLogin } = useAuth();
