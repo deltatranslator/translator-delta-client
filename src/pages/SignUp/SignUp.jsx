@@ -10,9 +10,10 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
-
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
-import axiosSecure from "../../Api";
+import axiosSecure from "../../api";
 
 // import { imageUpload } from "../../api/utils";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -29,6 +30,15 @@ const SignUp = () => {
     reset,
     formState: { errors },
   } = useForm();
+
+  // password toggle function
+
+  const [showPassword, setShowPassword] = useState(false)
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
 
   const onSubmit = async (data, event) => {
     const name = data.name;
@@ -130,17 +140,24 @@ const SignUp = () => {
                     Password
                   </span>
                 </label>
-                <input
-                  {...register("password", {
-                    required: true,
-                    minLength: 8,
-                    maxLength: 20,
-                    pattern: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/,
-                  })}
-                  name="password"
-                  placeholder="  Password"
-                  className="input input-bordered border-[#ed7966] "
-                />
+                <div className="flex flex-row items-center ">
+                  <input
+                    {...register("password", {
+                      required: true,
+                      minLength: 8,
+                      maxLength: 20,
+                      pattern: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/,
+                    })}
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="  Password"
+                    className="input w-full input-bordered border-[#ed7966]"
+                  />
+                  <button onClick={togglePasswordVisibility} className="relative -ml-10 ">
+                    {showPassword ?  <FaEyeSlash className="text-[#ed7966]" size={20}/>: <FaEye className="text-[#ed7966]" size={20}/> } {/* Text changes based on visibility */}
+                  </button>
+                </div>
+
                 {errors.name && (
                   <span className="text-red-700 font-bold">
                     Password is required

@@ -243,7 +243,10 @@ const SourcePdfComponent = () => {
     const [text, setText] = useState("")
     const handleSubmit = (event) => {
         event.preventDefault()
-        const password = event.target.password.value;
+        const passwordStr = event.target.password.value;
+        const password = parseFloat(passwordStr)
+        console.log(password);
+
         let file = pdfInput.files[0];
         // let file = event?.target?.pdf?.files[0]; // Get the selected PDF file
         console.log(file);
@@ -256,7 +259,7 @@ const SourcePdfComponent = () => {
                 if (password == "") {
                     extractText(res, false); // Extract text without password
                 } else {
-                    extractText(res, true); // Extract text with password
+                    extractText(res, password); // Extract text with password
                 }
 
             }
@@ -271,7 +274,10 @@ const SourcePdfComponent = () => {
             // console.log(url);
             let pdf;
             if (pass) {
+                console.log(pass);
                 pdf = await pdfjs.getDocument({ url: url, password: pass }).promise; // Get the PDF document with password
+
+                console.log(pdf);
             } else {
                 pdf = await pdfjs.getDocument(url).promise; // Get the PDF document without password
                 console.log(pdf);
@@ -295,7 +301,7 @@ const SourcePdfComponent = () => {
             console.log(err.message);
         }
     }
-        // set text on content 
+    // set text on content 
     const afterProcess = () => {
         pdfText.value = allText[select.value - 1]; // Display the extracted text for the selected 
         console.log(pdfText?.value);
@@ -400,35 +406,6 @@ const SourcePdfComponent = () => {
                     <div className="w-full h-full flex justify-center items-center">
                         <div className="mt-7 ">
                             <h2 className="my-5 text-neutral-400">Upload your pdf file</h2>
-                            {/* <form onSubmit={handleSubmit} className="flex justify-center flex-col" action="
-                            ">
-                                <label
-                                    htmlFor="image"
-                                    className="  mb-2 text-sm text-[#ed7966] rounded-xl "
-                                >
-                                    <div className="flex justify-center items-center mx-auto outline px-3 py-2 rounded-xl">
-
-                                        {
-                                            file ?
-
-                                                <p>{file.slice(0, 20)}</p>
-                                                :
-                                                <p>Browse your file</p>
-                                        }
-                                    </div>
-                                </label>
-                                <input
-                                    className=""
-                                    type="file"
-                                    id="image"
-                                    name="pdf"
-                                    accept="application/pdf"
-                                    onChange={(e) => setFile(e?.target?.files[0]?.name)}
-
-                                />
-
-                                <button type="submit" className="my-2 text-sm bg-[#ed7966] hover:bg-[#303179] text-white rounded-lg px-2 py-1"> Submit</button>
-                            </form> */}
 
                             <form onSubmit={handleSubmit} className="flex justify-center flex-col" action="
                             ">
@@ -459,7 +436,7 @@ const SourcePdfComponent = () => {
 
                                 {/* input pdf password  */}
 
-                            <input className="outline outline-[2px] outline-[#ed7966] rounded-lg my-3 px-2" placeholder="  password if require" type="password" name="password" id="" />
+                                <input className="outline outline-[2px] outline-[#ed7966] rounded-lg my-3 px-2" placeholder="  password if require" type="password" name="password" id="" />
 
 
                                 <button type="submit" className="mb-2  text-sm bg-[#ed7966] hover:bg-[#303179] text-white rounded-lg px-2 py-2"> Translate</button>
