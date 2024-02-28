@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
@@ -22,13 +23,12 @@ import TextToSpeak from "../TextToSpeak/TextToSpeak";
 
 import { reloadHistory } from "../../redux/slices/translationHistory/translationHistorySlice";
 
-const SourceLangComponent = ({swapState}) => {
-  console.log(swapState)
+const SourceLangComponent = ({ swapState }) => {
+  console.log(swapState);
   const { user } = useAuth();
   const [recentLang, setRecentLang] = useRecentLang("recentSourceLang");
   const [langs, setLangs] = useState(countries);
   const [inputText, setInputText] = useState("");
-  const [resultText, setResultText] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -36,12 +36,8 @@ const SourceLangComponent = ({swapState}) => {
   const [query, setQuery] = useState("");
   const [sourceLangCode, setSourceLangCode] = useState("");
   const [userPromt, setUserPromt] = useState("");
-  // const inputDivRef = useRef();
+
   const [tempFlag, setTempFlag] = useState(false);
-
-  const [content, setContent] = useState('');
-  const [speechText, setSpeechText] = useState(false)
-
 
   /********Speech To Text Function Start**********/
   const divRef = useRef(null);
@@ -51,9 +47,11 @@ const SourceLangComponent = ({swapState}) => {
     resetTranscript,
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
+  const [state, setState] = useState({
+    content: "",
+    transcript: "",
+  });
   /********Speech To Text Function End**********/
-
-  // console.log("here is the input text context",inputText);
 
   const dispatch = useDispatch();
   const targetLangCode = useSelector((state) => {
@@ -66,14 +64,12 @@ const SourceLangComponent = ({swapState}) => {
 
   // console.log(textTranslated)
 
-
-
   const translation = useSelector((state) => {
     return state.translation;
   });
 
-  const translatedResult = translation?.translatedText
-  console.log(translatedResult)
+  const translatedResult = translation?.translatedText;
+  console.log(translatedResult);
   const traceName = useTraceLangCodeName();
 
   console.log("recent:", targetLangCode);
@@ -167,7 +163,7 @@ const SourceLangComponent = ({swapState}) => {
       sourceText: inputText,
       translatedDate: Date.now(),
     };
-    console.log(sourceLangData.sourceText)
+    console.log(sourceLangData.sourceText);
     dispatch(sourceLangInfo(sourceLangData));
 
     let translatedResult;
@@ -212,7 +208,7 @@ const SourceLangComponent = ({swapState}) => {
 
   useEffect(() => {
     debounce(transcript);
-    setInputText(transcript)
+    setInputText(transcript);
   }, [transcript]);
 
   // handle source language change
@@ -220,7 +216,7 @@ const SourceLangComponent = ({swapState}) => {
   //   // Set the innerHTML of the div to an empty string
   //   inputDivRef.current.innerHTML = "";
   // };
-  console.log(inputText)
+  console.log(inputText);
 
   useEffect(() => {
     const sourceLangCodeTemp = traceName(
@@ -269,8 +265,19 @@ const SourceLangComponent = ({swapState}) => {
 
   useEffect(() => {
     // Update content based on swapState
-    setContent(swapState ? translatedResult : inputText);
-  }, [swapState]);
+    setState((prevState) => ({
+      ...prevState,
+      content: swapState ? translatedResult : inputText,
+    }));
+  }, [swapState, translatedResult, inputText]);
+
+  useEffect(() => {
+    // Update transcript
+    setState((prevState) => ({
+      ...prevState,
+      transcript: transcript,
+    }));
+  }, [transcript]);
 
   return (
     <div className="w-full lg:w-1/2 dark:text-white">
@@ -283,18 +290,19 @@ const SourceLangComponent = ({swapState}) => {
               setSelectedLanguage(lang);
               setTempFlag(true);
             }}
-            className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${activeIndex === idx
+            className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${
+              activeIndex === idx
                 ? "border-b-2 border-blue-400"
                 : "border-b-2 border-transparent"
-              }`}
+            }`}
           >
             {lang}
           </div>
         ))}
         <div
           onClick={handleDropdown}
-          className="flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full" >
-       
+          className="flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full"
+        >
           {!dropdownOpen ? <SlArrowDown size={16} /> : <SlArrowUp size={16} />}
         </div>
       </div>
@@ -318,39 +326,41 @@ const SourceLangComponent = ({swapState}) => {
             {/* Dropdown options */}
             {!query
               ? langs.map((lang, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => {
-                    setActiveIndex(0);
-                    setDropdownOpen(false);
-                    handleRecentLang(lang.name);
-                    setSelectedLanguage(lang.name);
-                    setTempFlag(true);
-                  }}
-                  className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${activeIndex === idx
-                      ? "border-b-2 border-blue-400"
-                      : "border-b-2 border-transparent"
+                  <div
+                    key={idx}
+                    onClick={() => {
+                      setActiveIndex(0);
+                      setDropdownOpen(false);
+                      handleRecentLang(lang.name);
+                      setSelectedLanguage(lang.name);
+                      setTempFlag(true);
+                    }}
+                    className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${
+                      activeIndex === idx
+                        ? "border-b-2 border-blue-400"
+                        : "border-b-2 border-transparent"
                     }`}
-                >
-                  {lang.name}
-                </div>
-              ))
+                  >
+                    {lang.name}
+                  </div>
+                ))
               : filteredLang.map((lang, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => {
-                    setActiveIndex(0);
-                    setDropdownOpen(false);
-                    setSelectedLanguage(lang.name);
-                    setTempFlag(true);
-                    handleRecentLang(lang.name);
-                  }}
-                  className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${activeIndex === idx ? "text-blue-500" : "text-gray-800"
+                  <div
+                    key={idx}
+                    onClick={() => {
+                      setActiveIndex(0);
+                      setDropdownOpen(false);
+                      setSelectedLanguage(lang.name);
+                      setTempFlag(true);
+                      handleRecentLang(lang.name);
+                    }}
+                    className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${
+                      activeIndex === idx ? "text-blue-500" : "text-gray-800"
                     }`}
-                >
-                  {lang.name}
-                </div>
-              ))}
+                  >
+                    {lang.name}
+                  </div>
+                ))}
           </div>
         </div>
       )}
@@ -358,52 +368,28 @@ const SourceLangComponent = ({swapState}) => {
       <div data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000">
         <div
           ref={divRef}
-
-
-          onInput={(e)=>{ debounce(e.currentTarget.textContent)
-            // // setInputText(e.currentTarget.textContent)
+          onInput={(e) => {
+            debounce(e.currentTarget.textContent);
           }}
-        
-
-          // {swapState ? (
-          //   {
-          //     onInput: (e) => {
-          //       setInputText(newData);
-          //       debounce(newData);
-          //     }
-          //   }
-          // ) : null}
-          // {swapState ? { name: "yourNewName" } : null}
-
-
-
-           // onKeyDown={(e) => {
-          //   if (inputText.length >= 500 && e.key !== "Backspace") {
-          //     e.preventDefault();
-          //   }
-          // }}
-          
-        
-         
           contentEditable={true}
           className={`w-full dark:bg-slate-200 dark:text-slate-700 dark:border-none text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 h-[480px] resize-none`}
           name=""
           id=""
         >
-
-          {content}
-          {/* {transcript} */}
+          {state.content || state.transcript}
         </div>
 
         {/* --------------------Button: speech stop reset-------------------------- */}
-        <div ><SpeechToText listening={listening}
-          startListening={startListening}
-          stopListening={stopListening}
-          resetTranscript={resetTranscript}
-          divRef={divRef}
-          inputText={inputText}
-         ></SpeechToText>
-         </div>
+        <div>
+          <SpeechToText
+            listening={listening}
+            startListening={startListening}
+            stopListening={stopListening}
+            resetTranscript={resetTranscript}
+            divRef={divRef}
+            inputText={inputText}
+          ></SpeechToText>
+        </div>
         {/* --------------------Button: speech stop reset-------------------------- */}
         <div className="relative left-[7rem] bottom-[3rem] flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full">
           <TextToSpeak className="text-[26px]" inputText={inputText} />

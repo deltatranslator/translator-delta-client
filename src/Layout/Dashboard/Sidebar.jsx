@@ -25,7 +25,7 @@ const Sidebar = () => {
     { name: "Feedback", link: "user-feedback", icon: RiFeedbackLine },
   ];
 
-  console.log(isUser);
+  //console.log(isUser);
 
   return (
     <>

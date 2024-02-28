@@ -10,6 +10,8 @@ import toast from "react-hot-toast";
 import loginAnime from "../../assets/Animation - 1705578701251.json";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import axios from "axios";
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 const Login = () => {
   const { userLogin } = useAuth();
   const navigate = useNavigate();
@@ -20,18 +22,13 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  // SweetAlert Code
-  // const Toast = Swal.mixin({
-  //     toast: true,
-  //     position: "top",
-  //     iconColor: "green",
-  //     customClass: {
-  //         popup: "colored-toast",
-  //     },
-  //     showConfirmButton: false,
-  //     timer: 1500,
-  //     timerProgressBar: true,
-  // });
+    // password toggle function
+
+    const [showPassword, setShowPassword] = useState(false)
+
+    const togglePasswordVisibility = () => {
+      setShowPassword((prevShowPassword) => !prevShowPassword);
+    };
 
   // handle OnSubmit
   const onSubmit = (data) => {
@@ -72,6 +69,7 @@ const Login = () => {
                     Email Address
                   </span>
                 </label>
+               
                 <input
                   {...register("email", { required: true })}
                   type="email"
@@ -92,17 +90,24 @@ const Login = () => {
                     Password
                   </span>
                 </label>
-                <input
-                  {...register("password", {
-                    required: true,
-                    minLength: 8,
-                    maxLength: 20,
-                    pattern: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/,
-                  })}
-                  name="password"
-                  placeholder="  Password"
-                  className="input input-bordered border-[#ed7966] "
-                />
+                <div className="flex flex-row items-center ">
+                  <input
+                    {...register("password", {
+                      required: true,
+                      minLength: 8,
+                      maxLength: 20,
+                      pattern: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/,
+                    })}
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="  Password"
+                    className="input w-full input-bordered border-[#ed7966]"
+                  />
+                  <button onClick={togglePasswordVisibility} className="relative -ml-10 ">
+                    {showPassword ?  <FaEyeSlash className="text-[#ed7966]" size={20}/>: <FaEye className="text-[#ed7966]" size={20}/> } {/* Text changes based on visibility */}
+                  </button>
+                </div>
+             
                 {errors.name && (
                   <span className="text-red-700 font-bold">
                     Password is required
