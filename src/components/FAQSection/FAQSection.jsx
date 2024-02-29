@@ -37,13 +37,13 @@ const FAQSection = () => {
         </p>
       </div>
       <div className="flex flex-col px-1 py-5 md:px-10 md:py-5 lg:px-20  lg:flex-row lg:gap-1 ">
-        <div className="flex-1 py-5 rounded-xl md:space-y-10">
+        <div className="flex-1 py-5 rounded-xl md:space-y-8">
           <h1 className="text-ellipsis font-medium text-[#303179] text-xl lg:text-2xl mb-5">
             What you can do with Delta Translator.
           </h1>
 
           {/* Delta translator benefit */}
-          <div className="space-y-2">
+          <div className="space-y-4">
             <div className="flex items-center gap-2">
               <IoCheckmarkDoneSharp className="size-5 text-[#ed7966]"></IoCheckmarkDoneSharp>
               <p>Translate longer texts</p>
@@ -74,11 +74,11 @@ const FAQSection = () => {
         {/* <div className="divider divider-accent lg:divider-horizontal"></div> */}
 
         <div className="space-y-8 flex-1 p-5 rounded-xl">
-          <h1 className="text-center text-[#303179] font-medium text-2xl mb-5">
+          <h1 className="text-center text-[#303179] dark:text-[#ed7966] font-medium text-2xl mb-5">
             FAQs
           </h1>
           <div className="space-y-3">
-            <div className="px-2 py-4 shadow-md rounded-md bg-white dark:text-black">
+            <div className="px-2 py-4 shadow-md rounded-md  shadow-[#303179]  dark:shadow-white">
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <p> Can I use Delta Translator for Free?</p>
@@ -91,7 +91,7 @@ const FAQSection = () => {
                   </div>
                 </div>
                 {questionOpen1 && (
-                  <p className="text-[#303179] font-medium">
+                  <p className="text-[#303179] font-medium dark:text-[#ed7966]">
                     Yes, When you use Delta Translator you can enjoy 100% free
                     translation online with no ads.
                   </p>
@@ -99,7 +99,7 @@ const FAQSection = () => {
               </div>
             </div>
 
-            <div className="px-2 py-4 shadow-md rounded-md bg-white dark:text-black">
+            <div className="px-2 py-4 shadow-md dark:shadow-white shadow-[#303179] rounded-md">
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <p> How many Languages does Delta Translator Support?</p>
@@ -119,7 +119,7 @@ const FAQSection = () => {
                 )}
               </div>
             </div>
-            <div className="px-2 py-4 shadow-md rounded-md bg-white dark:text-black">
+            <div className="px-2 py-4 shadow-md shadow-[#303179]  dark:shadow-white rounded-md">
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <p>How many characters can translate at once?</p>
@@ -141,7 +141,7 @@ const FAQSection = () => {
                 )}
               </div>
             </div>
-            <div className="px-2 py-4 shadow-md rounded-md bg-white dark:text-black">
+            <div className="px-2 py-4 shadow-md shadow-[#303179]  dark:shadow-white rounded-md">
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <p>How accurate is this translator?</p>
