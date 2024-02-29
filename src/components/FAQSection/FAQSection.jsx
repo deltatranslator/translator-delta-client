@@ -24,7 +24,7 @@ const FAQSection = () => {
   };
 
   return (
-    <div className="flex flex-col shadow-md rounded-md container mx-auto bg-gray-100 py-5 dark:bg-slate-800">
+    <div className="flex md:space-y-6 flex-col shadow-md rounded-md container mx-auto bg-gray-100 py-10 dark:bg-slate-800">
       <div className="md:w-1/2 mx-auto space-y-4 text-center">
         <h1 className="text-[#303179] font-bold text-2xl">
           Why Choose Delta Translator!
@@ -36,9 +36,9 @@ const FAQSection = () => {
           communication accessible to a global audience.
         </p>
       </div>
-      <div className="flex flex-col px-1 py-5 md:px-10 md:py-5 lg:px-36  lg:flex-row lg:gap-1 ">
-        <div className="flex-1 p-5 md:p-10 py-10 md:py-16 rounded-xl">
-          <h1 className="text-center font-medium text-[#303179] text-2xl lg:text-3xl mb-5">
+      <div className="flex flex-col px-1 py-5 md:px-10 md:py-5 lg:px-20  lg:flex-row lg:gap-1 ">
+        <div className="flex-1 py-5 rounded-xl md:space-y-10">
+          <h1 className="text-ellipsis font-medium text-[#303179] text-xl lg:text-2xl mb-5">
             What you can do with Delta Translator.
           </h1>
 
@@ -73,86 +73,88 @@ const FAQSection = () => {
         </div>
         {/* <div className="divider divider-accent lg:divider-horizontal"></div> */}
 
-        <div className="space-y-2 flex-1 p-5 rounded-xl">
-          <h1 className="text-center text-[#303179] font-medium text-3xl mb-5">
+        <div className="space-y-8 flex-1 p-5 rounded-xl">
+          <h1 className="text-center text-[#303179] font-medium text-2xl mb-5">
             FAQs
           </h1>
+          <div className="space-y-3">
+            <div className="px-2 py-4 shadow-md rounded-md bg-white dark:text-black">
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <p> Can I use Delta Translator for Free?</p>
+                  <div onClick={handleArrow1}>
+                    {!questionOpen1 ? (
+                      <IoIosArrowDown></IoIosArrowDown>
+                    ) : (
+                      <IoIosArrowUp className="text-[#ed7966] text-xl"></IoIosArrowUp>
+                    )}
+                  </div>
+                </div>
+                {questionOpen1 && (
+                  <p className="text-[#303179] font-medium">
+                    Yes, When you use Delta Translator you can enjoy 100% free
+                    translation online with no ads.
+                  </p>
+                )}
+              </div>
+            </div>
 
-          <div className="px-2 py-4 shadow-md rounded-md bg-white dark:text-black">
-            <div className="space-y-2">
-              <div className="flex justify-between items-center">
-                <p> Can I use Delta Translator for Free?</p>
-                <div onClick={handleArrow1}>
-                  {!questionOpen1 ? (
-                    <IoIosArrowDown></IoIosArrowDown>
-                  ) : (
-                    <IoIosArrowUp></IoIosArrowUp>
-                  )}
+            <div className="px-2 py-4 shadow-md rounded-md bg-white dark:text-black">
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <p> How many Languages does Delta Translator Support?</p>
+                  <div onClick={handleArrow2}>
+                    {!questionOpen2 ? (
+                      <IoIosArrowDown></IoIosArrowDown>
+                    ) : (
+                      <IoIosArrowUp className="text-[#ed7966] text-xl"></IoIosArrowUp>
+                    )}
+                  </div>
                 </div>
+                {questionOpen2 && (
+                  <p className="text-[#303179] font-medium">
+                    Currently, It lets you translate text into 93 languages,
+                    with more to come.
+                  </p>
+                )}
               </div>
-              {questionOpen1 && (
-                <p className="text-[#303179] font-medium">
-                  Yes, When you use Delta Translator you can enjoy 100% free
-                  translation online with no ads.
-                </p>
-              )}
             </div>
-          </div>
-          <div className="px-2 py-4 shadow-md rounded-md bg-white dark:text-black">
-            <div className="space-y-2">
-              <div className="flex justify-between items-center">
-              <p> How many Languages does Delta Translator Support?</p>
-                <div onClick={handleArrow2}>
-                  {!questionOpen3 ? (
-                    <IoIosArrowDown className="text-[#ed7966] text-xl"></IoIosArrowDown>
-                  ) : (
-                    <IoIosArrowUp></IoIosArrowUp>
-                  )}
+            <div className="px-2 py-4 shadow-md rounded-md bg-white dark:text-black">
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <p>How many characters can translate at once?</p>
+                  <div onClick={handleArrow3}>
+                    {!questionOpen3 ? (
+                      <IoIosArrowDown></IoIosArrowDown>
+                    ) : (
+                      <IoIosArrowUp className="text-[#ed7966] text-xl"></IoIosArrowUp>
+                    )}
+                  </div>
                 </div>
+                {questionOpen3 && (
+                  <p className="text-[#303179] font-medium">
+                    Delta Translator let you translate 500 characters at a time,
+                    but you can always delete a text and type in something else.
+                    Stay tuned - soon you will be able to upload an entire pdf
+                    or paper for translation.
+                  </p>
+                )}
               </div>
-              {questionOpen2 && (
-               <p className="text-[#303179] font-medium">
-               Currently, It lets you translate text into 93 languages, with
-               more to come.
-             </p>
-              )}
             </div>
-          </div>
-          <div className="px-2 py-4 shadow-md rounded-md bg-white dark:text-black">
-            <div className="space-y-2">
-              <div className="flex justify-between items-center">
-                <p>How many characters can translate at once?</p>
-                <div onClick={handleArrow1}>
-                  {!questionOpen1 ? (
-                    <IoIosArrowDown></IoIosArrowDown>
-                  ) : (
-                    <IoIosArrowUp></IoIosArrowUp>
-                  )}
+            <div className="px-2 py-4 shadow-md rounded-md bg-white dark:text-black">
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <p>How accurate is this translator?</p>
+                  <div onClick={handleArrow4}>
+                    {!questionOpen4 ? (
+                      <IoIosArrowDown></IoIosArrowDown>
+                    ) : (
+                      <IoIosArrowUp className="text-[#ed7966] text-xl"></IoIosArrowUp>
+                    )}
+                  </div>
                 </div>
+                {questionOpen4 && <p>yes</p>}
               </div>
-              {questionOpen1 && (
-               <p className="text-[#303179] font-medium">
-               Delta Translator let you translate 500 characters at a time,
-               but you can always delete a text and type in something else.
-               Stay tuned - soon you will be able to upload an entire pdf or
-               paper for translation.
-             </p>
-              )}
-            </div>
-          </div>
-          <div className="px-2 py-4 shadow-md rounded-md bg-white dark:text-black">
-            <div className="space-y-2">
-              <div className="flex justify-between items-center">
-                <p>How accurate is this translator?</p>
-                <div onClick={handleArrow1}>
-                  {!questionOpen1 ? (
-                    <IoIosArrowDown></IoIosArrowDown>
-                  ) : (
-                    <IoIosArrowUp></IoIosArrowUp>
-                  )}
-                </div>
-              </div>
-              {questionOpen1 && <p>yes</p>}
             </div>
           </div>
         </div>
