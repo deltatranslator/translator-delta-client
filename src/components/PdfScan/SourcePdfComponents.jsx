@@ -1,17 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { pdfjs } from "react-pdf";
-// import { IoMicOutline } from "react-icons/io5";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import useRecentLang from "../../hooks/useRecentLang";
 import useDebounce from "../../hooks/useDebounce";
 import countries from "../../data/countries";
-// import { GrPowerReset } from "react-icons/gr";
-// import { FaRegStopCircle } from "react-icons/fa";
 import "regenerator-runtime/runtime";
-// import SpeechRecognition, {
-//   useSpeechRecognition,
-// } from "react-speech-recognition";
+import { MdGTranslate } from "react-icons/md";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -40,21 +35,12 @@ const SourcePdfComponent = () => {
     const [query, setQuery] = useState("");
     const [sourceLangCode, setSourceLangCode] = useState("");
     const [userPromt, setUserPromt] = useState("");
-    // const inputDivRef = useRef();
-    console.log("this is input text ------>", inputText);
+
 
     const [tempFlag, setTempFlag] = useState(false);
 
-    /********Speech To Text Function Start**********/
-    const divRef = useRef(null);
-    //   const {
-    //     transcript,
-    //     listening,
-    //     resetTranscript,
-    //     browserSupportsSpeechRecognition,
-    //   } = useSpeechRecognition();
-    /********Speech To Text Function End**********/
 
+    const divRef = useRef(null);
     const dispatch = useDispatch();
     const targetLangCode = useSelector((state) => {
         return state.translation.targetLang;
@@ -64,13 +50,8 @@ const SourcePdfComponent = () => {
     });
     const traceName = useTraceLangCodeName();
 
-    // console.log("recent:", targetLangCode);
-
     useEffect(() => {
-        // axios.get(`https://libretranslate.com/languages`)
-        //     .then((response) => {
-        //         setLangs(response.data)
-        //     })
+
     }, []);
 
     const handleDropdown = () => {
@@ -436,16 +417,21 @@ const SourcePdfComponent = () => {
 
                                 {/* input pdf password  */}
 
-                                <input className="outline outline-[2px] outline-[#ed7966] rounded-lg my-3 px-2" placeholder="  password if require" type="password" name="password" id="" />
+                                <input style={{ display: "none" }} className="outline  outline-[2px] outline-[#ed7966] rounded-lg my-3 px-2" placeholder="  password if require" type="password" name="password" id="" />
 
 
-                                <button type="submit" className="mb-2  text-sm bg-[#ed7966] hover:bg-[#303179] text-white rounded-lg px-2 py-2"> Translate</button>
+                                <button type="submit" className="my-2 text-sm bg-[#ed7966] hover:bg-[#303179] text-white rounded-lg px-2 py-2">
+                                    <div className=" flex justify-center items-center gap-2">
+                                        <MdGTranslate size={20} />
+                                        Translate
+                                    </div>
+
+                                </button>
 
                             </form>
                             <div className="afterUpload hidden">
                                 <span>Select Page</span>
                                 <select className="selectPage" onChange={afterProcess}></select>
-                                {/* <a href="" className="download" download>Download Pdf Text</a> */}
                                 <textarea className="pdfText w-96 h-52"></textarea>
                             </div>
 

@@ -1,8 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
-// import "../SignUp/signUp.css";
-// import { FcGoogle } from "react-icons/fc";
+
 import { useForm } from "react-hook-form";
-// import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
@@ -103,8 +101,9 @@ const Login = () => {
                     placeholder="  Password"
                     className="input w-full input-bordered border-[#ed7966]"
                   />
+                  {/* Text changes based on visibility */}
                   <button onClick={togglePasswordVisibility} className="relative -ml-10 ">
-                    {showPassword ?  <FaEyeSlash className="text-[#ed7966]" size={20}/>: <FaEye className="text-[#ed7966]" size={20}/> } {/* Text changes based on visibility */}
+                    {showPassword ?  <FaEyeSlash className="text-[#ed7966]" size={20}/>: <FaEye className="text-[#ed7966]" size={20}/> }
                   </button>
                 </div>
              

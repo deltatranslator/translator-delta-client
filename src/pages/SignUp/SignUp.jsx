@@ -153,8 +153,9 @@ const SignUp = () => {
                     placeholder="  Password"
                     className="input w-full input-bordered border-[#ed7966]"
                   />
+                  {/* Text changes based on visibility */}
                   <button onClick={togglePasswordVisibility} className="relative -ml-10 ">
-                    {showPassword ?  <FaEyeSlash className="text-[#ed7966]" size={20}/>: <FaEye className="text-[#ed7966]" size={20}/> } {/* Text changes based on visibility */}
+                    {showPassword ?  <FaEyeSlash className="text-[#ed7966]" size={20}/>: <FaEye className="text-[#ed7966]" size={20}/> } 
                   </button>
                 </div>
 
