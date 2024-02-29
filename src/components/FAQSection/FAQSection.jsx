@@ -102,21 +102,19 @@ const FAQSection = () => {
             <div className="space-y-2">
               <div className="flex justify-between items-center">
               <p> How many Languages does Delta Translator Support?</p>
-                <div onClick={handleArrow1}>
-                  {!questionOpen1 ? (
-                    <IoIosArrowDown></IoIosArrowDown>
+                <div onClick={handleArrow2}>
+                  {!questionOpen3 ? (
+                    <IoIosArrowDown className="text-[#ed7966] text-xl"></IoIosArrowDown>
                   ) : (
                     <IoIosArrowUp></IoIosArrowUp>
                   )}
                 </div>
               </div>
-              {questionOpen1 && (
-                <p className="text-[#303179] font-medium">
-                Delta Translator let you translate 500 characters at a time,
-                but you can always delete a text and type in something else.
-                Stay tuned - soon you will be able to upload an entire pdf or
-                paper for translation.
-              </p>
+              {questionOpen2 && (
+               <p className="text-[#303179] font-medium">
+               Currently, It lets you translate text into 93 languages, with
+               more to come.
+             </p>
               )}
             </div>
           </div>
@@ -133,10 +131,12 @@ const FAQSection = () => {
                 </div>
               </div>
               {questionOpen1 && (
-                <p>
-                  Currently, It lets you translate text into 93 languages, with
-                  more to come.
-                </p>
+               <p className="text-[#303179] font-medium">
+               Delta Translator let you translate 500 characters at a time,
+               but you can always delete a text and type in something else.
+               Stay tuned - soon you will be able to upload an entire pdf or
+               paper for translation.
+             </p>
               )}
             </div>
           </div>
