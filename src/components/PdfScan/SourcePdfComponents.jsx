@@ -422,7 +422,7 @@ const SourcePdfComponent = () => {
 
                                 <button type="submit" className="my-2 text-sm bg-[#ed7966] hover:bg-[#303179] text-white rounded-lg px-2 py-2">
                                     <div className=" flex justify-center items-center gap-2">
-                                        <MdGTranslate size={20} />
+                                        <MdGTranslate size={22} />
                                         Translate
                                     </div>
 
