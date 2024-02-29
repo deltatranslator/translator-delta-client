@@ -9,14 +9,9 @@ import useUser from "../../hooks/useUser";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
-  // const [isAdmin] = useAdmin();
   const isAdmin = true;
 
   const { isUser } = useUser();
-
-  // if (!isUser) {
-  //   return <span className="loading loading-dots loading-lg block max-w-sm mx-auto py-48"></span>;
-  // }
 
   const adminMenus = [
     { name: "Statistics", link: "/admin-dashboard", icon: AiOutlineBarChart },

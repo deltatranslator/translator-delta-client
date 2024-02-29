@@ -14,25 +14,25 @@ const UserProfile = () => {
 
   return (
     <>
-      <section className="md:py-20 py-10 bg-white dark:bg-slate-800">
+      <section className="dark:bg-slate-800 w-full bg-[#EEF1F9] py-8">
         {/* Personal Info */}
-        <section className=" text-center space-y-2 ">
+        <section className="space-y-2 text-start px-2 ">
           <h3 className=" text-4xl font-medium text-slate-900 dark:text-slate-50">
             Personal info
           </h3>
-          <p className=" font-medium text-slate-600 dark:text-slate-50">
+          <p className="text-start font-medium text-slate-600 dark:text-slate-50">
             Info about you and your preferences across Delta services
           </p>
         </section>
-        <section className="md:flex flex-grow-0 items-center md:ml-10 md:w-10/12 w-full">
+        <section className="md:flex flex-grow-0 items-center">
           <div className="overflow-hidden md:order-last">
-            <Lottie className="w-full md:w-80" animationData={userAnimation} />
+            <Lottie className="w-full lg:w-80 md:w-64" animationData={userAnimation} />
           </div>
           <div className="space-y-2 flex-1">
-            <h2 className="text-2xl text-center md:text-start font-medium text-slate-900 dark:text-slate-50">
+            <h2 className="text-2xl text-start px-1 font-medium text-slate-900 dark:text-slate-50">
               Your profile info in Delta services
             </h2>
-            <p className="text-center md:text-start px-1 text-slate-700 dark:text-slate-50 md:w-10/12 w-full">
+            <p className="text-start px-2 text-slate-700 dark:text-slate-50 md:w-10/12 w-full">
               Personal info and options to manage it. You can make some of this
               info, like your contact details, visible to others so they can
               reach you easily. You can also see a summary of your profiles.
@@ -40,7 +40,7 @@ const UserProfile = () => {
           </div>
         </section>
         {/* Basic info */}
-        <section className="rounded-md border shadow-md md:p-5 p-2 md:ml-10 md:w-10/12 w-full mt-8 md:mt-0">
+        <section className="text-start px-2 rounded-md border shadow-md md:p-5 p-2 md:ml-10 md:w-10/12 w-full mt-8 md:mt-0">
           <div className="items-center justify-between">
             <div className=" flex justify-end">
               <div className="avatar">
@@ -116,12 +116,12 @@ const UserProfile = () => {
         {/* Contact Info */}
         <ContactInfo />
         {/* Addresses Info */}
-        <section className="rounded-md border md:p-5 p-2 md:ml-10 mt-10 md:w-10/12 w-full shadow-md">
+        <section className="text-start px-2 rounded-md border md:p-5 p-2 md:ml-10 mt-10 md:w-10/12 w-full shadow-md">
           <div>
-            <h2 className="text-center md:text-start text-3xl font-medium text-slate-900 dark:text-slate-50">
+            <h2 className="text-3xl font-medium text-slate-900 dark:text-slate-50">
               Addresses
             </h2>
-            <p className="text-center md:text-start text-sm text-slate-700 dark:text-slate-50 mt-2">
+            <p className="text-sm text-slate-700 dark:text-slate-50 mt-2">
               Your home and work addresses are used to personalize your
               experiences across Delta products, and for more relevant ads.
             </p>
