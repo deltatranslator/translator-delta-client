@@ -104,7 +104,7 @@ const Occupation = () => {
   return (
     <>
       {/* Your occupation */}
-      <section>
+      <section className="">
         <div>
           <h2 className="text-start px-2 text-3xl font-medium text-slate-900 dark:text-slate-50">
             Your occupation

@@ -16,7 +16,7 @@ const UserProfile = () => {
     <>
       <section className="dark:bg-slate-800 w-full bg-[#EEF1F9] py-8">
         {/* Personal Info */}
-        <section className="space-y-2 text-start px-2 ">
+        <section className="space-y-2 text-start px-2 md:px-8">
           <h3 className=" text-4xl font-medium text-slate-900 dark:text-slate-50">
             Personal info
           </h3>
@@ -24,11 +24,14 @@ const UserProfile = () => {
             Info about you and your preferences across Delta services
           </p>
         </section>
-        <section className="md:flex flex-grow-0 items-center">
+        <section className="md:flex flex-grow-0 items-center mt-0 md:mt-8">
           <div className="overflow-hidden md:order-last">
-            <Lottie className="w-full lg:w-80 md:w-64" animationData={userAnimation} />
+            <Lottie
+              className="w-full lg:w-80 md:w-64"
+              animationData={userAnimation}
+            />
           </div>
-          <div className="space-y-2 flex-1">
+          <div className="space-y-2 flex-1 md:ml-5 ml-0">
             <h2 className="text-2xl text-start px-1 font-medium text-slate-900 dark:text-slate-50">
               Your profile info in Delta services
             </h2>
@@ -40,7 +43,7 @@ const UserProfile = () => {
           </div>
         </section>
         {/* Basic info */}
-        <section className="text-start px-2 rounded-md border shadow-md md:p-5 p-2 md:ml-10 md:w-10/12 w-full mt-8 md:mt-0">
+        <section className="text-start ml-2 md:ml-16 rounded-md border shadow-md md:p-5 p-2 w-full md:mt-0 bg-slate-100">
           <div className="items-center justify-between">
             <div className=" flex justify-end">
               <div className="avatar">
@@ -116,7 +119,7 @@ const UserProfile = () => {
         {/* Contact Info */}
         <ContactInfo />
         {/* Addresses Info */}
-        <section className="text-start px-2 rounded-md border md:p-5 p-2 md:ml-10 mt-10 md:w-10/12 w-full shadow-md">
+        <section className="text-start ml-2 md:ml-16 rounded-md border md:p-5 p-2 mt-10 w-full shadow-md bg-slate-100">
           <div>
             <h2 className="text-3xl font-medium text-slate-900 dark:text-slate-50">
               Addresses
@@ -161,7 +164,7 @@ const UserProfile = () => {
           </div>
         </section>
         {/* Your occupation */}
-        <section className="rounded-md border shadow-md md:p-5 p1 md:ml-10 mt-10 md:w-10/12 w-full">
+        <section className="bg-slate-100 ml-2 md:ml-16 rounded-md border shadow-md md:p-5 p-1 mt-10 w-full">
           <div>
             <Occupation />
           </div>
