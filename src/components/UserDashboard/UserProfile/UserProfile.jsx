@@ -6,36 +6,42 @@ import useAuth from "../../../hooks/useAuth";
 import Occupation from "./Occupation";
 import { Link } from "react-router-dom";
 import ContactInfo from "../Modals/ContactInfo";
+import { useContext } from "react";
+import { OpenContext } from "../../../Context/useOpen";
 
 const UserProfile = () => {
+  const { open } = useContext(OpenContext);
   const { isUser } = useUser();
-  // console.log(isUser?.role);
   const { user } = useAuth();
 
   return (
     <>
       <section className="dark:bg-slate-800 w-full bg-[#EEF1F9] py-8">
         {/* Personal Info */}
-        <section className="space-y-2 text-start px-2 md:px-8">
+        <section className="space-y-2 text-center md:px-8">
           <h3 className=" text-4xl font-medium text-slate-900 dark:text-slate-50">
             Personal info
           </h3>
-          <p className="text-start font-medium text-slate-600 dark:text-slate-50">
+          <p className="text-center font-medium text-slate-600 dark:text-slate-50">
             Info about you and your preferences across Delta services
           </p>
         </section>
-        <section className="md:flex flex-grow-0 items-center mt-0 md:mt-8">
+        <section
+          className={`md:flex flex-grow-0 ml-5 items-center mt-0 md:mt-8 ${
+            !open && "w-full"
+          }`}
+        >
           <div className="overflow-hidden md:order-last">
             <Lottie
               className="w-full lg:w-80 md:w-64"
               animationData={userAnimation}
             />
           </div>
-          <div className="space-y-2 flex-1 md:ml-5 ml-0">
-            <h2 className="text-2xl text-start px-1 font-medium text-slate-900 dark:text-slate-50">
+          <div className="space-y-2 flex-1">
+            <h2 className="text-2xl text-start font-medium text-slate-900 dark:text-slate-50">
               Your profile info in Delta services
             </h2>
-            <p className="text-start px-2 text-slate-700 dark:text-slate-50 md:w-10/12 w-full">
+            <p className="text-start text-slate-700 dark:text-slate-50 md:w-10/12 w-full">
               Personal info and options to manage it. You can make some of this
               info, like your contact details, visible to others so they can
               reach you easily. You can also see a summary of your profiles.
@@ -43,7 +49,11 @@ const UserProfile = () => {
           </div>
         </section>
         {/* Basic info */}
-        <section className="text-start ml-2 md:ml-16 rounded-md border shadow-md md:p-5 p-2 w-full md:mt-0 bg-slate-100">
+        <section
+          className={`text-start md:ml-3 ml-2 ${
+            !open ? "w-full" : "lg:w-[86%] md:w-[79%] w-[50%]"
+          }  rounded-md border shadow-md md:p-5 p-2 md:mt-0 bg-slate-100`}
+        >
           <div className="items-center justify-between">
             <div className=" flex justify-end">
               <div className="avatar">
@@ -119,7 +129,7 @@ const UserProfile = () => {
         {/* Contact Info */}
         <ContactInfo />
         {/* Addresses Info */}
-        <section className="text-start ml-2 md:ml-16 rounded-md border md:p-5 p-2 mt-10 w-full shadow-md bg-slate-100">
+        <section className="text-start  rounded-md border md:p-5 p-2 mt-10 w-full shadow-md bg-slate-100">
           <div>
             <h2 className="text-3xl font-medium text-slate-900 dark:text-slate-50">
               Addresses
@@ -164,7 +174,7 @@ const UserProfile = () => {
           </div>
         </section>
         {/* Your occupation */}
-        <section className="bg-slate-100 ml-2 md:ml-16 rounded-md border shadow-md md:p-5 p-1 mt-10 w-full">
+        <section className="bg-slate-100  rounded-md border shadow-md md:p-5 p-1 mt-10 w-full">
           <div>
             <Occupation />
           </div>
