@@ -18,7 +18,7 @@ const UserProfile = () => {
     <>
       <section className="dark:bg-slate-800 w-full bg-[#EEF1F9] py-8">
         {/* Personal Info */}
-        <section className="space-y-2 text-center md:px-8">
+        <section className={`  space-y-2 text-center md:px-8`}>
           <h3 className=" text-4xl font-medium text-slate-900 dark:text-slate-50">
             Personal info
           </h3>
@@ -28,7 +28,7 @@ const UserProfile = () => {
         </section>
         <section
           className={`md:flex flex-grow-0 ml-5 items-center mt-0 md:mt-8 ${
-            !open && "w-full"
+            !open ? "w-[100%]" : "lg:w-[89%] md:w-[85%]"
           }`}
         >
           <div className="overflow-hidden md:order-last">
@@ -50,9 +50,9 @@ const UserProfile = () => {
         </section>
         {/* Basic info */}
         <section
-          className={`text-start md:ml-3 ml-2 ${
-            !open ? "w-full" : "lg:w-[86%] md:w-[79%] w-[50%]"
-          }  rounded-md border shadow-md md:p-5 p-2 md:mt-0 bg-slate-100`}
+          className={`text-start md:ml-5 ml-[10px] ${
+            !open ? "w-[100%] mt-0" : "lg:w-[86%] md:w-[79%] md:mt-5"
+          } rounded-md border shadow-md md:p-5 p-2 md:mt-0 bg-slate-100`}
         >
           <div className="items-center justify-between">
             <div className=" flex justify-end">
@@ -87,10 +87,10 @@ const UserProfile = () => {
               <div className=" flex items-center text-sm md:gap-[213px] gap-[50px]">
                 <p>Name</p>
                 <p>
-                  {isUser && isUser.name
-                    ? isUser.name
-                    : user && user.displayName
-                    ? user.displayName
+                  {isUser && isUser.name.slice(0, 10)
+                    ? isUser.name.slice(0, 10)
+                    : user && user.displayName.slice(0, 10)
+                    ? user.displayName.slice(0, 10)
                     : "Not Available"}
                 </p>
               </div>
@@ -127,9 +127,13 @@ const UserProfile = () => {
           </div>
         </section>
         {/* Contact Info */}
-        <ContactInfo />
+        <ContactInfo open={open} />
         {/* Addresses Info */}
-        <section className="text-start  rounded-md border md:p-5 p-2 mt-10 w-full shadow-md bg-slate-100">
+        <section
+          className={`text-start md:ml-5 ml-[10px] ${
+            !open ? "w-[100%]" : "lg:w-[86%] md:w-[79%]"
+          } rounded-md border md:p-5 p-2 mt-10 w-full shadow-md bg-slate-100`}
+        >
           <div>
             <h2 className="text-3xl font-medium text-slate-900 dark:text-slate-50">
               Addresses
@@ -174,7 +178,11 @@ const UserProfile = () => {
           </div>
         </section>
         {/* Your occupation */}
-        <section className="bg-slate-100  rounded-md border shadow-md md:p-5 p-1 mt-10 w-full">
+        <section
+          className={`bg-slate-100 md:ml-5 ml-[10px] ${
+            !open ? "w-[100%]" : "lg:w-[86%] md:w-[79%]"
+          } rounded-md border shadow-md md:p-5 p-1 mt-10 w-full`}
+        >
           <div>
             <Occupation />
           </div>

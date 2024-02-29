@@ -9,7 +9,7 @@ import useProfile from "../../../hooks/useProfile";
 import toast from "react-hot-toast";
 import axiosSecure from "../../../Api";
 
-const ContactInfo = () => {
+const ContactInfo = ({ open }) => {
   const [state, setState] = useState("idle");
 
   const { isUser } = useUser();
@@ -41,7 +41,11 @@ const ContactInfo = () => {
 
   return (
     <div>
-      <section className="bg-slate-100 text-start rounded-md border md:p-5 p-2 mt-10 w-full shadow-md">
+      <section
+        className={`bg-slate-100 md:ml-5 ml-[10px] ${
+          !open ? "w-[100%]" : "lg:w-[86%] md:w-[79%]"
+        } text-start rounded-md border md:p-5 p-2 mt-10 w-full shadow-md`}
+      >
         <div>
           <h2 className="text-3xl font-medium text-slate-900 dark:text-slate-50">
             Contact Info
