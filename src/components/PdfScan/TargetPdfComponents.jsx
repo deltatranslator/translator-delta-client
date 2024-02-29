@@ -90,9 +90,9 @@ const TargetPdfComponent = () => {
   let download = document.querySelector(".download");
   // pdf download section 
 
-   const handleDownload = () => {
-      download.href = "data:text/plain;charset=utf-8," + encodeURIComponent(translation)
-    }
+  const handleDownload = () => {
+    download.href = "data:text/plain;charset=utf-8," + encodeURIComponent(translation)
+  }
 
   console.log(translation);
   // console.log(typeof (translation));
@@ -174,26 +174,28 @@ const TargetPdfComponent = () => {
         </div>
       )}
       <div
-        className="w-full  dark:bg-slate-400 dark:text-slate-100 dark:border-none font-medium text-gray-600 h-64 border-[1px] bg-gray-50 rounded-lg p-4 flex justify-center items-center"
+        className="w-full dark:bg-slate-400 dark:text-slate-100 dark:border-none font-medium text-gray-600 h-64 border-[1px] bg-gray-50 rounded-lg p-4 flex justify-center items-center"
 
       >
         {translation}
 
       </div>
       <>
-      {
-        translation?
-        <button onClick={handleDownload} className="absolute ml-3 font-semibold hover:bg-[#303179]  px-3 py-1 rounded-lg -mt-10  bg-[#ed7966] text-white">
-        <div className="flex items-center gap-2">
-          <FaFileDownload />
-          <a href="#" className="download" download="paragraph.txt">Download</a>
-        </div>
-      </button>
-      :
-      ""
-      }
+        {
+          translation ?
+            <button onClick={handleDownload} className="absolute font-semibold hover:bg-[#303179]  px-3 py-1 rounded-lg -mt-10  bg-[#ed7966] text-white">
+              <div className="flex items-center gap-2">
+                <FaFileDownload />
+                <a href="#" className="download" download="paragraph.txt">Download</a>
+              </div>
+            </button>
+            :
+            <div className="absolute  -mt-50">
+              <p> Here you can see and download your translated pdf</p>
+            </div>
+        }
       </>
-      
+
     </div>
   );
 };

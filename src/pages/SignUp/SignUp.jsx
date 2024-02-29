@@ -86,12 +86,12 @@ const SignUp = () => {
   // console.log(imgTitle);
   return (
     <div className="hero sign-back min-h-screen  dark:bg-black ">
-      <div className="dark:border-2 rounded-3xl dark:border-[#ed7966] py-[50px] px-[100px]">
+      <div className="none md:block dark:border-2 rounded-3xl dark:border-[#ed7966] lg:py-[50px] lg:px-[100px]">
         <div className="hero-content flex flex-col md:flex-row-reverse w-full lg:gap-10">
-          <div className="text-center md:w-full lg:text-left max-w-96 lg:max-w-lg px-3 py-2">
-            <Lottie animationData={loginAnime}></Lottie>
+          <div className="text-center md:w-full lg:text-left max-w-80 lg:max-w-lg px-0 md:px-3 py-2">
+            <Lottie className="lottie" animationData={loginAnime}></Lottie>
           </div>
-          <div className="card flex-shrink-0 w-96 lg:w-[450px]">
+          <div className="card flex-shrink-0 w-80 md:w-96 lg:w-[450px]">
             <div className="text-left ml-10 text-[#ed7966] text-2xl md:text-4xl font-bold">
               Create Your Account
             </div>
@@ -154,7 +154,7 @@ const SignUp = () => {
                     className="input w-full input-bordered border-[#ed7966]"
                   />
                   {/* Text changes based on visibility */}
-                  <button onClick={togglePasswordVisibility} className="relative -ml-10 ">
+                  <button onClick={togglePasswordVisibility} className="relative -ml-7 md:-ml-10 ">
                     {showPassword ?  <FaEyeSlash className="text-[#ed7966]" size={20}/>: <FaEye className="text-[#ed7966]" size={20}/> } 
                   </button>
                 </div>
