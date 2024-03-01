@@ -18,7 +18,11 @@ const UserProfile = () => {
     <>
       <section className="dark:bg-slate-800 w-full bg-[#EEF1F9] py-8">
         {/* Personal Info */}
-        <section className={` ${!open ? "w-[100%]" : "w-[90%]"} space-y-2 text-center md:px-8`}>
+        <section
+          className={` ${
+            !open ? "w-[100%]" : "w-[90%]"
+          } space-y-2 text-center md:px-8`}
+        >
           <h3 className=" text-4xl font-medium text-slate-900 dark:text-slate-50">
             Personal info
           </h3>
@@ -191,7 +195,10 @@ const UserProfile = () => {
       {/* Footer section */}
       <section className=" py-8 flex items-center justify-center">
         <div>
-          <Link className="btn bg-slate-500 text-white hover:bg-slate-50 hover:text-slate-800 hover:shadow-lg hover:shadow-blue-500" to="/">
+          <Link
+            className="btn bg-slate-500 text-white hover:bg-slate-50 hover:text-slate-800 hover:shadow-lg hover:shadow-blue-500"
+            to="/"
+          >
             Go to Delta Translate!
           </Link>
         </div>
