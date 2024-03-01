@@ -7,6 +7,7 @@ import AdminUserActionModal from "../../../../components/Modals/AdminUserActionM
 const AdminAllUsersCard = ({ user, idx, refresh, setRefresh }) => {
     const { _id, role, name, email, photo } = user || {};
     const [isOpen, setIsOpen] = useState();
+    const [isLg, setIsLg] = useState(true);
 
     const handleMakeAdmin = (e, id) => {
         const updateInfo = {
@@ -30,28 +31,28 @@ const AdminAllUsersCard = ({ user, idx, refresh, setRefresh }) => {
 
     return (
         <div className="flex w-full justify-between font-bold text-sm border-[1px] border-[#303179] border-opacity-20 pl-4 py-2 rounded-lg cursor-pointer hover:scale-x-105 hover:scale-y-110 hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all duration-300 hover:shadow-2xl">
-            <div className="flex-1 flex items-center">
+            <div className="w-3/12 lg:w-1/12 md:w-1/12 flex items-center">
                 <label>
                     <h2>{idx}</h2>
                 </label>
             </div>
-            <div className="flex-1 flex items-center">
+            <div className="w-1/12 lg:w-2/12 md:w-3/12 md:flex items-center hidden">
                 <div className="w-12 h-12 rounded-full overflow-hidden">
                     <img src={photo} className="w-full h-full object-cover" alt="" />
                 </div>
             </div>
-            <div className="flex-1 flex items-center">
-                <div>
+            <div className="w-6/12 lg:w-3/12 md:w-4/12 flex items-center">
+                <div className="w-full">
                     <div className="font-semibold">{name}</div>
                 </div>
             </div>
-            <div className="flex-1 flex items-center">
+            <div className="w-1/12 lg:w-3/12 md:w-1/12 hidden lg:flex  items-center">
                 <span className="font-semibold">{email}</span>
             </div>
-            <div className="flex-1 flex items-center">
+            <div className="w-1/12 lg:w-2/12 md:w-2/12 md:flex hidden items-center">
                 <div className="font-semibold">{role || 'user'}</div>
             </div>
-            <div className="flex-1 flex items-center">
+            <div className="w-3/12 lg:w-1/12 md:w-2/12 flex items-center">
                 <button onClick={() => setIsOpen(true)} className="">
                     <IoSettingsSharp size={18} />
                 </button>

@@ -42,31 +42,31 @@ const AdminAllUsers = () => {
 
     return (
         <>
-            <div className="container mx-auto mb-28 mt-20 px-8">
+            <div className="container mx-auto mb-28 mt-20 px-2 md:px-8">
                 <div className="ml-8 mb-10">
                     <h1 className="text-5xl font-bold tracking-widest mb-4">Users</h1>
                     <p className="text-lg font-medium tracking-wider text-gray-500">
                         {users.length} users found
                     </p>
                 </div>
-                <div className="p-8 bg-white rounded-3xl">
+                <div className="py-4 xl:p-8 md:py-8 md:px-2 bg-white rounded md:rounded-3xl">
                     <div className="overflow-x-auto">
-                        <div className="flex flex-col px-8">
+                        <div className="flex flex-col px-4 lg:px-8">
                             {/* head */}
-                            <div className="bg-[#f9f9f9] px-8 py-3 rounded-lg">
+                            <div className="bg-[#f9f9f9] px-3 md:px-8 py-3 rounded-lg">
                                 <div className="flex w-full justify-between font-bold text-sm">
-                                    <p className="flex-1">
+                                    <p className="lg:w-1/12 md:w-1/12">
                                         <label>No.</label>
                                     </p>
-                                    <p className="flex-1">User&apos;s Profile</p>
-                                    <p className="flex-1">User&apos;s Name</p>
-                                    <p className="flex-1">User&apos;s Email</p>
-                                    <p className="flex-1">Role</p>
-                                    <p className="flex-1">Action</p>
+                                    <p className="lg:w-2/12 md:w-3/12 hidden md:flex">User&apos;s Profile</p>
+                                    <p className="lg:w-3/12 md:w-4/12">Name</p>
+                                    <p className="lg:w-3/12 md:w-1/12 hidden lg:flex">User&apos;s Email</p>
+                                    <p className="lg:w-2/12 md:w-2/12 hidden md:flex">Role</p>
+                                    <p className="lg:w-1/12 md:w-2/12">Action</p>
                                 </div>
                             </div>
                             {/* rows */}
-                            <div className="px-8 py-3 rounded-lg flex flex-col gap-4 mt-4">
+                            <div className="py-3 md:px-4 xl:px-8 rounded-lg flex flex-col md:gap-4 gap-y-4 gap-x-2 mt-4">
                                 {currentUsers?.map((user, idx) => (
                                     <AdminAllUsersCard
                                         key={user._id}

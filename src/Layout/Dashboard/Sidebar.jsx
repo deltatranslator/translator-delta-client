@@ -3,20 +3,19 @@ import { AiOutlineUser, AiOutlineBarChart } from "react-icons/ai";
 import { FaEnvelope } from "react-icons/fa";
 import { RiFeedbackLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import UserMenus from "../../components/UserDashboard/UserMenus/UserMenus";
 import useUser from "../../hooks/useUser";
 
-const Sidebar = () => {
+const Sidebar = ({ setIsSideOpen }) => {
   const [open, setOpen] = useState(true);
+  useEffect(() => {
+    setIsSideOpen(open);
+  }, [open, setIsSideOpen]);
   // const [isAdmin] = useAdmin();
   const isAdmin = true;
 
   const { isUser } = useUser();
-
-  // if (!isUser) {
-  //   return <span className="loading loading-dots loading-lg block max-w-sm mx-auto py-48"></span>;
-  // }
 
   const adminMenus = [
     { name: "Statistics", link: "/admin-dashboard", icon: AiOutlineBarChart },
@@ -33,8 +32,8 @@ const Sidebar = () => {
         <section className="flex gap-6 fixed right-0">
           <div
             className={`bg-gray-50 dark:bg-[#ba721b] dark:text-white min-h-screen ${
-              open ? "w-72 px-4" : "w-16 px-3"
-            } duration-700 text-black`}
+              open ? "w-72 md:w-60 xl:w-72 px-4" : "w-10 md:w-16 px-3"
+            } duration-700 text-black z-10`}
           >
             <div
               className={`py-6 flex ${
@@ -43,13 +42,13 @@ const Sidebar = () => {
             >
               <Link className="h-[40px] flex items-start" to="/">
                 <img
-                  className={`${!open && "hidden"} w-[40px] md:w-[40px]`}
+                  className={`${!open && "hidden"} w-[130px] md:w-[130px]`}
                   src="https://i.ibb.co/fkP6YGC/log-removebg-preview.png"
                   alt=""
                 />
-                <div className={`font-medium ${!open && "hidden"}`}>
+                {/* <div className={`font-medium ${!open && "hidden"}`}>
                   Delta Translator
-                </div>
+                </div> */}
               </Link>
               <HiMenuAlt3
                 size={26}
@@ -57,7 +56,7 @@ const Sidebar = () => {
                 className="cursor-pointer"
               ></HiMenuAlt3>
             </div>
-            <div className="mt-4 flex flex-col gap-4 relative">
+            <div className="mt-0 md:mt-4 -ml-3 md:ml-0 flex flex-col gap-4 relative">
               {isAdmin &&
                 adminMenus?.map((menu, i) => (
                   <Link

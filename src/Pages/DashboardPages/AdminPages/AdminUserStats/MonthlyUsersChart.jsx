@@ -11,33 +11,33 @@ import {
 
 const productSales = [
     {
-        name: 'Jan',
-        product1: 4000,
+        name: 'Oct',
+        users: 40,
         product2: 2400,
     },
     {
-        name: 'Feb',
-        product1: 3000,
+        name: 'Nov',
+        users: 140,
         product2: 2210,
     },
     {
-        name: 'Mar',
-        product1: 2000,
+        name: 'Dec',
+        users: 60,
         product2: 2290,
     },
     {
-        name: 'Apr',
-        product1: 2780,
+        name: 'Jan',
+        users: 200,
         product2: 2000,
     },
     {
-        name: 'May',
-        product1: 1890,
+        name: 'Feb',
+        users: 60,
         product2: 2181,
     },
     {
-        name: 'Jun',
-        product1: 2390,
+        name: 'Mar',
+        users: 20,
         product2: 2500,
     },
 ];
@@ -64,19 +64,19 @@ const MonthlyUsersChart = () => {
 
                 <Area
                     type="monotone"
-                    dataKey="product1"
+                    dataKey="users"
                     stroke="#2563eb"
                     fill="#3b82f6"
                     stackId="1"
                 />
-
+                {/* 
                 <Area
                     type="monotone"
                     dataKey="product2"
                     stroke="#7c3aed"
                     fill="#8b5cf6"
                     stackId="1"
-                />
+                /> */}
             </AreaChart>
         </ResponsiveContainer>
     );

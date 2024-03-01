@@ -24,7 +24,7 @@ const Navbar = () => {
 
   const links = (
     <>
-      <li className="text-base font-medium dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
+      <li className="text-base font-medium dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-12">
         <NavLink
           to="/"
           className={({ isActive, isPending }) =>
@@ -34,17 +34,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li className="text-base font-medium dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
-        <NavLink
-          to="/reviews"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#ed7966]" : ""
-          }
-        >
-          Reviews
-        </NavLink>
-      </li>
-      <li className="text-base font-medium dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
+      <li className="text-base font-medium dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-12">
         <a
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-[#ed7966]" : ""
@@ -54,7 +44,7 @@ const Navbar = () => {
           Contact
         </a>
       </li>
-      <li className="text-base font-medium dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
+      <li className="text-base font-medium dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-10">
         <NavLink
           to={isUser?.role === "admin" ? "/admin-dashboard" : "/user-dashboard"}
           className={({ isActive, isPending }) =>
@@ -110,7 +100,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="bg-[#ed7966] text-white dropdown-content hover:text-white mt-3 z-[1] p-2 w-52"
+                className="bg-[#ed7966] text-white dropdown-content  z-[1] p-4 w-40 rounded-md"
               >
                 {links}
               </ul>
@@ -118,7 +108,7 @@ const Navbar = () => {
 
             <Link to="/">
               <img
-                className="w-[150px]"
+                className="w-[60px] md:w-[150px]"
                 src="https://i.ibb.co/fkP6YGC/log-removebg-preview.png"
                 alt=""
               />
@@ -127,8 +117,8 @@ const Navbar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className=" menu-horizontal px-1 hover:text-white">{links}</ul>
           </div>
-          <div className="navbar-end">
-            <div className="mr-3 md:mr-8 mt-1">
+          <div className="navbar-end items-center">
+            <div className="mr-6 md:mr-8 mt-1">
               <label className="swap swap-rotate">
                 {/* this hidden checkbox controls the state */}
                 {/* Add onClick for theme switch */}
@@ -145,7 +135,7 @@ const Navbar = () => {
 
                 {/* moon icon */}
                 <svg
-                  className="swap-off fill-current w-5 md:w-8 h-5 md:h-8 text-[#ed7966]"
+                  className="swap-off fill-current w-6 h-6 md:w-8 md:h-8 text-[#ed7966]"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                 >
@@ -153,10 +143,10 @@ const Navbar = () => {
                 </svg>
               </label>
             </div>
-            <div className="mr-3 md:mr-8">
+            <div className="mr-6 md:mr-8">
               {user ? (
                 <img
-                  className="w-8 h-8 rounded-full"
+                  className="w-6 h-6 md:w-8 md:h-8 rounded-full"
                   src={user?.photoURL}
                   alt="user photo"
                 />
@@ -167,17 +157,17 @@ const Navbar = () => {
             <div className="inline-flex rounded-full shadow">
               {user ? (
                 <button
-                  className="inline-flex items-center px-4 py-2 text-base text-white bg-[#ed7966] border border-transparent rounded-full cursor-pointer font-base hover:bg-white hover:text-black"
+                  className="inline-flex items-center px-2 py-2 md:px-4 md:py-2 text-xs md:text-base text-white bg-[#ed7966] border border-transparent rounded-md md:rounded-full cursor-pointer font-base hover:bg-white hover:text-black"
                   onClick={userLogOut}
                 >
                   Logout
                 </button>
               ) : (
                 <Link
-                  to="/signUp"
+                  to="/login"
                   className="inline-flex items-center px-4 py-2 text-base text-white bg-[#ed7966] border border-transparent rounded-full cursor-pointer font-base hover:bg-white hover:text-black"
                 >
-                  Register
+                  Login
                 </Link>
               )}
             </div>
