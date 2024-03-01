@@ -31,7 +31,7 @@ const AdminUserStats = () => {
             </div>
             {/* wrapper */}
             <div className="flex flex-col">
-                <div className="flex justify-center gap-2 md:gap-10 px-2 md:px-16 container mx-auto bg-gradient-to-r from-blue-400 via-blue-300 to-transparent mr-32 my-10 md:py-12 py-4 rounded-lg flex-wrap">
+                <div className="flex justify-center min-h-[250px] gap-2 md:gap-10 px-2 md:px-16 container mx-auto bg-gradient-to-r from-blue-400 via-blue-300 to-transparent mr-32 my-10 md:py-12 py-4 rounded-lg flex-wrap">
                     <StatCard icon={FaUsers} title="Total Users" stats={stats.userCount} />
                     <StatCard icon={FaUserClock} title="Recent Users" stats={stats.recentUsers} />
                     <StatCard icon={IoMdMail} title="Emails" stats={stats.emailCount} />

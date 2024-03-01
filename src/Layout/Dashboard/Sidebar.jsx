@@ -41,13 +41,13 @@ const Sidebar = ({ setIsSideOpen }) => {
             >
               <Link className="h-[40px] flex items-start" to="/">
                 <img
-                  className={`${!open && "hidden"} w-[40px] md:w-[40px]`}
+                  className={`${!open && "hidden"} w-[130px] md:w-[130px]`}
                   src="https://i.ibb.co/fkP6YGC/log-removebg-preview.png"
                   alt=""
                 />
-                <div className={`font-medium ${!open && "hidden"}`}>
+                {/* <div className={`font-medium ${!open && "hidden"}`}>
                   Delta Translator
-                </div>
+                </div> */}
               </Link>
               <HiMenuAlt3
                 size={26}

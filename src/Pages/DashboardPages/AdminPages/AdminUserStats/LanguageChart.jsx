@@ -71,7 +71,7 @@ const LanguageChart = () => {
         //         <Bar dataKey="source" fill="#ed7966" />
         //     </BarChart>
         // </ResponsiveContainer>
-        <ResponsiveContainer width="100%" height="100%" className="bg-blue-300">
+        <ResponsiveContainer width="100%" height="100%">
             <BarChart
                 width={500}
                 height={300}

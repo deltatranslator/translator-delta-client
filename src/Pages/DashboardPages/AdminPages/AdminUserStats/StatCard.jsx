@@ -34,7 +34,7 @@ const StatCard = ({ icon, title, stats }) => {
 
     return (
         <Tilt className="flex-1" options={defaultOptions} style={screenWidth > 700 ? { height: 165, width: 250 } : { height: 100, width: 250 }}>
-            <div className="w-full bg-blue-100 px-4 py-2 md:px-8 md:py-6 m-4 shadow-lg rounded-md hover:bg-[#303179] hover:text-white transition-all duration-300 hover:bg-opacity-70 backdrop-filter hover:backdrop-blur-sm">
+            <div className="w-full h-[90px] md:h-[130px] bg-blue-100 px-4 py-2 md:px-8 md:py-6 m-4 shadow-lg rounded-md hover:bg-[#303179] hover:text-white transition-all duration-300 hover:bg-opacity-70 backdrop-filter hover:backdrop-blur-sm">
                 <div className="flex gap-10 md:gap-20 justify-between md:justify-start items-center">
                     <div>
                         <h3 className="font-bold text-2xl md:text-3xl mb-2">{stats || 0}</h3>
