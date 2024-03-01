@@ -13,13 +13,12 @@ const Home = () => {
   const ref = useRef()
 
   return (
-    <div className=" dark:bg-slate-900 dark:text-white">
+    <div className="dark:bg-slate-900 dark:text-white">
       <Navbar />
       {/* <TranslateSectionNav /> */}
       <HomeBodyComponent />
-      <div ref={ref}>
-        <FAQSection reference={ref} />
-      </div>
+      <FAQSection reference={ref} />
+      
       <Contact />
       <Footer />
     </div >
