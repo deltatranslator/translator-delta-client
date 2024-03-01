@@ -113,7 +113,7 @@ const Occupation = () => {
         <form onSubmit={handleOccupationSubmit} className="items-center mt-5 p-2">
           <Radio.Group
             size="large"
-            className="grid md:grid-cols-4 grid-cols-2 gap-5 text-center"
+            className="grid md:grid-cols-4 grid-cols-2 gap-5 text-center z-100"
           >
             {occupations.map((item) => (
               <Radio.Button

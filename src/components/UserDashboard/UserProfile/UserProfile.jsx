@@ -33,7 +33,7 @@ const UserProfile = () => {
         >
           <div className="overflow-hidden md:order-last">
             <Lottie
-              className="w-full lg:w-80 md:w-64"
+              className="w-full lg:w-80 md:w-64 "
               animationData={userAnimation}
             />
           </div>
@@ -57,7 +57,7 @@ const UserProfile = () => {
           <div className="items-center justify-between">
             <div className=" flex justify-end">
               <div className="avatar">
-                <div className="w-40 mask mask-squircle">
+                <div className="w-40 mask mask-squircle ">
                   <img
                     src={(isUser && isUser?.photo) || user?.photoURL}
                     alt="Profile Picture"
@@ -183,7 +183,7 @@ const UserProfile = () => {
             !open ? "w-[100%]" : "lg:w-[86%] md:w-[79%]"
           } rounded-md border shadow-md md:p-5 p-1 mt-10 w-full`}
         >
-          <div>
+          <div className=" -z-10">
             <Occupation />
           </div>
         </section>
