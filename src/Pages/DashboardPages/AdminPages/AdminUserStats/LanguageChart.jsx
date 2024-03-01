@@ -71,7 +71,7 @@ const LanguageChart = () => {
         //         <Bar dataKey="source" fill="#ed7966" />
         //     </BarChart>
         // </ResponsiveContainer>
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer width="100%" height="100%" className="bg-blue-300">
             <BarChart
                 width={500}
                 height={300}
@@ -84,7 +84,7 @@ const LanguageChart = () => {
                 }}
                 barSize={20}
             >
-                <XAxis dataKey="langPair" scale="point" padding={{ left: 10, right: 10 }} />
+                <XAxis className='text-xs md:text-base' dataKey="langPair" scale="point" padding={{ left: 10, right: 10 }} />
                 <YAxis />
                 <Tooltip />
                 <Legend />
