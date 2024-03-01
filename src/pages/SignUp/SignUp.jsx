@@ -222,7 +222,7 @@ const SignUp = () => {
               </div>
             </form>
 
-            <p className="text-center">
+            <p className="text-center -mt-4">
               <small className="text-[#303179]  dark:text-white">
                 Already have an account?{" "}
                 <Link to="/login">
@@ -230,12 +230,15 @@ const SignUp = () => {
                 </Link>
               </small>
             </p>
+            <div className="ml-10 social-login">
+              <SocialLogin />
+            </div>
             {/* social login  */}
-            <SocialLogin />
+            
           </div>
         </div>
         <div>
-          <div className="flex justify-center ">
+          <div className="flex justify-center home-btn">
             <Link
               className=" w-36 text-center btn border border-[#ed7966] text-[#ed7966] my-4 btn-outline max-w-sm ml-10 hover:bg-[#303179]"
               to="/"

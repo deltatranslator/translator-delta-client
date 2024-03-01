@@ -177,7 +177,16 @@ const TargetPdfComponent = () => {
         className="w-full dark:bg-slate-400 dark:text-slate-100 dark:border-none font-medium text-gray-600 h-64 border-[1px] bg-gray-50 rounded-lg p-4 flex justify-center items-center"
 
       >
-        {translation}
+        <>
+          {
+            translation ? translation :
+              <div className="text-neutral-400 text-center">
+                <p> Upload your Eng pdf to translate</p>
+                <p>Here you can download</p>
+              </div>
+
+          }
+        </>
 
       </div>
       <>
@@ -190,9 +199,7 @@ const TargetPdfComponent = () => {
               </div>
             </button>
             :
-            <div className="absolute  -mt-50">
-              <p> Here you can see and download your translated pdf</p>
-            </div>
+            ""
         }
       </>
 
