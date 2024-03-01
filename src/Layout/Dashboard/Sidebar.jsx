@@ -3,20 +3,16 @@ import { AiOutlineUser, AiOutlineBarChart } from "react-icons/ai";
 import { FaEnvelope } from "react-icons/fa";
 import { RiFeedbackLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import UserMenus from "../../components/UserDashboard/UserMenus/UserMenus";
 import useUser from "../../hooks/useUser";
+import { OpenContext } from "../../Context/useOpen";
 
 const Sidebar = () => {
-  const [open, setOpen] = useState(true);
-  // const [isAdmin] = useAdmin();
+  const { open, setOpen } = useContext(OpenContext);
   const isAdmin = true;
 
   const { isUser } = useUser();
-
-  // if (!isUser) {
-  //   return <span className="loading loading-dots loading-lg block max-w-sm mx-auto py-48"></span>;
-  // }
 
   const adminMenus = [
     { name: "Statistics", link: "/admin-dashboard", icon: AiOutlineBarChart },
