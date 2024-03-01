@@ -3,12 +3,13 @@ import { AiOutlineUser, AiOutlineBarChart } from "react-icons/ai";
 import { FaEnvelope } from "react-icons/fa";
 import { RiFeedbackLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import UserMenus from "../../components/UserDashboard/UserMenus/UserMenus";
 import useUser from "../../hooks/useUser";
+import { OpenContext } from "../../Context/useOpen";
 
 const Sidebar = ({ setIsSideOpen }) => {
-  const [open, setOpen] = useState(true);
+  const { open, setOpen } = useContext(OpenContext);
   useEffect(() => {
     setIsSideOpen(open);
   }, [open, setIsSideOpen]);
@@ -46,9 +47,6 @@ const Sidebar = ({ setIsSideOpen }) => {
                   src="https://i.ibb.co/fkP6YGC/log-removebg-preview.png"
                   alt=""
                 />
-                {/* <div className={`font-medium ${!open && "hidden"}`}>
-                  Delta Translator
-                </div> */}
               </Link>
               <HiMenuAlt3
                 size={26}
