@@ -45,7 +45,7 @@ const FeedbackModal = ({ open, close }) => {
     return createPortal(
         <>
             <div className="fixed top-0 left-0 right-0 bottom-0 bg-slate-700 bg-opacity-70 backdrop-filter backdrop-blur-sm z-50"></div>
-            <div className="fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-white p-10 z-50 rounded-md">
+            <div className="fixed w-[300px] md:w-auto top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-white p-5 md:p-10 z-50 rounded-md">
                 <div className="flex items-center justify-end relative">
                     <div className="absolute cursor-pointer w-12 h-12 hover:bg-orange-300 hover:bg-opacity-80 flex items-center justify-center rounded-full transition ease-in-out duration-500 mt-8">
                         <RxCross1 onClick={close} className="text-2xl" />
@@ -55,7 +55,7 @@ const FeedbackModal = ({ open, close }) => {
                     <div className="mb-6 p-2 flex flex-col gap-2 items-start justify-center">
                         <h3 className="text-2xl font-bold tracking-widest mb-4 -mt-3">Give Feedback</h3>
                         <p className="font-medium">What do you think of our website?</p>
-                        <ul className="flex gap-4 ml-2">
+                        <ul className="flex gap-0 md:gap-4 ml-2">
                             <li className={`${iconStyles} ${selectedOption === '1' ? 'bg-yellow-300' : ''}`} onClick={() => handleIconClick('1')}><FaRegFaceAngry /></li>
                             <li className={`${iconStyles} ${selectedOption === '2' ? 'bg-yellow-300' : ''}`} onClick={() => handleIconClick('2')}><FaRegFaceFrown /></li>
                             <li className={`${iconStyles} ${selectedOption === '3' ? 'bg-yellow-300' : ''}`} onClick={() => handleIconClick('3')}><FaRegFaceMeh /></li>

@@ -38,9 +38,9 @@ const AdminUserFeedback = () => {
 
     return (
         <>
-            <div className="container mx-auto mb-28 mt-28 px-8">
-                <div className="text-4xl font-bold tracking-widest ml-8 mb-10">User Feedback</div>
-                <div className="p-8 bg-orange-50 rounded-lg">
+            <div className="container mx-auto mb-28 mt-20 md:mt-28 px-4 md:px-8">
+                <div className="text-3xl md:text-4xl font-bold tracking-widest ml-8 mb-10">User Feedback</div>
+                <div className="p-4 md:p-8 bg-orange-50 rounded-lg">
                     <div className="overflow-x-auto">
                         <table className="table">
                             {/* head */}
