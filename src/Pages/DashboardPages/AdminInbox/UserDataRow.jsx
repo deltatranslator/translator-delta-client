@@ -33,7 +33,7 @@ const UserDataRow = ({ inboxUser, refetch, serialNo }) => {
   };
   return (
     <>
-      <tr className="border-b transition text-base duration-300 ease-in-out hover:bg-[#303179] hover:text-white dark:border-neutral-500 dark:hover:bg-neutral-600">
+      <tr className="border-b transition text-base duration-300 ease-in-out hover:bg-[#ed7966] hover:text-white dark:border-neutral-500 dark:hover:bg-neutral-600">
         <td className="whitespace-nowrap px-6 py-6 font-semibold">
           {serialNo}
         </td>
