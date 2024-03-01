@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import UserMenus from "../../components/UserDashboard/UserMenus/UserMenus";
 import useUser from "../../hooks/useUser";
+import { OpenContext } from "../../Context/useOpen";
 
 const Sidebar = ({ setIsSideOpen }) => {
   const [open, setOpen] = useState(true);
@@ -17,18 +18,14 @@ const Sidebar = ({ setIsSideOpen }) => {
 
   const { isUser } = useUser();
 
-  if (!isUser) {
-    return <span className="loading loading-dots loading-lg block max-w-sm mx-auto py-48"></span>;
-  }
-
   const adminMenus = [
-    { name: "All Users", link: "/admin-dashboard", icon: AiOutlineUser },
-    { name: "Statistics", link: "statistics", icon: AiOutlineBarChart },
+    { name: "Statistics", link: "/admin-dashboard", icon: AiOutlineBarChart },
+    { name: "All Users", link: "admin-users", icon: AiOutlineUser },
     { name: "Inbox", link: "inbox", icon: FaEnvelope },
     { name: "Feedback", link: "user-feedback", icon: RiFeedbackLine },
   ];
 
-  console.log(isUser);
+  //console.log(isUser);
 
   return (
     <>
@@ -45,7 +42,7 @@ const Sidebar = ({ setIsSideOpen }) => {
               <Link className="h-[40px] flex items-start" to="/">
                 <img
                   className={`${!open && "hidden"} w-[40px] md:w-[40px]`}
-                  src="/public/Delta-removebg-preview.png"
+                  src="https://i.ibb.co/fkP6YGC/log-removebg-preview.png"
                   alt=""
                 />
                 <div className={`font-medium ${!open && "hidden"}`}>

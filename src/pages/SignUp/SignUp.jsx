@@ -10,9 +10,11 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
-
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
-import axiosSecure from "../../Api";
+import axiosSecure from "../../api";
+
 // import { imageUpload } from "../../api/utils";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -29,29 +31,34 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {
+  // password toggle function
+
+  const [showPassword, setShowPassword] = useState(false)
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
+
+  const onSubmit = async (data, event) => {
     const name = data.name;
     const email = data.email;
     const password = data.password;
-    const image = { image: data.image[0] };
+    console.log(data);
 
-    console.log(image);
-    // const formData = new FormData()
-    // formData.append('image', imageFile)
-    const imageFile = { image: data.image[0] };
+    const imageFile = event?.target?.image?.files[0];
 
+    const formData = new FormData();
+    formData.append("image", imageFile);
     try {
       // upload image
-      console.log(imageFile);
-      const res = await axios.post(image_hosting_api, imageFile, {
+      const res = await axios.post(image_hosting_api, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
 
-      // console.log(res.data);
-
-      const photo_url = res.data.data.display_url;
+      const photo_url = res?.data.data.display_url;
       createUser(email, password).then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
@@ -71,27 +78,20 @@ const SignUp = () => {
           navigate("/");
         });
       });
-
-      // if (res.data.success) {
-      //   //now send the menu item data to the server with image url
-      // User Registration
-      //  save username and & photo
-      // save user in database
     } catch (err) {
       console.log(err.message);
       toast.error(err.message);
     }
   };
-
-  console.log(imgTitle);
+  // console.log(imgTitle);
   return (
     <div className="hero sign-back min-h-screen  dark:bg-black ">
-      <div className="dark:border-2 rounded-3xl dark:border-[#ed7966] py-[50px] px-[100px]">
+      <div className="none md:block dark:border-2 rounded-3xl dark:border-[#ed7966] lg:py-[50px] lg:px-[100px]">
         <div className="hero-content flex flex-col md:flex-row-reverse w-full lg:gap-10">
-          <div className="text-center md:w-full lg:text-left max-w-96 lg:max-w-lg px-3 py-2">
-            <Lottie animationData={loginAnime}></Lottie>
+          <div className="text-center md:w-full lg:text-left max-w-80 lg:max-w-lg px-0 md:px-3 py-2">
+            <Lottie className="lottie" animationData={loginAnime}></Lottie>
           </div>
-          <div className="card flex-shrink-0 w-96 lg:w-[450px]">
+          <div className="card flex-shrink-0 w-80 md:w-96 lg:w-[450px]">
             <div className="text-left ml-10 text-[#ed7966] text-2xl md:text-4xl font-bold">
               Create Your Account
             </div>
@@ -140,18 +140,25 @@ const SignUp = () => {
                     Password
                   </span>
                 </label>
-                <input
-                  {...register("password", {
-                    required: true,
-                    minLength: 8,
-                    maxLength: 20,
-                    pattern: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/,
-                  })}
-                  type="password"
-                  name="password"
-                  placeholder="  Password"
-                  className="input input-bordered border-[#ed7966] "
-                />
+                <div className="flex flex-row items-center ">
+                  <input
+                    {...register("password", {
+                      required: true,
+                      minLength: 8,
+                      maxLength: 20,
+                      pattern: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/,
+                    })}
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="  Password"
+                    className="input w-full input-bordered border-[#ed7966]"
+                  />
+                  {/* Text changes based on visibility */}
+                  <button onClick={togglePasswordVisibility} className="relative -ml-7 md:-ml-10 ">
+                    {showPassword ?  <FaEyeSlash className="text-[#ed7966]" size={20}/>: <FaEye className="text-[#ed7966]" size={20}/> } 
+                  </button>
+                </div>
+
                 {errors.name && (
                   <span className="text-red-700 font-bold">
                     Password is required
@@ -192,7 +199,7 @@ const SignUp = () => {
                   </div>
                 </label>
                 <input
-                  {...register("image", { required: true })}
+                  // {...register("image", { required: true })}
                   type="file"
                   id="image"
                   name="image"
@@ -215,7 +222,7 @@ const SignUp = () => {
               </div>
             </form>
 
-            <p className="text-center">
+            <p className="text-center -mt-4">
               <small className="text-[#303179]  dark:text-white">
                 Already have an account?{" "}
                 <Link to="/login">
@@ -223,12 +230,15 @@ const SignUp = () => {
                 </Link>
               </small>
             </p>
+            <div className="ml-10 social-login">
+              <SocialLogin />
+            </div>
             {/* social login  */}
-            <SocialLogin />
+            
           </div>
         </div>
         <div>
-          <div className="flex justify-center ">
+          <div className="flex justify-center home-btn">
             <Link
               className=" w-36 text-center btn border border-[#ed7966] text-[#ed7966] my-4 btn-outline max-w-sm ml-10 hover:bg-[#303179]"
               to="/"

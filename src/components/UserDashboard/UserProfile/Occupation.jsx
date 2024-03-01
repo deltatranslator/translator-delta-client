@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Radio } from "antd";
 import ReactiveButton from "reactive-button";
-import axiosSecure from "../../../api";
 import toast from "react-hot-toast";
 import useAuth from "../../../hooks/useAuth";
+import axiosSecure from "../../../api";
+
 const Occupation = () => {
   const [occupation, setOccupation] = useState("");
   const [state, setState] = useState("idle");
@@ -103,16 +104,16 @@ const Occupation = () => {
   return (
     <>
       {/* Your occupation */}
-      <section>
+      <section className="">
         <div>
-          <h2 className="text-center md:text-start text-3xl font-medium text-slate-900 dark:text-slate-50">
+          <h2 className="text-start px-2 text-3xl font-medium text-slate-900 dark:text-slate-50">
             Your occupation
           </h2>
         </div>
         <form onSubmit={handleOccupationSubmit} className="items-center mt-5 p-2">
           <Radio.Group
             size="large"
-            className="grid md:grid-cols-4 grid-cols-2 gap-5 text-center"
+            className="grid md:grid-cols-4 grid-cols-2 gap-5 text-center z-100"
           >
             {occupations.map((item) => (
               <Radio.Button
@@ -145,14 +146,14 @@ const Occupation = () => {
       {/* Areas of interest */}
       <section className=" mt-10 pb-3">
         <div>
-          <h2 className="text-3xl text-center md:text-start font-medium text-slate-900 dark:text-slate-50">
+          <h2 className="text-3xl text-start px-2 font-medium text-slate-900 dark:text-slate-50">
             Areas of interest
           </h2>
         </div>
         <form onSubmit={handleInterestSubmit} className="mt-5 p-2">
           <Radio.Group
             size="large"
-            className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5 text-center"
+            className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 text-center"
           >
             {areasOfInterest.map((item) => (
               <Radio.Button

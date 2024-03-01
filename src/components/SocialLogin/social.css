@@ -1,0 +1,8 @@
+@media only screen and (max-width: 400px) and (min-width:320px) {
+
+    .social-login{
+        width: 260px;
+        margin-left: 20px;
+    }
+
+}

@@ -4,14 +4,14 @@ import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import countries from "../../data/countries";
 
 import { useSelector, useDispatch } from "react-redux";
-import { targetLang } from "../../redux/slices/translation/translationSlice";
+import {setTranslatedText, sourceLangInfo,targetLang } from "../../redux/slices/translation/translationSlice";
 import useTraceLangCodeName from "../../hooks/useTraceLangCodeName";
 import TextToSpeak from "../TextToSpeak/TextToSpeak";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { FaCopy } from "react-icons/fa";
 import toast from "react-hot-toast";
 
-const TargetLangComponent = () => {
+const TargetLangComponent = ({swapState}) => {
   const [recentLang, setRecentLang] = useRecentLang("recentTargetLang");
   const [langs, setLangs] = useState(countries);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -23,8 +23,14 @@ const TargetLangComponent = () => {
   const traceName = useTraceLangCodeName();
 
   const translation = useSelector((state) => {
+    //console.log(state);
     return state.translation.translatedText;
   });
+
+  const sourceText = useSelector((state) => {
+    return state.translation.sourceText
+  });
+  console.log(swapState,sourceText,translation)
 
   const handleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -103,11 +109,10 @@ const TargetLangComponent = () => {
               setActiveIndex(idx);
               setSelectedLanguage(lang);
             }}
-            className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${
-              activeIndex === idx
-                ? "border-b-2 border-blue-400"
-                : "border-b-2 border-transparent"
-            }`}
+            className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${activeIndex === idx
+              ? "border-b-2 border-blue-400"
+              : "border-b-2 border-transparent"
+              }`}
           >
             {lang}
           </div>
@@ -139,37 +144,35 @@ const TargetLangComponent = () => {
             {/* Dropdown options */}
             {!query
               ? langs.map((lang, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => {
-                      setActiveIndex(0);
-                      setDropdownOpen(false);
-                      handleRecentLang(lang.name);
-                      setSelectedLanguage(lang.name);
-                    }}
-                    className={`px-2 py-2 cursor-pointer dark:text-slate-50 dark:hover:bg-slate-600 hover:bg-blue-100 ${
-                      activeIndex === idx ? "text-blue-500" : "text-gray-800"
+                <div
+                  key={idx}
+                  onClick={() => {
+                    setActiveIndex(0);
+                    setDropdownOpen(false);
+                    handleRecentLang(lang.name);
+                    setSelectedLanguage(lang.name);
+                  }}
+                  className={`px-2 py-2 cursor-pointer dark:text-slate-50 dark:hover:bg-slate-600 hover:bg-blue-100 ${activeIndex === idx ? "text-blue-500" : "text-gray-800"
                     }`}
-                  >
-                    {lang.name}
-                  </div>
-                ))
+                >
+                  {lang.name}
+                </div>
+              ))
               : filteredLang.map((lang, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => {
-                      setActiveIndex(0);
-                      setDropdownOpen(false);
-                      handleRecentLang(lang.name);
-                      setSelectedLanguage(lang.name);
-                    }}
-                    className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${
-                      activeIndex === idx ? "text-blue-500" : "text-gray-800"
+                <div
+                  key={idx}
+                  onClick={() => {
+                    setActiveIndex(0);
+                    setDropdownOpen(false);
+                    handleRecentLang(lang.name);
+                    setSelectedLanguage(lang.name);
+                  }}
+                  className={`px-2 py-2 cursor-pointer hover:bg-blue-100 ${activeIndex === idx ? "text-blue-500" : "text-gray-800"
                     }`}
-                  >
-                    {lang.name}
-                  </div>
-                ))}
+                >
+                  {lang.name}
+                </div>
+              ))}
           </div>
         </div>
       )}
@@ -179,7 +182,9 @@ const TargetLangComponent = () => {
         name=""
         id=""
       >
-        {translation}
+        {
+          swapState ? sourceText :  translation
+        }
       </div>
       <div className=" flex justify-end -mt-[46px] px-10">
         <button className="mr-10 -mt-2 flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full">

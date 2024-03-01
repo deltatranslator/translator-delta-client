@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import axiosSecure from "../../../Api";
+import axiosSecure from "../../../api";
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
-import UserDataRow from "./userDataRow";
+import UserDataRow from "./UserDataRow";
 import Loader from "../../../components/Loader/Loader";
 
 const AdminInbox = () => {

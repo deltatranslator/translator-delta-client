@@ -1,7 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { FaUserCircle } from "react-icons/fa";
-
 const InboxDetailsPage = () => {
   const loadDetails = useLoaderData();
   const { name, email, message, date, subject } = loadDetails;

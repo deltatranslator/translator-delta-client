@@ -5,11 +5,11 @@ import useUser from "../../../hooks/useUser";
 import useAuth from "../../../hooks/useAuth";
 import ReactiveButton from "reactive-button";
 import { useState } from "react";
-import axiosSecure from "../../../api";
 import useProfile from "../../../hooks/useProfile";
 import toast from "react-hot-toast";
+import axiosSecure from "../../../Api";
 
-const ContactInfo = () => {
+const ContactInfo = ({ open }) => {
   const [state, setState] = useState("idle");
 
   const { isUser } = useUser();
@@ -41,9 +41,13 @@ const ContactInfo = () => {
 
   return (
     <div>
-      <section className="rounded-md border md:p-5 p-2 md:ml-10 mt-10 md:w-10/12 w-full shadow-md">
+      <section
+        className={`bg-slate-100 md:ml-5 ml-[10px] ${
+          !open ? "w-[100%]" : "lg:w-[86%] md:w-[79%]"
+        } text-start rounded-md border md:p-5 p-2 mt-10 w-full shadow-md`}
+      >
         <div>
-          <h2 className="text-center md:text-start text-3xl font-medium text-slate-900 dark:text-slate-50">
+          <h2 className="text-3xl font-medium text-slate-900 dark:text-slate-50">
             Contact Info
           </h2>
         </div>

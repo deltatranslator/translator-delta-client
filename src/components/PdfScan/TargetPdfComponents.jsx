@@ -2,11 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import useRecentLang from "../../hooks/useRecentLang";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import countries from "../../data/countries";
-
+import { FaFileDownload } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { targetLang } from "../../redux/slices/translation/translationSlice";
 import useTraceLangCodeName from "../../hooks/useTraceLangCodeName";
-import TextToSpeak from "../TextToSpeak/TextToSpeak";
+
 
 const TargetPdfComponent = () => {
   const [recentLang, setRecentLang] = useRecentLang("recentTargetLang");
@@ -16,13 +16,14 @@ const TargetPdfComponent = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [query, setQuery] = useState("");
-
   const dispatch = useDispatch();
   const traceName = useTraceLangCodeName();
 
   const translation = useSelector((state) => {
     return state.translation.translatedText;
   });
+
+
 
   const handleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -86,6 +87,15 @@ const TargetPdfComponent = () => {
     handleTargetSelection();
   }, [selectedLanguage, recentLang, activeIndex]);
 
+  let download = document.querySelector(".download");
+  // pdf download section 
+
+  const handleDownload = () => {
+    download.href = "data:text/plain;charset=utf-8," + encodeURIComponent(translation)
+  }
+
+  console.log(translation);
+  // console.log(typeof (translation));
   return (
     <div className="w-full lg:w-1/2 relative">
       <div className="flex items-center dark:text-white px-2 ml-2 lg:ml-6 font-medium text-gray-700">
@@ -164,16 +174,35 @@ const TargetPdfComponent = () => {
         </div>
       )}
       <div
-        className="w-full  dark:bg-slate-400 dark:text-slate-100 dark:border-none font-medium text-gray-600 h-64 border-[1px] bg-gray-50 rounded-lg p-4 flex justify-center items-center"
+        className="w-full dark:bg-slate-400 dark:text-slate-100 dark:border-none font-medium text-gray-600 h-64 border-[1px] bg-gray-50 rounded-lg p-4 flex justify-center items-center"
 
       >
-        <div className="text-xl md:text-2xl text-neutral-400">
-          Download your translated pdf
-        </div>
-      </div>
-      <div className=" flex justify-end -mt-[46px] px-10">
+        <>
+          {
+            translation ? translation :
+              <div className="text-neutral-400 text-center">
+                <p> Upload your Eng pdf to translate</p>
+                <p>Here you can download</p>
+              </div>
+
+          }
+        </>
 
       </div>
+      <>
+        {
+          translation ?
+            <button onClick={handleDownload} className="absolute font-semibold hover:bg-[#303179]  px-3 py-1 rounded-lg -mt-10  bg-[#ed7966] text-white">
+              <div className="flex items-center gap-2">
+                <FaFileDownload />
+                <a href="#" className="download" download="paragraph.txt">Download</a>
+              </div>
+            </button>
+            :
+            ""
+        }
+      </>
+
     </div>
   );
 };
