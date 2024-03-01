@@ -70,10 +70,10 @@ const AdminUserActionModal = ({ user, open, close }) => {
     return createPortal(
         <>
             <div className="fixed top-0 left-0 right-0 bottom-0 bg-slate-700 bg-opacity-70 backdrop-filter backdrop-blur-sm z-50"></div>
-            <div className="fixed w-[700px] top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-white px-20 py-14 z-50 rounded-md">
+            <div className="fixed w-[300px] md:w-[700px] top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-white px-4 md:px-20 py-8 md:py-14 z-50 rounded-md">
                 <div className='flex'>
-                    <div className='w-full flex justify-center mb-8'>
-                        <h1 className='font-bold text-4xl tracking-wider'>User Settings</h1>
+                    <div className='w-full flex justify-start ml-4 md:justify-center mb-8'>
+                        <h1 className='font-bold text-3xl md:text-4xl tracking-wider'>User Settings</h1>
                     </div>
                     <div className="flex items-center justify-end relative">
                         <div className="absolute cursor-pointer w-12 h-12 hover:bg-orange-300 hover:bg-opacity-80 flex items-center justify-center rounded-full transition ease-in-out duration-500 -mt-10">
@@ -83,14 +83,14 @@ const AdminUserActionModal = ({ user, open, close }) => {
                 </div>
                 <div className="p-2 flex flex-col justify-center items-start">
                     <div className='w-full flex justify-center'>
-                        <div className='border-l-2 pl-12 border-orange-300 w-full p-2'>
+                        <div className='border-l-2 pl-8 md:pl-12 border-orange-300 w-full p-2'>
                             <div className='flex gap-4 mx-8 my-4'>
                                 <h1 className='font-medium'>
                                     Current Role
                                 </h1>
                                 <p className='font-medium text-orange-600'>{user?.role || 'user'}</p>
                             </div>
-                            <div className='flex items-center px-8 py-2 mr-12 bg-gray-50 gap-4'>
+                            <div className='flex items-center px-2 md:px-8 py-2 mr-12 bg-gray-50 gap-4'>
                                 <h1 className='font-medium'>Change Roles</h1>
                                 <select onChange={(e) => setUserSettings({ ...userSettings, role: e.target.value })} className='p-2 rounded-md focus:outline-none cursor-pointer' name="role" id="">
                                     <option value="default">Select</option>

@@ -52,7 +52,7 @@ const SavedHistory = ({ setSaveOpen, display, saveOpen, setOpenHistory, openHist
           Saved
         </p>
       </div>
-      <div className="flex flex-col items-center gap-2">
+      {/* <div className="flex flex-col items-center gap-2">
         <div className="w-16 h-16 md:w-20 md:h-20 flex justify-center items-center border-2 rounded-full cursor-pointer">
           <HiMiniUserGroup
             size={36}
@@ -62,7 +62,7 @@ const SavedHistory = ({ setSaveOpen, display, saveOpen, setOpenHistory, openHist
         <p className="text-sm tracking-wide font-medium text-gray-500 dark:text-slate-50">
           Contribute
         </p>
-      </div>
+      </div> */}
     </div>
   );
 };
