@@ -1,4 +1,3 @@
-import { useElementScroll } from "framer-motion";
 import LanguageChart from "./LanguageChart";
 import MonthlyUsersChart from "./MonthlyUsersChart";
 import TopLanguages from "./TopLanguages";
@@ -9,7 +8,7 @@ import { FaUserClock } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { MdFeedback } from "react-icons/md";
 import { useEffect, useState } from "react";
-import axiosSecure from "../../../../api";
+import axiosSecure from "../../../../Api";
 
 const AdminUserStats = () => {
   const [stats, setStats] = useState({});

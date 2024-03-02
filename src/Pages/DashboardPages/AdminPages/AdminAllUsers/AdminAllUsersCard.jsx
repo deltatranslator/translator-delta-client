@@ -1,11 +1,10 @@
-import { MdOutlineUpdate } from "react-icons/md";
 import { IoSettingsSharp } from "react-icons/io5";
-import Swal from "sweetalert2";
-import { useEffect, useState } from "react";
+
+import { useState } from "react";
 import AdminUserActionModal from "../../../../components/Modals/AdminUserActionModal/AdminUserActionModal";
 
 const AdminAllUsersCard = ({ user, idx, refresh, setRefresh }) => {
-  const { _id, role, name, email, photo } = user || {};
+  const { role, name, email, photo } = user || {};
   const [isOpen, setIsOpen] = useState();
   const [isLg, setIsLg] = useState(true);
 
