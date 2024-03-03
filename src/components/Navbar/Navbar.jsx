@@ -108,11 +108,19 @@ const Navbar = () => {
             </div>
 
             <Link to="/">
-              <img
-                className="w-[60px] md:w-[150px]"
-                src="https://i.ibb.co/gdDQTTg/Delta-new-logo.png"
-                alt=""
-              />
+              {theme === "dark" ? (
+                <img
+                  className="w-[60px] md:w-[150px]"
+                  src="https://i.ibb.co/LY5trSk/Delta-logo-dark-removebg-preview-1.png"
+                  alt=""
+                />
+              ) : (
+                <img
+                  className="w-[60px] md:w-[150px]"
+                  src="https://i.ibb.co/3YmSnBB/Delta-new-logo-2-0.png"
+                  alt=""
+                />
+              )}
             </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
