@@ -76,13 +76,13 @@ const Navbar = () => {
           />
         </div>
       </div>
-      <div className="px-1 py-5 md:px-10 md:py-5 lg:px-36 lg:py-5 bg-[#E9F1FA] dark:bg-slate-800">
+      <div className="px-1 py-5 md:px-10 md:py-5 lg:px-32 lg:py-5 bg-[#E9F1FA] dark:bg-slate-800">
         <div className="navbar">
           <div className="navbar-start">
             <div className="dropdown">
               <label
                 tabIndex={0}
-                className="btn btn-ghost text-[#ed7966] lg:hidden"
+                className="btn btn-ghost text-[#00ABE4] lg:hidden"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +101,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="bg-[#ed7966] text-white dropdown-content  z-[1] p-4 w-40 rounded-md"
+                className="bg-[#00ABE4] text-white dropdown-content  z-[1] p-4 w-40 rounded-md"
               >
                 {links}
               </ul>
