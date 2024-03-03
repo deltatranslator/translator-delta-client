@@ -168,7 +168,7 @@ const Navbar = () => {
             <div className="inline-flex rounded-full shadow">
               {user ? (
                 <button
-                  className="inline-flex items-center px-2 py-2 md:px-4 md:py-3 text-xs font-semibold md:text-base text-[#213d5e] bg-white border border-transparent rounded-md md:rounded-full cursor-pointer font-base hover:bg-[#00ABE4] hover:text-white"
+                  className="inline-flex items-center px-2 py-2 md:px-4 md:py-3 text-xs font-semibold md:text-base text-[#213d5e] bg-white border shadow-xl border-transparent rounded-md md:rounded-full cursor-pointer font-base hover:bg-[#00ABE4] hover:text-white"
                   onClick={userLogOut}
                 >
                   Logout
@@ -176,7 +176,7 @@ const Navbar = () => {
               ) : (
                 <Link
                   to="/login"
-                  className="inline-flex items-center px-4 py-3 text-base font-semibold text-[#213d5e] bg-white border border-transparent rounded-full cursor-pointer font-base hover:bg-[#00ABE4] hover:text-white"
+                  className="inline-flex items-center px-4 py-3 text-base font-semibold text-[#213d5e] bg-white border border-transparent shadow-xl rounded-full cursor-pointer font-base hover:bg-[#00ABE4] hover:text-white"
                 >
                   Login
                 </Link>

@@ -21,8 +21,10 @@ const HomeBodyComponent = () => {
     <div className="w-full flex flex-col md:flex-row bg-[#E9F1FA] dark:bg-slate-800">
       <div className="w-full container mx-auto">
         <div className="w-full flex justify-between items-center mt-12">
-          <TranslateSectionNav />
           <div>
+            <TranslateSectionNav />
+          </div>
+          <div className="hidden md:block">
             <FeedbackButton />
           </div>
         </div>
