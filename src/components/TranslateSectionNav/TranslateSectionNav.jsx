@@ -3,7 +3,7 @@ import { TfiWorld } from "react-icons/tfi";
 import { BsFiletypePdf } from "react-icons/bs";
 const TranslateSectionNav = () => {
   return (
-    <div className="w-full lg:w-1/2 container flex justify-evenly md:justify-normal px-8 py-5 md:py-20 dark:bg-slate-800 gap-8">
+    <div className="w-full lg:w-1/2 container flex justify-evenly md:justify-normal px-8 py-5 md:py-10 dark:bg-slate-800 gap-8">
       <NavLink
         to="/"
         className={({ isActive, isPending }) =>
