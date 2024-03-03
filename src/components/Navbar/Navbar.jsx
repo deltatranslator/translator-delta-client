@@ -62,7 +62,7 @@ const Navbar = () => {
     <div className=" shadow-sm shadow-slate-300 dark:shadow-slate-950">
       <div className="bg-[#00ABE4] dark:bg-slate-900 dark:text-black flex justify-center items-center py-2">
         <div
-          className=" text-white text-center mx-auto font-medium"
+          className="text-white text-center mx-auto font-medium"
           data-aos="zoom-in"
           data-aos-duration="3000"
         >
@@ -185,6 +185,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      <hr className="h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-[#00ABE4] to-transparent opacity-70 dark:opacity-100" />
     </div>
   );
 };

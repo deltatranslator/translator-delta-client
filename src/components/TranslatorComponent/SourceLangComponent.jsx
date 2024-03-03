@@ -281,7 +281,7 @@ const SourceLangComponent = ({ swapState }) => {
 
   return (
     <div className="w-full lg:w-1/2 dark:text-white">
-      <div className="flex items-center dark:text-white px-2 ml-2 font-medium text-gray-700">
+      <div className="flex items-center  dark:text-white px-2 ml-2 font-medium text-gray-700">
         {recentLang.slice(0, 3).map((lang, idx) => (
           <div
             key={idx}
@@ -372,7 +372,7 @@ const SourceLangComponent = ({ swapState }) => {
             debounce(e.currentTarget.textContent);
           }}
           contentEditable={true}
-          className={`w-full dark:bg-slate-200 dark:text-slate-700 dark:border-none text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 h-[480px] resize-none`}
+          className={`w-full bg-white dark:bg-slate-200 dark:text-slate-700 dark:border-none text-lg font-medium text-gray-800 border-[1px] focus:outline-none focus:border-[1px] focus:border-gray-300 border-gray-300 shadow-sm rounded-lg p-4 h-[480px] resize-none`}
           name=""
           id=""
         >
