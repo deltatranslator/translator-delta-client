@@ -30,7 +30,7 @@ const Sidebar = () => {
           <div
             className={`bg-gray-50 dark:bg-[#ba721b] dark:text-white min-h-screen ${
               open ? "w-72 px-4" : "w-16 px-3"
-            } duration-700 text-black`}
+            } duration-700 text-black -z-10`}
           >
             <div
               className={`py-6 flex ${
