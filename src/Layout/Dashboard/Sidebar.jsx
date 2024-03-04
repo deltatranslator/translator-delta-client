@@ -3,13 +3,17 @@ import { AiOutlineUser, AiOutlineBarChart } from "react-icons/ai";
 import { FaEnvelope } from "react-icons/fa";
 import { RiFeedbackLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import UserMenus from "../../components/UserDashboard/UserMenus/UserMenus";
 import useUser from "../../hooks/useUser";
 import { OpenContext } from "../../Context/useOpen";
 
-const Sidebar = () => {
+const Sidebar = ({ setIsSideOpen }) => {
   const { open, setOpen } = useContext(OpenContext);
+  useEffect(() => {
+    setIsSideOpen(open);
+  }, [open, setIsSideOpen]);
+  // const [isAdmin] = useAdmin();
   const isAdmin = true;
 
   const { isUser } = useUser();
@@ -39,13 +43,10 @@ const Sidebar = () => {
             >
               <Link className="h-[40px] flex items-start" to="/">
                 <img
-                  className={`${!open && "hidden"} w-[40px] md:w-[40px]`}
+                  className={`${!open && "hidden"} w-[130px] md:w-[130px]`}
                   src="https://i.ibb.co/fkP6YGC/log-removebg-preview.png"
                   alt=""
                 />
-                <div className={`font-medium ${!open && "hidden"}`}>
-                  Delta Translator
-                </div>
               </Link>
               <HiMenuAlt3
                 size={26}
@@ -53,7 +54,7 @@ const Sidebar = () => {
                 className="cursor-pointer"
               ></HiMenuAlt3>
             </div>
-            <div className="mt-4 flex flex-col gap-4 relative">
+            <div className="mt-0 md:mt-4 -ml-3 md:ml-0 flex flex-col gap-4 relative">
               {isAdmin &&
                 adminMenus?.map((menu, i) => (
                   <Link

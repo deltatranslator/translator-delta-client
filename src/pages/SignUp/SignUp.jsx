@@ -86,12 +86,12 @@ const SignUp = () => {
   // console.log(imgTitle);
   return (
     <div className="hero sign-back min-h-screen  dark:bg-black ">
-      <div className="dark:border-2 rounded-3xl dark:border-[#ed7966] py-[50px] px-[100px]">
+      <div className="none md:block dark:border-2 rounded-3xl dark:border-[#ed7966] lg:py-[50px] lg:px-[100px]">
         <div className="hero-content flex flex-col md:flex-row-reverse w-full lg:gap-10">
-          <div className="text-center md:w-full lg:text-left max-w-96 lg:max-w-lg px-3 py-2">
-            <Lottie animationData={loginAnime}></Lottie>
+          <div className="text-center md:w-full lg:text-left max-w-80 lg:max-w-lg px-0 md:px-3 py-2">
+            <Lottie className="lottie" animationData={loginAnime}></Lottie>
           </div>
-          <div className="card flex-shrink-0 w-96 lg:w-[450px]">
+          <div className="card flex-shrink-0 w-80 md:w-96 lg:w-[450px]">
             <div className="text-left ml-10 text-[#ed7966] text-2xl md:text-4xl font-bold">
               Create Your Account
             </div>
@@ -153,8 +153,9 @@ const SignUp = () => {
                     placeholder="  Password"
                     className="input w-full input-bordered border-[#ed7966]"
                   />
-                  <button onClick={togglePasswordVisibility} className="relative -ml-10 ">
-                    {showPassword ?  <FaEyeSlash className="text-[#ed7966]" size={20}/>: <FaEye className="text-[#ed7966]" size={20}/> } {/* Text changes based on visibility */}
+                  {/* Text changes based on visibility */}
+                  <button onClick={togglePasswordVisibility} className="relative -ml-7 md:-ml-10 ">
+                    {showPassword ?  <FaEyeSlash className="text-[#ed7966]" size={20}/>: <FaEye className="text-[#ed7966]" size={20}/> } 
                   </button>
                 </div>
 
@@ -221,7 +222,7 @@ const SignUp = () => {
               </div>
             </form>
 
-            <p className="text-center">
+            <p className="text-center -mt-4">
               <small className="text-[#303179]  dark:text-white">
                 Already have an account?{" "}
                 <Link to="/login">
@@ -229,12 +230,15 @@ const SignUp = () => {
                 </Link>
               </small>
             </p>
+            <div className="ml-10 social-login">
+              <SocialLogin />
+            </div>
             {/* social login  */}
-            <SocialLogin />
+            
           </div>
         </div>
         <div>
-          <div className="flex justify-center ">
+          <div className="flex justify-center home-btn">
             <Link
               className=" w-36 text-center btn border border-[#ed7966] text-[#ed7966] my-4 btn-outline max-w-sm ml-10 hover:bg-[#303179]"
               to="/"
