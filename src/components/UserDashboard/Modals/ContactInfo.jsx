@@ -14,7 +14,7 @@ const ContactInfo = ({ open }) => {
 
   const { isUser } = useUser();
   const { user } = useAuth();
-  const { isProfile } = useProfile();
+  const { isProfile, refetch } = useProfile();
   // console.log("isProfile:", isProfile);
 
   const onClickHandler = () => {
@@ -33,6 +33,7 @@ const ContactInfo = ({ open }) => {
       .post("/profile", userNumber)
       .then(() => {
         toast.success("Phone Number Added!");
+        refetch()
       })
       .catch((err) => {
         toast.error(err.message);

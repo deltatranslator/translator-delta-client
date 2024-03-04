@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import ContactInfo from "../Modals/ContactInfo";
 import { useContext } from "react";
 import { OpenContext } from "../../../Context/useOpen";
+import Gender from "../Modals/Gender";
 
 const UserProfile = () => {
   const { open } = useContext(OpenContext);
@@ -16,7 +17,7 @@ const UserProfile = () => {
 
   return (
     <>
-      <section className="dark:bg-slate-800 w-full bg-[#EEF1F9] py-8">
+      <section className="dark:bg-slate-800 w-full bg-[#E9F1FA] py-8 font-delta-v2">
         {/* Personal Info */}
         <section
           className={` ${
@@ -113,7 +114,7 @@ const UserProfile = () => {
               </div>
             </div>
             <hr className="mt-5 mb-5" />
-            <div className=" flex items-center justify-between text-slate-900 dark:text-slate-50">
+            {/* <div className=" flex items-center justify-between text-slate-900 dark:text-slate-50">
               <div className=" flex items-center text-sm gap-[40px] md:gap-[200px]">
                 <p>Gender</p>
                 <p>
@@ -127,7 +128,8 @@ const UserProfile = () => {
               <div>
                 <FaChevronRight className=" text-2xl" />
               </div>
-            </div>
+            </div> */}
+            <Gender />
           </div>
         </section>
         {/* Contact Info */}
@@ -196,7 +198,7 @@ const UserProfile = () => {
       <section className=" py-8 flex items-center justify-center">
         <div>
           <Link
-            className="btn bg-slate-500 text-white hover:bg-slate-50 hover:text-slate-800 hover:shadow-lg hover:shadow-blue-500"
+            className="btn bg-[#24ABE5] border-none text-white hover:bg-slate-50 hover:text-slate-800 hover:shadow-lg hover:shadow-blue-500"
             to="/"
           >
             Go to Delta Translate!

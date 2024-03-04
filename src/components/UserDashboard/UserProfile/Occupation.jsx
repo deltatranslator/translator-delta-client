@@ -104,7 +104,7 @@ const Occupation = () => {
   return (
     <>
       {/* Your occupation */}
-      <section className="">
+      <section className="font-delta-v2">
         <div>
           <h2 className="text-start px-2 text-3xl font-medium text-slate-900 dark:text-slate-50">
             Your occupation
@@ -113,13 +113,14 @@ const Occupation = () => {
         <form onSubmit={handleOccupationSubmit} className="items-center mt-5 p-2">
           <Radio.Group
             size="large"
-            className="grid md:grid-cols-4 grid-cols-2 gap-5 text-center z-100"
+            className="grid md:grid-cols-4 grid-cols-2 gap-5 text-center z-100 font-delta-v2"
           >
             {occupations.map((item) => (
               <Radio.Button
                 key={item?.id}
                 onChange={handleOccupationChange}
                 value={item?.value}
+                className="font-delta-v2"
               >
                 {item?.text}
               </Radio.Button>
@@ -129,6 +130,7 @@ const Occupation = () => {
             style={{
               borderRadius: "5px",
               marginTop: "15px",
+              fontFamily: "font-delta-v2"
             }}
             size={"normal"}
             buttonState={state}
@@ -144,7 +146,7 @@ const Occupation = () => {
         </form>
       </section>
       {/* Areas of interest */}
-      <section className=" mt-10 pb-3">
+      <section className=" mt-10 pb-3 font-delta-v2">
         <div>
           <h2 className="text-3xl text-start px-2 font-medium text-slate-900 dark:text-slate-50">
             Areas of interest
@@ -160,7 +162,7 @@ const Occupation = () => {
                 key={item?.id}
                 onChange={handleInterestChange}
                 value={item?.value}
-                className=""
+                className="font-delta-v2"
               >
                 {item?.text}
               </Radio.Button>
@@ -170,6 +172,7 @@ const Occupation = () => {
             style={{
               borderRadius: "5px",
               marginTop: "15px",
+              fontFamily: "font-delta-v2"
             }}
             size={"normal"}
             buttonState={interestState}
