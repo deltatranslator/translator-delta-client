@@ -4,16 +4,18 @@ import axiosSecure from "../../../Api";
 import toast from "react-hot-toast";
 import useProfile from "../../../hooks/useProfile";
 import { useState } from "react";
+import useAuth from "../../../hooks/useAuth";
 
 const Gender = () => {
   const [state, setState] = useState("idle");
   const { isProfile, refetch } = useProfile();
-  console.log(isProfile);
+  const { user } = useAuth();
 
   const handelSave = async (e) => {
     e.preventDefault();
+    const email = user.email;
     const gender = e.target.gender.value;
-    const userGender = { gender };
+    const userGender = { gender, email };
     await axiosSecure
       .post("/profile", userGender)
       .then((res) => {

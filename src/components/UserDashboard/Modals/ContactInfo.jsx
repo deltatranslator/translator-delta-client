@@ -43,7 +43,7 @@ const ContactInfo = ({ open }) => {
   return (
     <div>
       <section
-        className={`bg-slate-100 md:ml-5 ml-[10px] ${
+        className={`bg-slate-100 dark:bg-slate-700 md:ml-5 ml-[10px] ${
           !open ? "w-[100%]" : "lg:w-[86%] md:w-[79%]"
         } text-start rounded-md border md:p-5 p-2 mt-10 w-full shadow-md`}
       >
@@ -85,7 +85,7 @@ const ContactInfo = ({ open }) => {
         </div>
         <hr className="mt-5 mb-5" />
         <div
-          onClick={() => document.getElementById("my_modal_3").showModal()}
+          onClick={() => document.getElementById("my_modal_4").showModal()}
           className="flex items-center justify-between text-slate-900 dark:text-slate-50"
           role="button"
         >
@@ -97,7 +97,7 @@ const ContactInfo = ({ open }) => {
             <FaChevronRight className=" text-2xl" />
           </div>
         </div>
-        <dialog id="my_modal_3" className="modal">
+        <dialog id="my_modal_4" className="modal">
           <div className="modal-box">
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}

@@ -17,7 +17,7 @@ const UserProfile = () => {
 
   return (
     <>
-      <section className="dark:bg-slate-800 w-full bg-[#E9F1FA] py-8 font-delta-v2">
+      <section className="dark:bg-slate-700 w-full bg-[#E9F1FA]  py-8 font-delta-v2">
         {/* Personal Info */}
         <section
           className={` ${
@@ -57,7 +57,7 @@ const UserProfile = () => {
         <section
           className={`text-start md:ml-5 ml-[10px] ${
             !open ? "w-[100%] mt-0" : "lg:w-[86%] md:w-[79%] md:mt-5"
-          } rounded-md border shadow-md md:p-5 p-2 md:mt-0 bg-slate-100`}
+          } rounded-md border shadow-md md:p-5 p-2 md:mt-0 dark:bg-slate-700 bg-slate-100`}
         >
           <div className="items-center justify-between">
             <div className=" flex justify-end">
@@ -138,7 +138,7 @@ const UserProfile = () => {
         <section
           className={`text-start md:ml-5 ml-[10px] ${
             !open ? "w-[100%]" : "lg:w-[86%] md:w-[79%]"
-          } rounded-md border md:p-5 p-2 mt-10 w-full shadow-md bg-slate-100`}
+          } rounded-md border md:p-5 p-2 mt-10 w-full shadow-md dark:bg-slate-700 bg-slate-100`}
         >
           <div>
             <h2 className="text-3xl font-medium text-slate-900 dark:text-slate-50">
@@ -185,7 +185,7 @@ const UserProfile = () => {
         </section>
         {/* Your occupation */}
         <section
-          className={`bg-slate-100 md:ml-5 ml-[10px] ${
+          className={`bg-slate-100 dark:bg-slate-700 md:ml-5 ml-[10px] ${
             !open ? "w-[100%]" : "lg:w-[86%] md:w-[79%]"
           } rounded-md border shadow-md md:p-5 p-1 mt-10 w-full`}
         >
@@ -195,7 +195,7 @@ const UserProfile = () => {
         </section>
       </section>
       {/* Footer section */}
-      <section className=" py-8 flex items-center justify-center">
+      <section className=" py-8 flex items-center justify-center dark:bg-slate-700">
         <div>
           <Link
             className="btn bg-[#24ABE5] border-none text-white hover:bg-slate-50 hover:text-slate-800 hover:shadow-lg hover:shadow-blue-500"
