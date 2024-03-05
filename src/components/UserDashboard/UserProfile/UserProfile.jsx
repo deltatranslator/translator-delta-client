@@ -15,8 +15,68 @@ import IsModal from "../../../hooks/IsModal";
 const UserProfile = () => {
   const { open } = useContext(OpenContext);
   const { isUser, refetch } = useUser();
-  console.log("object---------", isUser);
+  // console.log("object---------", isUser);
   const { user } = useAuth();
+
+  const handelAddressUpdate = (e) => {
+    e.preventDefault();
+    const address = e.target.address.value;
+    const updateUser = { address };
+    try {
+      axiosSecure
+        .put(`/users/address/${isUser._id}`, updateUser)
+        .then(() => {
+          refetch();
+          toast.success("Updated Done!");
+        })
+        .catch(() => {
+          toast.error("Updated Failed!");
+        });
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.message);
+    }
+  };
+
+  const handelWorkUpdate = (e) => {
+    e.preventDefault();
+    const work = e.target.work.value;
+    const updateUser = { work };
+    try {
+      axiosSecure
+        .put(`/users/work/${isUser._id}`, updateUser)
+        .then(() => {
+          refetch();
+          toast.success("Updated Done!");
+        })
+        .catch(() => {
+          toast.error("Updated Failed!");
+        });
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.message);
+    }
+  };
+
+  const handelHomeUpdate = (e) => {
+    e.preventDefault();
+    const home = e.target.home.value;
+    const updateUser = { home };
+    try {
+      axiosSecure
+        .put(`/users/home/${isUser._id}`, updateUser)
+        .then(() => {
+          refetch();
+          toast.success("Updated Done!");
+        })
+        .catch(() => {
+          toast.error("Updated Failed!");
+        });
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.message);
+    }
+  };
 
   const handelGenderDate = (e) => {
     e.preventDefault();
@@ -294,34 +354,73 @@ const UserProfile = () => {
               if others see your profile addresses.
             </p>
           </div>
-          <div className=" flex items-center justify-between text-slate-900 dark:text-slate-50">
+          <div
+            onClick={() => document.getElementById("homeModal").showModal()}
+            className=" flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
+          >
             <div className=" flex items-center text-sm gap-[50px] md:gap-[208px] mt-10">
               <p>Home</p>
-              <p>(23.759356800000003, 90.3591746)</p>
+              <p>{isUser ? isUser?.home : "None"}</p>
             </div>
             <div>
               <FaChevronRight className=" text-2xl" />
             </div>
+            <IsModal
+              title="Changes to your Home Ip will be reflected across your
+                Delta Account."
+              modalId="homeModal"
+              onSubmit={handelHomeUpdate}
+              type="text"
+              id="home"
+              name="home"
+              defaultValue={isUser ? isUser.home : "Set Your Home Ip"}
+            />
           </div>
           <hr className="mt-5 mb-5" />
-          <div className="flex items-center justify-between text-slate-900 dark:text-slate-50">
+          <div
+            onClick={() => document.getElementById("workModal").showModal()}
+            className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
+          >
             <div className="flex items-center text-sm gap-[50px] md:gap-[208px]">
               <p>Work</p>
-              <p>Student</p>
+              <p>{isUser ? isUser.work : "Set Your work"}</p>
             </div>
             <div>
               <FaChevronRight className=" text-2xl" />
             </div>
+            <IsModal
+              title="Changes to your work will be reflected across your
+                Delta Account."
+              modalId="workModal"
+              onSubmit={handelWorkUpdate}
+              type="text"
+              id="work"
+              name="work"
+              defaultValue={isUser ? isUser.work : "Set Your work Ip"}
+            />
           </div>
           <hr className="mt-5 mb-5" />
-          <div className="flex items-center justify-between text-slate-900 dark:text-slate-50">
+          <div
+            onClick={() => document.getElementById("addressModal").showModal()}
+            className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
+          >
             <div className="flex items-center text-sm gap-[50px] md:gap-[155px]">
               <p>Other Address</p>
-              <p>None</p>
+              <p>{isUser ? isUser.address : "Set your address"}</p>
             </div>
             <div>
               <FaChevronRight className=" text-2xl" />
             </div>
+            <IsModal
+              title="Changes to your address will be reflected across your
+                Delta Account."
+              modalId="addressModal"
+              onSubmit={handelAddressUpdate}
+              type="text"
+              id="address"
+              name="address"
+              defaultValue={isUser ? isUser.address : "Set your address"}
+            />
           </div>
         </section>
         {/* Your occupation */}
