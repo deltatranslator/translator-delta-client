@@ -64,6 +64,16 @@ const Navbar = () => {
           Dashboard
         </NavLink>
       </li>
+      <li className="text-base font-medium dark:text-slate-50 text-[#303179] hover:text-[#ed7966] mr-8">
+        <NavLink
+          to="/ourTeam"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-[#ed7966]" : ""
+          }
+        >
+          Our Team
+        </NavLink>
+      </li>
     </>
   );
 
