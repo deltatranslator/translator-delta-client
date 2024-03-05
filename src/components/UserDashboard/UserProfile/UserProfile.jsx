@@ -10,13 +10,33 @@ import { useContext } from "react";
 import { OpenContext } from "../../../Context/useOpen";
 import axiosSecure from "../../../api";
 import toast from "react-hot-toast";
+import IsModal from "../../../hooks/IsModal";
 
 const UserProfile = () => {
   const { open } = useContext(OpenContext);
   const { isUser, refetch } = useUser();
-  console.log("object===", isUser);
+  console.log("object---------", isUser);
   const { user } = useAuth();
 
+  const handelBirthDate = (e) => {
+    e.preventDefault();
+    const date = e.target.date.value;
+    const updateUser = { date };
+    try {
+      axiosSecure
+        .put(`/users/birthday/${isUser._id}`, updateUser)
+        .then(() => {
+          refetch();
+          toast.success("Updated Done!");
+        })
+        .catch(() => {
+          toast.error("Updated Failed!");
+        });
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.message);
+    }
+  };
   const handelName = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -24,12 +44,12 @@ const UserProfile = () => {
     try {
       axiosSecure
         .put(`/users/${isUser._id}`, updateUser)
-        .then((res) => {
-          console.log("------------>", res);
+        .then(() => {
           refetch();
+          toast.success("Updated Done!");
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          toast.error("Updated Failed!");
         });
     } catch (error) {
       console.log(error);
@@ -110,11 +130,10 @@ const UserProfile = () => {
           </div>
           <div>
             <hr className="mt-5 mb-5" />
+            {/* Updated a user name */}
             <section>
               <div
-                onClick={() =>
-                  document.getElementById("my_modal_1").showModal()
-                }
+                onClick={() => document.getElementById("nameModal").showModal()}
                 className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
               >
                 <div className=" flex items-center text-sm md:gap-[213px] gap-[50px]">
@@ -126,7 +145,7 @@ const UserProfile = () => {
                       ? user.displayName.slice(0, 10)
                       : "Not Available"}
                   </p>
-                  <dialog id="my_modal_1" className="modal">
+                  <dialog id="nameModal" className="modal">
                     <div className="modal-box">
                       <form method="dialog">
                         {/* if there is a button in form, it will close the modal */}
@@ -180,14 +199,29 @@ const UserProfile = () => {
               </div>
             </section>
             <hr className="mt-5 mb-5" />
-            <div className=" flex items-center justify-between text-slate-900 dark:text-slate-50">
+            {/* Updated a user birthday */}
+            <div
+              onClick={() =>
+                document.getElementById("birthdayModal").showModal()
+              }
+              className=" flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
+            >
               <div className=" flex items-center text-sm gap-[33px] md:gap-[193px]">
                 <p>Birthday</p>
-                <p>January 26, 2000</p>
+                <p>{isUser ? isUser.date : ""}</p>
               </div>
               <div>
                 <FaChevronRight className=" text-2xl" />
               </div>
+              <IsModal
+                title="Your birthday may be used for account security and
+              personalization across Delta services."
+                modalId="birthdayModal"
+                onSubmit={handelBirthDate}
+                type="date"
+                id="date"
+                name="date"
+              />
             </div>
             <hr className="mt-5 mb-5" />
             <div className=" flex items-center justify-between text-slate-900 dark:text-slate-50">
