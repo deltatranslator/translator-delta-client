@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axiosSecure from "../../../../api";
 import UserFeedbackCard from "./UserFeedbackCard";
+import FeedbackGraphTabs from "./FeedbackGraphTabs";
 
 
 const AdminUserFeedback = () => {
@@ -40,7 +41,8 @@ const AdminUserFeedback = () => {
         <>
             <div className="container mx-auto mb-28 mt-20 md:mt-28 px-4 md:px-8">
                 <div className="text-3xl md:text-4xl font-bold tracking-widest ml-8 mb-10">User Feedback</div>
-                <div className="p-4 md:p-8 bg-orange-50 rounded-lg">
+                <FeedbackGraphTabs />
+                <div className="p-4 md:p-8 bg-white rounded-lg">
                     <div className="overflow-x-auto">
                         <table className="table">
                             {/* head */}
@@ -55,9 +57,9 @@ const AdminUserFeedback = () => {
                             </thead>
                             {/* rows */}
                             <tbody>
-                                {
+                                {/* {
                                     currentUsers?.map((feedback, idx) => <UserFeedbackCard key={feedback._id} idx={idx + 1} feedback={feedback}></UserFeedbackCard>)
-                                }
+                                } */}
                             </tbody>
                         </table>
                         {/* Pagination */}
@@ -68,7 +70,7 @@ const AdminUserFeedback = () => {
                                 </button>
                             </li>
                             {Array.from({ length: Math.ceil(userFeedback?.length / usersPerPage) }).map((_, index) => (
-                                <li key={index} className={`page-item ${currentPage === index + 1 ? 'active border-2 border-orange-200 rounded-lg' : ''}`}>
+                                <li key={index} className={`page-item ${currentPage === index + 1 ? 'active border-2 border-blue-300 rounded-lg' : ''}`}>
                                     <button onClick={() => paginate(index + 1)} className="page-link btn btn-ghost">
                                         {index + 1}
                                     </button>

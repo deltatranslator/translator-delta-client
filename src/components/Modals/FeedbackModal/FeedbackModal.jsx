@@ -20,12 +20,15 @@ const FeedbackModal = ({ open, close }) => {
 
     const handleSendFeedback = () => {
 
-        const feedback = {
-            userEmail: user?.email,
+        const feedbackMessageData = {
             satisfaction: selectedOption,
-            feedbackMessage: [feedbackMessage],
             inquiryPermission: inquiryPermission,
             feedbackDate: Date.now()
+        }
+
+        const feedback = {
+            userEmail: user?.email,
+            feedbackMessage: [feedbackMessageData]
         }
 
         axiosSecure.put(`/user-feedback/${user?.email}`, feedback)
