@@ -6,23 +6,19 @@ import Navbar from "../../components/Navbar/Navbar";
 import { useRef } from "react";
 //import TranslateSectionNav from "../../components/TranslateSectionNav/TranslateSectionNav";
 
-
-
 const Home = () => {
-
-  const ref = useRef()
+  const ref = useRef();
 
   return (
-    <div className=" dark:bg-slate-900 dark:text-white">
+    <div className="bg-[#E9F1FA] dark:bg-slate-900 dark:text-white">
       <Navbar />
       {/* <TranslateSectionNav /> */}
       <HomeBodyComponent />
-      <div ref={ref}>
-        <FAQSection reference={ref} />
-      </div>
+      <FAQSection reference={ref} />
+
       <Contact />
       <Footer />
-    </div >
+    </div>
   );
 };
 

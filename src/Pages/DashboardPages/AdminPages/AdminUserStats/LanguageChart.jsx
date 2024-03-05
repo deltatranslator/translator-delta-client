@@ -84,7 +84,7 @@ const LanguageChart = () => {
                 }}
                 barSize={20}
             >
-                <XAxis dataKey="langPair" scale="point" padding={{ left: 10, right: 10 }} />
+                <XAxis className='text-xs md:text-base' dataKey="langPair" scale="point" padding={{ left: 10, right: 10 }} />
                 <YAxis />
                 <Tooltip />
                 <Legend />
