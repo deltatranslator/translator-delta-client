@@ -24,7 +24,7 @@ const FAQSection = () => {
   };
 
   return (
-    <div className="flex md:space-y-6 flex-col shadow-md rounded-md container mx-auto bg-gray-100 py-10 dark:bg-slate-800">
+    <div className="flex md:space-y-6 flex-col shadow-md rounded-md container mx-auto bg-gray-100 py-20 my-8 md:my-20 dark:bg-slate-800">
       <div className="md:w-1/2 mx-auto space-y-4 text-center">
         <h1 className="text-[#303179] font-bold text-2xl dark:text-[#ed7966]">
           Why Choose Delta Translator!
@@ -153,7 +153,11 @@ const FAQSection = () => {
                     )}
                   </div>
                 </div>
-                {questionOpen4 && <p className="text-[#303179] font-medium dark:text-[#ed7966]">yes</p>}
+                {questionOpen4 && (
+                  <p className="text-[#303179] font-medium dark:text-[#ed7966]">
+                    yes
+                  </p>
+                )}
               </div>
             </div>
           </div>
