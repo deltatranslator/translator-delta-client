@@ -21,7 +21,7 @@ const UserProfile = () => {
         {/* Personal Info */}
         <section
           className={` ${
-            !open ? "w-[100%]" : "w-[90%]"
+            !open ? "w-[97%]" : "w-[82%]"
           } space-y-2 text-center md:px-8`}
         >
           <h3 className=" text-4xl font-medium text-slate-900 dark:text-slate-50">
@@ -33,7 +33,7 @@ const UserProfile = () => {
         </section>
         <section
           className={`md:flex flex-grow-0 ml-5 items-center mt-0 md:mt-8 ${
-            !open ? "w-[100%]" : "lg:w-[89%] md:w-[85%]"
+            !open ? "w-[97%]" : "lg:w-[82%] md:w-[85%]"
           }`}
         >
           <div className="overflow-hidden md:order-last">
@@ -56,8 +56,8 @@ const UserProfile = () => {
         {/* Basic info */}
         <section
           className={`text-start md:ml-5 ml-[10px] ${
-            !open ? "w-[100%] mt-0" : "lg:w-[86%] md:w-[79%] md:mt-5"
-          } rounded-md border shadow-md md:p-5 p-2 md:mt-0 dark:bg-slate-700 bg-slate-100`}
+            !open ? "w-[97%] mt-0" : "lg:w-[82%] md:w-[79%] md:mt-5"
+          } rounded-md border shadow-md md:p-5 p-2 md:mt-0 dark:bg-[#213d5e] bg-slate-100`}
         >
           <div className="items-center justify-between">
             <div className=" flex justify-end">
@@ -137,8 +137,8 @@ const UserProfile = () => {
         {/* Addresses Info */}
         <section
           className={`text-start md:ml-5 ml-[10px] ${
-            !open ? "w-[100%]" : "lg:w-[86%] md:w-[79%]"
-          } rounded-md border md:p-5 p-2 mt-10 w-full shadow-md dark:bg-slate-700 bg-slate-100`}
+            !open ? "w-[97%]" : "lg:w-[82%] md:w-[79%]"
+          } rounded-md border md:p-5 p-2 mt-10 w-full shadow-md dark:bg-[#213d5e] bg-slate-100`}
         >
           <div>
             <h2 className="text-3xl font-medium text-slate-900 dark:text-slate-50">
@@ -185,8 +185,8 @@ const UserProfile = () => {
         </section>
         {/* Your occupation */}
         <section
-          className={`bg-slate-100 dark:bg-slate-700 md:ml-5 ml-[10px] ${
-            !open ? "w-[100%]" : "lg:w-[86%] md:w-[79%]"
+          className={`bg-slate-100 dark:bg-[#213d5e] md:ml-5 ml-[10px] ${
+            !open ? "w-[97%]" : "lg:w-[82%] md:w-[79%]"
           } rounded-md border shadow-md md:p-5 p-1 mt-10 w-full`}
         >
           <div className=" -z-10">

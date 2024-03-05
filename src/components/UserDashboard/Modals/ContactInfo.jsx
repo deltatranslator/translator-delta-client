@@ -43,8 +43,8 @@ const ContactInfo = ({ open }) => {
   return (
     <div>
       <section
-        className={`bg-slate-100 dark:bg-slate-700 md:ml-5 ml-[10px] ${
-          !open ? "w-[100%]" : "lg:w-[86%] md:w-[79%]"
+        className={`bg-slate-100 dark:bg-[#213d5e] md:ml-5 ml-[10px] ${
+          !open ? "w-[97%]" : "lg:w-[82%] md:w-[79%]"
         } text-start rounded-md border md:p-5 p-2 mt-10 w-full shadow-md`}
       >
         <div>

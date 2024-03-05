@@ -120,7 +120,7 @@ const Occupation = () => {
                 key={item?.id}
                 onChange={handleOccupationChange}
                 value={item?.value}
-                className="font-delta-v2"
+                className="font-delta-v2 dark:bg-slate-900 dark:text-white"
               >
                 {item?.text}
               </Radio.Button>
@@ -162,7 +162,7 @@ const Occupation = () => {
                 key={item?.id}
                 onChange={handleInterestChange}
                 value={item?.value}
-                className="font-delta-v2"
+                className="font-delta-v2 dark:bg-slate-900 dark:text-white"
               >
                 {item?.text}
               </Radio.Button>
