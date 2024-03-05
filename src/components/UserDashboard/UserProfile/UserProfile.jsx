@@ -340,8 +340,8 @@ const UserProfile = () => {
         <ContactInfo open={open} />
         {/* Addresses Info */}
         <section
-          className={`text-start md:ml-5 ml-[10px] ${
-            !open ? "w-[97%]" : "lg:w-[82%] md:w-[79%]"
+          className={`text-start md:ml-5 ml-[7px] ${
+            !open ? "w-[90%]" : "lg:w-[82%] md:w-[79%]"
           } rounded-md border md:p-5 p-2 mt-10 w-full shadow-md dark:bg-[#213d5e] bg-slate-100`}
         >
           <div>
@@ -361,33 +361,32 @@ const UserProfile = () => {
             onClick={() => document.getElementById("homeModal").showModal()}
             className=" flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
           >
-            <div className=" flex items-center text-sm gap-[50px] md:gap-[208px] mt-10">
+            <div className="md:flex items-center text-sm gap-[50px] md:gap-[208px] mt-0 md;mt-10">
               <p>Home</p>
-              <p>{isUser ? isUser?.home : "None"}</p>
+              <p className="text-xl md:text-sm">{isUser ? isUser?.home : "None"}</p>
               <IsModal
-              title="Changes to your Home Ip will be reflected across your
+                title="Changes to your Home Ip will be reflected across your
                 Delta Account."
-              modalId="homeModal"
-              onSubmit={handelHomeUpdate}
-              type="text"
-              id="home"
-              name="home"
-              defaultValue={isUser ? isUser.home : "Set Your Home Ip"}
-            />
+                modalId="homeModal"
+                onSubmit={handelHomeUpdate}
+                type="text"
+                id="home"
+                name="home"
+                defaultValue={isUser ? isUser.home : "Set Your Home Ip"}
+              />
             </div>
             <div>
               <FaChevronRight className=" text-2xl" />
             </div>
-           
           </div>
           <hr className="mt-5 mb-5" />
           <div
             onClick={() => document.getElementById("workModal").showModal()}
             className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
           >
-            <div className="flex items-center text-sm gap-[50px] md:gap-[208px]">
+            <div className="md:flex items-center text-sm gap-[50px] md:gap-[208px]">
               <p>Work</p>
-              <p>{isUser ? isUser.work : "Set Your work"}</p>
+              <p className="text-xl md:text-sm">{isUser ? isUser.work : "Set Your work"}</p>
               <IsModal
                 title="Changes to your work will be reflected across your
                 Delta Account."
@@ -408,9 +407,9 @@ const UserProfile = () => {
             onClick={() => document.getElementById("addressModal").showModal()}
             className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
           >
-            <div className="flex items-center text-sm gap-[50px] md:gap-[155px]">
+            <div className="md:flex items-center text-sm gap-[50px] md:gap-[155px]">
               <p>Other Address</p>
-              <p>{isUser ? isUser.address : "Set your address"}</p>
+              <p className="text-xl md:text-sm">{isUser ? isUser.address : "Set your address"}</p>
               <IsModal
                 title="Changes to your address will be reflected across your
                 Delta Account."
@@ -429,8 +428,8 @@ const UserProfile = () => {
         </section>
         {/* Your occupation */}
         <section
-          className={`bg-slate-100 dark:bg-[#213d5e] md:ml-5 ml-[10px] ${
-            !open ? "w-[97%]" : "lg:w-[82%] md:w-[79%]"
+          className={`bg-slate-100 dark:bg-[#213d5e] md:ml-5 ml-[7px] ${
+            !open ? "w-[90%]" : "lg:w-[82%] md:w-[79%]"
           } rounded-md border shadow-md md:p-5 p-1 mt-10 w-full`}
         >
           <div className=" -z-10">
