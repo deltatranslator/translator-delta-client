@@ -142,9 +142,9 @@ const UserProfile = () => {
       <section className="dark:bg-slate-900 w-full bg-[#E9F1FA]  py-8 font-delta-v2">
         {/* Personal Info */}
         <section
-          className={` ml-[7px ${
-            !open ? "w-[90%]" : "w-[82%]"
-          } space-y-2 text-center md:px-8`}
+          className={`${
+            !open ? "w-[90%]" : "w-[82%] mx-auto"
+          } space-y-2 text-center md:px-20`}
         >
           <h3 className=" text-4xl font-medium text-slate-900 dark:text-slate-50">
             Personal info
@@ -154,8 +154,8 @@ const UserProfile = () => {
           </p>
         </section>
         <section
-          className={`md:flex flex-grow-0 ml-[7px] items-center mt-0 md:mt-8 ${
-            !open ? "w-[90%]" : "lg:w-[82%] md:w-[85%]"
+          className={`md:flex flex-grow-0 ml-[20px] items-center mt-0 md:mt-8 ${
+            !open ? "w-[90%] mx-auto" : "lg:w-[82%] mx-auto md:w-[85%]"
           }`}
         >
           <div className="overflow-hidden md:order-last">

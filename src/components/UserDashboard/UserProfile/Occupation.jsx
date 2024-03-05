@@ -109,7 +109,10 @@ const Occupation = () => {
             Your occupation
           </h2>
         </div>
-        <form onSubmit={handleOccupationSubmit} className="items-center mt-5 p-2">
+        <form
+          onSubmit={handleOccupationSubmit}
+          className="items-center mt-5 p-2"
+        >
           <Radio.Group
             size="large"
             className="grid md:grid-cols-4 grid-cols-2 gap-5 text-center z-100 font-delta-v2"
@@ -119,17 +122,18 @@ const Occupation = () => {
                 key={item?.id}
                 onChange={handleOccupationChange}
                 value={item?.value}
-                className="font-delta-v2 dark:bg-slate-950 dark:text-white border-none"
+                className="font-delta-v2 dark:bg-slate-950 dark:text-white border-none dark:hover:bg-[#2293D6] rounded-md"
               >
                 {item?.text}
               </Radio.Button>
             ))}
           </Radio.Group>
           <ReactiveButton
+          className=" dark:text-white"
             style={{
               borderRadius: "5px",
               marginTop: "15px",
-              fontFamily: "font-delta-v2"
+              fontFamily: "font-delta-v2",
             }}
             size={"normal"}
             buttonState={state}
@@ -161,17 +165,18 @@ const Occupation = () => {
                 key={item?.id}
                 onChange={handleInterestChange}
                 value={item?.value}
-                className="font-delta-v2 dark:bg-slate-950 dark:text-white border-none"
+                className="font-delta-v2 dark:bg-slate-950 dark:text-white border-none dark:hover:bg-[#2293D6] rounded-md"
               >
                 {item?.text}
               </Radio.Button>
             ))}
           </Radio.Group>
           <ReactiveButton
+          className=" dark:text-white"
             style={{
               borderRadius: "5px",
               marginTop: "15px",
-              fontFamily: "font-delta-v2"
+              fontFamily: "font-delta-v2",
             }}
             size={"normal"}
             buttonState={interestState}
