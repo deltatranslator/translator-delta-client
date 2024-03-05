@@ -1,17 +1,25 @@
 input[type="file"] {
     display: none;
+    
 }
 
 .file-label {
     display: inline-block;
-    color: #ed7966;
+    color: #303179;
     background-color: white;
     text-align: center;
-    outline: #ed7966;
-    border: 2px solid #ed7966;
+    outline: #303179;
+    border: 2px solid #303179;
     padding: 10px 30px;
 
 }
+ .sign-back{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(2, 2, 2, 0.3)), url(../../assets/login.png);
+    background-size: 150%;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, .1);
+    
+ }
 
 @media only screen and (max-width: 400px) and (min-width:320px) {
     input {
@@ -20,11 +28,11 @@ input[type="file"] {
     }
     .file-label {
         display: inline-block;
-        color: #ed7966;
+        color: #303179;
         background-color: white;
         text-align: center;
-        outline: #ed7966;
-        border: 2px solid #ed7966;
+        outline: #303179;
+        border: 2px solid #303179;
         padding: 5px 10px;
     
     }
