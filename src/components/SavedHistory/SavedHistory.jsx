@@ -2,23 +2,28 @@ import { RiHistoryFill } from "react-icons/ri";
 import { IoStar } from "react-icons/io5";
 import { HiMiniUserGroup } from "react-icons/hi2";
 import { useDispatch } from "react-redux";
-import {
-  setHistoryDisplay,
-} from "../../redux/slices/translationHistory/translationHistorySlice";
+import { setHistoryDisplay } from "../../redux/slices/translationHistory/translationHistorySlice";
 import { set } from "react-hook-form";
+import FeedbackButton from "../Modals/FeedbackModal/FeedbackButton";
 
-const SavedHistory = ({ setSaveOpen, display, saveOpen, setOpenHistory, openHistory }) => {
+const SavedHistory = ({
+  setSaveOpen,
+  display,
+  saveOpen,
+  setOpenHistory,
+  openHistory,
+}) => {
   const dispatch = useDispatch();
 
   const handleSaveCLick = () => {
     if (display !== saveOpen) {
       dispatch(setHistoryDisplay(false));
     }
-    setSaveOpen(prev => !prev);
-  }
+    setSaveOpen((prev) => !prev);
+  };
 
   const handleTranslationHistory = () => {
-    setOpenHistory(false)
+    setOpenHistory(false);
     if (display !== saveOpen) {
       setSaveOpen(false);
     }
@@ -41,7 +46,10 @@ const SavedHistory = ({ setSaveOpen, display, saveOpen, setOpenHistory, openHist
           History
         </p>
       </div>
-      <div onClick={handleSaveCLick} className="flex flex-col items-center gap-2">
+      <div
+        onClick={handleSaveCLick}
+        className="flex flex-col items-center gap-2"
+      >
         <div className="w-16 h-16 md:w-20 md:h-20 flex justify-center items-center border-2 rounded-full cursor-pointer">
           <IoStar
             size={32}
