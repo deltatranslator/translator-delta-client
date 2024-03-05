@@ -48,7 +48,6 @@ const Occupation = () => {
       const email = user.email;
       const isOccupation = { occupation, email };
       await axiosSecure.post("/profile", isOccupation).then((res) => {
-        console.log(res);
         if (res.data.acknowledged == true) {
           toast.success("Data Saved");
         } else {

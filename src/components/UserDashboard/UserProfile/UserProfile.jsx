@@ -15,7 +15,6 @@ import IsModal from "../../../hooks/IsModal";
 const UserProfile = () => {
   const { open } = useContext(OpenContext);
   const { isUser, refetch } = useUser();
-  // console.log("object---------", isUser);
   const { user } = useAuth();
 
   const handelAddressUpdate = (e) => {
@@ -178,9 +177,11 @@ const UserProfile = () => {
         </section>
         {/* Basic info */}
         <section
-          className={`text-start md:ml-5 ml-[10px] ${
-            !open ? "w-[97%] mt-0" : "lg:w-[82%] md:w-[79%] md:mt-5"
-          } rounded-md border shadow-md md:p-5 p-2 md:mt-0 dark:bg-[#213d5e] bg-slate-100`}
+          className={`text-start p-1 md:ml-5 ${
+            !open
+              ? "w-[90%] mt-0 ml-[7px]"
+              : "lg:w-[82%] md:w-[79%] mx-auto md:mt-5"
+          } rounded-md border shadow-md md:p-5  md:mt-0 dark:bg-[#213d5e] bg-slate-100`}
         >
           <div className="items-center justify-between">
             <div className=" flex justify-start">
@@ -217,9 +218,9 @@ const UserProfile = () => {
                 onClick={() => document.getElementById("nameModal").showModal()}
                 className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
               >
-                <div className=" flex items-center text-sm md:gap-[213px] gap-[50px]">
+                <div className=" md:flex items-center text-sm md:gap-[213px] gap-[50px]">
                   <p>Name</p>
-                  <p>
+                  <p className="text-xl md:text-sm">
                     {isUser && isUser.name.slice(0, 10)
                       ? isUser.name.slice(0, 10)
                       : user && user.displayName.slice(0, 10)
@@ -248,34 +249,36 @@ const UserProfile = () => {
               onClick={() =>
                 document.getElementById("birthdayModal").showModal()
               }
-              className=" flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
+              className="flex items-center md:gap-[213px] gap-[50px] justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
             >
-              <div className=" flex items-center text-sm gap-[33px] md:gap-[193px]">
+              <div className=" md:flex items-center text-sm md:gap-[213px] gap-[50px]">
                 <p>Birthday</p>
-                <p>{isUser ? isUser.date : "Set Your Birthday"}</p>
+                <p className="text-xl md:text-sm">
+                  {isUser ? isUser.date : "Set Your Birthday"}
+                </p>
+                <IsModal
+                  title="Your birthday may be used for account security and
+              personalization across Delta services."
+                  modalId="birthdayModal"
+                  onSubmit={handelBirthDate}
+                  defaultValue={isUser ? isUser.date : "None"}
+                  type="date"
+                  id="date"
+                  name="date"
+                />
               </div>
               <div>
                 <FaChevronRight className=" text-2xl" />
               </div>
-              <IsModal
-                title="Your birthday may be used for account security and
-              personalization across Delta services."
-                modalId="birthdayModal"
-                onSubmit={handelBirthDate}
-                defaultValue={isUser ? isUser.date : "None"}
-                type="date"
-                id="date"
-                name="date"
-              />
             </div>
             <hr className="mt-5 mb-5" />
             <div
               onClick={() => document.getElementById("genderModal").showModal()}
               className=" flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
             >
-              <div className=" flex items-center text-sm gap-[40px] md:gap-[200px]">
+              <div className=" md:flex items-center text-sm md:gap-[213px] gap-[50px]">
                 <p>Gender</p>
-                <p>
+                <p className="text-xl md:text-sm">
                   {isUser && isUser.gender
                     ? isUser.gender.toUpperCase()
                     : user && user.gender
@@ -361,11 +364,7 @@ const UserProfile = () => {
             <div className=" flex items-center text-sm gap-[50px] md:gap-[208px] mt-10">
               <p>Home</p>
               <p>{isUser ? isUser?.home : "None"}</p>
-            </div>
-            <div>
-              <FaChevronRight className=" text-2xl" />
-            </div>
-            <IsModal
+              <IsModal
               title="Changes to your Home Ip will be reflected across your
                 Delta Account."
               modalId="homeModal"
@@ -375,6 +374,11 @@ const UserProfile = () => {
               name="home"
               defaultValue={isUser ? isUser.home : "Set Your Home Ip"}
             />
+            </div>
+            <div>
+              <FaChevronRight className=" text-2xl" />
+            </div>
+           
           </div>
           <hr className="mt-5 mb-5" />
           <div
@@ -384,20 +388,20 @@ const UserProfile = () => {
             <div className="flex items-center text-sm gap-[50px] md:gap-[208px]">
               <p>Work</p>
               <p>{isUser ? isUser.work : "Set Your work"}</p>
+              <IsModal
+                title="Changes to your work will be reflected across your
+                Delta Account."
+                modalId="workModal"
+                onSubmit={handelWorkUpdate}
+                type="text"
+                id="work"
+                name="work"
+                defaultValue={isUser ? isUser.work : "Set Your work Ip"}
+              />
             </div>
             <div>
               <FaChevronRight className=" text-2xl" />
             </div>
-            <IsModal
-              title="Changes to your work will be reflected across your
-                Delta Account."
-              modalId="workModal"
-              onSubmit={handelWorkUpdate}
-              type="text"
-              id="work"
-              name="work"
-              defaultValue={isUser ? isUser.work : "Set Your work Ip"}
-            />
           </div>
           <hr className="mt-5 mb-5" />
           <div
@@ -407,20 +411,20 @@ const UserProfile = () => {
             <div className="flex items-center text-sm gap-[50px] md:gap-[155px]">
               <p>Other Address</p>
               <p>{isUser ? isUser.address : "Set your address"}</p>
+              <IsModal
+                title="Changes to your address will be reflected across your
+                Delta Account."
+                modalId="addressModal"
+                onSubmit={handelAddressUpdate}
+                type="text"
+                id="address"
+                name="address"
+                defaultValue={isUser ? isUser.address : "Set your address"}
+              />
             </div>
             <div>
               <FaChevronRight className=" text-2xl" />
             </div>
-            <IsModal
-              title="Changes to your address will be reflected across your
-                Delta Account."
-              modalId="addressModal"
-              onSubmit={handelAddressUpdate}
-              type="text"
-              id="address"
-              name="address"
-              defaultValue={isUser ? isUser.address : "Set your address"}
-            />
           </div>
         </section>
         {/* Your occupation */}

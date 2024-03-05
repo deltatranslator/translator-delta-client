@@ -59,8 +59,8 @@ const ContactInfo = ({ open }) => {
   return (
     <div>
       <section
-        className={`bg-slate-100 dark:bg-[#213d5e] md:ml-5 ml-[10px] ${
-          !open ? "w-[97%]" : "lg:w-[82%] md:w-[79%]"
+        className={`bg-slate-100 dark:bg-[#213d5e] md:ml-5 ml-[7px] ${
+          !open ? "w-[90%]" : "lg:w-[82%] md:w-[79%]"
         } text-start rounded-md border md:p-5 p-2 mt-10 w-full shadow-md`}
       >
         <div>
@@ -72,62 +72,61 @@ const ContactInfo = ({ open }) => {
           onClick={() => document.getElementById("emailModal").showModal()}
           className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
         >
-          <div className="flex items-center text-sm gap-[20px] md:gap-[213px]">
+          <div className="md:flex items-center text-sm gap-[20px] md:gap-[213px]">
             <p>Email</p>
             <div className="flex md:gap-2 items-center">
-              <p>{user && user.email ? user.email : "Email Not Available"}</p>
-              <p>
+              <p className="text-xl md:text-sm">
+                {user && user.email ? user.email : "Email Not Available"}
+              </p>
+              <p className="text-xl md:text-sm">
                 {user?.emailVerified == true ? (
-                  <div className="tooltip tooltip-success" data-tip="Verified">
+                  <p className="tooltip tooltip-success" data-tip="Verified">
                     <MdVerified className=" text-green-500 text-2xl" />
-                  </div>
+                  </p>
                 ) : (
-                  <div
-                    data-tip="Non Verified"
-                    className="tooltip tooltip-error"
-                  >
+                  <p data-tip="Non Verified" className="tooltip tooltip-error">
                     <GiCrossMark className=" text-red-600 text-2xl" />
-                  </div>
+                  </p>
                 )}
               </p>
+              <IsModal
+                title="Changes to your Email will be reflected across your
+                Delta Account."
+                modalId="emailModal"
+                onSubmit={handelMailUpdate}
+                type="email"
+                id="email"
+                name="email"
+                defaultValue={user ? user.email : "Set Your Email"}
+              />
             </div>
           </div>
-          <div className=" mt-10">
+          <div className="mt-5 md:mt-10">
             <FaChevronRight className="text-2xl" />
           </div>
-          <IsModal
-            title="Changes to your Email will be reflected across your
-                Delta Account."
-            modalId="emailModal"
-            onSubmit={handelMailUpdate}
-            type="email"
-            id="email"
-            name="email"
-            defaultValue={user ? user.email : "Set Your Email"}
-          />
         </div>
         <hr className="mt-5 mb-5" />
         <div
           onClick={() => document.getElementById("numberModal").showModal()}
           className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
         >
-          <div className="flex items-center text-sm md:gap-[208px] gap-[50px]">
+          <div className="md:flex items-center text-sm md:gap-[208px] gap-[50px]">
             <p>Phone</p>
-            <p>{isUser ? <p>{isUser?.number}</p> : <p>None</p>}</p>
+            <p className="text-xl md:text-sm">{isUser ? <p>{isUser?.number}</p> : <p>None</p>}</p>
+            <IsModal
+              title="Changes to your Number will be reflected across your
+                Delta Account."
+              modalId="numberModal"
+              onSubmit={handelNumberUpdate}
+              type="number"
+              id="number"
+              name="number"
+              defaultValue={isUser ? isUser.number : "Set Your Number"}
+            />
           </div>
           <div>
             <FaChevronRight className=" text-2xl" />
           </div>
-          <IsModal
-            title="Changes to your Number will be reflected across your
-                Delta Account."
-            modalId="numberModal"
-            onSubmit={handelNumberUpdate}
-            type="number"
-            id="number"
-            name="number"
-            defaultValue={isUser ? isUser.number : "Set Your Number"}
-          />
         </div>
       </section>
     </div>
