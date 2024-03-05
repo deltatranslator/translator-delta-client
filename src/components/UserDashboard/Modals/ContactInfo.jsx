@@ -57,11 +57,11 @@ const ContactInfo = ({ open }) => {
   };
 
   return (
-    <div>
+    <div className="mt-10">
       <section
         className={`bg-slate-100 dark:bg-[#213d5e] md:ml-5 ml-[7px] ${
           !open ? "w-[90%]" : "lg:w-[82%] md:w-[79%]"
-        } text-start rounded-md border md:p-5 p-2 mt-10 w-full shadow-md`}
+        } text-start rounded-md border md:p-5 p-2 w-full shadow-md`}
       >
         <div>
           <h2 className="text-3xl font-medium text-slate-900 dark:text-slate-50">
@@ -101,18 +101,20 @@ const ContactInfo = ({ open }) => {
               />
             </div>
           </div>
-          <div className="mt-5 md:mt-10">
+          <div className="">
             <FaChevronRight className="text-2xl" />
           </div>
         </div>
-        <hr className="mt-5 mb-5" />
+        <hr />
         <div
           onClick={() => document.getElementById("numberModal").showModal()}
           className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
         >
           <div className="md:flex items-center text-sm md:gap-[208px] gap-[50px]">
             <p>Phone</p>
-            <p className="text-xl md:text-sm">{isUser ? <p>{isUser?.number}</p> : <p>None</p>}</p>
+            <p className="text-xl md:text-sm">
+              {isUser ? <p>{isUser?.number}</p> : <p>None</p>}
+            </p>
             <IsModal
               title="Changes to your Number will be reflected across your
                 Delta Account."

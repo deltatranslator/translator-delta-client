@@ -142,8 +142,8 @@ const UserProfile = () => {
       <section className="dark:bg-slate-900 w-full bg-[#E9F1FA]  py-8 font-delta-v2">
         {/* Personal Info */}
         <section
-          className={` ${
-            !open ? "w-[97%]" : "w-[82%]"
+          className={` ml-[7px ${
+            !open ? "w-[90%]" : "w-[82%]"
           } space-y-2 text-center md:px-8`}
         >
           <h3 className=" text-4xl font-medium text-slate-900 dark:text-slate-50">
@@ -154,8 +154,8 @@ const UserProfile = () => {
           </p>
         </section>
         <section
-          className={`md:flex flex-grow-0 ml-5 items-center mt-0 md:mt-8 ${
-            !open ? "w-[97%]" : "lg:w-[82%] md:w-[85%]"
+          className={`md:flex flex-grow-0 ml-[7px] items-center mt-0 md:mt-8 ${
+            !open ? "w-[90%]" : "lg:w-[82%] md:w-[85%]"
           }`}
         >
           <div className="overflow-hidden md:order-last">
@@ -211,7 +211,7 @@ const UserProfile = () => {
             </div>
           </div>
           <div>
-            <hr className="mt-5 mb-5" />
+            <hr className="mt-5" />
             {/* Updated a user name */}
             <section>
               <div
@@ -243,15 +243,15 @@ const UserProfile = () => {
                 </div>
               </div>
             </section>
-            <hr className="mt-5 mb-5" />
+            <hr />
             {/* Updated a user birthday */}
             <div
               onClick={() =>
                 document.getElementById("birthdayModal").showModal()
               }
-              className="flex items-center md:gap-[213px] gap-[50px] justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
+              className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
             >
-              <div className=" md:flex items-center text-sm md:gap-[213px] gap-[50px]">
+              <div className=" md:flex items-center text-sm md:gap-[195px] gap-[50px]">
                 <p>Birthday</p>
                 <p className="text-xl md:text-sm">
                   {isUser ? isUser.date : "Set Your Birthday"}
@@ -271,12 +271,12 @@ const UserProfile = () => {
                 <FaChevronRight className=" text-2xl" />
               </div>
             </div>
-            <hr className="mt-5 mb-5" />
+            <hr />
             <div
               onClick={() => document.getElementById("genderModal").showModal()}
-              className=" flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
+              className=" flex items-center justify-between text-sate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
             >
-              <div className=" md:flex items-center text-sm md:gap-[213px] gap-[50px]">
+              <div className=" md:flex items-center text-sm md:gap-[205px] gap-[50px]">
                 <p>Gender</p>
                 <p className="text-xl md:text-sm">
                   {isUser && isUser.gender
@@ -359,11 +359,13 @@ const UserProfile = () => {
           </div>
           <div
             onClick={() => document.getElementById("homeModal").showModal()}
-            className=" flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
+            className="flex pb-5 items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
           >
             <div className="md:flex items-center text-sm gap-[50px] md:gap-[208px] mt-0 md;mt-10">
               <p>Home</p>
-              <p className="text-xl md:text-sm">{isUser ? isUser?.home : "None"}</p>
+              <p className="text-xl md:text-sm">
+                {isUser ? isUser?.home : "None"}
+              </p>
               <IsModal
                 title="Changes to your Home Ip will be reflected across your
                 Delta Account."
@@ -379,14 +381,16 @@ const UserProfile = () => {
               <FaChevronRight className=" text-2xl" />
             </div>
           </div>
-          <hr className="mt-5 mb-5" />
+          <hr />
           <div
             onClick={() => document.getElementById("workModal").showModal()}
             className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
           >
             <div className="md:flex items-center text-sm gap-[50px] md:gap-[208px]">
               <p>Work</p>
-              <p className="text-xl md:text-sm">{isUser ? isUser.work : "Set Your work"}</p>
+              <p className="text-xl md:text-sm">
+                {isUser ? isUser.work : "Set Your work"}
+              </p>
               <IsModal
                 title="Changes to your work will be reflected across your
                 Delta Account."
@@ -402,14 +406,16 @@ const UserProfile = () => {
               <FaChevronRight className=" text-2xl" />
             </div>
           </div>
-          <hr className="mt-5 mb-5" />
+          <hr  />
           <div
             onClick={() => document.getElementById("addressModal").showModal()}
             className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
           >
             <div className="md:flex items-center text-sm gap-[50px] md:gap-[155px]">
               <p>Other Address</p>
-              <p className="text-xl md:text-sm">{isUser ? isUser.address : "Set your address"}</p>
+              <p className="text-xl md:text-sm">
+                {isUser ? isUser.address : "Set your address"}
+              </p>
               <IsModal
                 title="Changes to your address will be reflected across your
                 Delta Account."
