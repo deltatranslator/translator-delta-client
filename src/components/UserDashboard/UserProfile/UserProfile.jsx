@@ -5,7 +5,7 @@ import { FaChevronRight } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
 import Occupation from "./Occupation";
 import { Link } from "react-router-dom";
-// import ContactInfo from "../Modals/ContactInfo";
+import ContactInfo from "../Modals/ContactInfo";
 import { useContext } from "react";
 import { OpenContext } from "../../../Context/useOpen";
 import axiosSecure from "../../../api";
@@ -274,7 +274,7 @@ const UserProfile = () => {
           </div>
         </section>
         {/* Contact Info */}
-        {/* <ContactInfo open={open} /> */}
+        <ContactInfo open={open} />
         {/* Addresses Info */}
         <section
           className={`text-start md:ml-5 ml-[10px] ${

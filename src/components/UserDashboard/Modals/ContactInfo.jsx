@@ -3,15 +3,35 @@ import { GiCrossMark } from "react-icons/gi";
 import { FaChevronRight } from "react-icons/fa";
 import useUser from "../../../hooks/useUser";
 import useAuth from "../../../hooks/useAuth";
-import useProfile from "../../../hooks/useProfile";
+// import useProfile from "../../../hooks/useProfile";
 import toast from "react-hot-toast";
 import axiosSecure from "../../../api";
 import IsModal from "../../../hooks/IsModal";
 
 const ContactInfo = ({ open }) => {
-  const { isUser } = useUser();
-  const { user } = useAuth();
-  const { isProfile, refetch } = useProfile();
+  const { isUser, refetch } = useUser();
+  const { user, userLogOut } = useAuth();
+  // const { isProfile } = useProfile();
+
+  const handelNumberUpdate = (e) => {
+    e.preventDefault();
+    const number = e.target.number.value;
+    const updateUser = { number };
+    try {
+      axiosSecure
+        .put(`/users/number/${isUser._id}`, updateUser)
+        .then(() => {
+          refetch();
+          toast.success("Updated Done!");
+        })
+        .catch(() => {
+          toast.error("Updated Failed!");
+        });
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.message);
+    }
+  };
 
   const handelMailUpdate = (e) => {
     e.preventDefault();
@@ -20,7 +40,10 @@ const ContactInfo = ({ open }) => {
     try {
       axiosSecure
         .put(`/users/mail/${isUser._id}`, updateUser)
-        .then(() => {
+        .then((res) => {
+          if (res.acknowledged) {
+            userLogOut();
+          }
           refetch();
           toast.success("Updated Done!");
         })
@@ -49,7 +72,7 @@ const ContactInfo = ({ open }) => {
           onClick={() => document.getElementById("emailModal").showModal()}
           className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
         >
-          <div className="flex items-center text-sm gap-[20px] md:gap-[213px] mt-10">
+          <div className="flex items-center text-sm gap-[20px] md:gap-[213px]">
             <p>Email</p>
             <div className="flex md:gap-2 items-center">
               <p>{user && user.email ? user.email : "Email Not Available"}</p>
@@ -73,7 +96,7 @@ const ContactInfo = ({ open }) => {
             <FaChevronRight className="text-2xl" />
           </div>
           <IsModal
-            title="Changes to your name will be reflected across your
+            title="Changes to your Email will be reflected across your
                 Delta Account."
             modalId="emailModal"
             onSubmit={handelMailUpdate}
@@ -85,17 +108,26 @@ const ContactInfo = ({ open }) => {
         </div>
         <hr className="mt-5 mb-5" />
         <div
-          onClick={() => document.getElementById("my_modal_4").showModal()}
-          className="flex items-center justify-between text-slate-900 dark:text-slate-50"
-          role="button"
+          onClick={() => document.getElementById("numberModal").showModal()}
+          className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
         >
           <div className="flex items-center text-sm md:gap-[208px] gap-[50px]">
             <p>Phone</p>
-            <p>{isProfile ? <p>{isProfile?.number}</p> : <p>None</p>}</p>
+            <p>{isUser ? <p>{isUser?.number}</p> : <p>None</p>}</p>
           </div>
           <div>
             <FaChevronRight className=" text-2xl" />
           </div>
+          <IsModal
+            title="Changes to your Number will be reflected across your
+                Delta Account."
+            modalId="numberModal"
+            onSubmit={handelNumberUpdate}
+            type="number"
+            id="number"
+            name="number"
+            defaultValue={isUser ? isUser.number : "Set Your Number"}
+          />
         </div>
       </section>
     </div>
