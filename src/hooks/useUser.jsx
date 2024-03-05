@@ -6,7 +6,7 @@ const useUser = () => {
   const { user, loading } = useAuth();
   //   console.log(user);
 
-  const { data: isUser } = useQuery({
+  const { data: isUser, refetch } = useQuery({
     queryKey: ["isUser"],
     enabled: user?.email && !loading,
     queryFn: async () => {
@@ -14,7 +14,7 @@ const useUser = () => {
       return res.data;
     },
   });
-  return { isUser };
+  return { isUser, refetch };
 };
 
 export default useUser;

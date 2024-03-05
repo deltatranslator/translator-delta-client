@@ -8,12 +8,34 @@ import { Link } from "react-router-dom";
 import ContactInfo from "../Modals/ContactInfo";
 import { useContext } from "react";
 import { OpenContext } from "../../../Context/useOpen";
-import Gender from "../Modals/Gender";
+import axiosSecure from "../../../api";
+import toast from "react-hot-toast";
 
 const UserProfile = () => {
   const { open } = useContext(OpenContext);
-  const { isUser } = useUser();
+  const { isUser, refetch } = useUser();
+  console.log("object===", isUser);
   const { user } = useAuth();
+
+  const handelName = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const updateUser = { name };
+    try {
+      axiosSecure
+        .put(`/users/${isUser._id}`, updateUser)
+        .then((res) => {
+          console.log("------------>", res);
+          refetch();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.message);
+    }
+  };
 
   return (
     <>
@@ -88,21 +110,75 @@ const UserProfile = () => {
           </div>
           <div>
             <hr className="mt-5 mb-5" />
-            <div className=" flex items-center justify-between text-slate-900 dark:text-slate-50">
-              <div className=" flex items-center text-sm md:gap-[213px] gap-[50px]">
-                <p>Name</p>
-                <p>
-                  {isUser && isUser.name.slice(0, 10)
-                    ? isUser.name.slice(0, 10)
-                    : user && user.displayName.slice(0, 10)
-                    ? user.displayName.slice(0, 10)
-                    : "Not Available"}
-                </p>
+            <section>
+              <div
+                onClick={() =>
+                  document.getElementById("my_modal_1").showModal()
+                }
+                className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
+              >
+                <div className=" flex items-center text-sm md:gap-[213px] gap-[50px]">
+                  <p>Name</p>
+                  <p>
+                    {isUser && isUser.name.slice(0, 10)
+                      ? isUser.name.slice(0, 10)
+                      : user && user.displayName.slice(0, 10)
+                      ? user.displayName.slice(0, 10)
+                      : "Not Available"}
+                  </p>
+                  <dialog id="my_modal_1" className="modal">
+                    <div className="modal-box">
+                      <form method="dialog">
+                        {/* if there is a button in form, it will close the modal */}
+                        <button className="btn shadow-2xl btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                          ✕
+                        </button>
+                      </form>
+                      <section className="rounded-md">
+                        <h2 className="text-center font-medium  text-slate-800 py-2">
+                          Changes to your name will be reflected across your
+                          Delta Account.
+                        </h2>
+                        <div className=" py-5 px-3">
+                          {/* Handel user name update */}
+                          <form
+                            onSubmit={handelName}
+                            className="flex items-center gap-3"
+                          >
+                            <div className="relative w-full">
+                              <input
+                                className="p-2 border-b-2 rounded-md focus:outline-none focus:border-blue-500 hover:bg-gray-200 w-full"
+                                type="text"
+                                name="name"
+                                defaultValue={
+                                  isUser && isUser.name.slice(0, 10)
+                                    ? isUser.name.slice(0, 10)
+                                    : user && user.displayName.slice(0, 10)
+                                    ? user.displayName.slice(0, 10)
+                                    : "Not Available"
+                                }
+                                id="name"
+                              />
+                            </div>
+                            <div>
+                              <button
+                                type="submit"
+                                className="btn rounded-full font-bold hover:bg-[#213E5E] hover:shadow-2xl hover:shadow-blue-700 hover:text-white border-none"
+                              >
+                                Save
+                              </button>
+                            </div>
+                          </form>
+                        </div>
+                      </section>
+                    </div>
+                  </dialog>
+                </div>
+                <div>
+                  <FaChevronRight className=" text-2xl" />
+                </div>
               </div>
-              <div>
-                <FaChevronRight className=" text-2xl" />
-              </div>
-            </div>
+            </section>
             <hr className="mt-5 mb-5" />
             <div className=" flex items-center justify-between text-slate-900 dark:text-slate-50">
               <div className=" flex items-center text-sm gap-[33px] md:gap-[193px]">
@@ -114,7 +190,7 @@ const UserProfile = () => {
               </div>
             </div>
             <hr className="mt-5 mb-5" />
-            {/* <div className=" flex items-center justify-between text-slate-900 dark:text-slate-50">
+            <div className=" flex items-center justify-between text-slate-900 dark:text-slate-50">
               <div className=" flex items-center text-sm gap-[40px] md:gap-[200px]">
                 <p>Gender</p>
                 <p>
@@ -128,8 +204,7 @@ const UserProfile = () => {
               <div>
                 <FaChevronRight className=" text-2xl" />
               </div>
-            </div> */}
-            <Gender />
+            </div>
           </div>
         </section>
         {/* Contact Info */}

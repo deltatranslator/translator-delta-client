@@ -14,6 +14,7 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import axiosSecure from "../../api";
+import useUser from "../../hooks/useUser";
 
 // import { imageUpload } from "../../api/utils";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -23,6 +24,7 @@ const SignUp = () => {
   const { createUser, userProfileUpdate } = useAuth();
   const navigate = useNavigate();
   const [imgTitle, setImgTitle] = useState("");
+  const { refetch } = useUser();
 
   const {
     register,
@@ -33,12 +35,11 @@ const SignUp = () => {
 
   // password toggle function
 
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
-
 
   const onSubmit = async (data, event) => {
     const name = data.name;
@@ -76,6 +77,7 @@ const SignUp = () => {
           toast.success("Successfully signed up");
           reset();
           navigate("/");
+          refetch();
         });
       });
     } catch (err) {
@@ -154,8 +156,15 @@ const SignUp = () => {
                     className="input w-full input-bordered border-[#ed7966]"
                   />
                   {/* Text changes based on visibility */}
-                  <button onClick={togglePasswordVisibility} className="relative -ml-7 md:-ml-10 ">
-                    {showPassword ?  <FaEyeSlash className="text-[#ed7966]" size={20}/>: <FaEye className="text-[#ed7966]" size={20}/> } 
+                  <button
+                    onClick={togglePasswordVisibility}
+                    className="relative -ml-7 md:-ml-10 "
+                  >
+                    {showPassword ? (
+                      <FaEyeSlash className="text-[#ed7966]" size={20} />
+                    ) : (
+                      <FaEye className="text-[#ed7966]" size={20} />
+                    )}
                   </button>
                 </div>
 
@@ -234,7 +243,6 @@ const SignUp = () => {
               <SocialLogin />
             </div>
             {/* social login  */}
-            
           </div>
         </div>
         <div>

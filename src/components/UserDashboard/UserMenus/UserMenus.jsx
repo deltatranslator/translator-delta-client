@@ -4,7 +4,7 @@ import { HiMenuAlt3 } from "react-icons/hi";
 import React, { useContext } from "react";
 import { OpenContext } from "../../../Context/useOpen";
 const UserMenus = () => {
-  const { open, setOpen, theme } = useContext(OpenContext);
+  const { open, setOpen } = useContext(OpenContext);
 
   const userMenus = [
     {
