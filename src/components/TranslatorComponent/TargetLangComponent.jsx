@@ -195,7 +195,7 @@ const TargetLangComponent = ({ swapState }) => {
         <button className="mr-10 -mt-2 flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full">
           <CopyToClipboard text={translation}>
             <FaCopy
-              className="text-[23px] hover:text-[#ed7966]"
+              className="text-[23px] hover:text-[#00ABE4]"
               onClick={handleCopyBtn}
             />
           </CopyToClipboard>

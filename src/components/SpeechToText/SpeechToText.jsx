@@ -32,7 +32,7 @@ const SpeechToText = ({
             }}
             className={
               listening
-                ? "animate-ping bg-[#ed7966] opacity-90 rounded-full transition-1s"
+                ? "animate-ping bg-[#00ABE4] opacity-90 rounded-full transition-1s"
                 : ""
             }
             size={26}
@@ -66,7 +66,7 @@ const SpeechToText = ({
         <div className="absolute right-[8rem] bottom-[.7rem] flex justify-center items-center w-10 h-10 hover:bg-gray-200 cursor-pointer rounded-full">
           <CopyToClipboard text={inputText}>
             <FaCopy
-              className="text-[23px] hover:text-[#ed7966]"
+              className="text-[23px] hover:text-[#00ABE4]"
               onClick={handleCopyBtn}
             />
           </CopyToClipboard>
