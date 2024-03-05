@@ -60,7 +60,7 @@ const UserProfile = () => {
           } rounded-md border shadow-md md:p-5 p-2 md:mt-0 dark:bg-[#213d5e] bg-slate-100`}
         >
           <div className="items-center justify-between">
-            <div className=" flex justify-end">
+            <div className=" flex justify-start">
               <div className="avatar">
                 <div className="w-40 mask mask-squircle ">
                   <img
@@ -70,7 +70,7 @@ const UserProfile = () => {
                 </div>
               </div>
             </div>
-            <div className=" space-y-12 w-full">
+            <div className=" space-y-12 w-full mt-5">
               <div>
                 <h3 className=" text-3xl text-slate-900 dark:text-slate-50 font-medium">
                   Basic info

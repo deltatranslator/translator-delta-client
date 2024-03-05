@@ -69,7 +69,7 @@ const UserMenus = () => {
             <Link
               className={`${
                 menu?.margin ? "mt-5" : menu?.marginBot ? "mb-5" : ""
-              } group flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-[#eec38e] rounded-md`}
+              } group flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-[#24ABE0] rounded-md`}
               to={menu?.link}
               key={i}
             >
