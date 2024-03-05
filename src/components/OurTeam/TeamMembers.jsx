@@ -17,8 +17,8 @@ const TeamMembers = () => {
                   </figure>
                   <div className=" items-center text-center">
                     <h2 className="font-semibold text-xl my-1">Fazle Rabby</h2>
-                    <h2 className="text-[#00ABE4] my-1">Web Developer</h2>
-                    <h2> Showcase the ability to adjust to changes and challenges  during the development  process as well.</h2>
+                    <h2 className="text-[#00ABE4] my-1">FrontEnd Developer</h2>
+                    <h2> I'm a passionate frontend developer proficient in React.js, JavaScript, MongoDB, and Node.js.</h2>
                    <div className="flex justify-center gap-3 mt-3">
                    <NavLink to="https://github.com/deltatranslator">
                       <BsGithub className="w-6 h-6 " />
@@ -36,8 +36,8 @@ const TeamMembers = () => {
                   </figure>
                   <div className=" items-center text-center">
                     <h2 className="font-semibold text-xl my-1">Naym Hossen</h2>
-                    <h2 className="text-[#00ABE4] my-1">Web Developer</h2>
-                    <h2> Showcase the ability to adjust to changes and challenges during the development process.</h2>
+                    <h2 className="text-[#00ABE4] my-1">FrontEnd Developer</h2>
+                    <h2>Full Stack Developer with a Focus on MERN || Expert in Front-end Technologies</h2>
                    <div className="flex justify-center gap-3 mt-3">
                    <NavLink to="https://github.com/naymhossen1b">
                       <BsGithub className="w-6 h-6 " />
@@ -55,8 +55,8 @@ const TeamMembers = () => {
                   </figure>
                   <div className=" items-center text-center">
                     <h2 className="font-semibold text-xl my-1">Golam Kibria</h2>
-                    <h2 className="text-[#00ABE4] my-1">Web Developer</h2>
-                    <h2> Showcase the ability to adjust to changes and challenges during the development process.</h2>
+                    <h2 className="text-[#00ABE4] my-1">FrontEnd Developer </h2>
+                        <h2>Passionate MERN Stack Developer eager to contribute and showcase dedication.</h2>
                    <div className="flex justify-center gap-3 mt-3">
                    <NavLink to="https://github.com/emiya-77">
                       <BsGithub className="w-6 h-6 " />
@@ -74,7 +74,7 @@ const TeamMembers = () => {
                   </figure>
                   <div className=" items-center text-center">
                     <h2 className="font-semibold text-xl my-1">Mahedi Hasan</h2>
-                    <h2 className="text-[#00ABE4] my-1">Web Developer</h2>
+                    <h2 className="text-[#00ABE4] my-1">FrontEnd Developer</h2>
                     <h2> Showcase the ability to adjust to changes and challenges during the development process.</h2>
                    <div className="flex justify-center gap-3 mt-3">
                    <NavLink to="https://github.com/Mahedi205339">
@@ -93,8 +93,8 @@ const TeamMembers = () => {
                   </figure>
                   <div className=" items-center text-center">
                     <h2 className="font-semibold text-xl my-1">Md Morshed Alam</h2>
-                    <h2 className="text-[#00ABE4] my-1">Web Developer</h2>
-                    <h2> Showcase the ability to adjust to changes and challenges during the development process.</h2>
+                    <h2 className="text-[#00ABE4] my-1">FrontEnd Developer</h2>
+                    <h2> Passionate about creating seamless web experiences with React.js, Node.js, Express.js and MongoDB.</h2>
                    <div className="flex justify-center gap-3 mt-3">
                    <NavLink to="https://github.com/morz-mamun">
                       <BsGithub className="w-6 h-6 " />
@@ -112,7 +112,7 @@ const TeamMembers = () => {
                   </figure>
                   <div className=" items-center text-center">
                     <h2 className="font-semibold text-xl my-1">Md. Nafis Ikbal Bhuiyan</h2>
-                    <h2 className="text-[#00ABE4] my-1">Web Developer</h2>
+                    <h2 className="text-[#00ABE4] my-1">FrontEnd Developer</h2>
                     <h2> Showcase the ability to adjust to changes and challenges during the development process.</h2>
                    <div className="flex justify-center gap-3 mt-3">
                    <NavLink to="https://github.com/Nafis2222">
