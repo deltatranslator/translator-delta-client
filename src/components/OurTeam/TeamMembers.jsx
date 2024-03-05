@@ -61,7 +61,7 @@ const TeamMembers = () => {
                    <NavLink to="https://github.com/emiya-77">
                       <BsGithub className="w-6 h-6 " />
                     </NavLink>
-                    <NavLink to="">
+                    <NavLink to="https://www.linkedin.com/in/kibria7/?fbclid=IwAR14tXJaB5ndE6qxvhgu3aqXwAZDjB2hdHgvJzd3GNeQMIMoI4eDvbHzN6M">
                       <FaLinkedin className="w-6 h-6"/>
                     </NavLink>
                    </div>
@@ -80,7 +80,7 @@ const TeamMembers = () => {
                    <NavLink to="https://github.com/Mahedi205339">
                       <BsGithub className="w-6 h-6 " />
                     </NavLink>
-                    <NavLink to="">
+                    <NavLink to="https://www.linkedin.com/in/mahedi205339/?fbclid=IwAR1FC2MrFHiV9wEoJcLopsWXwgmsd3FMiFagn1N_KIostrkG78sobeAtxO8">
                       <FaLinkedin className="w-6 h-6"/>
                     </NavLink>
                    </div>
