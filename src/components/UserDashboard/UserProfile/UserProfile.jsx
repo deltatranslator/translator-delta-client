@@ -145,53 +145,16 @@ const UserProfile = () => {
                       ? user.displayName.slice(0, 10)
                       : "Not Available"}
                   </p>
-                  <dialog id="nameModal" className="modal">
-                    <div className="modal-box">
-                      <form method="dialog">
-                        {/* if there is a button in form, it will close the modal */}
-                        <button className="btn shadow-2xl btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                          ✕
-                        </button>
-                      </form>
-                      <section className="rounded-md">
-                        <h2 className="text-center font-medium  text-slate-800 py-2">
-                          Changes to your name will be reflected across your
-                          Delta Account.
-                        </h2>
-                        <div className=" py-5 px-3">
-                          {/* Handel user name update */}
-                          <form
-                            onSubmit={handelName}
-                            className="flex items-center gap-3"
-                          >
-                            <div className="relative w-full">
-                              <input
-                                className="p-2 border-b-2 rounded-md focus:outline-none focus:border-blue-500 hover:bg-gray-200 w-full"
-                                type="text"
-                                name="name"
-                                defaultValue={
-                                  isUser && isUser.name.slice(0, 10)
-                                    ? isUser.name.slice(0, 10)
-                                    : user && user.displayName.slice(0, 10)
-                                    ? user.displayName.slice(0, 10)
-                                    : "Not Available"
-                                }
-                                id="name"
-                              />
-                            </div>
-                            <div>
-                              <button
-                                type="submit"
-                                className="btn rounded-full font-bold hover:bg-[#213E5E] hover:shadow-2xl hover:shadow-blue-700 hover:text-white border-none"
-                              >
-                                Save
-                              </button>
-                            </div>
-                          </form>
-                        </div>
-                      </section>
-                    </div>
-                  </dialog>
+                  <IsModal
+                    title="Changes to your name will be reflected across your
+                Delta Account."
+                    modalId="nameModal"
+                    onSubmit={handelName}
+                    type="name"
+                    id="name"
+                    name="name"
+                    defaultValue={isUser ? isUser.name : "Set Your Name"}
+                  />
                 </div>
                 <div>
                   <FaChevronRight className=" text-2xl" />
@@ -208,7 +171,7 @@ const UserProfile = () => {
             >
               <div className=" flex items-center text-sm gap-[33px] md:gap-[193px]">
                 <p>Birthday</p>
-                <p>{isUser ? isUser.date : ""}</p>
+                <p>{isUser ? isUser.date : "Set Your Birthday"}</p>
               </div>
               <div>
                 <FaChevronRight className=" text-2xl" />
@@ -218,6 +181,7 @@ const UserProfile = () => {
               personalization across Delta services."
                 modalId="birthdayModal"
                 onSubmit={handelBirthDate}
+                defaultValue={isUser ? isUser.date : "None"}
                 type="date"
                 id="date"
                 name="date"
