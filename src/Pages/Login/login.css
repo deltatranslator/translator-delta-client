@@ -6,12 +6,13 @@
 
     .file-label {
         display: inline-block;
-        color: #ed7966;
+        color: #303179;
         background-color: white;
         text-align: center;
-        outline: #ed7966;
-        border: 2px solid #ed7966;
-        padding: 5px 10px;
+        /* outline: #303179; */
+        padding: 11px 30px;
+        width: 100%;
+        border-radius: 0 10px 10px 0;
 
     }
 
@@ -42,7 +43,4 @@
         margin-top: 10px;
     }
 
-    .home-btn {
-        margin-right: 20px;
-    }
 }

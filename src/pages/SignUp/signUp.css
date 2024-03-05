@@ -1,6 +1,6 @@
 input[type="file"] {
     display: none;
-    
+
 }
 
 .file-label {
@@ -9,23 +9,26 @@ input[type="file"] {
     background-color: white;
     text-align: center;
     outline: #303179;
-    border: 2px solid #303179;
-    padding: 10px 30px;
+    padding: 11px 30px;
+    width: 100%;
+    border-radius: 0 10px 10px 0;
 
 }
- .sign-back{
+
+.sign-back {
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(2, 2, 2, 0.3)), url(../../assets/login.png);
     background-size: 150%;
     background-repeat: no-repeat;
     background-color: rgba(0, 0, 0, .1);
-    
- }
+
+}
 
 @media only screen and (max-width: 400px) and (min-width:320px) {
     input {
         max-width: 250px;
         max-height: 40px;
     }
+
     .file-label {
         display: inline-block;
         color: #303179;
@@ -34,16 +37,12 @@ input[type="file"] {
         outline: #303179;
         border: 2px solid #303179;
         padding: 5px 10px;
-    
+
     }
-    .lottie{
-        max-width: 250px;
-        height: auto;
-    }
-    .social-login{
+
+    .social-login {
         margin-right: 0;
     }
-    .home-btn{
-        margin-right: 10px;
-    }
+
+
 }

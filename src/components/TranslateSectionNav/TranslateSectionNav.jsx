@@ -7,10 +7,10 @@ const TranslateSectionNav = () => {
       <NavLink
         to="/"
         className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "border rounded-lg" : ""
+          isPending ? "pending" : isActive ? "border text-white gap-2 bg-[#00ABE4]  rounded-lg hover:bg-white hover:text-[#00ABE4] shadow-xl" : "border  gap-2 bg-white  rounded-lg hover:bg-white text-[#00ABE4] shadow-xl"
         }
       >
-        <div className="w-full  md:w-60 flex px-3 md:px-6 py-3 items-center text-white  gap-2 bg-[#00ABE4] rounded-lg hover:bg-white hover:text-[#213d5e] shadow-xl">
+        <div className="w-full  md:w-60 flex px-3 md:px-6 py-3 items-center ">
           <TfiWorld className="text-xl md:text-3xl font-semibold" />
           <div className="flex flex-col items-start">
             <h3 className="text-xs md:text-base font-bold">Translate Text</h3>
@@ -21,10 +21,10 @@ const TranslateSectionNav = () => {
       <NavLink
         to="/pdfScan"
         className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "border  rounded-lg" : ""
-        }
+        isPending ? "pending" : isActive ? "border text-white gap-2 bg-[#00ABE4]  rounded-lg hover:bg-white hover:text-[#00ABE4] shadow-xl" : "border  gap-2 bg-white  rounded-lg hover:bg-white text-[#00ABE4] shadow-xl"
+      }
       >
-        <div className="w-full md:w-60 flex px-3 md:px-6 py-3 items-center text-white  gap-2 bg-[#00ABE4] rounded-lg hover:bg-white hover:text-[#213d5e] shadow-xl">
+        <div className="w-full md:w-60 flex px-3 md:px-6 py-3 items-center ">
           <BsFiletypePdf className="text-xl md:text-3xl  font-semibold" />
           <div className="flex flex-col items-start">
             <h3 className="text-xs md:text-base font-bold">Translate Files</h3>

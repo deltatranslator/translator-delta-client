@@ -2,8 +2,6 @@
 import "./signUp.css";
 import { GoPasskeyFill, GoUpload } from "react-icons/go";
 import { useForm } from "react-hook-form";
-// import Lottie from "lottie-react";
-// import loginAnime from "../../assets/Animation - 1705578701251.json";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
@@ -97,12 +95,7 @@ const SignUp = () => {
             {/* form */}
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control flex flex-row my-3">
-                {/* <label className="label">
-                  <span className="label-text text-[#213d5e] font-semibold">
-                    Name
-                  </span>
-                </label> */}
-                <div className="px-3 py-2 rounded-l-lg bg-[#213d5e] ">
+                <div className="px-3 py-2 rounded-l-lg bg-[#213d5e]  shadow-[#213d5e] shadow-lg">
                   <IoIosPerson className="text-white " size={24} />
                 </div>
 
@@ -118,12 +111,7 @@ const SignUp = () => {
                 <span className="text-red-700 font-bold">Name is required</span>
               )}
               <div className="form-control flex flex-row my-3">
-                {/* <label className="label">
-                  <span className="label-text text-[#213d5e] font-semibold">
-                    Email Address
-                  </span>
-                </label> */}
-                <div className="px-3 py-2 rounded-l-lg bg-[#213d5e] ">
+                <div className="px-3 py-2 rounded-l-lg bg-[#213d5e]  shadow-[#213d5e] shadow-lg">
                   <MdOutlineMailLock className="text-white " size={24} />
                 </div>
                 <input
@@ -141,12 +129,7 @@ const SignUp = () => {
               </div>
 
               <div className="form-control flex flex-row my-3">
-                {/* <label className="label">
-                  <span className="label-text text-[#213d5e] font-semibold">
-                    Password
-                  </span>
-                </label> */}
-                <div className="px-3 py-2 rounded-l-lg bg-[#213d5e] ">
+                <div className="px-3 py-2 rounded-l-lg bg-[#213d5e]  shadow-[#213d5e] shadow-lg">
                   <GoPasskeyFill className="text-white " size={24} />
                 </div>
                 <div className="flex flex-row items-center w-full">
@@ -159,7 +142,7 @@ const SignUp = () => {
                     })}
                     type={showPassword ? "text" : "password"}
                     name="password"
-                    placeholder="********"
+                    placeholder="  password"
                     className="input rounded-l-none w-full input-bordered border-[#213d5e] shadow-[#213d5e] shadow-lg"
                   />
                   {/* Text changes based on visibility */}
@@ -190,23 +173,34 @@ const SignUp = () => {
                   </p>
                 )}
               </div>
-              <div className="mt-7 flex justify-center">
+              <div>
+                <div className="my-2 flex items-center justify-center">
 
-                <div
-                  className="file-label shadow-[#213d5e] shadow-lg mb-2 text-sm text-white rounded-xl "
-                >
-                  {imgTitle ? (
-                    <p>{imgTitle.slice(0, 20)}</p>
-                  ) : (
-                    <div className="flex justify-center items-center mx-auto">
-                      <GoUpload className="text-2xl font-bold" />
 
-                      <p>Upload Profile</p>
+                  <div className="px-3 py-[11px] rounded-l-lg bg-[#213d5e]  shadow-[#213d5e] shadow-lg -mt-[5px]">
+                    <GoUpload className="text-2xl text-white" />
+                  </div>
+                  <label
+                    htmlFor="image"
+                    className="file-label shadow-[#213d5e] shadow-lg mb-2 text-sm text-white rounded-xl "
+                  >
+
+
+                    <div >
+                      {imgTitle ? (
+                        <p>{imgTitle.slice(0, 20)}</p>
+                      ) : (
+                        <div className="flex justify-center items-center mx-auto">
+
+
+                          <p>Upload Profile</p>
+                        </div>
+                      )}
                     </div>
-                  )}
+                  </label>
                 </div>
-
                 <input
+                  className="input w-full rounded-l-none input-bordered border-[#213d5e] shadow-[#213d5e] shadow-lg "
                   // {...register("image", { required: true })}
                   type="file"
                   id="image"
@@ -231,10 +225,10 @@ const SignUp = () => {
             </form>
 
             <p className="text-center -mt-4">
-              <small className="text-[#303179]  dark:text-white">
+              <small className="text-neutral-700  dark:text-white">
                 Already have an account?{" "}
                 <Link to="/login">
-                  <span className="font-bold dark:text-[#213d5e]">Login</span>
+                  <span className="font-extrabold dark:text-[#00ABE4]">Login</span>
                 </Link>
               </small>
             </p>
@@ -242,18 +236,18 @@ const SignUp = () => {
               <SocialLogin />
             </div>
             {/* social login  */}
+            <div className="flex justify-center home-btn ">
+              <Link
+                className="text-sm font-semibold flex flex-row gap-2 items-center"
+                to="/"
+              >
+                <p>Go to</p>
+                <span className="underline font-extrabold text-base text-[#213d5e]">Home</span>
+              </Link>
+            </div>
+            <div>
+            </div>
 
-          </div>
-        </div>
-        <div>
-          <div className="flex justify-center home-btn ">
-            <Link
-              className="text-sm font-semibold flex flex-row gap-2 items-center"
-              to="/"
-            >
-              <p>Go to</p>
-              <span className="underline font-extrabold text-base text-[#213d5e]">Home</span>
-            </Link>
           </div>
         </div>
       </div>

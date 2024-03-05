@@ -30,7 +30,7 @@ const SocialLogin = () => {
         {/* <div className="divider"></div> */}
         <button
           onClick={handleGoogleSignIn}
-          className="btn social-login border border-[#ed7966] text-[#ed7966] my-4 btn-outline w-[300px] lg:w-[380px]  hover:bg-[#303179]"
+          className="btn social-login border border-[#213d5e] text-[#213d5e] my-4 btn-outline w-[260px] lg:w-[380px]  hover:bg-[#00ABE4]"
         >
           <FcGoogle className="text-3xl"></FcGoogle>
           Google
