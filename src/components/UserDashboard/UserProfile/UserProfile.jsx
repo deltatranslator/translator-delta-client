@@ -5,7 +5,7 @@ import { FaChevronRight } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
 import Occupation from "./Occupation";
 import { Link } from "react-router-dom";
-import ContactInfo from "../Modals/ContactInfo";
+// import ContactInfo from "../Modals/ContactInfo";
 import { useContext } from "react";
 import { OpenContext } from "../../../Context/useOpen";
 import axiosSecure from "../../../api";
@@ -17,6 +17,26 @@ const UserProfile = () => {
   const { isUser, refetch } = useUser();
   console.log("object---------", isUser);
   const { user } = useAuth();
+
+  const handelGenderDate = (e) => {
+    e.preventDefault();
+    const gender = e.target.gender.value;
+    const updateUser = { gender };
+    try {
+      axiosSecure
+        .put(`/users/gender/${isUser._id}`, updateUser)
+        .then(() => {
+          refetch();
+          toast.success("Updated Done!");
+        })
+        .catch(() => {
+          toast.error("Updated Failed!");
+        });
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.message);
+    }
+  };
 
   const handelBirthDate = (e) => {
     e.preventDefault();
@@ -37,6 +57,7 @@ const UserProfile = () => {
       toast.error(error?.message);
     }
   };
+
   const handelName = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -134,7 +155,7 @@ const UserProfile = () => {
             <section>
               <div
                 onClick={() => document.getElementById("nameModal").showModal()}
-                className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
+                className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
               >
                 <div className=" flex items-center text-sm md:gap-[213px] gap-[50px]">
                   <p>Name</p>
@@ -167,7 +188,7 @@ const UserProfile = () => {
               onClick={() =>
                 document.getElementById("birthdayModal").showModal()
               }
-              className=" flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
+              className=" flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
             >
               <div className=" flex items-center text-sm gap-[33px] md:gap-[193px]">
                 <p>Birthday</p>
@@ -188,25 +209,72 @@ const UserProfile = () => {
               />
             </div>
             <hr className="mt-5 mb-5" />
-            <div className=" flex items-center justify-between text-slate-900 dark:text-slate-50">
+            <div
+              onClick={() => document.getElementById("genderModal").showModal()}
+              className=" flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
+            >
               <div className=" flex items-center text-sm gap-[40px] md:gap-[200px]">
                 <p>Gender</p>
                 <p>
                   {isUser && isUser.gender
-                    ? isUser.gender
+                    ? isUser.gender.toUpperCase()
                     : user && user.gender
                     ? user.gender
                     : "Not Available"}
                 </p>
               </div>
               <div>
-                <FaChevronRight className=" text-2xl" />
+                <FaChevronRight className="text-2xl" />
               </div>
+              <dialog id="genderModal" className="modal">
+                <div className="modal-box">
+                  <form method="dialog">
+                    {/* if there is a button in form, it will close the modal */}
+                    <button className="btn shadow-2xl btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                      ✕
+                    </button>
+                  </form>
+                  <section className="rounded-md">
+                    <h2 className="text-center font-medium  text-slate-800 py-2">
+                      Your gender may be used for personalization across Google
+                      services.
+                    </h2>
+                    <div className=" py-5 px-3">
+                      {/* Handel user name update */}
+                      <form
+                        onSubmit={handelGenderDate}
+                        className="flex items-center gap-3"
+                      >
+                        <div className="relative w-full">
+                          <select
+                            name="gender"
+                            id="gender"
+                            className="appearance-none w-full border-b-2 border-b-slate-500 border-slate-50 focus:border-blue-500 bg-transparent text-gray-700 py-2 px-4 focus:outline-none focus:ring-0"
+                          >
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="thirdGender">Third Gender</option>
+                            <option value="twoSpirit">Two-spirit</option>
+                          </select>
+                        </div>
+                        <div>
+                          <button
+                            type="submit"
+                            className="btn rounded-full font-bold hover:bg-[#213E5E] hover:shadow-2xl hover:shadow-blue-700 hover:text-white border-none"
+                          >
+                            Save
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </section>
+                </div>
+              </dialog>
             </div>
           </div>
         </section>
         {/* Contact Info */}
-        <ContactInfo open={open} />
+        {/* <ContactInfo open={open} /> */}
         {/* Addresses Info */}
         <section
           className={`text-start md:ml-5 ml-[10px] ${
