@@ -7,7 +7,7 @@ const TranslateSectionNav = () => {
       <NavLink
         to="/"
         className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "border text-white gap-2 bg-[#00ABE4]  rounded-lg hover:bg-white hover:text-[#00ABE4] shadow-xl" : "border  gap-2 bg-white  rounded-lg hover:bg-white text-[#00ABE4] shadow-xl"
+          isPending ? "pending" : isActive ? "border text-white gap-2 bg-[#00ABE4]  rounded-lg  hover:text-white shadow-xl" : "border  gap-2 bg-white  rounded-lg hover:bg-[#213d5e] text-[#00ABE4] shadow-xl"
         }
       >
         <div className="w-full  md:w-60 flex px-3 md:px-6 py-3 items-center ">
@@ -21,8 +21,8 @@ const TranslateSectionNav = () => {
       <NavLink
         to="/pdfScan"
         className={({ isActive, isPending }) =>
-        isPending ? "pending" : isActive ? "border text-white gap-2 bg-[#00ABE4]  rounded-lg hover:bg-white hover:text-[#00ABE4] shadow-xl" : "border  gap-2 bg-white  rounded-lg hover:bg-white text-[#00ABE4] shadow-xl"
-      }
+          isPending ? "pending" : isActive ? "border text-white gap-2 bg-[#00ABE4]  rounded-lg  hover:text-white shadow-xl" : "border  gap-2 bg-white  rounded-lg hover:bg-[#213d5e] text-[#00ABE4] shadow-xl"
+        }
       >
         <div className="w-full md:w-60 flex px-3 md:px-6 py-3 items-center ">
           <BsFiletypePdf className="text-xl md:text-3xl  font-semibold" />

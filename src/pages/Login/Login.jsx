@@ -50,7 +50,6 @@ const Login = () => {
 
   return (
     <div className="hero sign-back min-h-screen  dark:bg-black">
-      <div className="md:none lg:block dark:border-2 rounded-3xl dark:border-[#213d5e] lg:p-[100px]">
         <div className=" px-5 flex flex-col items-center justify-center md:flex-row-reverse w-full lg:gap-10">
           <div className="card flex-shrink-0 w-80 md:w-96 lg:w-[450px] py-7 bg-[#213d5e] bg-opacity-10 backdrop-blur-md shadow-black shadow-2xl">
             <div className="login-text text-center my-2 md:my-5 lg:my-8 text-[#213d5e] text-2xl md:text-4xl font-bold">
@@ -139,10 +138,10 @@ const Login = () => {
             </form>
 
             <p className="md:text-center account-comment my-4">
-              <small className="text-neutral-700  dark:text-white">
+              <small className="text-neutral-700">
                 Don't Have an account?{" "}
                 <Link to="/signUp">
-                  <span className="font-extrabold dark:text-[#213d5e]">
+                  <span className="font-extrabold">
                     {" "}
                     Sign Up
                   </span>
@@ -168,7 +167,6 @@ const Login = () => {
         <div>
         </div>
       </div>
-    </div>
   );
 };
 
