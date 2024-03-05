@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
@@ -6,12 +6,15 @@ import { Typewriter } from "react-simple-typewriter";
 import useUser from "../../hooks/useUser";
 import { MdDarkMode } from "react-icons/md";
 import { IoSunnySharp } from "react-icons/io5";
+import { OpenContext } from "../../Context/useOpen";
 const Navbar = () => {
   const { user, userLogOut } = useAuth();
   const { isUser } = useUser();
   console.log("_________________", isUser?.role);
   //react dar mode implement
-  const [theme, setTheme] = useState("light");
+  // const [theme, setTheme] = useState("light");
+
+  const {theme, setTheme} = useContext(OpenContext)
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");

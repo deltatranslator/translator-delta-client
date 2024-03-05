@@ -17,7 +17,7 @@ const UserProfile = () => {
 
   return (
     <>
-      <section className="dark:bg-slate-700 w-full bg-[#E9F1FA]  py-8 font-delta-v2">
+      <section className="dark:bg-slate-900 w-full bg-[#E9F1FA]  py-8 font-delta-v2">
         {/* Personal Info */}
         <section
           className={` ${
@@ -195,7 +195,7 @@ const UserProfile = () => {
         </section>
       </section>
       {/* Footer section */}
-      <section className=" py-8 flex items-center justify-center dark:bg-slate-700">
+      <section className=" py-8 flex items-center justify-center dark:bg-slate-900">
         <div>
           <Link
             className="btn bg-[#24ABE5] border-none text-white hover:bg-slate-50 hover:text-slate-800 hover:shadow-lg hover:shadow-blue-500"
