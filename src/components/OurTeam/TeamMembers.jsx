@@ -7,8 +7,8 @@ const TeamMembers = () => {
   return (
     <div>
       <div className="my-5">
-        <h1 className="text-center text-[#00ABE4] font-extralight text-4xl">
-          Our Team
+        <h1 className="text-center text-[#00ABE4] uppercase  text-6xl">
+          Our <span className="text-[#213d5e]">Team</span>
         </h1>
         <p className="text-center font-medium my-2">
           {" "}
@@ -16,7 +16,7 @@ const TeamMembers = () => {
           solutions.
         </p>
       </div>
-      <div className="px-5 md:px-28 grid md:grid-cols-2 lg:grid-cols-3 gap-10  mt-20 mb-8">
+      <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-10  mt-20 mb-8">
         <div className="card w-80 mx-auto md:w-96 md:h-80 py-8 bg-base-100 shadow-md shadow-blue-400">
           <figure className="">
             <img
