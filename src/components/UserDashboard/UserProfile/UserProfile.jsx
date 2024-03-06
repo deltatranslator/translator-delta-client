@@ -143,7 +143,7 @@ const UserProfile = () => {
         {/* Personal Info */}
         <section
           className={`${
-            !open ? "w-[90%]" : "w-[82%] mx-auto"
+            !open ? "w-[95%]" : "w-[80%]"
           } space-y-2 text-center md:px-20`}
         >
           <h3 className=" text-4xl font-medium text-slate-900 dark:text-slate-50">
@@ -154,8 +154,8 @@ const UserProfile = () => {
           </p>
         </section>
         <section
-          className={`md:flex flex-grow-0 ml-[20px] items-center mt-0 md:mt-8 ${
-            !open ? "w-[90%] mx-auto" : "lg:w-[82%] mx-auto md:w-[85%]"
+          className={`md:flex flex-grow-0 ml-[10px] items-center mt-0 md:mt-8 ${
+            !open ? "w-[95%] mx-auto" : "lg:w-[79%] mx-auto md:w-[64%]"
           }`}
         >
           <div className="overflow-hidden md:order-last">
@@ -179,8 +179,8 @@ const UserProfile = () => {
         <section
           className={`text-start p-1 md:ml-5 ${
             !open
-              ? "w-[90%] mt-0 ml-[7px]"
-              : "lg:w-[82%] md:w-[79%] mx-auto md:mt-5"
+              ? "w-[95%] mt-0 ml-[7px]"
+              : "lg:w-[82%] md:w-[64%] mx-auto md:mt-5"
           } rounded-md border shadow-md md:p-5  md:mt-0 dark:bg-[#213d5e] bg-slate-100`}
         >
           <div className="items-center justify-between">
@@ -212,13 +212,12 @@ const UserProfile = () => {
           </div>
           <div>
             <hr className="mt-5" />
-            {/* Updated a user name */}
             <section>
               <div
                 onClick={() => document.getElementById("nameModal").showModal()}
                 className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
               >
-                <div className=" md:flex items-center text-sm md:gap-[213px] gap-[50px]">
+                <div className=" md:flex items-center text-sm md:gap-[80px] lg:gap-[213px] gap-[50px]">
                   <p>Name</p>
                   <p className="text-xl md:text-sm">
                     {isUser && isUser.name.slice(0, 10)
@@ -245,14 +244,13 @@ const UserProfile = () => {
               </div>
             </section>
             <hr />
-            {/* Updated a user birthday */}
             <div
               onClick={() =>
                 document.getElementById("birthdayModal").showModal()
               }
               className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
             >
-              <div className=" md:flex items-center text-sm md:gap-[195px] gap-[50px]">
+              <div className=" md:flex items-center text-sm md:gap-[70px] lg:gap-[195px] gap-[50px]">
                 <p>Birthday</p>
                 <p className="text-xl md:text-sm">
                   {isUser ? isUser.date : "Set Your Birthday"}
@@ -278,7 +276,7 @@ const UserProfile = () => {
               onClick={() => document.getElementById("genderModal").showModal()}
               className=" flex items-center justify-between text-sate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
             >
-              <div className=" md:flex items-center text-sm md:gap-[205px] gap-[50px]">
+              <div className=" md:flex items-center text-sm md:gap-[80px] lg:gap-[205px] gap-[50px]">
                 <p>Gender</p>
                 <p className="text-xl md:text-sm">
                   {isUser && isUser.gender
@@ -292,13 +290,13 @@ const UserProfile = () => {
                 <FaChevronRight className="text-2xl" />
               </div>
               <dialog id="genderModal" className="modal">
-              <div className="modal-box bg-none bg-transparent rounded-3xl">
+                <div className="modal-box bg-none bg-transparent rounded-3xl">
                   <form method="dialog">
                     <button className="btn shadow-2xl bg-[#213E5E] hover:bg-red-500 hover:text-black btn-sm btn-circle btn-ghost text-red-500 text-xl font-bold absolute right-2 top-2">
                       ✕
                     </button>
                   </form>
-                  <section className=" bg-[#E9F1FA] rounded-md">
+                  <section className=" bg-[#E9F1FA] dark:bg-[#213E5E] rounded-md">
                     <div className="bg-[#1F9DE1] p-2">
                       <h2 className="text-start text-[#E9F1FA] text-xl font-medium py-2">
                         Your gender may be used for personalization across
@@ -311,11 +309,13 @@ const UserProfile = () => {
                         className="items-center gap-3"
                       >
                         <div className="relative w-full py-6 px-5">
-                        <label className="label text-xl font-medium">Gender:</label>
+                          <label className="label text-xl font-medium">
+                            Gender:
+                          </label>
                           <select
                             name="gender"
                             id="gender"
-                            className="appearance-none w-full border-b-2 border-b-slate-500 border-slate-50 focus:border-blue-500 bg-transparent text-gray-700 py-2 px-4 focus:outline-none focus:ring-0"
+                            className="appearance-none dark:text-white w-full border-b-2 border-b-slate-500 border-slate-50 focus:border-blue-500 bg-transparent text-gray-700 py-2 px-4 focus:outline-none focus:ring-0"
                           >
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -352,9 +352,11 @@ const UserProfile = () => {
         <ContactInfo open={open} />
         {/* Addresses Info */}
         <section
-          className={`text-start md:ml-5 ml-[7px] ${
-            !open ? "w-[90%]" : "lg:w-[82%] md:w-[79%]"
-          } rounded-md border md:p-5 p-2 mt-10 w-full shadow-md dark:bg-[#213d5e] bg-slate-100`}
+          className={`text-start p-1 md:ml-5 ${
+            !open
+              ? "w-[95%] mt-0 ml-[7px]"
+              : "lg:w-[82%] md:w-[64%] mx-auto md:mt-5"
+          } rounded-md border shadow-md md:p-5 dark:bg-[#213d5e] bg-slate-100 mt-8`}
         >
           <div>
             <h2 className="text-3xl font-medium text-slate-900 dark:text-slate-50">
@@ -373,7 +375,7 @@ const UserProfile = () => {
             onClick={() => document.getElementById("homeModal").showModal()}
             className="flex pb-5 items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
           >
-            <div className="md:flex items-center text-sm gap-[50px] md:gap-[208px] mt-0 md;mt-10">
+            <div className="md:flex items-center text-sm gap-[50px] md:gap-[80px] lg:gap-[208px] mt-0 md;mt-10">
               <p>Home</p>
               <p className="text-xl md:text-sm">
                 {isUser ? isUser?.home : "None"}
@@ -399,7 +401,7 @@ const UserProfile = () => {
             onClick={() => document.getElementById("workModal").showModal()}
             className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
           >
-            <div className="md:flex items-center text-sm gap-[50px] md:gap-[208px]">
+            <div className="md:flex items-center text-sm gap-[50px] md:gap-[80px] lg:gap-[208px]">
               <p>Work</p>
               <p className="text-xl md:text-sm">
                 {isUser ? isUser.work : "Set Your work"}
@@ -425,7 +427,7 @@ const UserProfile = () => {
             onClick={() => document.getElementById("addressModal").showModal()}
             className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
           >
-            <div className="md:flex items-center text-sm gap-[50px] md:gap-[155px]">
+            <div className="md:flex items-center text-sm gap-[50px] md:gap-[30px] lg:gap-[155px]">
               <p>Other Address</p>
               <p className="text-xl md:text-sm">
                 {isUser ? isUser.address : "Set your address"}
@@ -449,11 +451,13 @@ const UserProfile = () => {
         </section>
         {/* Your occupation */}
         <section
-          className={`bg-slate-100 dark:bg-[#213d5e] md:ml-5 ml-[7px] ${
-            !open ? "w-[90%]" : "lg:w-[82%] md:w-[79%]"
-          } rounded-md border shadow-md md:p-5 p-1 mt-10 w-full`}
+          className={`text-start p-1 md:ml-5 ${
+            !open
+              ? "w-[95%] mt-0 ml-[7px]"
+              : "lg:w-[82%] md:w-[64%] mx-auto md:mt-5"
+          } rounded-md border shadow-md md:p-5  dark:bg-[#213d5e] bg-slate-100 mt-8`}
         >
-          <div className=" -z-10">
+          <div>
             <Occupation />
           </div>
         </section>

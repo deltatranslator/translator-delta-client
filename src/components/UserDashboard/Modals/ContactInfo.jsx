@@ -59,9 +59,11 @@ const ContactInfo = ({ open }) => {
   return (
     <div className="mt-10">
       <section
-        className={`bg-slate-100 dark:bg-[#213d5e] md:ml-5 ml-[7px] ${
-          !open ? "w-[90%]" : "lg:w-[82%] md:w-[79%]"
-        } text-start rounded-md border md:p-5 p-2 w-full shadow-md`}
+       className={`text-start p-1 md:ml-5 ${
+        !open
+          ? "w-[95%] mt-0 ml-[7px]"
+          : "lg:w-[82%] md:w-[64%] mx-auto md:mt-5"
+      } rounded-md border shadow-md md:p-5  md:mt-0 dark:bg-[#213d5e] bg-slate-100`}
       >
         <div>
           <h2 className="text-3xl font-medium text-slate-900 dark:text-slate-50">
@@ -72,7 +74,7 @@ const ContactInfo = ({ open }) => {
           onClick={() => document.getElementById("emailModal").showModal()}
           className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
         >
-          <div className="md:flex items-center text-sm gap-[20px] md:gap-[213px]">
+          <div className="md:flex items-center text-sm gap-[20px] md:gap-[70px] lg:gap-[213px]">
             <p>Email</p>
             <div className="flex md:gap-2 items-center">
               <p className="text-xl md:text-sm">
@@ -102,7 +104,7 @@ const ContactInfo = ({ open }) => {
               />
             </div>
           </div>
-          <div className="">
+          <div className=" mt-4 md:mt-0">
             <FaChevronRight className="text-2xl" />
           </div>
         </div>
@@ -111,7 +113,7 @@ const ContactInfo = ({ open }) => {
           onClick={() => document.getElementById("numberModal").showModal()}
           className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
         >
-          <div className="md:flex items-center text-sm md:gap-[208px] gap-[50px]">
+          <div className="md:flex items-center text-sm md:gap-[70px] lg:gap-[208px] gap-[50px]">
             <p>Phone</p>
             <p className="text-xl md:text-sm">
               {isUser ? <p>{isUser?.number}</p> : <p>None</p>}

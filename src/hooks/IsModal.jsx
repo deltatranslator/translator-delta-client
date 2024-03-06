@@ -18,7 +18,7 @@ const IsModal = ({
               ✕
             </button>
           </form>
-          <section className=" bg-[#E9F1FA] rounded-md">
+          <section className="bg-[#E9F1FA] dark:bg-[#213E5E] rounded-md">
             <div className="bg-[#1F9DE1] p-2">
               <h2 className="text-start text-[#E9F1FA] text-xl font-medium py-2">
                 {title}
@@ -29,7 +29,7 @@ const IsModal = ({
                 <div className="relative w-full py-6 px-5">
                   <label className="label text-xl font-medium">{label}</label>
                   <input
-                    className="px-3 py-5 border-b-2 rounded-md focus:outline-none focus:border-blue-500 hover:bg-gray-200 w-full"
+                    className="px-3 py-5 border-b-2 dark:text-[#213E5E] rounded-md focus:outline-none focus:border-blue-500 hover:bg-gray-200 w-full"
                     type={type}
                     name={name}
                     defaultValue={defaultValue}
