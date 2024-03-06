@@ -21,13 +21,16 @@ const FeedbackModal = ({ open, close }) => {
     const handleSendFeedback = () => {
 
         const feedbackMessageData = {
-            satisfaction: selectedOption,
+            feedbackMessageContent: feedbackMessage,
+            satisfaction: parseInt(selectedOption),
             inquiryPermission: inquiryPermission,
             feedbackDate: Date.now()
         }
 
         const feedback = {
             userEmail: user?.email,
+            userName: user?.displayName,
+            profile: user?.photoURL,
             feedbackMessage: [feedbackMessageData]
         }
 

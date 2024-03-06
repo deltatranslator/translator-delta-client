@@ -42,19 +42,18 @@ const productSales = [
     },
 ];
 
-const FeedbackGraph = () => {
-
+const FeedbackGraph = ({ data }) => {
 
     return (
         <ResponsiveContainer width="100%" height="100%">
             <AreaChart
                 width={500}
                 height={400}
-                data={productSales}
+                data={data}
                 margin={{ right: 30 }}
             >
                 <YAxis />
-                <XAxis dataKey="name" />
+                <XAxis dataKey="month" />
                 <CartesianGrid strokeDasharray="5 5" />
 
                 <Tooltip
@@ -64,7 +63,7 @@ const FeedbackGraph = () => {
 
                 <Area
                     type="monotone"
-                    dataKey="users"
+                    dataKey="dataY"
                     stroke="#2563eb"
                     fill="#3b82f6"
                     stackId="1"
