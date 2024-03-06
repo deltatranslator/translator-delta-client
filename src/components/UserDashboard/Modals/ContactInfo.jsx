@@ -94,6 +94,7 @@ const ContactInfo = ({ open }) => {
                 Delta Account."
                 modalId="emailModal"
                 onSubmit={handelMailUpdate}
+                label="Email:"
                 type="email"
                 id="email"
                 name="email"
@@ -122,6 +123,7 @@ const ContactInfo = ({ open }) => {
               onSubmit={handelNumberUpdate}
               type="number"
               id="number"
+              label="Number:"
               name="number"
               defaultValue={isUser ? isUser.number : "Set Your Number"}
             />

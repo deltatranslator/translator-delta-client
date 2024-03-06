@@ -14,19 +14,17 @@ const IsModal = ({
       <dialog id={modalId} className="modal">
         <div className="modal-box bg-none bg-transparent rounded-3xl">
           <form method="dialog">
-            {/* if there is a button in form, it will close the modal */}
             <button className="btn shadow-2xl bg-[#213E5E] hover:bg-red-500 hover:text-black btn-sm btn-circle btn-ghost text-red-500 text-xl font-bold absolute right-2 top-2">
               ✕
             </button>
           </form>
-          <section className=" bg-[#E9F1FA]">
+          <section className=" bg-[#E9F1FA] rounded-md">
             <div className="bg-[#1F9DE1] p-2">
               <h2 className="text-start text-[#E9F1FA] text-xl font-medium py-2">
                 {title}
               </h2>
             </div>
             <div className="">
-              {/* Handel user name update */}
               <form onSubmit={onSubmit} className="items-center gap-3">
                 <div className="relative w-full py-6 px-5">
                   <label className="label text-xl font-medium">{label}</label>

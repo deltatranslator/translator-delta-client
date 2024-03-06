@@ -263,6 +263,7 @@ const UserProfile = () => {
                   modalId="birthdayModal"
                   onSubmit={handelBirthDate}
                   defaultValue={isUser ? isUser.date : "None"}
+                  label="Birthday:"
                   type="date"
                   id="date"
                   name="date"
@@ -291,25 +292,26 @@ const UserProfile = () => {
                 <FaChevronRight className="text-2xl" />
               </div>
               <dialog id="genderModal" className="modal">
-                <div className="modal-box">
+              <div className="modal-box bg-none bg-transparent rounded-3xl">
                   <form method="dialog">
-                    {/* if there is a button in form, it will close the modal */}
-                    <button className="btn shadow-2xl btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                    <button className="btn shadow-2xl bg-[#213E5E] hover:bg-red-500 hover:text-black btn-sm btn-circle btn-ghost text-red-500 text-xl font-bold absolute right-2 top-2">
                       ✕
                     </button>
                   </form>
-                  <section className="rounded-md">
-                    <h2 className="text-center font-medium  text-slate-800 py-2">
-                      Your gender may be used for personalization across Google
-                      services.
-                    </h2>
+                  <section className=" bg-[#E9F1FA] rounded-md">
+                    <div className="bg-[#1F9DE1] p-2">
+                      <h2 className="text-start text-[#E9F1FA] text-xl font-medium py-2">
+                        Your gender may be used for personalization across
+                        Google services.
+                      </h2>
+                    </div>
                     <div className=" py-5 px-3">
-                      {/* Handel user name update */}
                       <form
                         onSubmit={handelGenderDate}
-                        className="flex items-center gap-3"
+                        className="items-center gap-3"
                       >
-                        <div className="relative w-full">
+                        <div className="relative w-full py-6 px-5">
+                        <label className="label text-xl font-medium">Gender:</label>
                           <select
                             name="gender"
                             id="gender"
@@ -321,13 +323,22 @@ const UserProfile = () => {
                             <option value="twoSpirit">Two-spirit</option>
                           </select>
                         </div>
-                        <div>
-                          <button
-                            type="submit"
-                            className="btn rounded-full font-bold hover:bg-[#213E5E] hover:shadow-2xl hover:shadow-blue-700 hover:text-white border-none"
-                          >
-                            Save
-                          </button>
+                        <div className="flex items-center justify-end gap-3 text-center py-5 px-5">
+                          <div className="">
+                            <form method="dialog">
+                              <button className="w-full border-none text-xl text-[#213E5E] hover:shadow-2xl hover:shadow-red-500 bg-red-200 hover:bg-red-700 hover:text-white rounded-full px-8 py-2">
+                                Cancel
+                              </button>
+                            </form>
+                          </div>
+                          <div className="">
+                            <button
+                              type="submit"
+                              className=" bg-[#1F9DE1] text-xl hover:shadow-2xl  w-full hover:shadow-[#1F9DE1] text-white border-none hover:bg-green-600 rounded-full px-8 py-2"
+                            >
+                              Save
+                            </button>
+                          </div>
                         </div>
                       </form>
                     </div>
@@ -371,6 +382,7 @@ const UserProfile = () => {
                 title="Changes to your Home Ip will be reflected across your
                 Delta Account."
                 modalId="homeModal"
+                label="Home Ip:"
                 onSubmit={handelHomeUpdate}
                 type="text"
                 id="home"
@@ -396,6 +408,7 @@ const UserProfile = () => {
                 title="Changes to your work will be reflected across your
                 Delta Account."
                 modalId="workModal"
+                label="Work:"
                 onSubmit={handelWorkUpdate}
                 type="text"
                 id="work"
@@ -421,6 +434,7 @@ const UserProfile = () => {
                 title="Changes to your address will be reflected across your
                 Delta Account."
                 modalId="addressModal"
+                label="Other Address:"
                 onSubmit={handelAddressUpdate}
                 type="text"
                 id="address"
