@@ -30,8 +30,8 @@ const AdminUserStats = () => {
         </p>
       </div>
       {/* wrapper */}
-      <div className="flex flex-col">
-        <div className="flex justify-center min-h-[250px] gap-2 md:gap-10 px-2 md:px-16 container mx-auto bg-gradient-to-r from-blue-400 via-blue-300 to-transparent mr-32 my-10 md:py-12 py-4 rounded-lg flex-wrap">
+      <div className="flex flex-col items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 justify-center min-h-[250px] gap-2 md:gap-4 px-2 md:px-12 container mx-auto bg-gradient-to-r from-blue-400 via-blue-300 to-transparent mr-32 my-10 md:py-12 py-4 rounded-lg">
           <StatCard
             icon={FaUsers}
             title="Total Users"
@@ -64,7 +64,7 @@ const AdminUserStats = () => {
             </div>
           </div>
         </div>
-        <div className="container mx-auto bg-gradient-to-r from-blue-400 via-blue-300 to-transparent mr-32 mb-10 py-4 md:py-8 px-4 md:px-8 rounded-lg">
+        {/* <div className="container mx-auto bg-gradient-to-r from-blue-400 via-blue-300 to-transparent mr-32 mb-10 py-4 md:py-8 px-4 md:px-8 rounded-lg">
           <div className="mb-4 md:mb-8">
             <h1 className="font-bold text-white text-2xl tracking-wider">
               Monthly Users
@@ -73,8 +73,7 @@ const AdminUserStats = () => {
           <div className="h-[400px] bg-orange-50 my-4 rounded-lg p-2 md:p-8 md:mx-10 mx-0">
             <MonthlyUsersChart />
           </div>
-        </div>
-        <div></div>
+        </div> */}
       </div>
     </div>
   );
