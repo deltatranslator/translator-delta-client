@@ -20,12 +20,14 @@ const AdminInbox = () => {
   if (isLoading) return <Loader />;
   console.log("---------------", inboxUsers, isLoading);
   return (
-    <div className="px-5 md:px-10 lg:px-20 py-5 md:py-10 lg:py-16">
-      <h1 className="text-4xl text-center pb-5 md:pb-10">Admin Inbox</h1>
+    <div className="px-5 md:px-10 lg:px-20 py-5 md:py-10 lg:py-16 ">
+      <h1 className="text-4xl text-white text-center pb-5 md:pb-10">
+        Admin <span className="text-[#00ABE4]">Inbox</span>
+      </h1>
       <div className="flex flex-col">
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-            <div className="overflow-hidden">
+            <div className="overflow-hidden border bg-[#E9F1FA] border-gray-300 text-black shadow-lg backdrop-blur-sm bg-opacity-80">
               <table className="min-w-full text-left text-sm font-light">
                 <thead className="border-b font-medium dark:border-neutral-500">
                   <tr>

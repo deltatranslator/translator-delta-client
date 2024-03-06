@@ -157,7 +157,7 @@ const TargetLangComponent = ({ swapState }) => {
                       handleRecentLang(lang.name);
                       setSelectedLanguage(lang.name);
                     }}
-                    className={`px-2 py-2 cursor-pointer dark:text-slate-50 dark:hover:bg-slate-600 hover:bg-blue-100 ${
+                    className={`px-2 py-2 cursor-pointer dark:text-slate-50  dark:hover:bg-slate-600 hover:bg-blue-100 ${
                       activeIndex === idx ? "text-blue-500" : "text-gray-800"
                     }`}
                   >
