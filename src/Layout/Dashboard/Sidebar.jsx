@@ -32,17 +32,19 @@ const Sidebar = ({ setIsSideOpen }) => {
       {isUser?.role == "admin" ? (
         <section className="flex gap-6 fixed right-0">
           <div
-            className={`bg-gray-50 dark:bg-blue-900 dark:text-white min-h-screen ${open ? "w-72 md:w-60 xl:w-72 px-4" : "w-10 md:w-16 px-3"
-              } duration-700 text-black z-10`}
+            className={`bg-[#213d5e] text-white min-h-screen ${
+              open ? "w-72 px-4" : "w-16 px-3"
+            } duration-700 text-black -z-10`}
           >
             <div
-              className={`py-6 flex ${open ? "justify-between" : "justify-center"
-                }`}
+              className={`py-6 flex ${
+                open ? "justify-between" : "justify-center"
+              }`}
             >
               <Link className="h-[40px] flex items-start" to="/">
                 <img
-                  className={`${!open && "hidden"} w-[130px] md:w-[130px]`}
-                  src="https://i.ibb.co/fkP6YGC/log-removebg-preview.png"
+                  className={`w-[60px] md:w-[130px] ${!open && "hidden"}`}
+                  src="https://i.ibb.co/LY5trSk/Delta-logo-dark-removebg-preview-1.png"
                   alt=""
                 />
               </Link>
@@ -56,8 +58,9 @@ const Sidebar = ({ setIsSideOpen }) => {
               {isAdmin &&
                 adminMenus?.map((menu, i) => (
                   <Link
-                    className={`${menu?.margin ? "mt-5" : menu?.marginBot ? "mb-5" : ""
-                      } group flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-blue-300 dark:hover:bg-blue-600 rounded-md`}
+                    className={`${
+                      menu?.margin ? "mt-5" : menu?.marginBot ? "mb-5" : ""
+                    } group flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-blue-300 dark:hover:bg-blue-600 rounded-md`}
                     to={menu?.link}
                     key={i}
                   >
@@ -66,14 +69,16 @@ const Sidebar = ({ setIsSideOpen }) => {
                       style={{
                         transitionDelay: `${i + 3}00ms`,
                       }}
-                      className={`whitespace-pre duration-500 ${!open && "opacity-0 translate-x-28 overflow-hidden"
-                        }`}
+                      className={`whitespace-pre duration-500 ${
+                        !open && "opacity-0 translate-x-28 overflow-hidden"
+                      }`}
                     >
                       {menu?.name}
                     </h2>
                     <h2
-                      className={`${open && "hidden"
-                        } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit`}
+                      className={`${
+                        open && "hidden"
+                      } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit`}
                     >
                       {menu?.name}
                     </h2>

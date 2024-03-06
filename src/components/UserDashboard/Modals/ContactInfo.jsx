@@ -3,137 +3,137 @@ import { GiCrossMark } from "react-icons/gi";
 import { FaChevronRight } from "react-icons/fa";
 import useUser from "../../../hooks/useUser";
 import useAuth from "../../../hooks/useAuth";
-import ReactiveButton from "reactive-button";
-import { useState } from "react";
-import useProfile from "../../../hooks/useProfile";
+// import useProfile from "../../../hooks/useProfile";
 import toast from "react-hot-toast";
-import axiosSecure from "../../../Api";
+import axiosSecure from "../../../api";
+import IsModal from "../../../hooks/IsModal";
 
 const ContactInfo = ({ open }) => {
-  const [state, setState] = useState("idle");
+  const { isUser, refetch } = useUser();
+  const { user, userLogOut } = useAuth();
+  // const { isProfile } = useProfile();
 
-  const { isUser } = useUser();
-  const { user } = useAuth();
-  const { isProfile } = useProfile();
-  // console.log("isProfile:", isProfile);
-
-  const onClickHandler = () => {
-    setState("loading");
-    setTimeout(() => {
-      setState("success");
-    }, 2000);
-  };
-
-  const handelSave = async (e) => {
+  const handelNumberUpdate = (e) => {
     e.preventDefault();
     const number = e.target.number.value;
-    const email = user.email;
-    const userNumber = { number, email };
-    await axiosSecure
-      .post("/profile", userNumber)
-      .then(() => {
-        toast.success("Phone Number Added!");
-      })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+    const updateUser = { number };
+    try {
+      axiosSecure
+        .put(`/users/number/${isUser._id}`, updateUser)
+        .then(() => {
+          refetch();
+          toast.success("Updated Done!");
+        })
+        .catch(() => {
+          toast.error("Updated Failed!");
+        });
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.message);
+    }
+  };
+
+  const handelMailUpdate = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const updateUser = { email };
+    try {
+      axiosSecure
+        .put(`/users/mail/${isUser._id}`, updateUser)
+        .then((res) => {
+          if (res.acknowledged) {
+            userLogOut();
+          }
+          refetch();
+          toast.success("Updated Done!");
+        })
+        .catch(() => {
+          toast.error("Updated Failed!");
+        });
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.message);
+    }
   };
 
   return (
-    <div>
+    <div className="mt-10">
       <section
-        className={`bg-slate-100 md:ml-5 ml-[10px] ${
-          !open ? "w-[100%]" : "lg:w-[86%] md:w-[79%]"
-        } text-start rounded-md border md:p-5 p-2 mt-10 w-full shadow-md`}
+       className={`text-start p-1 md:ml-5 ${
+        !open
+          ? "w-[95%] mt-0 ml-[7px]"
+          : "lg:w-[82%] md:w-[64%] mx-auto md:mt-5"
+      } rounded-md border shadow-md md:p-5  md:mt-0 dark:bg-[#213d5e] bg-slate-100`}
       >
         <div>
           <h2 className="text-3xl font-medium text-slate-900 dark:text-slate-50">
             Contact Info
           </h2>
         </div>
-        <div className="flex items-center justify-between text-slate-900 dark:text-slate-50">
-          <div className="flex items-center text-sm gap-[20px] md:gap-[213px] mt-10">
+        <div
+          onClick={() => document.getElementById("emailModal").showModal()}
+          className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
+        >
+          <div className="md:flex items-center text-sm gap-[20px] md:gap-[70px] lg:gap-[213px]">
             <p>Email</p>
             <div className="flex md:gap-2 items-center">
-              <p>
-                {isUser && isUser.email
-                  ? isUser.email
-                  : user && user.email
-                  ? user.email
-                  : "Email Not Available"}
+              <p className="text-xl md:text-sm">
+                {user && user.email ? user.email : "Email Not Available"}
               </p>
-              <p>
+              <p className="text-xl md:text-sm">
                 {user?.emailVerified == true ? (
-                  <div className="tooltip tooltip-success" data-tip="Verified">
+                  <p className="tooltip tooltip-success" data-tip="Verified">
                     <MdVerified className=" text-green-500 text-2xl" />
-                  </div>
+                  </p>
                 ) : (
-                  <div
-                    data-tip="Non Verified"
-                    className="tooltip tooltip-error"
-                  >
+                  <p data-tip="Non Verified" className="tooltip tooltip-error">
                     <GiCrossMark className=" text-red-600 text-2xl" />
-                  </div>
+                  </p>
                 )}
               </p>
+              <IsModal
+                title="Changes to your Email will be reflected across your
+                Delta Account."
+                modalId="emailModal"
+                onSubmit={handelMailUpdate}
+                label="Email:"
+                type="email"
+                id="email"
+                name="email"
+                defaultValue={user ? user.email : "Set Your Email"}
+              />
             </div>
           </div>
-          <div className=" mt-10">
+          <div className=" mt-4 md:mt-0">
             <FaChevronRight className="text-2xl" />
           </div>
         </div>
-        <hr className="mt-5 mb-5" />
+        <hr />
         <div
-          onClick={() => document.getElementById("my_modal_3").showModal()}
-          className="flex items-center justify-between text-slate-900 dark:text-slate-50"
-          role="button"
+          onClick={() => document.getElementById("numberModal").showModal()}
+          className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
         >
-          <div className="flex items-center text-sm md:gap-[208px] gap-[50px]">
+          <div className="md:flex items-center text-sm md:gap-[70px] lg:gap-[208px] gap-[50px]">
             <p>Phone</p>
-            <p>{isProfile ? <p>{isProfile?.number}</p> : <p>None</p>}</p>
+            <p className="text-xl md:text-sm">
+              {isUser ? <p>{isUser?.number}</p> : <p>None</p>}
+            </p>
+            <IsModal
+              title="Changes to your Number will be reflected across your
+                Delta Account."
+              modalId="numberModal"
+              onSubmit={handelNumberUpdate}
+              type="number"
+              id="number"
+              label="Number:"
+              name="number"
+              defaultValue={isUser ? isUser.number : "Set Your Number"}
+            />
           </div>
           <div>
             <FaChevronRight className=" text-2xl" />
           </div>
         </div>
-        <dialog id="my_modal_3" className="modal">
-          <div className="modal-box">
-            <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
-              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                ✕
-              </button>
-            </form>
-            <section className="border rounded-md p-2">
-              <h2 className=" font-medium text-slate-800 py-2">
-                This phone number has been added to your Delta Account
-              </h2>
-              <div className=" py-5 px-3">
-                <form onSubmit={handelSave}>
-                  <div className="relative w-full">
-                    <input
-                      type="number"
-                      name="number"
-                      id="number"
-                      className="appearance-none w-full border-b-2 border-b-slate-500 border-slate-50 focus:border-blue-500 bg-transparent text-gray-700 py-2 px-4 focus:outline-none focus:ring-0"
-                      placeholder="Enter a number"
-                    />
-                  </div>
-                  <div className=" flex items-center justify-end mt-2">
-                    <ReactiveButton
-                      buttonState={state}
-                      idleText="Submit"
-                      loadingText="Loading"
-                      successText="Saved"
-                      type="submit"
-                      onClick={onClickHandler}
-                    />
-                  </div>
-                </form>
-              </div>
-            </section>
-          </div>
-        </dialog>
       </section>
     </div>
   );

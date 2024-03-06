@@ -1,5 +1,4 @@
 import LanguageChart from "./LanguageChart";
-import MonthlyUsersChart from "./MonthlyUsersChart";
 import TopLanguages from "./TopLanguages";
 import StatCard from "./statCard";
 

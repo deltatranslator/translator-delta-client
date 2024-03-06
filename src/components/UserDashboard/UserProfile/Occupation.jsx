@@ -48,7 +48,6 @@ const Occupation = () => {
       const email = user.email;
       const isOccupation = { occupation, email };
       await axiosSecure.post("/profile", isOccupation).then((res) => {
-        console.log(res);
         if (res.data.acknowledged == true) {
           toast.success("Data Saved");
         } else {
@@ -104,31 +103,37 @@ const Occupation = () => {
   return (
     <>
       {/* Your occupation */}
-      <section className="">
+      <section className="font-delta-v2">
         <div>
           <h2 className="text-start px-2 text-3xl font-medium text-slate-900 dark:text-slate-50">
             Your occupation
           </h2>
         </div>
-        <form onSubmit={handleOccupationSubmit} className="items-center mt-5 p-2">
+        <form
+          onSubmit={handleOccupationSubmit}
+          className="items-center mt-5 p-2"
+        >
           <Radio.Group
             size="large"
-            className="grid md:grid-cols-4 grid-cols-2 gap-5 text-center z-100"
+            className="grid md:grid-cols-4 grid-cols-2 gap-5 text-center z-100 font-delta-v2"
           >
             {occupations.map((item) => (
               <Radio.Button
                 key={item?.id}
                 onChange={handleOccupationChange}
                 value={item?.value}
+                className="font-delta-v2 dark:bg-slate-950 dark:text-white border-none dark:hover:bg-[#2293D6] rounded-md"
               >
                 {item?.text}
               </Radio.Button>
             ))}
           </Radio.Group>
           <ReactiveButton
+          className=" dark:text-white"
             style={{
               borderRadius: "5px",
               marginTop: "15px",
+              fontFamily: "font-delta-v2",
             }}
             size={"normal"}
             buttonState={state}
@@ -144,7 +149,7 @@ const Occupation = () => {
         </form>
       </section>
       {/* Areas of interest */}
-      <section className=" mt-10 pb-3">
+      <section className=" mt-10 pb-3 font-delta-v2">
         <div>
           <h2 className="text-3xl text-start px-2 font-medium text-slate-900 dark:text-slate-50">
             Areas of interest
@@ -160,16 +165,18 @@ const Occupation = () => {
                 key={item?.id}
                 onChange={handleInterestChange}
                 value={item?.value}
-                className=""
+                className="font-delta-v2 dark:bg-slate-950 dark:text-white border-none dark:hover:bg-[#2293D6] rounded-md"
               >
                 {item?.text}
               </Radio.Button>
             ))}
           </Radio.Group>
           <ReactiveButton
+          className=" dark:text-white"
             style={{
               borderRadius: "5px",
               marginTop: "15px",
+              fontFamily: "font-delta-v2",
             }}
             size={"normal"}
             buttonState={interestState}

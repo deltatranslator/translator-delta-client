@@ -19,7 +19,11 @@ const SwipeArrow = ({ setSwapState }) => {
       JSON.parse(localStorage.getItem("recentTargetLang")) || [];
     setArray1(storedArray1);
     setArray2(storedArray2);
+<<<<<<< HEAD
   });
+=======
+  }, []);
+>>>>>>> d9e83c8d3632fa91ee6c308fcb71cf5a500809ca
 
   const swapLanguage = () => {
     // const sourceLang = JSON.parse(localStorage.getItem("recentSourceLang")) || "recentSourceLang";

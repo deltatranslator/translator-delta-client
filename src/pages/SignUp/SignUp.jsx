@@ -15,7 +15,6 @@ import axiosSecure from "../../api";
 import { MdOutlineMailLock } from "react-icons/md";
 import { IoIosPerson } from "react-icons/io";
 
-
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const SignUp = () => {
@@ -32,12 +31,11 @@ const SignUp = () => {
 
   // password toggle function
 
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
-
 
   const onSubmit = async (data, event) => {
     const name = data.name;
@@ -85,9 +83,7 @@ const SignUp = () => {
   // console.log(imgTitle);
   return (
     <div className="hero  sign-back min-h-screen  dark:bg-black ">
-
       <div className="hero-content flex flex-col md:flex-row-reverse w-full lg:gap-10">
-
         <div className="card form-data flex-shrink-0 w-80 md:w-96 lg:w-[450px] py-7 bg-[#ffffff] bg-opacity-10 backdrop-blur-sm shadow-black shadow-2xl">
           <div className="text-left ml-10 text-[#213d5e] text-2xl md:text-4xl font-bold">
             Create Your Account
@@ -131,8 +127,7 @@ const SignUp = () => {
               )}
             </div>
 
-            <div >
-
+            <div>
               <div className="flex flex-col ">
                 <div className="form-control flex flex-row my-3">
                   <div className="px-3 py-2 rounded-l-lg bg-[#213d5e]  shadow-[#213d5e] shadow-lg">
@@ -153,11 +148,17 @@ const SignUp = () => {
                       className="input rounded-l-none w-full input-bordered border-[#213d5e] shadow-[#213d5e] shadow-lg"
                     />
                     {/* Text changes based on visibility */}
-                    <button onClick={togglePasswordVisibility} className="relative -ml-7 md:-ml-10 ">
-                      {showPassword ? <FaEyeSlash className="text-[#213d5e]" size={20} /> : <FaEye className="text-[#213d5e]" size={20} />}
+                    <button
+                      onClick={togglePasswordVisibility}
+                      className="relative -ml-7 md:-ml-10 "
+                    >
+                      {showPassword ? (
+                        <FaEyeSlash className="text-[#213d5e]" size={20} />
+                      ) : (
+                        <FaEye className="text-[#213d5e]" size={20} />
+                      )}
                     </button>
                   </div>
-
                 </div>
 
                 <div className="text-center">
@@ -167,7 +168,10 @@ const SignUp = () => {
                     </span>
                   )}
                   {errors.password?.type === "minLength" && (
-                    <p className="text-red-600"> Password must be 8 character</p>
+                    <p className="text-red-600">
+                      {" "}
+                      Password must be 8 character
+                    </p>
                   )}
                   {errors.password?.type === "maxLength" && (
                     <p className="text-red-600">
@@ -184,14 +188,9 @@ const SignUp = () => {
                   )}
                 </div>
               </div>
-
-
-
             </div>
             <div>
               <div className="my-2 flex items-center justify-center">
-
-
                 <div className="px-3 py-[11px] rounded-l-lg bg-[#213d5e]  shadow-[#213d5e] shadow-lg -mt-[5px]">
                   <GoUpload className="text-2xl text-white" />
                 </div>
@@ -199,15 +198,11 @@ const SignUp = () => {
                   htmlFor="image"
                   className="file-label shadow-[#213d5e] shadow-lg mb-2 text-sm text-white rounded-xl "
                 >
-
-
-                  <div >
+                  <div>
                     {imgTitle ? (
                       <p>{imgTitle.slice(0, 20)}</p>
                     ) : (
                       <div className="flex justify-center items-center mx-auto">
-
-
                         <p>Upload Profile</p>
                       </div>
                     )}
@@ -225,9 +220,7 @@ const SignUp = () => {
               />
             </div>
             {errors.image && (
-              <span className="text-red-700 font-bold">
-                image is required
-              </span>
+              <span className="text-red-700 font-bold">image is required</span>
             )}
             <div className="form-control mt-6">
               <button
@@ -257,16 +250,15 @@ const SignUp = () => {
               to="/"
             >
               <p>Go to</p>
-              <span className="underline font-extrabold text-base text-[#213d5e]">Home</span>
+              <span className="underline font-extrabold text-base text-[#213d5e]">
+                Home
+              </span>
             </Link>
           </div>
-          <div>
-          </div>
-
+          <div></div>
         </div>
       </div>
     </div>
-
   );
 };
 
