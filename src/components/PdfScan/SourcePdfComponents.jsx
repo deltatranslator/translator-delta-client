@@ -303,7 +303,7 @@ const SourcePdfComponent = () => {
                             setTempFlag(true);
                         }}
                         className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${activeIndex === idx
-                            ? "border-b-2 border-[#ed7966]"
+                            ? "border-b-2 border-[#00ABE4]"
                             : "border-b-2 border-transparent"
                             }`}
                     >
@@ -392,14 +392,14 @@ const SourcePdfComponent = () => {
                             ">
                                 <label
                                     htmlFor="image"
-                                    className=" mb-[1px] text-sm text-[#ed7966] rounded-xl "
+                                    className=" mb-[1px] text-sm text-[#00ABE4] rounded-xl "
                                 >
-                                    <div className="flex justify-center items-center mx-auto outline px-3 py-2 rounded-xl">
+                                    <div className="flex justify-center items-center mx-auto border-2 border-[#00ABE4] px-[10px] py-2 rounded-xl">
 
                                         {
                                             text ?
 
-                                                <p>{text.slice(0, 20)}</p>
+                                                <p className="font-semibold">{text.slice(0, 20)}</p>
                                                 :
                                                 <p>Browse your file</p>
                                         }
@@ -417,11 +417,11 @@ const SourcePdfComponent = () => {
 
                                 {/* input pdf password  */}
 
-                                <input style={{ display: "none" }} className="outline  outline-[2px] outline-[#ed7966] rounded-lg my-3 px-2" placeholder="  password if require" type="password" name="password" id="" />
+                                <input style={{ display: "none" }} className="outline  outline-[2px] outline-[#00ABE4] rounded-lg my-3 px-2" placeholder="  password if require" type="password" name="password" id="" />
 
 
-                                <button type="submit" className="my-2 text-sm bg-[#ed7966] hover:bg-[#303179] text-white rounded-lg px-2 py-2">
-                                    <div className=" flex justify-center items-center gap-2">
+                                <button type="submit" className="btn my-2 text-sm bg-[#00ABE4] hover:bg-[#213d5e] text-white rounded-lg px-2 py-2">
+                                    <div className="font-medium flex  justify-center items-center gap-2">
                                         <MdGTranslate size={22} />
                                         Translate
                                     </div>

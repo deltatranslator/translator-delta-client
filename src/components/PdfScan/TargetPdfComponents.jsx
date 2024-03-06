@@ -107,7 +107,7 @@ const TargetPdfComponent = () => {
               setSelectedLanguage(lang);
             }}
             className={`px-2 py-3 hover:bg-blue-100 rounded-sm cursor-pointer border-b-2 transition-all duration-300 cubic-bezier(.68,-0.55,.27,1.55) ${activeIndex === idx
-              ? "border-b-2 border-[#ed7966]"
+              ? "border-b-2 border-[#00ABE4]"
               : "border-b-2 border-transparent"
               }`}
           >
@@ -174,10 +174,10 @@ const TargetPdfComponent = () => {
         </div>
       )}
       <div
-        className="w-full dark:bg-slate-400 dark:text-slate-100 dark:border-none font-medium text-gray-600 h-64 border-[1px] bg-gray-50 rounded-lg p-4 flex justify-center items-center"
+        className="w-full dark:bg-slate-400 dark:text-slate-100 dark:border-none font-medium text-gray-600 h-64 border-[1px] bg-gray-50 rounded-lg p-4 flex flex-col justify-center items-center gap-2"
 
       >
-        <>
+        <div>
           {
             translation ? translation :
               <div className="text-neutral-400 text-center">
@@ -186,13 +186,26 @@ const TargetPdfComponent = () => {
               </div>
 
           }
-        </>
+        </div>
+        <div className="flex justify-center">
+          {
+            translation ?
+              <button onClick={handleDownload} className="btn absolute font-medium hover:bg-[#213d5e]  px-4 py-2 rounded-lg   bg-[#00ABE4] text-white">
+                <div className="flex items-center gap-2">
+                  <FaFileDownload />
+                  <a href="#" className="download" download="paragraph.txt">Download</a>
+                </div>
+              </button>
+              :
+              ""
+          }
+        </div>
 
       </div>
-      <>
+      {/* <>
         {
           translation ?
-            <button onClick={handleDownload} className="absolute font-semibold hover:bg-[#303179]  px-3 py-1 rounded-lg -mt-10  bg-[#ed7966] text-white">
+            <button onClick={handleDownload} className="absolute font-semibold hover:bg-[#303179]  px-3 py-1 rounded-lg -mt-10  bg-[#213d5e] text-white">
               <div className="flex items-center gap-2">
                 <FaFileDownload />
                 <a href="#" className="download" download="paragraph.txt">Download</a>
@@ -201,7 +214,7 @@ const TargetPdfComponent = () => {
             :
             ""
         }
-      </>
+      </> */}
 
     </div>
   );
