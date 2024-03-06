@@ -32,8 +32,14 @@ const Sidebar = ({ setIsSideOpen }) => {
       {isUser?.role == "admin" ? (
         <section className="flex gap-6 fixed right-0">
           <div
+<<<<<<< HEAD
             className={`bg-gray-50 dark:bg-blue-900 dark:text-white min-h-screen ${open ? "w-72 md:w-60 xl:w-72 px-4" : "w-10 md:w-16 px-3"
               } duration-700 text-black z-10`}
+=======
+            className={`bg-gray-50 dark:bg-[#ba721b] dark:text-white min-h-screen ${
+              open ? "w-72 px-4" : "w-16 px-3"
+            } duration-700 text-black -z-10`}
+>>>>>>> 11f045b2e44a9d65a9d8ef11814ea751008a4d1a
           >
             <div
               className={`py-6 flex ${open ? "justify-between" : "justify-center"

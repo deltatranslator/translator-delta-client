@@ -4,8 +4,11 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        "delta-v2": "'Poppins', 'sans-serif'",
+      },
       boxShadow: {
-        'userCard': '0px 0px 15px 1px rgb(0, 0, 0, 0.7)'
+        userCard: "0px 0px 15px 1px rgb(0, 0, 0, 0.7)",
       },
     },
   },

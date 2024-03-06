@@ -22,7 +22,7 @@ const UserMenus = () => {
   return (
     <section className="flex gap-6 fixed right-0">
       <div
-        className={`bg-gray-50 dark:bg-[#ba721b] dark:text-white min-h-screen ${
+        className={`bg-[#213d5e] text-white dark:text-white min-h-screen ${
           open ? "w-72" : "w-16"
         } duration-700 text-black px-4`}
       >
@@ -30,14 +30,33 @@ const UserMenus = () => {
           className={`py-6 flex ${open ? "justify-between" : "justify-center"}`}
         >
           <Link className="h-[40px] flex items-start" to="/">
-            <img
+
+          {/* {theme === "dark" ? (
+                <img
+                  className={`w-[60px] md:w-[150px] ${!open && "hidden"}`}
+                  src="https://i.ibb.co/LY5trSk/Delta-logo-dark-removebg-preview-1.png"
+                  alt=""
+                />
+              ) : (
+                <img
+                  className={`w-[60px] md:w-[150px] ${!open && "hidden"}`}
+                  src="https://i.ibb.co/3YmSnBB/Delta-new-logo-2-0.png"
+                  alt=""
+                />
+              )} */}  <img
+                  className={`w-[60px] md:w-[150px] ${!open && "hidden"}`}
+                  src="https://i.ibb.co/LY5trSk/Delta-logo-dark-removebg-preview-1.png"
+                  alt=""
+                />
+
+            {/* <img
               className={`${!open && "hidden"} w-[40px] md:w-[40px]`}
               src="/public/Delta-removebg-preview.png"
               alt=""
             />
             <div className={`font-medium ${!open && "hidden"}`}>
               Delta Translator
-            </div>
+            </div> */}
           </Link>
           <HiMenuAlt3
             size={26}
@@ -50,7 +69,7 @@ const UserMenus = () => {
             <Link
               className={`${
                 menu?.margin ? "mt-5" : menu?.marginBot ? "mb-5" : ""
-              } group flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-[#eec38e] rounded-md`}
+              } group flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-[#24ABE0] rounded-md`}
               to={menu?.link}
               key={i}
             >

@@ -12,9 +12,7 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import axiosSecure from "../../api";
-import { MdOutlineMailLock } from "react-icons/md";
-import { IoIosPerson } from "react-icons/io";
-
+import useUser from "../../hooks/useUser";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -22,6 +20,7 @@ const SignUp = () => {
   const { createUser, userProfileUpdate } = useAuth();
   const navigate = useNavigate();
   const [imgTitle, setImgTitle] = useState("");
+  const { refetch } = useUser();
 
   const {
     register,
@@ -32,12 +31,11 @@ const SignUp = () => {
 
   // password toggle function
 
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
-
 
   const onSubmit = async (data, event) => {
     const name = data.name;
@@ -75,6 +73,7 @@ const SignUp = () => {
           toast.success("Successfully signed up");
           reset();
           navigate("/");
+          refetch();
         });
       });
     } catch (err) {
@@ -158,6 +157,36 @@ const SignUp = () => {
                     </button>
                   </div>
 
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-[#ed7966] font-semibold">
+                    Password
+                  </span>
+                </label>
+                <div className="flex flex-row items-center ">
+                  <input
+                    {...register("password", {
+                      required: true,
+                      minLength: 8,
+                      maxLength: 20,
+                      pattern: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/,
+                    })}
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="  Password"
+                    className="input w-full input-bordered border-[#ed7966]"
+                  />
+                  {/* Text changes based on visibility */}
+                  <button
+                    onClick={togglePasswordVisibility}
+                    className="relative -ml-7 md:-ml-10 "
+                  >
+                    {showPassword ? (
+                      <FaEyeSlash className="text-[#ed7966]" size={20} />
+                    ) : (
+                      <FaEye className="text-[#ed7966]" size={20} />
+                    )}
+                  </button>
                 </div>
 
                 <div className="text-center">
@@ -224,31 +253,7 @@ const SignUp = () => {
                 onChange={(e) => setImgTitle(e.target.files[0].name)}
               />
             </div>
-            {errors.image && (
-              <span className="text-red-700 font-bold">
-                image is required
-              </span>
-            )}
-            <div className="form-control mt-6">
-              <button
-                type="submit"
-                className="btn border-0 bg-[#213d5e] shadow-[#243243] shadow-lg hover:bg-[#00ABE4] text-white font-semibold"
-              >
-                Sign Up
-              </button>
-            </div>
-          </form>
-
-          <p className="text-center -mt-4">
-            <small className="text-neutral-700 ">
-              Already have an account?{" "}
-              <Link to="/login">
-                <span className="font-extrabold ">Login</span>
-              </Link>
-            </small>
-          </p>
-          <div className="ml-10 social-login">
-            <SocialLogin />
+            {/* social login  */}
           </div>
           {/* social login  */}
           <div className="flex justify-center home-btn ">
