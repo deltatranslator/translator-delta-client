@@ -29,7 +29,7 @@ const IsModal = ({
                 <div className="relative w-full py-6 px-5">
                   <label className="label text-xl font-medium">{label}</label>
                   <input
-                    className="px-3 py-5 border-b-2 dark:text-[#213E5E] rounded-md focus:outline-none focus:border-blue-500 hover:bg-gray-200 w-full"
+                    className="px-3 py-5 border-b-2 shadow-2xl dark:text-[#213E5E] text-xl rounded-md focus:outline-none focus:border-blue-500 hover:bg-gray-200 w-full"
                     type={type}
                     name={name}
                     defaultValue={defaultValue}
@@ -40,7 +40,7 @@ const IsModal = ({
                 <div className="flex items-center justify-end gap-3 text-center py-5 px-5">
                   <div className="">
                     <form method="dialog">
-                      <button className="w-full border-none text-xl text-[#213E5E] hover:shadow-2xl hover:shadow-red-500 bg-red-200 hover:bg-red-700 hover:text-white rounded-full px-8 py-2">
+                      <button className="w-full border-none text-xl text-[#213E5E] shadow-2xl shadow-gray-500 bg-white  rounded-full px-8 py-2">
                         Cancel
                       </button>
                     </form>
@@ -48,7 +48,7 @@ const IsModal = ({
                   <div className="">
                     <button
                       type="submit"
-                      className=" bg-[#1F9DE1] text-xl hover:shadow-2xl  w-full hover:shadow-[#1F9DE1] text-white border-none hover:bg-green-600 rounded-full px-8 py-2"
+                      className=" bg-[#1F9DE1] text-xl hover:shadow-2xl  w-full hover:shadow-[#1F9DE1] shadow-2xl shadow-blue-500 text-white border-none hover:bg-green-600 rounded-full px-8 py-2"
                     >
                       Save
                     </button>
