@@ -6,9 +6,9 @@ import PdfScanArea from "./PdfScanArea";
 
 const PdfScan = () => {
   return (
-    <div className="min-h-screen ">
+    <div className="min-h-screen bg-[#E9F1FA] dark:bg-slate-800">
       <Navbar />
-      <div className="max-w-[1500px] mx-auto flex items-center justify-between mt-12">
+      <div className="max-w-[1500px] mx-auto flex  items-center justify-between mt-12">
         <TranslateSectionNav />
         <FeedbackButton />
       </div>
