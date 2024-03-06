@@ -51,7 +51,7 @@ const Login = () => {
   return (
     <div className="hero sign-back min-h-screen  dark:bg-black">
         <div className=" px-5 flex flex-col items-center justify-center md:flex-row-reverse w-full lg:gap-10">
-          <div className="card flex-shrink-0 w-80 md:w-96 lg:w-[450px] py-7 bg-[#213d5e] bg-opacity-10 backdrop-blur-md shadow-black shadow-2xl">
+          <div className="card flex-shrink-0 w-80 md:w-96 lg:w-[450px] py-7 bg-[#ffffff] bg-opacity-10 backdrop-blur-md shadow-black shadow-2xl">
             <div className="login-text text-center my-2 md:my-5 lg:my-8 text-[#213d5e] text-2xl md:text-4xl font-bold">
               Login to your account
             </div>

@@ -88,7 +88,7 @@ const SignUp = () => {
 
       <div className="hero-content flex flex-col md:flex-row-reverse w-full lg:gap-10">
 
-        <div className="card flex-shrink-0 w-80 md:w-96 lg:w-[450px] py-7 bg-[#213d5e] bg-opacity-10 backdrop-blur-md shadow-black shadow-2xl">
+        <div className="card form-data flex-shrink-0 w-80 md:w-96 lg:w-[450px] py-7 bg-[#ffffff] bg-opacity-10 backdrop-blur-sm shadow-black shadow-2xl">
           <div className="text-left ml-10 text-[#213d5e] text-2xl md:text-4xl font-bold">
             Create Your Account
           </div>
@@ -107,9 +107,12 @@ const SignUp = () => {
                 required
               />
             </div>
-            {errors.name && (
-              <span className="text-red-700 font-bold">Name is required</span>
-            )}
+            <div>
+              {errors.name && (
+                <span className="text-red-700 font-bold">Name is required</span>
+              )}
+            </div>
+
             <div className="form-control flex flex-row my-3">
               <div className="px-3 py-2 rounded-l-lg bg-[#213d5e]  shadow-[#213d5e] shadow-lg">
                 <MdOutlineMailLock className="text-white " size={24} />
@@ -128,50 +131,62 @@ const SignUp = () => {
               )}
             </div>
 
-            <div className="form-control flex flex-row my-3">
-              <div className="px-3 py-2 rounded-l-lg bg-[#213d5e]  shadow-[#213d5e] shadow-lg">
-                <GoPasskeyFill className="text-white " size={24} />
-              </div>
-              <div className="flex flex-row items-center w-full">
-                <input
-                  {...register("password", {
-                    required: true,
-                    minLength: 8,
-                    maxLength: 20,
-                    pattern: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/,
-                  })}
-                  type={showPassword ? "text" : "password"}
-                  name="password"
-                  placeholder="  password"
-                  className="input rounded-l-none w-full input-bordered border-[#213d5e] shadow-[#213d5e] shadow-lg"
-                />
-                {/* Text changes based on visibility */}
-                <button onClick={togglePasswordVisibility} className="relative -ml-7 md:-ml-10 ">
-                  {showPassword ? <FaEyeSlash className="text-[#213d5e]" size={20} /> : <FaEye className="text-[#213d5e]" size={20} />}
-                </button>
+            <div >
+
+              <div className="flex flex-col ">
+                <div className="form-control flex flex-row my-3">
+                  <div className="px-3 py-2 rounded-l-lg bg-[#213d5e]  shadow-[#213d5e] shadow-lg">
+                    <GoPasskeyFill className="text-white " size={24} />
+                  </div>
+
+                  <div className="flex flex-row items-center w-full">
+                    <input
+                      {...register("password", {
+                        required: true,
+                        minLength: 8,
+                        maxLength: 20,
+                        pattern: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/,
+                      })}
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      placeholder="  password"
+                      className="input rounded-l-none w-full input-bordered border-[#213d5e] shadow-[#213d5e] shadow-lg"
+                    />
+                    {/* Text changes based on visibility */}
+                    <button onClick={togglePasswordVisibility} className="relative -ml-7 md:-ml-10 ">
+                      {showPassword ? <FaEyeSlash className="text-[#213d5e]" size={20} /> : <FaEye className="text-[#213d5e]" size={20} />}
+                    </button>
+                  </div>
+
+                </div>
+
+                <div className="text-center">
+                  {errors.name && (
+                    <span className="text-red-700 font-bold">
+                      Password is required
+                    </span>
+                  )}
+                  {errors.password?.type === "minLength" && (
+                    <p className="text-red-600"> Password must be 8 character</p>
+                  )}
+                  {errors.password?.type === "maxLength" && (
+                    <p className="text-red-600">
+                      {" "}
+                      Password must be less than 20 character
+                    </p>
+                  )}
+                  {errors.password?.type === "pattern" && (
+                    <p className="text-red-600">
+                      {" "}
+                      Password must have one uppercase , one lowercase and one
+                      number
+                    </p>
+                  )}
+                </div>
               </div>
 
-              {errors.name && (
-                <span className="text-red-700 font-bold">
-                  Password is required
-                </span>
-              )}
-              {errors.password?.type === "minLength" && (
-                <p className="text-red-600"> Password must be 8 character</p>
-              )}
-              {errors.password?.type === "maxLength" && (
-                <p className="text-red-600">
-                  {" "}
-                  Password must be less than 20 character
-                </p>
-              )}
-              {errors.password?.type === "pattern" && (
-                <p className="text-red-600">
-                  {" "}
-                  Password must have one uppercase , one lowercase and one
-                  number
-                </p>
-              )}
+
+
             </div>
             <div>
               <div className="my-2 flex items-center justify-center">
@@ -201,7 +216,7 @@ const SignUp = () => {
               </div>
               <input
                 className="input w-full rounded-l-none input-bordered border-[#213d5e] shadow-[#213d5e] shadow-lg "
-                // {...register("image", { required: true })}
+                {...register("image", { required: true })}
                 type="file"
                 id="image"
                 name="image"
