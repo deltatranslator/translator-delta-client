@@ -33,7 +33,7 @@ const Footer = () => {
         <nav className="grid grid-flow-col gap-8">
           <NavLink>About us</NavLink>
           <NavLink>Contact</NavLink>
-          <NavLink>Our Team</NavLink>
+          <NavLink to="/ourTeam">Our Team</NavLink>
           <NavLink>Home</NavLink>
         </nav>
 

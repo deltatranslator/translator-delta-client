@@ -3,56 +3,41 @@ import { targetLang,sourceLangInfo, setTranslatedText } from "../../redux/slices
 import { useEffect, useState } from "react";
 
 const SwipeArrow = ({setSwapState}) => {
-    // const [localhost1, setLocalhost1] = useState(() => {
-    //     const storedValue = localStorage.getItem('recentSourceLang');
-    //     return storedValue ? JSON.parse(storedValue) : 'recentSourceLang';
-    //   });
-    
-    //   const [localhost2, setLocalhost2] = useState(() => {
-    //     const storedValue = localStorage.getItem('recentTargetLang');
-    //     return storedValue ? JSON.parse(storedValue) : 'recentTargetLang';
-    //   });
 
-    //   useEffect(() => {
-    //     const handleStorageChange = (e) => {
-    //       if (e.key === 'recentSourceLang') {
-    //         setLocalhost1(JSON.parse(e.newValue));
-    //       } else if (e.key === 'recentTargetLang') {
-    //         setLocalhost2(JSON.parse(e.newValue));
-    //       }
-    //     };
-    
-    //     window.addEventListener('storage', handleStorageChange);
-    
-    //     return () => {
-    //       window.removeEventListener('storage', handleStorageChange);
-    //     };
-    //   }, []);
+        // Retrieve arrays from localStorage
+        const [array1, setArray1] = useState([]);
+        const [array2, setArray2] = useState([]);
+        const [isSwapped, setIsSwapped] = useState(false);
+      
+        useEffect(() => {
+          const storedArray1 = JSON.parse(localStorage.getItem('recentSourceLang')) || [];
+          const storedArray2 = JSON.parse(localStorage.getItem('recentTargetLang')) || [];
+          setArray1(storedArray1);
+          setArray2(storedArray2); })
 
-    //   useEffect(() => {
-    //     localStorage.setItem('recentSourceLang', JSON.stringify(localhost1));
-    //     localStorage.setItem('recentTargetLang', JSON.stringify(localhost2));
-    //   }, [localhost1, localhost2]);
 
     const swapLanguage = () =>{
-        const sourceLang = JSON.parse(localStorage.getItem("recentSourceLang")) || "recentSourceLang";
-        const targetLang = JSON.parse(localStorage.getItem("recentTargetLang")) || "recentTargetLang";
+        // const sourceLang = JSON.parse(localStorage.getItem("recentSourceLang")) || "recentSourceLang";
+        // const targetLang = JSON.parse(localStorage.getItem("recentTargetLang")) || "recentTargetLang";
 
-        const temp = JSON.stringify(sourceLang);
-        localStorage.setItem('recentSourceLang', JSON.stringify(targetLang));
-        localStorage.setItem('recentTargetLang', temp);
+        // const temp = JSON.stringify(sourceLang);
+        // localStorage.setItem('recentSourceLang', JSON.stringify(targetLang));
+        // localStorage.setItem('recentTargetLang', temp);
         // Force render
         // window.location.reload(true);
+
+          // Function to swap arrays and update display
+    const temp = array1;
+    setArray1(array2);
+    setArray2(temp);
+    localStorage.setItem('recentSourceLang', JSON.stringify(array2));
+    localStorage.setItem('recentTargetLang', JSON.stringify(temp));
+    setIsSwapped(!isSwapped);
 
 
           
 
-        //   const temp = localhost1;
-        //   setLocalhost1(localhost2);
-        //   setLocalhost2(temp);
 
-        // localStorage.setItem('recentSourceLang', JSON.stringify(localhost2));
-        // localStorage.setItem('recentTargetLang', JSON.stringify(temp));
     
         setSwapState(prevState => !prevState);
     }
