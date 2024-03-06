@@ -113,7 +113,8 @@ const TeamMembers = () => {
                   <div className=" items-center text-center">
                     <h2 className="font-semibold text-xl my-1">Md. Nafis Ikbal Bhuiyan</h2>
                     <h2 className="text-[#00ABE4] my-1">FrontEnd Developer</h2>
-                    <h2> Showcase the ability to adjust to changes and challenges during the development process.</h2>
+                    <h2> 
+Experienced developer with a passion for innovation, and continuous learning in dynamic environments.</h2>
                    <div className="flex justify-center gap-3 mt-3">
                    <NavLink to="https://github.com/Nafis2222">
                       <BsGithub className="w-6 h-6 " />
