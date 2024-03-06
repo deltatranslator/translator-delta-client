@@ -14,6 +14,7 @@ import { getInbox } from "../Api/inbox";
 import AdminUserStats from "../Pages/DashboardPages/AdminPages/AdminUserStats/AdminUserStats";
 import SignUp from "../Pages/SignUp/SignUp";
 import Login from "../Pages/Login/Login";
+import OurTeam from "../components/OurTeam/OurTeam";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
         path: "/pdfScan",
         element: <PdfScan />,
       },
+      {
+        path: "/ourTeam",
+        element: <OurTeam/>
+      }
     ],
   },
   {
