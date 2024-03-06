@@ -49,11 +49,11 @@ const AdminAllUsers = () => {
             {users.length} users found
           </p>
         </div>
-        <div className="py-4 xl:p-8 md:py-8 md:px-2 bg-white rounded md:rounded-3xl">
+        <div className="py-4 xl:p-8 md:py-8 md:px-2 rounded md:rounded-3xl">
           <div className="overflow-x-auto">
             <div className="flex flex-col px-4 lg:px-8">
               {/* head */}
-              <div className="bg-[#f9f9f9] px-3 md:px-8 py-3 rounded-lg">
+              <div className="px-3 md:px-8 py-3 rounded-lg">
                 <div className="flex w-full justify-between font-bold text-sm">
                   <p className="lg:w-1/12 md:w-1/12">
                     <label>No.</label>
@@ -96,7 +96,7 @@ const AdminAllUsers = () => {
                   key={index}
                   className={`page-item ${
                     currentPage === index + 1
-                      ? "active border-2 border-orange-200 rounded-lg"
+                      ? "active border-2 border-blue-200 rounded-lg"
                       : ""
                   }`}
                 >

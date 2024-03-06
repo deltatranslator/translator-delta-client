@@ -32,7 +32,7 @@ const Sidebar = ({ setIsSideOpen }) => {
       {isUser?.role == "admin" ? (
         <section className="flex gap-6 fixed right-0">
           <div
-            className={`bg-gray-50 dark:bg-[#ba721b] dark:text-white min-h-screen ${
+            className={`bg-[#213d5e] text-white min-h-screen ${
               open ? "w-72 px-4" : "w-16 px-3"
             } duration-700 text-black -z-10`}
           >
@@ -43,8 +43,8 @@ const Sidebar = ({ setIsSideOpen }) => {
             >
               <Link className="h-[40px] flex items-start" to="/">
                 <img
-                  className={`${!open && "hidden"} w-[130px] md:w-[130px]`}
-                  src="https://i.ibb.co/fkP6YGC/log-removebg-preview.png"
+                  className={`w-[60px] md:w-[130px] ${!open && "hidden"}`}
+                  src="https://i.ibb.co/LY5trSk/Delta-logo-dark-removebg-preview-1.png"
                   alt=""
                 />
               </Link>

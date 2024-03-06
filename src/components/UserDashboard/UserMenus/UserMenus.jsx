@@ -30,33 +30,11 @@ const UserMenus = () => {
           className={`py-6 flex ${open ? "justify-between" : "justify-center"}`}
         >
           <Link className="h-[40px] flex items-start" to="/">
-
-          {/* {theme === "dark" ? (
-                <img
-                  className={`w-[60px] md:w-[150px] ${!open && "hidden"}`}
-                  src="https://i.ibb.co/LY5trSk/Delta-logo-dark-removebg-preview-1.png"
-                  alt=""
-                />
-              ) : (
-                <img
-                  className={`w-[60px] md:w-[150px] ${!open && "hidden"}`}
-                  src="https://i.ibb.co/3YmSnBB/Delta-new-logo-2-0.png"
-                  alt=""
-                />
-              )} */}  <img
-                  className={`w-[60px] md:w-[150px] ${!open && "hidden"}`}
-                  src="https://i.ibb.co/LY5trSk/Delta-logo-dark-removebg-preview-1.png"
-                  alt=""
-                />
-
-            {/* <img
-              className={`${!open && "hidden"} w-[40px] md:w-[40px]`}
-              src="/public/Delta-removebg-preview.png"
+            <img
+              className={`w-[60px] md:w-[150px] ${!open && "hidden"}`}
+              src="https://i.ibb.co/LY5trSk/Delta-logo-dark-removebg-preview-1.png"
               alt=""
             />
-            <div className={`font-medium ${!open && "hidden"}`}>
-              Delta Translator
-            </div> */}
           </Link>
           <HiMenuAlt3
             size={26}
