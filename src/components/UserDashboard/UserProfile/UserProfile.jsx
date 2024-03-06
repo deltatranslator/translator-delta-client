@@ -406,7 +406,7 @@ const UserProfile = () => {
               <FaChevronRight className=" text-2xl" />
             </div>
           </div>
-          <hr  />
+          <hr />
           <div
             onClick={() => document.getElementById("addressModal").showModal()}
             className="flex items-center justify-between text-slate-900 dark:text-slate-50 hover:bg-gray-200 dark:hover:bg-[#24ABE1] p-5 rounded-md hover:shadow-xl hover:cursor-pointer"
