@@ -230,6 +230,7 @@ const UserProfile = () => {
                   <IsModal
                     title="Changes to your name will be reflected across your
                 Delta Account."
+                    label="Name:"
                     modalId="nameModal"
                     onSubmit={handelName}
                     type="name"
