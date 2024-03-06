@@ -145,7 +145,7 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                className="mt-5 rounded-md bg-[#ed7966] px-10 py-3 text-white hover:bg-[#303179]"
+                className="mt-5 rounded-md bg-[#00ABE4] px-10 py-3 text-white hover:bg-[#213d5e]"
               >
                 Send Message
               </button>
