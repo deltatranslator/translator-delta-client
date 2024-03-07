@@ -1,12 +1,12 @@
-## Delta Translator
+# Delta Translator
 
 ## Live Link: https://delta-translator-ac8d6.web.app
 
-**# Objective**
+# Objective
 
 Delta Translator aims to be a user-friendly language translation platform offering seamless translation services while prioritizing accessibility, convenience, and user engagement. It strives to enhance cross-linguistic communication and empower users with efficient translation capabilities.
 
-**# Project Overview**
+# Project Overview
 
 Delta Translator is a collaborative effort to develop a user-friendly language translation platform. The project focuses on:
 
@@ -48,23 +48,44 @@ Delta Translator is a collaborative effort to develop a user-friendly language t
 - **Frontend:** Deployed on Firebase for accessibility and scalability.
 - **Backend:** Deployed on Vercel for robust performance and reliability.
 
-**# Cloning and Installation**
+# Cloning and Installation Guide for Client Repository:
 
-1. Clone the repository: `git clone: https://github.com/deltatranslator/translator-delta-client.git`
-2. Navigate to the project directory: `cd <project_directory>`
-3. Install dependencies: `npm install`
-4. Set up environment variables for Firebase and Vercel.
-   *create a ".env.local" file on the project directory
-   *Input those text in the ".env.local" file from this link: https://docs.google.com/document/d/1RLTCm0Wik6PdKdX4dspbLdwTN2ZVW5dmSMal6Cy_nLo/edit?usp=sharing
-5. Run the project locally: `npm start` or `yarn start`.
+To clone and install the client project locally, follow these steps:
 
-**# After complete with client side you need to clone server side also.
-visit the server repository for installation properly: https://github.com/deltatranslator/translator-delta-server**
+1. Clone the repository from GitHub using the following command:
 
-**# Conclusion**
+   ```
+   git clone https://github.com/deltatranslator/translator-delta-client.git
+   ```
+
+2. Navigate to the project directory using the following command:
+
+   ```
+   cd translator-delta-client
+   ```
+
+3. Install dependencies using npm. Run the following command:
+
+   ```
+   npm install
+   ```
+
+4. Set up environment variables for Firebase and Vercel. Create a `.env.local` file in the project directory and input the necessary environment variables. You can find the required variables in [this document](https://docs.google.com/document/d/1RLTCm0Wik6PdKdX4dspbLdwTN2ZVW5dmSMal6Cy_nLo/edit?usp=sharing).
+
+5. After setting up the environment variables, you can start the client locally using npm. Run the following command:
+
+   ```
+   npm run dev
+   ```
+
+6. Your client should now be running locally. You can access it at the specified port or endpoint depending on the configuration.
+
+# After complete with client side you need to clone server side also. visit the server repository for installation properly: https://github.com/deltatranslator/translator-delta-server
+
+# Conclusion
 
 Delta Translator is a testament to collaborative effort and innovative design, aimed at providing users with a seamless and intuitive language translation experience. With a focus on user engagement, accessibility, and reliability, the project continues to evolve to meet the diverse needs of its users.
 
-**# Contribution**
+# Contribution
 
 If you face any problem with installation, feel free to contact via email : mdfajlerabby00@gmail.com
