@@ -86,6 +86,15 @@ To clone and install the client project locally, follow these steps:
 
 Delta Translator is a testament to collaborative effort and innovative design, aimed at providing users with a seamless and intuitive language translation experience. With a focus on user engagement, accessibility, and reliability, the project continues to evolve to meet the diverse needs of its users.
 
-# Contribution
+## Contributors
+
+- **Md Fajle Rabby** ([GitHub](https://github.com/rabby9898))
+- **Mahedi Hasan** ([GitHub](https://github.com/Mahedi205339))
+- **Golam Kibria** ([GitHub](https://github.com/emiya-77))
+- **Morz Mamun** ([GitHub](https://github.com/morz-mamun))
+- **Nayem Hossen** ([GitHub](https://github.com/naymhossen1b))
+- **Md. Nafis Ikbal Bhuiyan** ([GitHub](https://github.com/Nafis2222))
+
+These individuals have contributed significantly to the development of the project.
 
 If you face any problem with installation, feel free to contact via email : mdfajlerabby00@gmail.com
