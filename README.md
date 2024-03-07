@@ -80,7 +80,7 @@ To clone and install the client project locally, follow these steps:
 
 6. Your client should now be running locally. You can access it at the specified port or endpoint depending on the configuration.
 
-# After complete with client side you need to clone server side also. visit the server repository for installation properly: https://github.com/deltatranslator/translator-delta-server
+**# After complete with client side you need to clone server side also. visit the server repository for installation properly: https://github.com/deltatranslator/translator-delta-server**
 
 # Conclusion
 
