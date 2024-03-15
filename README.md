@@ -92,7 +92,7 @@ Delta Translator is a testament to collaborative effort and innovative design, a
 - **Mahedi Hasan** ([GitHub](https://github.com/Mahedi205339))
 - **Golam Kibria** ([GitHub](https://github.com/emiya-77))
 - **Morz Mamun** ([GitHub](https://github.com/morz-mamun))
-- **Nayem Hossen** ([GitHub](https://github.com/naymhossen1b))
+- **Naym Hossen** ([GitHub](https://github.com/naymHdev))
 - **Md. Nafis Ikbal Bhuiyan** ([GitHub](https://github.com/Nafis2222))
 
 These individuals have contributed significantly to the development of the project.
