@@ -220,10 +220,10 @@ const UserProfile = () => {
                 <div className=" md:flex items-center text-sm md:gap-[80px] lg:gap-[213px] gap-[50px]">
                   <p>Name</p>
                   <p className="text-xl md:text-sm">
-                    {isUser && isUser.name.slice(0, 10)
-                      ? isUser.name.slice(0, 10)
-                      : user && user.displayName.slice(0, 10)
-                      ? user.displayName.slice(0, 10)
+                    {isUser && isUser?.name?.slice(0, 10)
+                      ? isUser?.name?.slice(0, 10)
+                      : user && user?.displayName?.slice(0, 10)
+                      ? user?.displayName?.slice(0, 10)
                       : "Not Available"}
                   </p>
                   <IsModal

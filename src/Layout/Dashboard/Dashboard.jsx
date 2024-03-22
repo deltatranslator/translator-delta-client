@@ -5,7 +5,7 @@ import { useState } from "react";
 const Dashboard = () => {
   const [isSideOpen, setIsSideOpen] = useState(true);
   const location = useLocation();
-  console.log("--------->>>>", location);
+
   const isDetailsPage = location.pathname.includes("/inboxDetails");
   const isInboxPage = location.pathname.includes("/inbox");
 
@@ -34,7 +34,7 @@ const Dashboard = () => {
           isSideOpen ? "mr-16 lg:mr-32 xl:mr-72" : "mr-16"
         }`}
       >
-        <Outlet></Outlet>
+        <Outlet />
       </div>
     </div>
   );

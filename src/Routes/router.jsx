@@ -40,8 +40,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/ourTeam",
-        element: <OurTeam/>
-      }
+        element: <OurTeam />,
+      },
     ],
   },
   {
@@ -58,15 +58,15 @@ const router = createBrowserRouter([
         element: <AdminUserStats />,
       },
       {
-        path: "/admin-dashboard/admin-users",
+        path: "admin-users",
         element: <AdminAllUsers />,
       },
       {
-        path: "/admin-dashboard/user-feedback",
+        path: "user-feedback",
         element: <AdminUserFeedback />,
       },
       {
-        path: "/admin-dashboard/inbox",
+        path: "inbox",
         element: (
           <PrivateRoute>
             <AdminInbox />
@@ -74,7 +74,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/admin-dashboard/inboxDetails/:id",
+        path: "inboxDetails/:id",
         element: (
           <PrivateRoute>
             <InboxDetailsPage></InboxDetailsPage>
@@ -82,20 +82,13 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) => getInbox(params.id),
       },
-    ],
-  },
-  {
-    path: "/user-dashboard",
-    element: (
-      <PrivateRoute>
-        <Dashboard></Dashboard>
-      </PrivateRoute>
-    ),
-    errorElement: <ErrorPage />,
-    children: [
       {
-        path: "/user-dashboard",
-        element: <UserProfile />,
+        path: "user-dashboard",
+        element: (
+          <PrivateRoute>
+            <UserProfile />
+          </PrivateRoute>
+        ),
       },
     ],
   },

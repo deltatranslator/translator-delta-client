@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
@@ -7,14 +7,13 @@ import useUser from "../../hooks/useUser";
 import { MdDarkMode } from "react-icons/md";
 import { IoSunnySharp } from "react-icons/io5";
 import { OpenContext } from "../../Context/useOpen";
+
 const Navbar = () => {
   const { user, userLogOut } = useAuth();
   const { isUser } = useUser();
   console.log("_________________", isUser?.role);
-  //react dar mode implement
-  // const [theme, setTheme] = useState("light");
+  const { theme, setTheme } = useContext(OpenContext);
 
-  const {theme, setTheme} = useContext(OpenContext)
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
@@ -48,16 +47,18 @@ const Navbar = () => {
           Contact
         </a>
       </li>
-      <li className="text-base font-semibold  dark:text-slate-50 text-[#213d5e] hover:text-[#00ABE4] mr-10">
-        <NavLink
-          to={isUser?.role === "admin" ? "/admin-dashboard" : "/user-dashboard"}
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#00ABE4]" : ""
-          }
-        >
-          Dashboard
-        </NavLink>
-      </li>
+      {user && (
+        <li className="text-base font-semibold  dark:text-slate-50 text-[#213d5e] hover:text-[#00ABE4] mr-10">
+          <NavLink
+            to={"/admin-dashboard"}
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "text-[#00ABE4]" : ""
+            }
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      )}
       <li className="text-base font-semibold  dark:text-slate-50 text-[#213d5e] hover:text-[#00ABE4] mr-12">
         <Link
           to="/ourTeam"
