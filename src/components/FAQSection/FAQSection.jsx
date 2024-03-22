@@ -26,7 +26,7 @@ const FAQSection = () => {
   return (
     <div className="flex md:space-y-6 flex-col shadow-md rounded-md container mx-auto bg-gray-100 py-20 my-8 md:my-20 dark:bg-slate-800">
       <div className="md:w-1/2 mx-auto space-y-4 text-center">
-        <h1 className="text-[#303179] font-bold text-2xl dark:text-[#ed7966]">
+        <h1 className="text-[#303179] font-bold text-2xl dark:text-[#00ABE4]">
           Why Choose Delta Translator!
         </h1>
         <p className="text-ellipsis">
@@ -38,35 +38,35 @@ const FAQSection = () => {
       </div>
       <div className="flex flex-col px-1 py-5 md:px-10 md:py-5 lg:px-20  lg:flex-row lg:gap-1 ">
         <div className="flex-1 py-5 rounded-xl md:space-y-8">
-          <h1 className="text-ellipsis font-medium text-[#303179] text-xl lg:text-2xl mb-5 dark:text-[#ed7966]">
+          <h1 className="text-ellipsis font-medium text-[#303179] text-xl lg:text-2xl mb-5 dark:text-[#00ABE4]">
             What you can do with Delta Translator.
           </h1>
 
           {/* Delta translator benefit */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <IoCheckmarkDoneSharp className="size-5 dark:text-[#ed7966] text-[#303179] "></IoCheckmarkDoneSharp>
+              <IoCheckmarkDoneSharp className="size-5 dark:text-[#00ABE4] text-[#303179] "></IoCheckmarkDoneSharp>
               <p>Translate longer texts</p>
             </div>
 
             <div className="flex items-center  gap-2">
-              <IoCheckmarkDoneSharp className="size-5 dark:text-[#ed7966] text-[#303179]"></IoCheckmarkDoneSharp>
+              <IoCheckmarkDoneSharp className="size-5 dark:text-[#00ABE4] text-[#303179]"></IoCheckmarkDoneSharp>
               <p>Use a translator without ads</p>
             </div>
             <div className="flex items-center  gap-2">
-              <IoCheckmarkDoneSharp className="size-5 dark:text-[#ed7966] text-[#303179]"></IoCheckmarkDoneSharp>
+              <IoCheckmarkDoneSharp className="size-5 dark:text-[#00ABE4] text-[#303179]"></IoCheckmarkDoneSharp>
               <p>Translate text in 93 languages</p>
             </div>
             <div className="flex items-center  gap-2">
-              <IoCheckmarkDoneSharp className="size-5 dark:text-[#ed7966] text-[#303179]"></IoCheckmarkDoneSharp>
+              <IoCheckmarkDoneSharp className="size-5 dark:text-[#00ABE4] text-[#303179]"></IoCheckmarkDoneSharp>
               <p>Enjoy completely free translation</p>
             </div>
             <div className="flex items-center  gap-2">
-              <IoCheckmarkDoneSharp className="size-5 dark:text-[#ed7966] text-[#303179]"></IoCheckmarkDoneSharp>
+              <IoCheckmarkDoneSharp className="size-5 dark:text-[#00ABE4] text-[#303179]"></IoCheckmarkDoneSharp>
               <p>Translate online without downloading an app</p>
             </div>
             <div className="flex items-center  gap-2">
-              <IoCheckmarkDoneSharp className="size-5 dark:text-[#ed7966] text-[#303179]"></IoCheckmarkDoneSharp>
+              <IoCheckmarkDoneSharp className="size-5 dark:text-[#00ABE4] text-[#303179]"></IoCheckmarkDoneSharp>
               <p>Translate between languages on a mobile-friendly platform</p>
             </div>
           </div>
@@ -74,7 +74,7 @@ const FAQSection = () => {
         {/* <div className="divider divider-accent lg:divider-horizontal"></div> */}
 
         <div className="space-y-8 flex-1 p-5 rounded-xl">
-          <h1 className="text-center text-[#303179] dark:text-[#ed7966] font-medium text-2xl mb-5">
+          <h1 className="text-center text-[#303179] dark:text-[#00ABE4] font-medium text-2xl mb-5">
             FAQs
           </h1>
           <div className="space-y-3">
@@ -86,12 +86,12 @@ const FAQSection = () => {
                     {!questionOpen1 ? (
                       <IoIosArrowDown></IoIosArrowDown>
                     ) : (
-                      <IoIosArrowUp className="text-[#ed7966] text-xl"></IoIosArrowUp>
+                      <IoIosArrowUp className="text-[#00ABE4] text-xl"></IoIosArrowUp>
                     )}
                   </div>
                 </div>
                 {questionOpen1 && (
-                  <p className="text-[#303179] font-medium dark:text-[#ed7966]">
+                  <p className="text-[#303179] font-medium dark:text-[#00ABE4]">
                     Yes, When you use Delta Translator you can enjoy 100% free
                     translation online with no ads.
                   </p>
@@ -107,12 +107,12 @@ const FAQSection = () => {
                     {!questionOpen2 ? (
                       <IoIosArrowDown></IoIosArrowDown>
                     ) : (
-                      <IoIosArrowUp className="text-[#ed7966] text-xl"></IoIosArrowUp>
+                      <IoIosArrowUp className="text-[#00ABE4] text-xl"></IoIosArrowUp>
                     )}
                   </div>
                 </div>
                 {questionOpen2 && (
-                  <p className="text-[#303179] font-medium dark:text-[#ed7966]">
+                  <p className="text-[#303179] font-medium dark:text-[#00ABE4]">
                     Currently, It lets you translate text into 93 languages,
                     with more to come.
                   </p>
@@ -127,12 +127,12 @@ const FAQSection = () => {
                     {!questionOpen3 ? (
                       <IoIosArrowDown></IoIosArrowDown>
                     ) : (
-                      <IoIosArrowUp className="text-[#ed7966] text-xl"></IoIosArrowUp>
+                      <IoIosArrowUp className="text-[#00ABE4] text-xl"></IoIosArrowUp>
                     )}
                   </div>
                 </div>
                 {questionOpen3 && (
-                  <p className="text-[#303179] font-medium dark:text-[#ed7966]">
+                  <p className="text-[#303179] font-medium dark:text-[#00ABE4]">
                     Delta Translator let you translate 500 characters at a time,
                     but you can always delete a text and type in something else.
                     Stay tuned - soon you will be able to upload an entire pdf
@@ -149,12 +149,12 @@ const FAQSection = () => {
                     {!questionOpen4 ? (
                       <IoIosArrowDown></IoIosArrowDown>
                     ) : (
-                      <IoIosArrowUp className="text-[#ed7966] text-xl"></IoIosArrowUp>
+                      <IoIosArrowUp className="text-[#00ABE4] text-xl"></IoIosArrowUp>
                     )}
                   </div>
                 </div>
                 {questionOpen4 && (
-                  <p className="text-[#303179] font-medium dark:text-[#ed7966]">
+                  <p className="text-[#303179] font-medium dark:text-[#00ABE4]">
                     yes
                   </p>
                 )}

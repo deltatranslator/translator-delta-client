@@ -33,7 +33,7 @@ const TeamMembers = () => {
               <h2 className="text-[#00ABE4] my-1">Front End Developer</h2>
               <h2>
                 {" "}
-                I'm a passionate frontend developer proficient in React.js,
+                I'm a passionate Front End Developer proficient in React.js,
                 JavaScript, MongoDB, and Node.js.
               </h2>
               <div className="flex justify-center gap-3 mt-6">
